@@ -57,7 +57,7 @@ MetaMask is the easiest way to interact with dapps in a browser. It is an extens
 
 #### Detecting MetaMask's web3 injection
 
-``// Is there is an injected web3 instance?
+```// Is there is an injected web3 instance?
 if (typeof web3 !== 'undefined') {
   App.web3Provider = web3.currentProvider;
   web3 = new Web3(web3.currentProvider);
@@ -65,4 +65,4 @@ if (typeof web3 !== 'undefined') {
   // If no injected web3 instance is detected, fallback to Ganache.
   App.web3Provider = new web3.providers.HttpProvider('http://127.0.0.1:7545');
   web3 = new Web3(App.web3Provider);
-}``
+}```
