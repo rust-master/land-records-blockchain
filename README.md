@@ -24,3 +24,10 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 Truffle Installation [Installation](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 
 `npm install -g truffle`
+
+
+### Ganache
+
+ You can learn more about Ganache  [Overview of Ganache](https://www.trufflesuite.com/docs/ganache/overview)
+
+[Download Ganache](https://github.com/trufflesuite/ganache/releases)
