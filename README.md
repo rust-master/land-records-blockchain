@@ -9,6 +9,17 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+### `truffle compile`
+
+Compile the project
+
+### `truffle migrate`
+
+Add migrations in project
+
+### `truffle deploy`
+
+Deploy the smart contract on theblockchain
 
 ## Learn More
 
