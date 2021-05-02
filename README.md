@@ -1,4 +1,4 @@
-# Blockchain based Land Record System
+# Blockchain based Land Records System
 
 ## Available Scripts
 
