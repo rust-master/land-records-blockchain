@@ -34,4 +34,4 @@ Truffle Installation [Installation](https://www.trufflesuite.com/docs/truffle/ge
 
 ### Solidity
 
- You can learn more about Solidity  [Solidity Docs](https://docs.soliditylang.org/en/v0.8.4/)
+ You can learn more about Solidity  [Solidity Docs](https://docs.soliditylang.org)
