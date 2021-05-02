@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+}
+.App{
+  width: 100;
+  height: 100vh;
+  background: #1c2237;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.Textblock{
+  margin-top: 150px;
+  margin-left: 30px;
+  font-size: 60px;
+  color: #EF8E19;
+}
+.Textland{
+  margin-top: 150px;
+  margin-left: 10px;
+  margin-right: 20px;
+  font-size: 60px;
+  color: #FFF;
+}
