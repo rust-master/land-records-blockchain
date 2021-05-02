@@ -11,11 +11,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `truffle compile`
 
-Compile the project
+Compile the contracts
 
 ### `truffle migrate`
 
-Add migrations in project
+Run migrations 
 
 ### `truffle deploy`
 
