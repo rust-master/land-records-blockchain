@@ -19,4 +19,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Truffle framework
 
-Overview of Truffle [Truffle](https://www.trufflesuite.com/docs/truffle/overview)
+ You can learn more about truffle [Overview of Truffle](https://www.trufflesuite.com/docs/truffle/overview)
+
+Truffle Installation [Installation](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+
+`npm install -g truffle`
