@@ -31,3 +31,7 @@ Truffle Installation [Installation](https://www.trufflesuite.com/docs/truffle/ge
  You can learn more about Ganache  [Overview of Ganache](https://www.trufflesuite.com/docs/ganache/overview)
 
 [Download Ganache](https://github.com/trufflesuite/ganache/releases)
+
+### Solidity
+
+ You can learn more about Solidity  [Solidity Docs](https://docs.soliditylang.org/en/v0.8.4/)
