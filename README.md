@@ -19,7 +19,7 @@ Add migrations in project
 
 ### `truffle deploy`
 
-Deploy the smart contract on theblockchain
+Deploy the smart contracts on theblockchain
 
 ## Learn More
 
