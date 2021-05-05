@@ -1,13 +1,13 @@
 import React from 'react';
-import HeroSection from '../../HeroSection';
+import FrontSection from './front';
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
 import Pricing from '../../Pricing';
 
 function SignUp() {
   return (
     <>
-      <HeroSection {...homeObjOne} />
-      <HeroSection {...homeObjThree} />
+      <FrontSection {...homeObjOne} />
+      <FrontSection {...homeObjThree} />
     </>
   );
 }

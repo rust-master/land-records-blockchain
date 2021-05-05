@@ -16,11 +16,11 @@ import { render } from "@testing-library/react";
 
 const TEXTS = [
   "Land Records System",
-  "| Land Records System",
-  "| Land Records System",
-  "| Land Records System",
-  "| Land Records System",
-  "| Land Records System",
+  "| Secure",
+  "| DApp",
+  "| Smart Contracts",
+  "| Ethereum",
+  "| Solidity",
 ];
 
 class App extends Component {
@@ -31,20 +31,20 @@ class App extends Component {
         index: 1,
       });
     }, 8000);
-    await this.loadWeb3();
+    // await this.loadWeb3();
   }
-  async loadWeb3() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
-      await window.ethereum.enable();
-    } else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
-    } else {
-      window.alert(
-        "Non-Ethereum browser detected. You should consider trying MetaMask!"
-      );
-    }
-  }
+  // async loadWeb3() {
+  //   if (window.ethereum) {
+  //     window.web3 = new Web3(window.ethereum);
+  //     await window.ethereum.enable();
+  //   } else if (window.web3) {
+  //     window.web3 = new Web3(window.web3.currentProvider);
+  //   } else {
+  //     window.alert(
+  //       "Non-Ethereum browser detected. You should consider trying MetaMask!"
+  //     );
+  //   }
+  // }
 
   state = {
     index: 0,

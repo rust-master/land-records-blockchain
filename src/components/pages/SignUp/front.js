@@ -3,9 +3,9 @@ import './FrontSection.css';
 import { Button } from '../../Button';
 import { Link } from 'react-router-dom';
 
-function UserSignIn(props) {
-    return(
-        <>
+function UserSignUp(props) {
+  return (
+    <>
       <div
         className={false ? 'home__hero-section' : 'home__hero-section darkBg'}
       >
@@ -19,21 +19,24 @@ function UserSignIn(props) {
           >
             <div className='col'>
               <div className='home__hero-text-wrapper'>
-                <div className='top-line'>{'SIGN IN TODAY'}</div>
+                <div className='top-line'>{'SIGN UP TODAY'}</div>
                 <h1 className={true ? 'heading' : 'heading dark'}>
                   {'Blockchain based Land Records System'}
                 </h1>
                 <div className='input-areas'>
-                    <form>
-                        <input className='footer-input' name='email' type='email'placeholder='Your Email'/>
-                        <input className='footer-input' name='password' type='password'placeholder='Your Password'/>
-                        
-                        <Button buttonSize='btn--wide'  buttonColor='blue'>Sign In</Button>
-                        
-                        <div class="btnGoverment">
-                        <Button buttonSize='btn--wide'  buttonColor='red'>Goverment Sign In</Button>
-                        </div>
-                    </form>
+                  <form>
+                    <div>
+                      <input className='footer-input' name='email' type='email' placeholder='Your Email' />
+                    </div>
+                    <div>
+                      <input className='footer-input' name='password' type='password' placeholder='Your Password' />
+                    </div>
+                    <div>
+                      <input className='footer-input' name='password' type='password' placeholder='Your Password' />
+                    </div>
+             
+                    <Button buttonSize='btn--wide' buttonColor='blue'>Sign Up</Button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -46,8 +49,8 @@ function UserSignIn(props) {
         </div>
       </div>
     </>
-    );
-  }
+  );
+}
 
 function FrontSection({
   lightBg,
@@ -60,9 +63,9 @@ function FrontSection({
   alt,
   imgStart
 }) {
-    if (form) {
-        return ( <UserSignIn />);
-      }
+  if (form) {
+    return (<UserSignUp />);
+  }
 
   return (
     <>
