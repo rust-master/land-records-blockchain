@@ -1,9 +1,37 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './FrontSection.css';
 import { Button } from '../../Button';
 import { Link } from 'react-router-dom';
+import fire from '../fire'
+
 
 function UserSignIn(props) {
+
+  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [hasAccount, sethasAccount] = useState(false);
+
+
+  const handleLogin = () =>{
+    fire.auth()
+    .signInWithEmailAndPassword(email,password)
+    .catch(err => {
+      switch(err.code){
+        case "auth/invalid-email":
+        case "auth/user-disabled":
+        case "auth/user-not-found":
+          setEmailError(err.mesaage);
+          break;
+        case "auth/wrong-password":
+          setPasswordError(err.mesaage);
+          break;
+      }
+    });
+  };
+
     return(
         <>
       <div
