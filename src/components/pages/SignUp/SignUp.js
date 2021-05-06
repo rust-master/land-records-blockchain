@@ -1,6 +1,6 @@
 import React from 'react';
 import FrontSection from './front';
-import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
+import { homeObjOne, homeObjThree, } from './Data';
 
 
 function SignUp() {
