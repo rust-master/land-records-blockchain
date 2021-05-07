@@ -1,35 +1,45 @@
-import React, {useState, useEffect} from 'react';
+import React, {Component} from 'react';
 import './FrontSection.css';
 import { Button } from '../../Button';
 import { Link } from 'react-router-dom';
 import fire from '../fire'
 
-function UserSignUp(props) {
+class UserSignUp extends Component {
 
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [hasAccount, sethasAccount] = useState(false);
-
-  const handleSignup = () =>{
-    fire.auth()
-    .createUserWithEmailAndPassword(email,password)
-    .catch(err => {
-      switch(err.code){
-        case "auth/email-already-in-use":
-        case "auth/invalid-email":
-          setEmailError(err.mesaage);
-          break;
-        case "auth/weak-password":
-          setPasswordError(err.mesaage);
-          break;
+  constructor(props)
+  {
+      super(props);
+      this.login = this.login.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.signup = this.signup.bind(this);
+      this.state={
+          email : "",
+          password : ""
       }
-    });
-  };
+  }
+  login(e){
+      e.preventDefault();
+      fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u)=>{
+          console.log(u)
+      }).catch((err)=>{
+          console.log(err);
+      })
+  }
+  signup(e){
+      e.preventDefault();
+      fire.auth().createUserWithEmailAndPassword(this.state.email,this.state.password).then((u)=>{
+          console.log(u)
+      }).catch((err)=>{
+          console.log(err);
+      })
+  }
+  handleChange(e){
+      this.setState({
+          [e.target.name] : e.target.value
+      })
+  }
 
-
+  render(){
   return (
     <>
       <div
@@ -52,16 +62,14 @@ function UserSignUp(props) {
                 <div className='input-areas'>
                   <form>
                     <div>
-                      <input className='footer-input' name='email' type='email' placeholder='Your Email' />
+                      <input className='footer-input' name='email' type='email' placeholder='Your Email'  onChange={this.handleChange}
+                value={this.state.email} />
                     </div>
                     <div>
-                      <input className='footer-input' name='password' type='password' placeholder='Your Password' />
-                    </div>
-                    <div>
-                      <input className='footer-input' name='password' type='password' placeholder='Your Password' />
+                      <input className='footer-input' name='password' type='password' placeholder='Your Password' value={this.state.password}  onChange={this.handleChange} />
                     </div>
              
-                    <Button buttonSize='btn--wide' buttonColor='blue'>Sign Up</Button>
+                    <Button buttonSize='btn--wide' buttonColor='blue' onClick={this.signup} >Sign Up</Button>
                   </form>
                 </div>
               </div>
@@ -76,6 +84,7 @@ function UserSignUp(props) {
       </div>
     </>
   );
+}
 }
 
 function FrontSection({

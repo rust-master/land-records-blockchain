@@ -5,14 +5,15 @@ import Services from "./components/pages/Services/Services";
 import Products from "./components/pages/Products/Products";
 import SignUp from "./components/pages/SignUp/SignUp";
 import SignIn from "./components/pages/SignIn/SignIn";
+import fire from '../src/components/pages/fire'
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/pages/Footer.js/Footer";
 import ReactLoading from "react-loading";
 import TextTransition, { presets } from "react-text-transition";
-import Web3 from "web3";
-import { render } from "@testing-library/react";
+// import Web3 from "web3";
+// import { render } from "@testing-library/react";
 
 const TEXTS = [
   "Land Records System",
@@ -24,6 +25,33 @@ const TEXTS = [
 ];
 
 class App extends Component {
+
+  constructor(props)
+  {
+    super(props);
+    this.state={
+      user : {}
+    }
+  }
+
+  componentDidMount() {
+    this.authListener();
+    this.intervalId = setInterval(this.timer.bind(this), 1000);
+  }
+
+  authListener(){
+    fire.auth().onAuthStateChanged((user)=>{
+      if(user)
+      {
+        this.setState({user})
+      }
+      else{
+        this.setState({user : null})
+      }
+    })
+  }
+
+
   async componentWillMount() {
     setInterval(() => {
       this.setState({
@@ -59,9 +87,7 @@ class App extends Component {
       clearInterval(this.intervalId);
     }
   }
-  componentDidMount() {
-    this.intervalId = setInterval(this.timer.bind(this), 1000);
-  }
+
   componentWillUnmount() {
     clearInterval(this.intervalId);
   }
