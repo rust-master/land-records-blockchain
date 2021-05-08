@@ -1,81 +1,118 @@
-import React, {useState, useEffect} from 'react';
-import './FrontSection.css';
-import { Button } from '../../Button';
-import { Link } from 'react-router-dom';
-import fire from '../fire'
+import React, { Component } from "react";
+import "./FrontSection.css";
+import { Button } from "../../Button";
+import { Link } from "react-router-dom";
+import fire from "../fire";
 
-
-function UserSignIn(props) {
-
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [hasAccount, sethasAccount] = useState(false);
-
-
-  const handleLogin = () =>{
-    fire.auth()
-    .signInWithEmailAndPassword(email,password)
-    .catch(err => {
-      switch(err.code){
-        case "auth/invalid-email":
-        case "auth/user-disabled":
-        case "auth/user-not-found":
-          setEmailError(err.mesaage);
-          break;
-        case "auth/wrong-password":
-          setPasswordError(err.mesaage);
-          break;
-      }
+class UserSignIn extends Component {
+  constructor(props) {
+    super(props);
+    this.login = this.login.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.signup = this.signup.bind(this);
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
+  login(e) {
+    e.preventDefault();
+    fire
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then((u) => {
+        console.log(u);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  signup(e) {
+    e.preventDefault();
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((u) => {
+        console.log(u);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
     });
-  };
+  }
 
-    return(
-        <>
-      <div
-        className={false ? 'home__hero-section' : 'home__hero-section darkBg'}
-      >
-        <div className='container'>
-          <div
-            className='row home__hero-row'
-            style={{
-              display: 'flex',
-              flexDirection: '' === 'start' ? 'row-reverse' : 'row'
-            }}
-          >
-            <div className='col'>
-              <div className='home__hero-text-wrapper'>
-                <div className='top-line'>{'SIGN IN TODAY'}</div>
-                <h1 className={true ? 'heading' : 'heading dark'}>
-                  {'Blockchain based Land Records System'}
-                </h1>
-                <div className='input-areas'>
+  render() {
+    return (
+      <>
+        <div
+          className={false ? "home__hero-section" : "home__hero-section darkBg"}
+        >
+          <div className="container">
+            <div
+              className="row home__hero-row"
+              style={{
+                display: "flex",
+                flexDirection: "" === "start" ? "row-reverse" : "row",
+              }}
+            >
+              <div className="col">
+                <div className="home__hero-text-wrapper">
+                  <div className="top-line">{"SIGN IN TODAY"}</div>
+                  <h1 className={true ? "heading" : "heading dark"}>
+                    {"Blockchain based Land Records System"}
+                  </h1>
+                  <div className="input-areas">
                     <form>
-                        <input className='footer-input' name='email' type='email'placeholder='Your Email'/>
-                        <input className='footer-input' name='password' type='password'placeholder='Your Password'/>
-                        
-                        <Button buttonSize='btn--wide'  buttonColor='blue'>Sign In</Button>
-                        
-                        <div class="btnGoverment">
-                        <Button buttonSize='btn--wide'  buttonColor='red'>Goverment Sign In</Button>
-                        </div>
+                      <input
+                        className="footer-input"
+                        name="email"
+                        type="email"
+                        placeholder="Your Email"
+                        onChange={this.handleChange}
+                        value={this.state.email}
+                      />
+                      <input
+                        className="footer-input"
+                        name="password"
+                        type="password"
+                        placeholder="Your Password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                      />
+
+                      <Button buttonSize="btn--wide" buttonColor="blue">
+                        Sign In
+                      </Button>
+
+                      <div class="btnGoverment">
+                        <Button buttonSize="btn--wide" buttonColor="red">
+                          Goverment Sign In
+                        </Button>
+                      </div>
                     </form>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className='col'>
-              <div className='home__hero-img-wrapper'>
-                <img src={'images/svg-6.svg'} alt={'Credit Card'} className='home__hero-img' />
+              <div className="col">
+                <div className="home__hero-img-wrapper">
+                  <img
+                    src={"images/svg-6.svg"}
+                    alt={"Credit Card"}
+                    className="home__hero-img"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
     );
   }
+}
 
 function FrontSection({
   lightBg,
@@ -86,42 +123,42 @@ function FrontSection({
   form,
   img,
   alt,
-  imgStart
+  imgStart,
 }) {
-    if (form) {
-        return ( <UserSignIn />);
-      }
+  if (form) {
+    return <UserSignIn />;
+  }
 
   return (
     <>
       <div
-        className={lightBg ? 'home__hero-section' : 'home__hero-section darkBg'}
+        className={lightBg ? "home__hero-section" : "home__hero-section darkBg"}
       >
-        <div className='container'>
+        <div className="container">
           <div
-            className='row home__hero-row'
+            className="row home__hero-row"
             style={{
-              display: 'flex',
-              flexDirection: imgStart === 'start' ? 'row-reverse' : 'row'
+              display: "flex",
+              flexDirection: imgStart === "start" ? "row-reverse" : "row",
             }}
           >
-            <div className='col'>
-              <div className='home__hero-text-wrapper'>
-                <div className='top-line'>{topLine}</div>
-                <h1 className={lightText ? 'heading' : 'heading dark'}>
+            <div className="col">
+              <div className="home__hero-text-wrapper">
+                <div className="top-line">{topLine}</div>
+                <h1 className={lightText ? "heading" : "heading dark"}>
                   {headline}
                 </h1>
 
-                <Link to='/sign-up'>
-                  <Button buttonSize='btn--wide' buttonColor='blue'>
+                <Link to="/sign-up">
+                  <Button buttonSize="btn--wide" buttonColor="blue">
                     {buttonLabel}
                   </Button>
                 </Link>
               </div>
             </div>
-            <div className='col'>
-              <div className='home__hero-img-wrapper'>
-                <img src={img} alt={alt} className='home__hero-img' />
+            <div className="col">
+              <div className="home__hero-img-wrapper">
+                <img src={img} alt={alt} className="home__hero-img" />
               </div>
             </div>
           </div>
