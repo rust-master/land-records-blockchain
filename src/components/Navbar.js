@@ -5,6 +5,7 @@ import './Navbar.css';
 import { MdFingerprint } from 'react-icons/md';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
+import fire from '../components/pages/fire'
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -21,6 +22,21 @@ function Navbar() {
     }
   };
 
+  const [user, setUser] = useState(() => {
+    const user = fire.auth().currentUser;
+
+    return user;
+});
+
+useEffect(() => {
+  fire.auth().onAuthStateChanged(firebaseUser => {
+      setUser(firebaseUser);
+  });
+}, [])
+
+
+  
+
   useEffect(() => {
     showButton();
     window.addEventListener('resize', showButton);
@@ -28,6 +44,8 @@ function Navbar() {
       // window.removeEventListener('resize', showButton)
     }
   }, []);
+
+  
 
 
   return (
@@ -48,6 +66,7 @@ function Navbar() {
                   Home
                 </Link>
               </li>
+              
               <li className='nav-item'>
                 <Link
                   to='/services'
@@ -66,6 +85,26 @@ function Navbar() {
                   Products
                 </Link>
               </li>
+              
+              
+              <li className='nav-btn'>
+                {button ? (
+                  <Link to='/' className='btn-link'>
+                    <Button buttonStyle='btn--outline' onClick={() => fire.auth().signOut()} >SIGN OUT</Button>
+                  </Link>
+                ) : (
+                  <Link to='/' className='btn-link'>
+                    <Button
+                      buttonStyle='btn--outline'
+                      buttonSize='btn--mobile'
+                      onClick={() => fire.auth().signOut()}
+                    >
+                      SIGN OUT
+                    </Button>
+                  </Link>
+                )}
+              </li>
+            
               <li className='nav-btn'>
                 {button ? (
                   <Link to='/sign-in' className='btn-link'>
@@ -100,7 +139,7 @@ function Navbar() {
                   </Link>
                 )}
               </li>
-
+        
             </ul>
           </div>
         </nav>
