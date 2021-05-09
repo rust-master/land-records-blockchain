@@ -65,12 +65,9 @@ class App extends Component {
     }
   }
 
-  
   componentWillUnmount() {
     clearInterval(this.intervalId);
   }
-
-
 
   render() {
     return (
@@ -109,14 +106,7 @@ class App extends Component {
             <Route path="/products" component={Products} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
-
-            
             {/* {this.state.user ? (<Route path="/" exact component={Home} />) : (<Route path="/sign-in" component={SignIn} />)} */}
-            
-              
-              
-              
-              
             </Switch>
             <Footer />
           </Router>
