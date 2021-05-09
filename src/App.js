@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Home from "./components/pages/HomePage/Home";
 import Services from "./components/pages/Services/Services";
@@ -12,7 +12,7 @@ import Footer from "./components/pages/Footer.js/Footer";
 import ReactLoading from "react-loading";
 import TextTransition, { presets } from "react-text-transition";
 import Web3 from "web3";
-import { render } from "@testing-library/react";
+
 
 const TEXTS = [
   "Land Records System",
