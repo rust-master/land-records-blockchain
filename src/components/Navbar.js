@@ -42,6 +42,7 @@ function Navbar() {
     console.log("User: ", { user });
     return(<Home />);
   } else {
+    console.log("User: ", { user });
     return(<LoginSignUp />);
   }
 
