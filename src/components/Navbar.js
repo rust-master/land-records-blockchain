@@ -22,15 +22,11 @@ function Navbar() {
     }
   };
 
-  const [user, setUser] = useState(() => {
-    const user = fire.auth().currentUser;
-
-    return false;
-  });
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     fire.auth().onAuthStateChanged((firebaseUser) => {
-      setUser(false);
+      setUser(firebaseUser);
     });
   }, []);
 
@@ -42,7 +38,7 @@ function Navbar() {
     };
   }, []);
 
-  if (false) {
+  if (user != null) {
     console.log("User: ", { user });
     return(<Home />);
   } else {
