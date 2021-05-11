@@ -48,6 +48,7 @@ class App extends Component {
       window.alert(
         "Non-Ethereum browser detected. You should consider trying MetaMask!"
       );
+      window.location.href = "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn";
     }
   }
 
