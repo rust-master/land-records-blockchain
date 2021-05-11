@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import fire from "../fire";
 
 class UserSignUp extends Component {
+
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
@@ -15,6 +16,7 @@ class UserSignUp extends Component {
       password: "",
     };
   }
+
   login(e) {
     e.preventDefault();
     fire
@@ -27,6 +29,7 @@ class UserSignUp extends Component {
         console.log(err);
       });
   }
+
   signup(e) {
     e.preventDefault();
     fire
@@ -39,6 +42,7 @@ class UserSignUp extends Component {
         console.log(err);
       });
   }
+  
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,

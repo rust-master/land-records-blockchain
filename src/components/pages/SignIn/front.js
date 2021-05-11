@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import fire from "../fire";
 
 class UserSignIn extends Component {
+
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
@@ -15,6 +16,7 @@ class UserSignIn extends Component {
       password: "",
     };
   }
+
   login(e) {
     e.preventDefault();
     fire
@@ -26,7 +28,10 @@ class UserSignIn extends Component {
       .catch((err) => {
         console.log(err);
       });
+
+      
   }
+
   signup(e) {
     e.preventDefault();
     fire
@@ -39,6 +44,7 @@ class UserSignIn extends Component {
         console.log(err);
       });
   }
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -83,17 +89,25 @@ class UserSignIn extends Component {
                         value={this.state.password}
                         onChange={this.handleChange}
                       />
-
-                      <Button buttonSize="btn--wide" buttonColor="blue">
+                      {/* <Link to="/Home" className="btn-link" > */}
+                        
+                      <Button 
+                      buttonSize="btn--wide" 
+                      buttonColor="blue"
+                      onClick={this.login}
+                      >
                         Sign In
                       </Button>
-
-                      <div class="btnGoverment">
+                      
+                      {/* </Link> */}
+                    </form>
+                    <Link to="/" className="btn-link" >
+                    <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red">
                           Goverment Sign In
                         </Button>
                       </div>
-                    </form>
+                    </Link>  
                   </div>
                 </div>
               </div>
