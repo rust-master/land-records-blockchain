@@ -5,6 +5,7 @@ import Services from "./components/pages/Services/Services";
 import Products from "./components/pages/Products/Products";
 import SignUp from "./components/pages/SignUp/SignUp";
 import SignIn from "./components/pages/SignIn/SignIn";
+import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -55,6 +56,7 @@ class App extends Component {
   state = {
     index: 0,
     loading: true,
+    user: null,
   };
 
   timer() {
@@ -107,6 +109,7 @@ class App extends Component {
             <Route path="/products" component={Products} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/search-property" component={SearchProperty} />
             {/* {this.state.user ? (<Route path="/" exact component={Home} />) : (<Route path="/sign-in" component={SignIn} />)} */}
             </Switch>
             <Footer />

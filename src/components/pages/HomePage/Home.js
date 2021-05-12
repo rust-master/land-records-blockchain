@@ -9,7 +9,6 @@ function Home() {
       <HeroSection {...homeObjOne} />
       <HeroSection {...homeObjThree} />
       <HeroSection {...homeObjTwo} />
-      <Pricing />
       <HeroSection {...homeObjFour} />
     </>
   );
