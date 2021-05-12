@@ -4,10 +4,7 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 
 class SearchProperty extends Component {
-
-
-
-
+  
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -36,26 +33,21 @@ class SearchProperty extends Component {
                   </h1>
                   <div className="input-areas">
                     <form>
-                     
-                        <input
-                          className="footer-input"
-                          name="text"
-                          type="city"
-                          placeholder="City"
-                        />
-                    
-                        <input
-                          className="footer-input"
-                          name="text"
-                          type="propertyNo"
-                          placeholder="Property No"
-                        />
-                   
+                      <input
+                        className="footer-input"
+                        name="text"
+                        type="city"
+                        placeholder="City"
+                      />
 
-                      <Button
-                        buttonSize="btn--wide"
-                        buttonColor="blue"
-                      >
+                      <input
+                        className="footer-input"
+                        name="text"
+                        type="propertyNo"
+                        placeholder="Property No"
+                      />
+
+                      <Button buttonSize="btn--wide" buttonColor="blue">
                         Search
                       </Button>
                     </form>
