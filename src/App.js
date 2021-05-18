@@ -13,6 +13,7 @@ import Footer from "./components/pages/Footer.js/Footer";
 import ReactLoading from "react-loading";
 import TextTransition, { presets } from "react-text-transition";
 import Web3 from "web3";
+import fire from "../src/components/pages/fire";
 
 
 const TEXTS = [
@@ -56,7 +57,7 @@ class App extends Component {
   state = {
     index: 0,
     loading: true,
-    user: null,
+    user: false,
   };
 
   timer() {
@@ -65,6 +66,12 @@ class App extends Component {
     });
     if (this.state.index > 6) {
       clearInterval(this.intervalId);
+      fire.auth().onAuthStateChanged((firebaseUser) => {
+        this.setState({
+          user: firebaseUser
+        });
+      });
+
     }
   }
 
@@ -103,14 +110,14 @@ class App extends Component {
           <Router>
             <Navbar />
             <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/services" component={Services} />
-            <Route path="/products" component={Products} />
-            <Route path="/products" component={Products} />
-            <Route path="/sign-in" component={SignIn} />
-            <Route path="/sign-up" component={SignUp} />
-            <Route path="/search-property" component={SearchProperty} />
-            {/* {this.state.user ? (<Route path="/" exact component={Home} />) : (<Route path="/sign-in" component={SignIn} />)} */}
+              <Route path="/" exact component={Home} />
+              <Route path="/services" component={Services} />
+              <Route path="/products" component={Products} />
+              <Route path="/products" component={Products} />
+              <Route path="/sign-in" component={SignIn} />
+              <Route path="/sign-up" component={SignUp} />
+              <Route path="/search-property" component={SearchProperty} />
+              {/* {this.state.user ? (<Route path="/" exact component={Home} />) : (<Route path="/sign-in" component={SignIn} />)} */}
             </Switch>
             <Footer />
           </Router>
