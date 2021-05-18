@@ -66,3 +66,5 @@ MetaMask is the easiest way to interact with dapps in a browser. It is an extens
   web3 = new Web3(App.web3Provider);
 }
 ```
+
+
