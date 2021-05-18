@@ -111,13 +111,15 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/services" component={Services} />
-              <Route path="/products" component={Products} />
+              {/* <Route path="/services" component={Services} />
               <Route path="/products" component={Products} />
               <Route path="/sign-in" component={SignIn} />
               <Route path="/sign-up" component={SignUp} />
-              <Route path="/search-property" component={SearchProperty} />
-              {/* {this.state.user ? (<Route path="/" exact component={Home} />) : (<Route path="/sign-in" component={SignIn} />)} */}
+              <Route path="/search-property" component={SearchProperty} /> */}
+              {this.state.user ? (<Route path="/services" component={Services} />) : (<Route path="/sign-in" component={SignIn} />)}
+              {this.state.user ? (<Route path="/search-property" component={SearchProperty} />) : (<Route path="/sign-in" component={SignIn} />)}
+              {this.state.user ? (<Route path="/products" component={Products} />) : (<Route path="/sign-up" component={SignIn} />)}
+              {this.state.user ? (<Route path="/services" component={Services} />) : (<Route path="/sign-up" component={SignUp} />)}
             </Switch>
             <Footer />
           </Router>
