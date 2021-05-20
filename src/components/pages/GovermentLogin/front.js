@@ -4,46 +4,34 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import fire from "../fire";
 
-class UserSignIn extends Component {
+class GovermentLogin extends Component {
 
   constructor(props) {
     super(props);
-    this.login = this.login.bind(this);
+    // this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.signup = this.signup.bind(this);
+    // this.signup = this.signup.bind(this);
     this.state = {
       email: "",
       password: "",
     };
   }
 
-  login(e) {
-    e.preventDefault();
-    fire
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((u) => {
-        console.log(u);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // login(e) {
+  //   e.preventDefault();
+  //   fire
+  //     .auth()
+  //     .signInWithEmailAndPassword(this.state.email, this.state.password)
+  //     .then((u) => {
+  //       console.log(u);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
 
       
-  }
+  // }
 
-  signup(e) {
-    e.preventDefault();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then((u) => {
-        console.log(u);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   handleChange(e) {
     this.setState({
@@ -67,7 +55,7 @@ class UserSignIn extends Component {
             >
               <div className="col">
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"SIGN IN TODAY"}</div>
+                  <div className="top-line">{"GOVERTMENT SIGN IN"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"Blockchain based Land Records System"}
                   </h1>
@@ -89,19 +77,8 @@ class UserSignIn extends Component {
                         value={this.state.password}
                         onChange={this.handleChange}
                       />
-                      {/* <Link to="/Home" className="btn-link" > */}
-                        
-                      <Button 
-                      buttonSize="btn--wide" 
-                      buttonColor="blue"
-                      onClick={this.login}
-                      >
-                        Sign In
-                      </Button>
-                      
-                      {/* </Link> */}
                     </form>
-                    <Link to="/goverment-login" className="btn-link" >
+                    <Link to="/sign-up" className="btn-link" >
                     <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red">
                           Goverment Sign In
@@ -140,7 +117,7 @@ function FrontSection({
   imgStart,
 }) {
   if (form) {
-    return <UserSignIn />;
+    return <GovermentLogin />;
   }
 
   return (
