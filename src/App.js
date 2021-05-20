@@ -119,7 +119,7 @@ class App extends Component {
               <Route path="/search-property" component={SearchProperty} /> */}
               {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/sign-in" component={SignIn} />)}
               {this.state.user ? (<Route path="/search-property" component={SearchProperty} />) : (<Route path="/sign-in" component={SignIn} />)}
-              {this.state.user ? (<Route path="/products" component={Products} />) : (<Route path="/sign-up" component={SignIn} />)}
+              {this.state.user ? (<Route path="/products" component={Products} />) : (<Route path="/sign-up" component={SignUp} />)}
               {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/goverment-login" component={GovermentLogin} />)}
             </Switch>
             <Footer />
