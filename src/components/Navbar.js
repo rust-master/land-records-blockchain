@@ -5,6 +5,7 @@ import "./Navbar.css";
 import { MdFingerprint } from "react-icons/md";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
+import logo from '../components/logo.png'; 
 import fire from "../components/pages/fire";
 
 function Navbar() {
@@ -53,8 +54,8 @@ function Navbar() {
           <nav className="navbar">
             <div className="navbar-container container">
               <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-                <MdFingerprint className="navbar-icon" />
-                Blockchain Land Records System
+                {/* <MdFingerprint className="navbar-icon" /> */}
+                <img src={logo} alt="Logo" width="40" height="40"/>&nbsp;Blockchain Land Records System
               </Link>
               <div className="menu-icon" onClick={handleClick}>
                 {click ? <FaTimes /> : <FaBars />}
