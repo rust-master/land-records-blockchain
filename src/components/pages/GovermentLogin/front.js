@@ -4,6 +4,12 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import fire from "../fire";
 
+
+const database = fire.database();
+const ref = database.ref('AdminLogin');
+
+
+
 class GovermentLogin extends Component {
 
   constructor(props) {
@@ -13,15 +19,26 @@ class GovermentLogin extends Component {
     this.state = {
       email: "",
       password: "",
+      defaultEmail: "",
+      defaultPassword: "",
     };
+
+    ref.on("value", snapshot => {
+      console.log("FireB ",snapshot)
+      if (snapshot && snapshot.exists()) {
+        this.state.defaultEmail = snapshot.val().email
+        this.state.defaultPassword = snapshot.val().password
+      }})
+
   }
+
+  
 
   login(e) {
     e.preventDefault();
-
-    console.log("Email: " , this.state.email);
-    console.log("Password: " , this.state.password);
-    if(this.state.email == "muhammadzaryabrafique@gmail.com" && this.state.password == "1234"){
+    // console.log("Email: " , this.state.defaultEmail);
+    // console.log("Password: " , this.state.defaultPassword);
+    if(this.state.email == this.state.defaultEmail && this.state.password == this.state.defaultPassword){
       console.log("Passed");
     } else {
       console.log("Failed");
