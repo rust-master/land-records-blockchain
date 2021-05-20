@@ -8,30 +8,21 @@ class GovermentLogin extends Component {
 
   constructor(props) {
     super(props);
-    // this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.signup = this.signup.bind(this);
+    this.login = this.login.bind(this);
     this.state = {
       email: "",
       password: "",
     };
   }
 
-  // login(e) {
-  //   e.preventDefault();
-  //   fire
-  //     .auth()
-  //     .signInWithEmailAndPassword(this.state.email, this.state.password)
-  //     .then((u) => {
-  //       console.log(u);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+  login(e) {
+    e.preventDefault();
 
-      
-  // }
-
+    console.log("Email: " , this.state.email);
+    console.log("Password: " , this.state.password);
+ 
+  }
 
   handleChange(e) {
     this.setState({
@@ -80,7 +71,7 @@ class GovermentLogin extends Component {
                     </form>
                     <Link to="/sign-up" className="btn-link" >
                     <div class="btnGoverment">
-                        <Button buttonSize="btn--wide" buttonColor="red">
+                        <Button buttonSize="btn--wide" buttonColor="red" onClick={this.login}>
                           Goverment Sign In
                         </Button>
                       </div>
