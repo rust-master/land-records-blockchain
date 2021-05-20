@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Home from "./components/pages/HomePage/Home";
-import Services from "./components/pages/Services/Services";
+import Properties from "./components/pages/Properties/Properties";
 import Products from "./components/pages/Products/Products";
 import SignUp from "./components/pages/SignUp/SignUp";
 import SignIn from "./components/pages/SignIn/SignIn";
@@ -116,10 +116,10 @@ class App extends Component {
               <Route path="/sign-in" component={SignIn} />
               <Route path="/sign-up" component={SignUp} />
               <Route path="/search-property" component={SearchProperty} /> */}
-              {this.state.user ? (<Route path="/services" component={Services} />) : (<Route path="/sign-in" component={SignIn} />)}
+              {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/sign-in" component={SignIn} />)}
               {this.state.user ? (<Route path="/search-property" component={SearchProperty} />) : (<Route path="/sign-in" component={SignIn} />)}
               {this.state.user ? (<Route path="/products" component={Products} />) : (<Route path="/sign-up" component={SignIn} />)}
-              {this.state.user ? (<Route path="/services" component={Services} />) : (<Route path="/sign-up" component={SignUp} />)}
+              {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/sign-up" component={SignUp} />)}
             </Switch>
             <Footer />
           </Router>

@@ -72,17 +72,17 @@ function Navbar() {
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
-                    Search Property
+                    Explore
                   </Link>
                 </li>
 
                 <li className="nav-item">
                   <Link
-                    to="/services"
+                    to="/properties"
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
-                    Services
+                    Properties
                   </Link>
                 </li>
                 <li className="nav-item">
