@@ -21,7 +21,11 @@ class GovermentLogin extends Component {
 
     console.log("Email: " , this.state.email);
     console.log("Password: " , this.state.password);
- 
+    if(this.state.email == "muhammadzaryabrafique@gmail.com" && this.state.password == "1234"){
+      console.log("Passed");
+    } else {
+      console.log("Failed");
+    }
   }
 
   handleChange(e) {
