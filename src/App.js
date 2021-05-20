@@ -18,11 +18,11 @@ import fire from "../src/components/pages/fire";
 
 const TEXTS = [
   "Land Records System",
-  "| Secure",
-  "| DApp",
-  "| Smart Contracts",
-  "| Ethereum",
-  "| Solidity",
+  // "| Secure",
+  // "| DApp",
+  // "| Smart Contracts",
+  // "| Ethereum",
+  // "| Solidity",
 ];
 
 class App extends Component {
@@ -91,8 +91,8 @@ class App extends Component {
               height={"20%"}
               width={"20%"}
             />
-            <h1 className="Textblock">Blockchain</h1>
-            <h1 className="Textland">
+            <h1 className="Textblock" style={{fontSize: 50}}>Blockchain</h1>
+            <h1 className="Textland" style={{fontSize: 50}}>
               <TextTransition
                 text={TEXTS[this.state.index % TEXTS.length]}
                 springConfig={presets.wobbly}

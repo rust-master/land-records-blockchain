@@ -55,7 +55,7 @@ function Navbar() {
             <div className="navbar-container container">
               <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                 {/* <MdFingerprint className="navbar-icon" /> */}
-                <img src={logo} alt="Logo" width="40" height="40"/>&nbsp;Blockchain Land Records System
+                <img src={logo} alt="Logo" width="40" height="40"/>&nbsp;<p style={{color: '#EF8E19'}}>Blockchain</p> &nbsp; <p>Land Records System</p>
               </Link>
               <div className="menu-icon" onClick={handleClick}>
                 {click ? <FaTimes /> : <FaBars />}
