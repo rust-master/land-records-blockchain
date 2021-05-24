@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Home from "./components/pages/HomePage/Home";
 import Properties from "./components/pages/Properties/Properties";
-import Requests from "./components/pages/Requests/GovtLogin";
+import Requests from "./components/pages/Requests/Requests";
 import SignUp from "./components/pages/SignUp/SignUp";
 import SignIn from "./components/pages/SignIn/SignIn";
 import GovermentLogin from "./components/pages/GovermentLogin/GovtLogin";

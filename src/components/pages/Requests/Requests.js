@@ -3,7 +3,7 @@ import FrontSection from './front';
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
 
 
-function GovtLogin() {
+function Requests() {
   return (
     <>
       <FrontSection {...homeObjOne} />
@@ -12,4 +12,4 @@ function GovtLogin() {
   );
 }
 
-export default GovtLogin;
+export default Requests;

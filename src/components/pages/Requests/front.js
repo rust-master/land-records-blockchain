@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-class GovermentLogin extends Component {
+class RequestsFront extends Component {
 
   render() {
     return (
@@ -192,7 +192,7 @@ function FrontSection({
   imgStart,
 }) {
   if (form) {
-    return <GovermentLogin />;
+    return <RequestsFront />;
   }
 
   return (
