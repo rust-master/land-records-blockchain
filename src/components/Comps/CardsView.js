@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import logo from '../Comps/growing.png';
+import logo1 from '../Comps/decreasing.png';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
@@ -16,12 +17,12 @@ const useStyles = makeStyles({
         backgroundColor: '#1C2237',
         maxWidth: 345,
         position: 'absolute',
-        marginLeft: 40,
+        marginLeft: 100,
     },
     root2:{
         maxWidth: 345,
         position: 'absolute',
-        marginLeft: 400,
+        marginLeft: 480,
         backgroundColor: '#1C2237',
         marginBottom:40,
     },
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
         backgroundColor: '#1C2237',
         maxWidth: 345,
         position: 'relative',
-        marginLeft: 760,
+        marginLeft: 860,
         marginTop: 40,
         marginBottom:40,
     },
@@ -76,7 +77,7 @@ export default function ImgMediaCard() {
                         alt="Contemplative Reptile"
                         width="140"
                         height="270"
-                        image={logo}
+                        image={logo1}
                         title="Contemplative Reptile"
                     />
                     <CardContent>
