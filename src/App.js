@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Home from "./components/pages/HomePage/Home";
 import Properties from "./components/pages/Properties/Properties";
-import Products from "./components/pages/Products/Products";
+import Requests from "./components/pages/Requests/GovtLogin";
 import SignUp from "./components/pages/SignUp/SignUp";
 import SignIn from "./components/pages/SignIn/SignIn";
 import GovermentLogin from "./components/pages/GovermentLogin/GovtLogin";
@@ -119,7 +119,7 @@ class App extends Component {
               <Route path="/search-property" component={SearchProperty} /> */}
               {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/sign-in" component={SignIn} />)}
               {this.state.user ? (<Route path="/search-property" component={SearchProperty} />) : (<Route path="/sign-in" component={SignIn} />)}
-              {this.state.user ? (<Route path="/products" component={Products} />) : (<Route path="/sign-up" component={SignUp} />)}
+              {this.state.user ? (<Route path="/requests" component={Requests} />) : (<Route path="/sign-up" component={SignUp} />)}
               {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/goverment-login" component={GovermentLogin} />)}
             </Switch>
             <Footer />
