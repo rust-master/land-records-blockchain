@@ -164,7 +164,7 @@ class RequestsFront extends Component {
               <div className="col">
                 <div className="home__hero-img-wrapper">
                   <img
-                    src={"images/svg-6.svg"}
+                    src={"images/svg-2.svg"}
                     alt={"Credit Card"}
                     className="home__hero-img"
                   />
