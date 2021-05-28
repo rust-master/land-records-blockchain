@@ -76,7 +76,6 @@ class UserSignIn extends Component {
                         value={this.state.password}
                         onChange={this.handleChange}
                       />
-                      {/* <Link to="/Home" className="btn-link" > */}
                         
                       <Button 
                       buttonSize="btn--wide" 
@@ -86,7 +85,6 @@ class UserSignIn extends Component {
                         Sign In
                       </Button>
                       
-                      {/* </Link> */}
                     </form>
                     <Link to="/goverment-login" className="btn-link" >
                     <div class="btnGoverment">
