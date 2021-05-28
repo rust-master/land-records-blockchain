@@ -4,14 +4,10 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import fire from "../fire";
 
-
 const database = fire.database();
 const ref = database.ref('AdminLogin');
 
-
-
 class GovermentLogin extends Component {
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -36,8 +32,6 @@ class GovermentLogin extends Component {
 
   login(e) {
     e.preventDefault();
-    // console.log("Email: " , this.state.defaultEmail);
-    // console.log("Password: " , this.state.defaultPassword);
     if(this.state.email == this.state.defaultEmail && this.state.password == this.state.defaultPassword){
       console.log("Passed");
     } else {
