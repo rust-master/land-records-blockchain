@@ -63,7 +63,7 @@ class RequestsFront extends Component {
                       </Card>
                     </div>
 
-                    <div style={{marginTop:40}}>
+                    <div style={{ marginTop: 40 }}>
                       <Card className={makeStyles({
                         maxWidth: 345,
                       })}>
@@ -94,7 +94,7 @@ class RequestsFront extends Component {
                       </Card>
                     </div>
 
-                    <div style={{marginTop:40}}>
+                    <div style={{ marginTop: 40 }}>
                       <Card className={makeStyles({
                         maxWidth: 345,
                       })}>
@@ -125,7 +125,7 @@ class RequestsFront extends Component {
                       </Card>
                     </div>
 
-                    <div style={{marginTop:40}}>
+                    <div style={{ marginTop: 40 }}>
                       <Card className={makeStyles({
                         maxWidth: 345,
                       })}>
@@ -155,9 +155,6 @@ class RequestsFront extends Component {
                         </CardActions>
                       </Card>
                     </div>
-
-
-
                   </div>
                 </div>
               </div>
