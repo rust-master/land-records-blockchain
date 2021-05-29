@@ -63,7 +63,7 @@ class UserSignUp extends Component {
                 <div className="home__hero-text-wrapper">
                   <div className="top-line">{"SIGN UP TODAY"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
-                    {"Blockchain based Land Records System"}
+                    {"Join BLRS"}
                   </h1>
                   <div className="input-areas">
                     <form>
