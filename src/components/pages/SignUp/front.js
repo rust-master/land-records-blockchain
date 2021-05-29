@@ -29,7 +29,7 @@ class UserSignUp extends Component {
         console.log(err);
       });
   }
-  
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -50,6 +50,15 @@ class UserSignUp extends Component {
                 flexDirection: "" === "start" ? "row-reverse" : "row",
               }}
             >
+              <div className="col">
+                <div className="home__hero-img-wrapper">
+                  <img
+                    src={"images/svg-6.svg"}
+                    alt={"Credit Card"}
+                    className="home__hero-img"
+                  />
+                </div>
+              </div>
               <div className="col">
                 <div className="home__hero-text-wrapper">
                   <div className="top-line">{"SIGN UP TODAY"}</div>
@@ -88,15 +97,6 @@ class UserSignUp extends Component {
                       </Button>
                     </form>
                   </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="home__hero-img-wrapper">
-                  <img
-                    src={"images/svg-6.svg"}
-                    alt={"Credit Card"}
-                    className="home__hero-img"
-                  />
                 </div>
               </div>
             </div>
