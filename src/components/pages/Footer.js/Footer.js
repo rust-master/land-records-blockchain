@@ -76,7 +76,7 @@ function Footer() {
               Blockchain
             </Link>
           </div>
-          <small className="website-rights">Blockchain © 2021</small>
+          <small className="website-rights">Blockchain Land Records System © 2021</small>
           <div className="social-icons">
             <Link
               className="social-icon-link"
