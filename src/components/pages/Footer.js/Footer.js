@@ -10,6 +10,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { MdFingerprint } from "react-icons/md";
+import logo from '../../logo.png'; 
 
 function Footer() {
   return (
@@ -72,7 +73,8 @@ function Footer() {
         <div className="social-media-wrap">
           <div className="footer-logo">
             <Link to="/" className="social-logo">
-              <MdFingerprint className="navbar-icon" />
+              {/* <MdFingerprint className="navbar-icon" /> */}
+              <img src={logo} alt="Logo" width="40" height="40"/>&nbsp;
               BLRS  
             </Link>
           </div>
