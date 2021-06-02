@@ -16,7 +16,6 @@ class UserSignUp extends Component {
     };
   }
 
-
   signup(e) {
     e.preventDefault();
     fire
@@ -26,7 +25,7 @@ class UserSignUp extends Component {
         const user = fire.auth().currentUser.uid;
         fire.database().ref('users/' + user).set({
           email: this.state.email,
-          password :  this.state.password
+          password: this.state.password
         });
       })
       .catch((err) => {

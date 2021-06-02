@@ -26,11 +26,8 @@ class UserSignIn extends Component {
       })
       .catch((err) => {
         console.log(err);
-      });
-
-      
+      });      
   }
-
 
   handleChange(e) {
     this.setState({
