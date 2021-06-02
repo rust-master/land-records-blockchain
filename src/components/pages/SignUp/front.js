@@ -24,6 +24,13 @@ class UserSignUp extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((u) => {
         console.log(u);
+
+        const user = fire.auth().currentUser.uid;
+        console.log("user :" , user);
+        fire.database().ref('users/' + user).set({
+          email: this.state.email,
+          password :  this.state.password
+        });
       })
       .catch((err) => {
         console.log(err);
