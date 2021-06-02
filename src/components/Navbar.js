@@ -5,7 +5,7 @@ import "./Navbar.css";
 import { MdFingerprint } from "react-icons/md";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-import logo from '../components/logo.png'; 
+import logo from '../components/logo.png';
 import fire from "../components/pages/fire";
 
 function Navbar() {
@@ -41,10 +41,10 @@ function Navbar() {
 
   if (user != null) {
     console.log("User: ", { user });
-    return(<Home />);
+    return (<Home />);
   } else {
     console.log("User: ", { user });
-    return(<LoginSignUp />);
+    return (<LoginSignUp />);
   }
 
   function Home(props) {
@@ -55,7 +55,7 @@ function Navbar() {
             <div className="navbar-container container">
               <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                 {/* <MdFingerprint className="navbar-icon" /> */}
-                <img src={logo} alt="Logo" width="40" height="40"/>&nbsp;<p style={{color: '#EF8E19'}}>Blockchain</p> &nbsp; <p>Land Records System</p>
+                <img src={logo} alt="Logo" width="40" height="40" />&nbsp;<p style={{ color: '#EF8E19' }}>Blockchain</p> &nbsp; <p>Land Records System</p>
               </Link>
               <div className="menu-icon" onClick={handleClick}>
                 {click ? <FaTimes /> : <FaBars />}
@@ -135,8 +135,8 @@ function Navbar() {
               <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                 {/* <MdFingerprint className="navbar-icon" />
                 Blockchain Land Records System */}
-                 <img src={logo} alt="Logo" width="40" height="40"/>&nbsp;<p style={{color: '#EF8E19'}}>Blockchain</p> &nbsp; <p>Land Records System</p>
-         
+                <img src={logo} alt="Logo" width="40" height="40" />&nbsp;<p style={{ color: '#EF8E19' }}>Blockchain</p> &nbsp; <p>Land Records System</p>
+
               </Link>
               <div className="menu-icon" onClick={handleClick}>
                 {click ? <FaTimes /> : <FaBars />}
