@@ -20,19 +20,20 @@ class GovermentLogin extends Component {
     };
 
     ref.on("value", snapshot => {
-      console.log("FireB ",snapshot)
+      console.log("FireB ", snapshot)
       if (snapshot && snapshot.exists()) {
         this.state.defaultEmail = snapshot.val().email
         this.state.defaultPassword = snapshot.val().password
-      }})
+      }
+    })
 
   }
 
-  
+
 
   login(e) {
     e.preventDefault();
-    if(this.state.email == this.state.defaultEmail && this.state.password == this.state.defaultPassword){
+    if (this.state.email == this.state.defaultEmail && this.state.password == this.state.defaultPassword) {
       console.log("Passed");
     } else {
       console.log("Failed");
@@ -85,12 +86,12 @@ class GovermentLogin extends Component {
                       />
                     </form>
                     <Link to="/sign-up" className="btn-link" >
-                    <div class="btnGoverment">
+                      <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red" onClick={this.login}>
                           Goverment Sign In
                         </Button>
                       </div>
-                    </Link>  
+                    </Link>
                   </div>
                 </div>
               </div>
