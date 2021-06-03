@@ -15,7 +15,22 @@ function Navbar() {
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
 
+  const [name, setName] = useState(false);
+
+  const uid = fire.auth().currentUser.uid;
+  const database = fire.database();
+  const ref = database.ref('users').child(uid);
+
  
+  
+  useEffect(() => {
+    ref.on("value", snapshot => {
+      console.log("FireB ", snapshot)
+      if (snapshot && snapshot.exists()) {
+        setName(snapshot.val().name)
+      }
+    })
+  }, []);
 
   useEffect(() => {
     const pageClickEvent = (e) => {
@@ -133,7 +148,7 @@ function Navbar() {
                   </button>
                   <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
                     <ul>
-                      <li><h3>Muhammad Zaryab Rafique</h3></li>
+                      <li><h3>{name}</h3></li>
                       <li><a href="/messages">Messages</a></li>
                       <li><a href="/trips">Trips</a></li>
                       <li><a href="/saved">Saved</a></li>
