@@ -26,7 +26,7 @@ class UserSignIn extends Component {
       })
       .catch((err) => {
         console.log(err);
-      });      
+      });
   }
 
   handleChange(e) {
@@ -73,23 +73,23 @@ class UserSignIn extends Component {
                         value={this.state.password}
                         onChange={this.handleChange}
                       />
-                        
-                      <Button 
-                      buttonSize="btn--wide" 
-                      buttonColor="blue"
-                      onClick={this.login}
+
+                      <Button
+                        buttonSize="btn--wide"
+                        buttonColor="blue"
+                        onClick={this.login}
                       >
                         Sign In
                       </Button>
-                      
+
                     </form>
                     <Link to="/goverment-login" className="btn-link" >
-                    <div class="btnGoverment">
+                      <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red">
                           Goverment Sign In
                         </Button>
                       </div>
-                    </Link>  
+                    </Link>
                   </div>
                 </div>
               </div>
