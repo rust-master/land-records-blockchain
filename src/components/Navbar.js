@@ -101,8 +101,6 @@ function Navbar() {
                   </Link>
                 </li>
 
-              
-
                 <li className="nav-btn">
                   <Dropdown style={{ color: '#fff', marginRight: 40, }} text='Account'>
                     <Dropdown.Menu>
@@ -136,8 +134,6 @@ function Navbar() {
                     </Dropdown.Menu>
                   </Dropdown>
                 </li>
-
-
 
               </ul>
             </div>
