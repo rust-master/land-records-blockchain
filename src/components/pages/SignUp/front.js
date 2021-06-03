@@ -11,6 +11,7 @@ class UserSignUp extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.signup = this.signup.bind(this);
     this.state = {
+      name: "",
       email: "",
       password: "",
     };
@@ -77,7 +78,7 @@ class UserSignUp extends Component {
                           type="text"
                           placeholder="Your Name"
                           onChange={this.handleChange}
-                          value={this.state.email}
+                          value={this.state.name}
                         />
                       </div>
                       <div>
