@@ -136,9 +136,46 @@ function Navbar() {
                       <li><a href="/messages">Messages</a></li>
                       <li><a href="/trips">Trips</a></li>
                       <li><a href="/saved">Saved</a></li>
+                      <li>
+                      {button ? (
+                          <Link to="/">
+                            <Button
+                              onClick={() => fire.auth().signOut()}
+                            >
+                              Sign Out
+                            </Button>
+                          </Link>
+                        ) : (
+                          <Link to="/">
+                            <Button
+
+                              onClick={() => fire.auth().signOut()}
+                            >
+                              Sign Out
+                            </Button>
+                          </Link>
+                        )}
+                      </li>
                     </ul>
                   </nav>
                 </div>
+
+                {/* <li className="nav-btn">
+                  <Dropdown style={{ color: '#fff', marginRight: 40, }} text='Account'>
+                    <Dropdown.Menu>
+                      <Dropdown.Item text='Name' />
+                      <Dropdown.Item text='Open...' description='ctrl + o' />
+                      <Dropdown.Item icon='folder' text='Move to folder' />
+                      <Dropdown.Item icon='trash' text='Move to trash' />
+                      <Dropdown.Divider />
+                      <Dropdown.Item text='Download As...' />
+                      <Dropdown.Item text='Publish To Web' />
+                      <Dropdown.Item text='Sign Out' >
+                        
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </li> */}
 
               </ul>
             </div>
