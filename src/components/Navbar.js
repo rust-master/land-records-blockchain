@@ -50,7 +50,6 @@ function Navbar() {
   }, [isActive]);
 
 
-
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -88,7 +87,6 @@ function Navbar() {
     console.log("User: ", { user });
     return (<LoginSignUp />);
   }
-
 
   function Home(props) {
     return (
@@ -153,20 +151,11 @@ function Navbar() {
                       <li>
                         {button ? (
                           <Link to="/">
-                            <Button
-                              onClick={() => fire.auth().signOut()}
-                            >
-                              Sign Out
-                            </Button>
+                            <Button onClick={() => fire.auth().signOut()}>Sign Out</Button>
                           </Link>
                         ) : (
                           <Link to="/">
-                            <Button
-
-                              onClick={() => fire.auth().signOut()}
-                            >
-                              Sign Out
-                            </Button>
+                            <Button onClick={() => fire.auth().signOut()}>Sign Out</Button>
                           </Link>
                         )}
                       </li>
