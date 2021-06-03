@@ -133,6 +133,7 @@ function Navbar() {
                   </button>
                   <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
                     <ul>
+                      <li><h3>Muhammad Zaryab Rafique</h3></li>
                       <li><a href="/messages">Messages</a></li>
                       <li><a href="/trips">Trips</a></li>
                       <li><a href="/saved">Saved</a></li>
