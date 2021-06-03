@@ -7,6 +7,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import logo from '../components/logo.png';
 import fire from "../components/pages/fire";
+import "./menu.css";
 // import { Dropdown } from 'semantic-ui-react'
 
 // import 'semantic-ui-css/semantic.min.css'
