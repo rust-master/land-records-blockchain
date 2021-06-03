@@ -72,7 +72,7 @@ class UserSignUp extends Component {
                   </h1>
                   <div className="input-areas">
                     <form>
-                    <div>
+                      <div>
                         <input
                           className="footer-input"
                           name="name"
