@@ -21,8 +21,6 @@ function Navbar() {
   const database = fire.database();
   const ref = database.ref('users').child(uid);
 
- 
-  
   useEffect(() => {
     ref.on("value", snapshot => {
       console.log("FireB ", snapshot)
