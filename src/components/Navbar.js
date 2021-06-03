@@ -37,19 +37,19 @@ function Navbar() {
         setIsActive(!isActive);
       }
     };
-  
+
     // If the item is active (ie open) then listen for clicks
     if (isActive) {
       window.addEventListener('click', pageClickEvent);
     }
-  
+
     return () => {
       window.removeEventListener('click', pageClickEvent);
     }
-  
+
   }, [isActive]);
 
-  
+
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -151,7 +151,7 @@ function Navbar() {
                       <li><a href="/trips">Trips</a></li>
                       <li><a href="/saved">Saved</a></li>
                       <li>
-                      {button ? (
+                        {button ? (
                           <Link to="/">
                             <Button
                               onClick={() => fire.auth().signOut()}
