@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
@@ -7,11 +7,15 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import logo from '../components/logo.png';
 import fire from "../components/pages/fire";
-import { Dropdown } from 'semantic-ui-react'
+// import { Dropdown } from 'semantic-ui-react'
 
-import 'semantic-ui-css/semantic.min.css'
+// import 'semantic-ui-css/semantic.min.css'
 
 function Navbar() {
+
+  const dropdownRef = useRef(null);
+  const [isActive, setIsActive] = useState(false);
+  const onClick = () => setIsActive(!isActive);
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -101,7 +105,15 @@ function Navbar() {
                   </Link>
                 </li>
 
-                <li className="nav-btn">
+
+                <div className="menu-container">
+                  <button onClick={onClick} className="menu-trigger">
+                    <span>User</span>
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg" alt="User avatar" />
+                  </button>
+                </div>
+
+                {/* <li className="nav-btn">
                   <Dropdown style={{ color: '#fff', marginRight: 40, }} text='Account'>
                     <Dropdown.Menu>
                       <Dropdown.Item text='Name' />
@@ -112,28 +124,28 @@ function Navbar() {
                       <Dropdown.Item text='Download As...' />
                       <Dropdown.Item text='Publish To Web' />
                       <Dropdown.Item text='Sign Out' >
-                  {button ? (
-                    <Link to="/">
-                      <Button
-                        onClick={() => fire.auth().signOut()}
-                      >
-                        SIGN OUT
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Link to="/">
-                      <Button
-                        
-                        onClick={() => fire.auth().signOut()}
-                      >
-                        SIGN OUT
-                      </Button>
-                    </Link>
-                  )}
+                        {button ? (
+                          <Link to="/">
+                            <Button
+                              onClick={() => fire.auth().signOut()}
+                            >
+                              SIGN OUT
+                            </Button>
+                          </Link>
+                        ) : (
+                          <Link to="/">
+                            <Button
+
+                              onClick={() => fire.auth().signOut()}
+                            >
+                              SIGN OUT
+                            </Button>
+                          </Link>
+                        )}
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                </li>
+                </li> */}
 
               </ul>
             </div>
