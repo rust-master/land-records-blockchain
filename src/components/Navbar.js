@@ -8,9 +8,6 @@ import { IconContext } from "react-icons/lib";
 import logo from '../components/logo.png';
 import fire from "../components/pages/fire";
 import "./menu.css";
-// import { Dropdown } from 'semantic-ui-react'
-
-// import 'semantic-ui-css/semantic.min.css'
 
 function Navbar() {
 
@@ -142,40 +139,6 @@ function Navbar() {
                     </ul>
                   </nav>
                 </div>
-
-                {/* <li className="nav-btn">
-                  <Dropdown style={{ color: '#fff', marginRight: 40, }} text='Account'>
-                    <Dropdown.Menu>
-                      <Dropdown.Item text='Name' />
-                      <Dropdown.Item text='Open...' description='ctrl + o' />
-                      <Dropdown.Item icon='folder' text='Move to folder' />
-                      <Dropdown.Item icon='trash' text='Move to trash' />
-                      <Dropdown.Divider />
-                      <Dropdown.Item text='Download As...' />
-                      <Dropdown.Item text='Publish To Web' />
-                      <Dropdown.Item text='Sign Out' >
-                        {button ? (
-                          <Link to="/">
-                            <Button
-                              onClick={() => fire.auth().signOut()}
-                            >
-                              SIGN OUT
-                            </Button>
-                          </Link>
-                        ) : (
-                          <Link to="/">
-                            <Button
-
-                              onClick={() => fire.auth().signOut()}
-                            >
-                              SIGN OUT
-                            </Button>
-                          </Link>
-                        )}
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </li> */}
 
               </ul>
             </div>
