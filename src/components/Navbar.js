@@ -8,7 +8,9 @@ import { IconContext } from "react-icons/lib";
 import logo from '../components/logo.png';
 import fire from "../components/pages/fire";
 
+
 function Navbar() {
+
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
