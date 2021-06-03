@@ -106,11 +106,8 @@ function Navbar() {
                 <li className="nav-btn">
                   <Dropdown style={{ color: '#fff', marginRight: 40, }} text='Account'>
                     <Dropdown.Menu>
-                      <Dropdown.Item text='New' />
+                      <Dropdown.Item text='Name' />
                       <Dropdown.Item text='Open...' description='ctrl + o' />
-                      <Dropdown.Item text='Save as...' description='ctrl + s' />
-                      <Dropdown.Item text='Rename' description='ctrl + r' />
-                      <Dropdown.Item text='Make a copy' />
                       <Dropdown.Item icon='folder' text='Move to folder' />
                       <Dropdown.Item icon='trash' text='Move to trash' />
                       <Dropdown.Divider />
@@ -159,8 +156,8 @@ function Navbar() {
               <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                 {/* <MdFingerprint className="navbar-icon" />
                 Blockchain Land Records System */}
-                <img src={logo} alt="Logo" width="40" height="40" />&nbsp;<p style={{ color: '#EF8E19' }}>Blockchain</p> &nbsp; <p>Land Records System</p>
-
+                {/* <img src={logo} alt="Logo" width="40" height="40" />&nbsp;<p style={{ color: '#EF8E19' }}>Blockchain</p> &nbsp; <p>Land Records System</p> */}
+                <img src={logo} alt="Logo" width="40" height="40" /> &nbsp;&nbsp; <p><font color="#EF8E19">Blockchain</font> Land Records System</p>
               </Link>
               <div className="menu-icon" onClick={handleClick}>
                 {click ? <FaTimes /> : <FaBars />}
