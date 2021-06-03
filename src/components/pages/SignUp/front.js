@@ -25,6 +25,7 @@ class UserSignUp extends Component {
       .then((u) => {
         const user = fire.auth().currentUser.uid;
         fire.database().ref('users/' + user).set({
+          name: this.state.name,
           email: this.state.email,
           password: this.state.password
         });
