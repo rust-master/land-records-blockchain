@@ -70,6 +70,16 @@ class UserSignUp extends Component {
                   </h1>
                   <div className="input-areas">
                     <form>
+                    <div>
+                        <input
+                          className="footer-input"
+                          name="name"
+                          type="text"
+                          placeholder="Your Name"
+                          onChange={this.handleChange}
+                          value={this.state.email}
+                        />
+                      </div>
                       <div>
                         <input
                           className="footer-input"
