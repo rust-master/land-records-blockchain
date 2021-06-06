@@ -128,13 +128,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to="/requests"
-                    className="nav-links"
-                    onClick={closeMobileMenu}
-                  >
-                    Requests
-                  </Link>
+                  <Link to="/requests" className="nav-links" onClick={closeMobileMenu} >Requests</Link>
                 </li>
 
                 <div className="menu-container">
