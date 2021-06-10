@@ -33,6 +33,7 @@ class GovermentLogin extends Component {
 
   login(e) {
     e.preventDefault();
+    // eslint-disable-next-line eqeqeq
     if (this.state.email == this.state.defaultEmail && this.state.password == this.state.defaultPassword) {
       console.log("Passed");
     } else {
