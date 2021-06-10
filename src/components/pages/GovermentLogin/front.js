@@ -3,9 +3,12 @@ import "./FrontSection.css";
 import { Button } from "../../Button";
 import {Link} from 'react-router-dom';
 import fire from "../fire";
-
+import Cookies from 'universal-cookie';
 const database = fire.database();
 const ref = database.ref('AdminLogin');
+
+const cookies = new Cookies();
+
 
 class GovermentLogin extends Component {
   constructor(props) {
@@ -37,10 +40,16 @@ class GovermentLogin extends Component {
     if (this.state.email == this.state.defaultEmail && this.state.password == this.state.defaultPassword) {
       console.log("Passed");
 
-      window.location = '/home';
+      cookies.set('username', this.state.email, { path: '/' });
+      console.log(cookies.get('username'));
 
+      //window.location = '/sign-up';
 
     } else {
+      
+      cookies.set('username', 'null', { path: '/' });
+      console.log(cookies.get('username'));
+
       console.log("Failed");
     }
   }
@@ -93,7 +102,7 @@ class GovermentLogin extends Component {
                    
                       <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red" onClick={this.login}>
-                          Goverment Sign In
+                        Government Sign In
                         </Button>
                       </div>
                

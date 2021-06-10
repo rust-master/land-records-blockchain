@@ -10,12 +10,16 @@ import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import NavbarGovt from "./components/NavbarGovt";
 import Footer from "./components/pages/Footer.js/Footer";
 import ReactLoading from "react-loading";
 import TextTransition, { presets } from "react-text-transition";
 import Web3 from "web3";
 import fire from "../src/components/pages/fire";
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
+console.log(cookies.get('username'));
 
 const TEXTS = [
   "Land Records System",
@@ -59,6 +63,7 @@ class App extends Component {
     index: 0,
     loading: true,
     user: false,
+    cookie: cookies.get('username'),
   };
 
   timer() {
@@ -109,7 +114,8 @@ class App extends Component {
           </div>
         ) : (
           <Router>
-            <Navbar />
+            {this.state.cookie ?  (<NavbarGovt />) : (<Navbar />)}
+              
             <Switch>
               <Route path="/" exact component={Home} />
               {/* <Route path="/services" component={Services} />
