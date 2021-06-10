@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import fire from "../fire";
 import Cookies from 'universal-cookie';
 const database = fire.database();
@@ -46,7 +46,7 @@ class GovermentLogin extends Component {
       window.location = '/home'
 
     } else {
-      
+
       cookies.set('username', 'null', { path: '/' });
       console.log(cookies.get('username'));
 
@@ -99,13 +99,13 @@ class GovermentLogin extends Component {
                         onChange={this.handleChange}
                       />
                     </form>
-                   
-                      <div class="btnGoverment">
-                        <Button buttonSize="btn--wide" buttonColor="red" onClick={this.login}>
+
+                    <div class="btnGoverment">
+                      <Button buttonSize="btn--wide" buttonColor="red" onClick={this.login}>
                         Government Sign In
-                        </Button>
-                      </div>
-               
+                      </Button>
+                    </div>
+
                   </div>
                 </div>
               </div>
