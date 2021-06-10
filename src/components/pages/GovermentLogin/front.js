@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
-//import { Link } from "react-router-dom";
-import {Redirect, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import fire from "../fire";
-import Home from "../HomePage/Home";
 
 const database = fire.database();
 const ref = database.ref('AdminLogin');
