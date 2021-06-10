@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import {Redirect, Link} from 'react-router-dom';
 import fire from "../fire";
+import Home from "../HomePage/Home";
 
 const database = fire.database();
 const ref = database.ref('AdminLogin');
@@ -36,6 +38,10 @@ class GovermentLogin extends Component {
     // eslint-disable-next-line eqeqeq
     if (this.state.email == this.state.defaultEmail && this.state.password == this.state.defaultPassword) {
       console.log("Passed");
+
+      window.location = '/home';
+
+
     } else {
       console.log("Failed");
     }
@@ -86,13 +92,13 @@ class GovermentLogin extends Component {
                         onChange={this.handleChange}
                       />
                     </form>
-                    <Link to="/sign-up" className="btn-link" >
+                   
                       <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red" onClick={this.login}>
                           Goverment Sign In
                         </Button>
                       </div>
-                    </Link>
+               
                   </div>
                 </div>
               </div>
