@@ -86,7 +86,7 @@ class UserSignIn extends Component {
                     <Link to="/goverment-login" className="btn-link" >
                       <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red">
-                          Goverment Sign In
+                        Government Sign In
                         </Button>
                       </div>
                     </Link>
