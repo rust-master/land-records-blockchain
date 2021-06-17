@@ -99,7 +99,7 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
-                     
+
 
                       <Button
                         buttonSize="btn--mobile"
