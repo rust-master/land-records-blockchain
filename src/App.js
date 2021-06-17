@@ -8,6 +8,8 @@ import SignIn from "./components/pages/SignIn/SignIn";
 import GovermentLogin from "./components/pages/GovermentLogin/GovtLogin";
 import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
 
+import CreateLand from "./components/pages/CreateLand/CreatLand";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import NavbarGovt from "./components/NavbarGovt";
@@ -127,6 +129,14 @@ class App extends Component {
               {this.state.user ? (<Route path="/search-property" component={SearchProperty} />) : (<Route path="/sign-in" component={SignIn} />)}
               {this.state.user ? (<Route path="/requests" component={Requests} />) : (<Route path="/sign-up" component={SignUp} />)}
               {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/goverment-login" component={GovermentLogin} />)}
+              
+              
+              {this.state.cookie ? (<Route path="/create-land" component={CreateLand} />) : (<Route path="/goverment-login" component={GovermentLogin} />)}
+
+
+
+            
+
             </Switch>
             <Footer />
           </Router>

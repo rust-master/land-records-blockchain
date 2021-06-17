@@ -106,7 +106,7 @@ function Navbar() {
 
                                 <li className="nav-item">
                                     <Link
-                                        to="/search-property"
+                                        to="/create-land"
                                         className="nav-links"
                                         onClick={closeMobileMenu}
                                     >
