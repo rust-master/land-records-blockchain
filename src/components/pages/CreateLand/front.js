@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
-import fire from "../fire";
 
 
 class CreateLand extends Component {
