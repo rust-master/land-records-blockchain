@@ -116,8 +116,8 @@ class App extends Component {
           </div>
         ) : (
           <Router>
-            {this.state.cookie ?  (<NavbarGovt />) : (<Navbar />)}
-              
+            {this.state.cookie ? (<NavbarGovt />) : (<Navbar />)}
+
             <Switch>
               <Route path="/" exact component={Home} />
               {/* <Route path="/services" component={Services} />
@@ -129,13 +129,13 @@ class App extends Component {
               {this.state.user ? (<Route path="/search-property" component={SearchProperty} />) : (<Route path="/sign-in" component={SignIn} />)}
               {this.state.user ? (<Route path="/requests" component={Requests} />) : (<Route path="/sign-up" component={SignUp} />)}
               {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/goverment-login" component={GovermentLogin} />)}
-              
-              
+
+
               {this.state.cookie ? (<Route path="/create-land" component={CreateLand} />) : (<Route path="/goverment-login" component={GovermentLogin} />)}
 
 
 
-            
+
 
             </Switch>
             <Footer />
