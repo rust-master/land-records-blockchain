@@ -1,0 +1,1013 @@
+{
+  "contractName": "Land",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "properties",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "currOwner",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_propId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "createProperty",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_propId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"createProperty\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"properties\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"currOwner\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/D/Blockchain/Template/landrecord/land-records-blockchain/contracts/Land.sol\":\"Land\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/Blockchain/Template/landrecord/land-records-blockchain/contracts/Land.sol\":{\"keccak256\":\"0xacb5a9e5448f01171f6afef38786d4d399ae28dca50f0e0870a3a6bfb85a7857\",\"urls\":[\"bzz-raw://598d1aa16935f8b19da06bb372fd3d4e852be3c3fc7f76e8da82bb5d690f6732\",\"dweb:/ipfs/QmTmrHzWZ1zbBP9cujq7rFEnAi6yfVZPDgu15qnBaJJVEG\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610237806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80639448f03d1461003b578063f7b10808146100ab575b600080fd5b6100916004803603606081101561005157600080fd5b810190808035906020019092919080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610120565b604051808215151515815260200191505060405180910390f35b6100d7600480360360208110156100c157600080fd5b81019080803590602001909291905050506101be565b604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390f35b600060405180604001604052808481526020018373ffffffffffffffffffffffffffffffffffffffff168152506000808681526020019081526020016000206000820151816000015560208201518160010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550905050600190509392505050565b60006020528060005260406000206000915090508060000154908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690508256fea265627a7a723158204aa6d75ccd10bccafa73cf26d514b8aed2df076fee6bd3dcbe44ab41125c9e6464736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80639448f03d1461003b578063f7b10808146100ab575b600080fd5b6100916004803603606081101561005157600080fd5b810190808035906020019092919080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610120565b604051808215151515815260200191505060405180910390f35b6100d7600480360360208110156100c157600080fd5b81019080803590602001909291905050506101be565b604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390f35b600060405180604001604052808481526020018373ffffffffffffffffffffffffffffffffffffffff168152506000808681526020019081526020016000206000820151816000015560208201518160010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550905050600190509392505050565b60006020528060005260406000206000915090508060000154908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690508256fea265627a7a723158204aa6d75ccd10bccafa73cf26d514b8aed2df076fee6bd3dcbe44ab41125c9e6464736f6c63430005100032",
+  "sourceMap": "36:357:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;36:357:0;;;;;;;",
+  "deployedSourceMap": "36:357:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;36:357:0;;;;;;;;;;;;;;;;;;;;;;;;222:168;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;222:168:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;132:49;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;132:49:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;222:168;305:4;339:30;;;;;;;;354:6;339:30;;;;362:6;339:30;;;;;317:10;:19;328:7;317:19;;;;;;;;;;;:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;381:4;374:11;;222:168;;;;;:::o;132:49::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity >=0.4.22 <0.9.0;\r\n\r\ncontract Land {    \r\n\r\n\tstruct PropertyDetail {\r\n\t\tuint value;\r\n\t\taddress currOwner;\r\n\t}\r\n\r\n    mapping(uint => PropertyDetail) public properties;\r\n\r\n    \t// Create a new Property.\r\n    function createProperty(uint _propId, uint _value, address _owner) public returns (bool)  {\r\n\t\tproperties[_propId] = PropertyDetail(_value, _owner);\r\n\t\treturn true;\r\n\t}\r\n}",
+  "sourcePath": "D:/Blockchain/Template/landrecord/land-records-blockchain/contracts/Land.sol",
+  "ast": {
+    "absolutePath": "/D/Blockchain/Template/landrecord/land-records-blockchain/contracts/Land.sol",
+    "exportedSymbols": {
+      "Land": [
+        34
+      ]
+    },
+    "id": 35,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 34,
+        "linearizedBaseContracts": [
+          34
+        ],
+        "name": "Land",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Land.PropertyDetail",
+            "id": 6,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "name": "value",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "87:10:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "87:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5,
+                "name": "currOwner",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "102:17:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "102:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "PropertyDetail",
+            "nodeType": "StructDefinition",
+            "scope": 34,
+            "src": "60:64:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 10,
+            "name": "properties",
+            "nodeType": "VariableDeclaration",
+            "scope": 34,
+            "src": "132:49:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PropertyDetail_$6_storage_$",
+              "typeString": "mapping(uint256 => struct Land.PropertyDetail)"
+            },
+            "typeName": {
+              "id": 9,
+              "keyType": {
+                "id": 7,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "140:4:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "132:31:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PropertyDetail_$6_storage_$",
+                "typeString": "mapping(uint256 => struct Land.PropertyDetail)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 8,
+                "name": "PropertyDetail",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 6,
+                "src": "148:14:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_PropertyDetail_$6_storage_ptr",
+                  "typeString": "struct Land.PropertyDetail"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 32,
+              "nodeType": "Block",
+              "src": "312:78:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 28,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 21,
+                        "name": "properties",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10,
+                        "src": "317:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PropertyDetail_$6_storage_$",
+                          "typeString": "mapping(uint256 => struct Land.PropertyDetail storage ref)"
+                        }
+                      },
+                      "id": 23,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 22,
+                        "name": "_propId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 12,
+                        "src": "328:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "317:19:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_PropertyDetail_$6_storage",
+                        "typeString": "struct Land.PropertyDetail storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 25,
+                          "name": "_value",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 14,
+                          "src": "354:6:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 26,
+                          "name": "_owner",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16,
+                          "src": "362:6:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 24,
+                        "name": "PropertyDetail",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6,
+                        "src": "339:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_PropertyDetail_$6_storage_ptr_$",
+                          "typeString": "type(struct Land.PropertyDetail storage pointer)"
+                        }
+                      },
+                      "id": 27,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "339:30:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_PropertyDetail_$6_memory",
+                        "typeString": "struct Land.PropertyDetail memory"
+                      }
+                    },
+                    "src": "317:52:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PropertyDetail_$6_storage",
+                      "typeString": "struct Land.PropertyDetail storage ref"
+                    }
+                  },
+                  "id": 29,
+                  "nodeType": "ExpressionStatement",
+                  "src": "317:52:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 30,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "381:4:0",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 20,
+                  "id": 31,
+                  "nodeType": "Return",
+                  "src": "374:11:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 33,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createProperty",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12,
+                  "name": "_propId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 33,
+                  "src": "246:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "246:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 33,
+                  "src": "260:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "260:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "name": "_owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 33,
+                  "src": "273:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "245:43:0"
+            },
+            "returnParameters": {
+              "id": 20,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 19,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 33,
+                  "src": "305:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 18,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "305:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "304:6:0"
+            },
+            "scope": 34,
+            "src": "222:168:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 35,
+        "src": "36:357:0"
+      }
+    ],
+    "src": "0:393:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/D/Blockchain/Template/landrecord/land-records-blockchain/contracts/Land.sol",
+      "exportedSymbols": {
+        "Land": [
+          34
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".22",
+            "<",
+            "0.9",
+            ".0"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:32:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            34
+          ],
+          "name": "Land",
+          "scope": 35
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "Land.PropertyDetail",
+              "name": "PropertyDetail",
+              "scope": 34,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "value",
+                  "scope": 6,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 2,
+                    "name": "ElementaryTypeName",
+                    "src": "87:4:0"
+                  }
+                ],
+                "id": 3,
+                "name": "VariableDeclaration",
+                "src": "87:10:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "currOwner",
+                  "scope": 6,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "nonpayable",
+                      "type": "address"
+                    },
+                    "id": 4,
+                    "name": "ElementaryTypeName",
+                    "src": "102:7:0"
+                  }
+                ],
+                "id": 5,
+                "name": "VariableDeclaration",
+                "src": "102:17:0"
+              }
+            ],
+            "id": 6,
+            "name": "StructDefinition",
+            "src": "60:64:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "properties",
+              "scope": 34,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(uint256 => struct Land.PropertyDetail)",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(uint256 => struct Land.PropertyDetail)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 7,
+                    "name": "ElementaryTypeName",
+                    "src": "140:4:0"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "PropertyDetail",
+                      "referencedDeclaration": 6,
+                      "type": "struct Land.PropertyDetail"
+                    },
+                    "id": 8,
+                    "name": "UserDefinedTypeName",
+                    "src": "148:14:0"
+                  }
+                ],
+                "id": 9,
+                "name": "Mapping",
+                "src": "132:31:0"
+              }
+            ],
+            "id": 10,
+            "name": "VariableDeclaration",
+            "src": "132:49:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "createProperty",
+              "scope": 34,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_propId",
+                      "scope": 33,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 11,
+                        "name": "ElementaryTypeName",
+                        "src": "246:4:0"
+                      }
+                    ],
+                    "id": 12,
+                    "name": "VariableDeclaration",
+                    "src": "246:12:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_value",
+                      "scope": 33,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 13,
+                        "name": "ElementaryTypeName",
+                        "src": "260:4:0"
+                      }
+                    ],
+                    "id": 14,
+                    "name": "VariableDeclaration",
+                    "src": "260:11:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_owner",
+                      "scope": 33,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 15,
+                        "name": "ElementaryTypeName",
+                        "src": "273:7:0"
+                      }
+                    ],
+                    "id": 16,
+                    "name": "VariableDeclaration",
+                    "src": "273:14:0"
+                  }
+                ],
+                "id": 17,
+                "name": "ParameterList",
+                "src": "245:43:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 33,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 18,
+                        "name": "ElementaryTypeName",
+                        "src": "305:4:0"
+                      }
+                    ],
+                    "id": 19,
+                    "name": "VariableDeclaration",
+                    "src": "305:4:0"
+                  }
+                ],
+                "id": 20,
+                "name": "ParameterList",
+                "src": "304:6:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "struct Land.PropertyDetail storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "struct Land.PropertyDetail storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 10,
+                                  "type": "mapping(uint256 => struct Land.PropertyDetail storage ref)",
+                                  "value": "properties"
+                                },
+                                "id": 21,
+                                "name": "Identifier",
+                                "src": "317:10:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 12,
+                                  "type": "uint256",
+                                  "value": "_propId"
+                                },
+                                "id": 22,
+                                "name": "Identifier",
+                                "src": "328:7:0"
+                              }
+                            ],
+                            "id": 23,
+                            "name": "IndexAccess",
+                            "src": "317:19:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": true,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "struct Land.PropertyDetail memory",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6,
+                                  "type": "type(struct Land.PropertyDetail storage pointer)",
+                                  "value": "PropertyDetail"
+                                },
+                                "id": 24,
+                                "name": "Identifier",
+                                "src": "339:14:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 14,
+                                  "type": "uint256",
+                                  "value": "_value"
+                                },
+                                "id": 25,
+                                "name": "Identifier",
+                                "src": "354:6:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 16,
+                                  "type": "address",
+                                  "value": "_owner"
+                                },
+                                "id": 26,
+                                "name": "Identifier",
+                                "src": "362:6:0"
+                              }
+                            ],
+                            "id": 27,
+                            "name": "FunctionCall",
+                            "src": "339:30:0"
+                          }
+                        ],
+                        "id": 28,
+                        "name": "Assignment",
+                        "src": "317:52:0"
+                      }
+                    ],
+                    "id": 29,
+                    "name": "ExpressionStatement",
+                    "src": "317:52:0"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 20
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "74727565",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "bool",
+                          "type": "bool",
+                          "value": "true"
+                        },
+                        "id": 30,
+                        "name": "Literal",
+                        "src": "381:4:0"
+                      }
+                    ],
+                    "id": 31,
+                    "name": "Return",
+                    "src": "374:11:0"
+                  }
+                ],
+                "id": 32,
+                "name": "Block",
+                "src": "312:78:0"
+              }
+            ],
+            "id": 33,
+            "name": "FunctionDefinition",
+            "src": "222:168:0"
+          }
+        ],
+        "id": 34,
+        "name": "ContractDefinition",
+        "src": "36:357:0"
+      }
+    ],
+    "id": 35,
+    "name": "SourceUnit",
+    "src": "0:393:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x8992908AEd27C86efCeaeb49a1aCc2f90e17ba88",
+      "transactionHash": "0x329f114f951106dc64369ed866b0fcbf9aa1e8733b87dc8259cfeb4b7354cc28"
+    }
+  },
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-06-24T08:41:47.866Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
