@@ -7,10 +7,8 @@ contract Land {
 		address currOwner;
 	}
 	
-
     mapping(uint => PropertyDetail) public properties;
 
-    	// Create a new Property.
     function createProperty(uint _propId, uint _value, address _owner) public returns (bool)  {
 		properties[_propId] = PropertyDetail(_value, _owner);
 		return true;
