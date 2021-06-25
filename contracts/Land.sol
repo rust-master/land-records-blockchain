@@ -13,7 +13,8 @@ contract Land {
 		properties[_propId] = PropertyDetail(_value, _owner);
 		return true;
 	}
-		// Get the property details.
+	
+	// Get the property details.
 	 function getPropertyDetails(uint _propId) view public returns (uint, address)  {
 		return (properties[_propId].value, properties[_propId].currOwner);
 	}
