@@ -18,10 +18,10 @@ import ReactLoading from "react-loading";
 import TextTransition, { presets } from "react-text-transition";
 import Web3 from "web3";
 import fire from "../src/components/pages/fire";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
-console.log(cookies.get('username'));
+console.log(cookies.get("username"));
 
 const TEXTS = [
   "Land Records System",
@@ -33,7 +33,6 @@ const TEXTS = [
 ];
 
 class App extends Component {
-
   componentDidMount() {
     this.intervalId = setInterval(this.timer.bind(this), 1000);
   }
@@ -57,7 +56,8 @@ class App extends Component {
       window.alert(
         "Non-Ethereum browser detected. You should consider trying MetaMask!"
       );
-      window.location.href = "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn";
+      window.location.href =
+        "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn";
     }
   }
 
@@ -65,7 +65,7 @@ class App extends Component {
     index: 0,
     loading: true,
     user: false,
-    cookie: cookies.get('username'),
+    cookie: cookies.get("username"),
   };
 
   timer() {
@@ -76,10 +76,9 @@ class App extends Component {
       clearInterval(this.intervalId);
       fire.auth().onAuthStateChanged((firebaseUser) => {
         this.setState({
-          user: firebaseUser
+          user: firebaseUser,
         });
       });
-
     }
   }
 
@@ -99,7 +98,9 @@ class App extends Component {
               height={"20%"}
               width={"20%"}
             />
-            <h1 className="Textblock" style={{ fontSize: 50 }}>Blockchain</h1>
+            <h1 className="Textblock" style={{ fontSize: 50 }}>
+              Blockchain
+            </h1>
             <h1 className="Textland" style={{ fontSize: 50 }}>
               <TextTransition
                 text={TEXTS[this.state.index % TEXTS.length]}
@@ -116,7 +117,7 @@ class App extends Component {
           </div>
         ) : (
           <Router>
-            {this.state.cookie ? (<NavbarGovt />) : (<Navbar />)}
+            {this.state.cookie ? <NavbarGovt /> : <Navbar />}
 
             <Switch>
               <Route path="/" exact component={Home} />
@@ -125,18 +126,32 @@ class App extends Component {
               <Route path="/sign-in" component={SignIn} />
               <Route path="/sign-up" component={SignUp} />
               <Route path="/search-property" component={SearchProperty} /> */}
-              {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/sign-in" component={SignIn} />)}
-              {this.state.user ? (<Route path="/search-property" component={SearchProperty} />) : (<Route path="/sign-in" component={SignIn} />)}
-              {this.state.user ? (<Route path="/requests" component={Requests} />) : (<Route path="/sign-up" component={SignUp} />)}
-              {this.state.user ? (<Route path="/properties" component={Properties} />) : (<Route path="/goverment-login" component={GovermentLogin} />)}
+              {this.state.user ? (
+                <Route path="/properties" component={Properties} />
+              ) : (
+                <Route path="/sign-in" component={SignIn} />
+              )}
+              {this.state.user ? (
+                <Route path="/search-property" component={SearchProperty} />
+              ) : (
+                <Route path="/sign-in" component={SignIn} />
+              )}
+              {this.state.user ? (
+                <Route path="/requests" component={Requests} />
+              ) : (
+                <Route path="/sign-up" component={SignUp} />
+              )}
+              {this.state.user ? (
+                <Route path="/properties" component={Properties} />
+              ) : (
+                <Route path="/goverment-login" component={GovermentLogin} />
+              )}
 
-
-              {this.state.cookie ? (<Route path="/create-land" component={CreateLand} />) : (<Route path="/goverment-login" component={GovermentLogin} />)}
-
-
-
-
-
+              {this.state.cookie ? (
+                <Route path="/create-land" component={CreateLand} />
+              ) : (
+                <Route path="/goverment-login" component={GovermentLogin} />
+              )}
             </Switch>
             <Footer />
           </Router>
