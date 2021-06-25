@@ -4,7 +4,6 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 
 class SearchProperty extends Component {
-
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
