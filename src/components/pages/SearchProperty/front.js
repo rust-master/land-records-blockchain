@@ -3,7 +3,36 @@ import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 
-class SearchProperty extends Component {
+import { withStyles } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import logo from "../SearchProperty/decreasing.png";
+import Typography from "@material-ui/core/Typography";
+
+const styles = (theme) => ({
+  main: {
+    position: "relative",
+  },
+  root1: {
+    backgroundColor: "#fff",
+    maxWidth: 345,
+    position: "relative",
+    marginLeft: 100,
+  },
+  Typo: {
+    color: "#1C2237",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  TypoP: {
+    color: "#1C2237",
+    textAlign: "center",
+  },
+});
+
+class SearchProperty extends React.Component {
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -11,6 +40,7 @@ class SearchProperty extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <>
         <div
@@ -56,12 +86,44 @@ class SearchProperty extends Component {
               <div className="col">
                 <div className="home__hero-img-wrapper">
                   <img
-                    src={"images/svg-6.svg"}
+                    src={"images/svg-7.svg"}
                     alt={"Credit Card"}
                     className="home__hero-img"
                   />
                 </div>
               </div>
+            </div>
+            <div className={classes.main}>
+              <Card className={classes.root1}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    width="140"
+                    height="270"
+                    image={logo}
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h3"
+                      component="h2"
+                      className={classes.Typo}
+                    >
+                      109,190
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                      className={classes.TypoP}
+                    >
+                      Property Transferred In Punjab-2021
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
             </div>
           </div>
         </div>
@@ -124,4 +186,4 @@ function FrontSection({
   );
 }
 
-export default FrontSection;
+export default withStyles(styles)(SearchProperty);

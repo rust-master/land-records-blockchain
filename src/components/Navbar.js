@@ -57,6 +57,22 @@ function Navbar() {
     fire.auth().onAuthStateChanged((firebaseUser) => {
       setUser(firebaseUser);
     });
+
+    try{
+      const uid = fire.auth().currentUser.uid;
+      const database = fire.database();
+      const ref = database.ref("users").child(uid);
+      ref.on("value", (snapshot) => {
+        console.log("FireB ", snapshot);
+        if (snapshot && snapshot.exists()) {
+          setName(snapshot.val().name);
+        }
+      });
+    }
+    catch(e){
+      console.log("Exception: " + e)
+    }
+
   }, []);
 
   useEffect(() => {
@@ -69,15 +85,7 @@ function Navbar() {
 
   if (user != null) {
     console.log("User: ", { user });
-    const uid = fire.auth().currentUser.uid;
-    const database = fire.database();
-    const ref = database.ref("users").child(uid);
-    ref.on("value", (snapshot) => {
-      console.log("FireB ", snapshot);
-      if (snapshot && snapshot.exists()) {
-        setName(snapshot.val().name);
-      }
-    });
+    
 
     return <Home />;
   } else {

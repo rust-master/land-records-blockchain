@@ -6,7 +6,7 @@ import { homeObjOne, homeObjThree, } from './Data';
 function SearchProperty() {
   return (
     <>
-      <FrontSection {...homeObjOne} />
+
       <FrontSection {...homeObjThree} />
     </>
   );
