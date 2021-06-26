@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
-
+import Web3 from "web3";
 
 class CreateLand extends Component {
 
@@ -11,6 +11,7 @@ class CreateLand extends Component {
     this.addData = this.addData.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
+      id: "",
       owner: "",
       landno: "",
       price: "",
@@ -21,6 +22,9 @@ class CreateLand extends Component {
 
   addData(e) {
     e.preventDefault();
+    console.log("Owner: "+this.state.owner);
+    console.log("Land No: "+this.state.landno);
+    console.log("Land Value: "+this.state.price);
 
   }
 
