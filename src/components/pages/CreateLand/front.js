@@ -3,14 +3,37 @@ import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
+import contract from "../../../build/contracts/Land.json"
+
 
 class CreateLand extends Component {
+
+  componentWillMount() {
+    this.loadBlockchainData()
+  }
+
+  async loadBlockchainData() {
+    const web3 = window.web3
+    const landCon = new web3.eth.Contract(contract.abi, "0xC87e8B11B4587A2BfBebc469dE3aa8ea81Fd81C6")
+    const detail = await landCon.methods.properties(1).call()
+    console.log("Detail: "+ detail['currOwner'])
+
+      const allLands = await landCon.methods.getAllDetails().call()
+      for(var i=0; i< allLands['0'].length; i++) {
+        console.log("Price: " + allLands['0'].[i])
+        console.log("Address: " + allLands['1'].[i])
+      }
+      
+  
+  }
+
 
   constructor(props) {
     super(props);
     this.addData = this.addData.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
+      account: "",
       id: "",
       owner: "",
       landno: "",
@@ -20,12 +43,25 @@ class CreateLand extends Component {
     };
   }
 
-  addData(e) {
+
+
+  async addData(e) {
     e.preventDefault();
+    const web3 = window.web3
+
+    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+    const accounts = await webeProvider.eth.getAccounts()
+    this.setState({ account: accounts[0] })
+    console.log("Account: " + this.state.account);
+
+    const landCon = new web3.eth.Contract(contract.abi, "0xC87e8B11B4587A2BfBebc469dE3aa8ea81Fd81C6")
     console.log("Owner: "+this.state.owner);
     console.log("Land No: "+this.state.landno);
     console.log("Land Value: "+this.state.price);
 
+    const bool = await landCon.methods.createProperty(this.state.landno,this.state.price,this.state.owner).send({from: this.state.account} )
+
+    console.log("Check: " + bool)
   }
 
   handleChange(e) {
