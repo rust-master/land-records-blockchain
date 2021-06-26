@@ -46,30 +46,30 @@ class SearchProperty extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemsOwner : [],
+      itemsOwner: [],
       items: []
     }
   }
 
-  async loadBlockchainData(){
+  async loadBlockchainData() {
     const web3 = window.web3
     const landCon = new web3.eth.Contract(contract.abi, "0x41E2B02C09E82816a8c2ee1b2cdf312510a237Ec")
     const detail = await landCon.methods.properties(1).call()
-    console.log("Detail: "+ detail['currOwner'])
-    this.setState({valueLand: detail['value']})
-    this.setState({ownerLands: detail['currOwner']})
+    console.log("Detail: " + detail['currOwner'])
+    this.setState({ valueLand: detail['value'] })
+    this.setState({ ownerLands: detail['currOwner'] })
 
     const allLands = await landCon.methods.getAllDetails().call()
-    
+
 
     for (const [index, value] of allLands['0'].entries()) {
       this.state.items.push(<h3 key={index}>{value} Ether</h3>)
     }
- 
+
     for (const [index, value] of allLands['1'].entries()) {
       this.state.itemsOwner.push(<p key={index}>{value}</p>)
     }
- 
+
   }
 
 
@@ -139,10 +139,10 @@ class SearchProperty extends Component {
             </div>
             {price.map((value, index) => {
               return (
-            <div className={classes.main}>
-              <Card className={classes.root1}>
-                <CardActionArea>
-                  {/* <CardMedia
+                <div className={classes.main}>
+                  <Card className={classes.root1}>
+                    <CardActionArea>
+                      {/* <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
                     width="140"
@@ -150,31 +150,31 @@ class SearchProperty extends Component {
                     image={logo}
                     title="Contemplative Reptile"
                   /> */}
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="h3"
-                      component="h2"
-                      className={classes.Typo}
-                      key={index}
-                    >
-                      {value}
-                      {/* {this.state.alllands[0]} */}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                      className={classes.TypoP}
-                    >{address[index]}
-                      {/* {this.state.ownerAdd[1]} */}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </div>
+                      <CardContent>
+                        <Typography
+                          gutterBottom
+                          variant="h3"
+                          component="h2"
+                          className={classes.Typo}
+                          key={index}
+                        >
+                          {value}
+                          {/* {this.state.alllands[0]} */}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="textSecondary"
+                          component="p"
+                          className={classes.TypoP}
+                        >{address[index]}
+                          {/* {this.state.ownerAdd[1]} */}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </div>
               )
-             })}
+            })}
           </div>
         </div>
 
