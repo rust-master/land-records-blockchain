@@ -46,10 +46,7 @@ class SearchProperty extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      valueLand : "",
-      ownerLands : "",
       itemsOwner : [],
-      ownerAdd : "",
       items: []
     }
   }
@@ -64,18 +61,15 @@ class SearchProperty extends Component {
 
     const allLands = await landCon.methods.getAllDetails().call()
     
-    //const items = []
-    //const itemsOwner = []
 
     for (const [index, value] of allLands['0'].entries()) {
       this.state.items.push(<h3 key={index}>{value} Ether</h3>)
     }
-    //this.setState({alllands: items})
-
+ 
     for (const [index, value] of allLands['1'].entries()) {
       this.state.itemsOwner.push(<p key={index}>{value}</p>)
     }
-    //this.setState({ownerAdd: itemsOwner})
+ 
   }
 
 
@@ -89,6 +83,7 @@ class SearchProperty extends Component {
 
     const address = this.state.itemsOwner;
     const price = this.state.items;
+
     const { classes } = this.props;
     return (
       <>
