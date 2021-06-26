@@ -47,8 +47,9 @@ class SearchProperty extends Component {
     this.state = {
       valueLand : "",
       ownerLands : "",
-      alllands : "",
+      itemsOwner : [],
       ownerAdd : "",
+      items: []
     }
   }
 
@@ -63,7 +64,7 @@ class SearchProperty extends Component {
     const allLands = await landCon.methods.getAllDetails().call()
     
     const items = []
-    const itemsOwner = []
+    //const itemsOwner = []
 
     for (const [index, value] of allLands['0'].entries()) {
       items.push(<h3 key={index}>{value} Ether</h3>)
@@ -71,9 +72,9 @@ class SearchProperty extends Component {
     this.setState({alllands: items})
 
     for (const [index, value] of allLands['1'].entries()) {
-      itemsOwner.push(<p key={index}>{value}</p>)
+      this.state.itemsOwner.push(<p key={index}>{value}</p>)
     }
-    this.setState({ownerAdd: itemsOwner})
+    //this.setState({ownerAdd: itemsOwner})
   }
 
 
@@ -85,13 +86,11 @@ class SearchProperty extends Component {
 
   render() {
 
-
+    const address = this.state.itemsOwner;
+    const price = this.state.itemsOwner;
     const { classes } = this.props;
     return (
       <>
-
-
-     
         <div
           className={false ? "home__hero-section" : "home__hero-section darkBg"}
         >
@@ -142,6 +141,8 @@ class SearchProperty extends Component {
                 </div>
               </div>
             </div>
+            {elements.map((value, index) => {
+              return (
             <div className={classes.main}>
               <Card className={classes.root1}>
                 <CardActionArea>
@@ -159,21 +160,25 @@ class SearchProperty extends Component {
                       variant="h3"
                       component="h2"
                       className={classes.Typo}
+                      key={index}
                     >
-                      {this.state.alllands[0]}
+                      {value}
+                      {/* {this.state.alllands[0]} */}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="textSecondary"
                       component="p"
                       className={classes.TypoP}
-                    >
-                      {this.state.ownerAdd[1]}
+                    >NO
+                      {/* {this.state.ownerAdd[1]} */}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
               </Card>
             </div>
+              )
+             })}
           </div>
         </div>
 
