@@ -23,6 +23,7 @@ const styles = (theme) => ({
   root1: {
     backgroundColor: "#fff",
     maxWidth: 445,
+    marginTop: 10,
     position: "relative",
     marginLeft: 100,
   },
