@@ -63,13 +63,13 @@ class SearchProperty extends Component {
 
     const allLands = await landCon.methods.getAllDetails().call()
     
-    const items = []
+    //const items = []
     //const itemsOwner = []
 
     for (const [index, value] of allLands['0'].entries()) {
-      items.push(<h3 key={index}>{value} Ether</h3>)
+      this.state.items.push(<h3 key={index}>{value} Ether</h3>)
     }
-    this.setState({alllands: items})
+    //this.setState({alllands: items})
 
     for (const [index, value] of allLands['1'].entries()) {
       this.state.itemsOwner.push(<p key={index}>{value}</p>)
@@ -87,7 +87,7 @@ class SearchProperty extends Component {
   render() {
 
     const address = this.state.itemsOwner;
-    const price = this.state.itemsOwner;
+    const price = this.state.items;
     const { classes } = this.props;
     return (
       <>
@@ -141,7 +141,7 @@ class SearchProperty extends Component {
                 </div>
               </div>
             </div>
-            {elements.map((value, index) => {
+            {price.map((value, index) => {
               return (
             <div className={classes.main}>
               <Card className={classes.root1}>
