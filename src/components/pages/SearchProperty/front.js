@@ -171,7 +171,7 @@ class SearchProperty extends Component {
                       color="textSecondary"
                       component="p"
                       className={classes.TypoP}
-                    >NO
+                    >{address[index]}
                       {/* {this.state.ownerAdd[1]} */}
                     </Typography>
                   </CardContent>
