@@ -11,13 +11,18 @@ import CardMedia from "@material-ui/core/CardMedia";
 import logo from "../SearchProperty/decreasing.png";
 import Typography from "@material-ui/core/Typography";
 
+import Web3 from "web3";
+import contract from "../../../build/contracts/Land.json"
+
+
+
 const styles = (theme) => ({
   main: {
     position: "relative",
   },
   root1: {
     backgroundColor: "#fff",
-    maxWidth: 345,
+    maxWidth: 445,
     position: "relative",
     marginLeft: 100,
   },
@@ -32,7 +37,39 @@ const styles = (theme) => ({
   },
 });
 
-class SearchProperty extends React.Component {
+class SearchProperty extends Component {
+  componentWillMount() {
+    this.loadBlockchainData()
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      valueLand : "",
+      ownerLand : "",
+      alllands : "",
+    }
+  }
+
+  async loadBlockchainData(){
+    const web3 = window.web3
+    const landCon = new web3.eth.Contract(contract.abi, "0x41E2B02C09E82816a8c2ee1b2cdf312510a237Ec")
+    const detail = await landCon.methods.properties(1).call()
+    console.log("Detail: "+ detail['currOwner'])
+    this.setState({valueLand: detail['value']})
+    this.setState({ownerLand: detail['currOwner']})
+
+    const allLands = await landCon.methods.getAllDetails().call()
+    
+    const items = []
+
+    for (const [index, value] of allLands['0'].entries()) {
+      items.push(<h3 key={index}>{value} Ether</h3>)
+    }
+    this.setState({alllands: items})
+  }
+
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -40,9 +77,14 @@ class SearchProperty extends React.Component {
   }
 
   render() {
+
+
     const { classes } = this.props;
     return (
       <>
+
+
+     
         <div
           className={false ? "home__hero-section" : "home__hero-section darkBg"}
         >
@@ -96,14 +138,14 @@ class SearchProperty extends React.Component {
             <div className={classes.main}>
               <Card className={classes.root1}>
                 <CardActionArea>
-                  <CardMedia
+                  {/* <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
                     width="140"
                     height="270"
                     image={logo}
                     title="Contemplative Reptile"
-                  />
+                  /> */}
                   <CardContent>
                     <Typography
                       gutterBottom
@@ -111,7 +153,7 @@ class SearchProperty extends React.Component {
                       component="h2"
                       className={classes.Typo}
                     >
-                      109,190
+                      {this.state.alllands[0]}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -119,7 +161,7 @@ class SearchProperty extends React.Component {
                       component="p"
                       className={classes.TypoP}
                     >
-                      Property Transferred In Punjab-2021
+                      {this.state.ownerLand}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -127,6 +169,7 @@ class SearchProperty extends React.Component {
             </div>
           </div>
         </div>
+
       </>
     );
   }
