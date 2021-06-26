@@ -48,7 +48,7 @@ class SearchProperty extends Component {
       valueLand : "",
       ownerLands : "",
       alllands : "",
-      ownerLand : "",
+      ownerAdd : "",
     }
   }
 
@@ -58,7 +58,7 @@ class SearchProperty extends Component {
     const detail = await landCon.methods.properties(1).call()
     console.log("Detail: "+ detail['currOwner'])
     this.setState({valueLand: detail['value']})
-    this.setState({ownerLand: detail['currOwner']})
+    this.setState({ownerLands: detail['currOwner']})
 
     const allLands = await landCon.methods.getAllDetails().call()
     
@@ -69,10 +69,11 @@ class SearchProperty extends Component {
       items.push(<h3 key={index}>{value} Ether</h3>)
     }
     this.setState({alllands: items})
+
     for (const [index, value] of allLands['1'].entries()) {
-      items.push(<p key={index}>{value}</p>)
+      itemsOwner.push(<p key={index}>{value}</p>)
     }
-    this.setState({ownerLand: itemsOwner})
+    this.setState({ownerAdd: itemsOwner})
   }
 
 
@@ -167,7 +168,7 @@ class SearchProperty extends Component {
                       component="p"
                       className={classes.TypoP}
                     >
-                      {this.state.ownerLand}
+                      {this.state.ownerAdd[1]}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
