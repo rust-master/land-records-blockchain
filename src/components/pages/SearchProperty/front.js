@@ -65,7 +65,7 @@ class SearchProperty extends Component {
     }
 
     for (const [index, value] of allLands['1'].entries()) {
-      this.state.items.push(<h3 key={index}>Land Value: {value} Ether</h3>)
+      this.state.items.push(<h3 key={index}>Land Value: <font color="#EF8E19">{value} Ether</font></h3>)
     }
 
     for (const [index, value] of allLands['2'].entries()) {
