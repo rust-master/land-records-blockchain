@@ -61,15 +61,15 @@ class SearchProperty extends Component {
 
 
     for (const [index, value] of allLands['0'].entries()) {
-      this.state.itemsIds.push(<h3 key={index}>Land No: {value}</h3>)
+      this.state.itemsIds.push(<h3 key={index}><font color="#123962">Land No: {value}</font></h3>)
     }
 
     for (const [index, value] of allLands['1'].entries()) {
-      this.state.items.push(<h3 key={index}>Land Value: <font color="#EF8E19">{value} Ether</font></h3>)
+      this.state.items.push(<h3 key={index}><font color="#EF8E19">Value: {value} Ether</font></h3>)
     }
 
     for (const [index, value] of allLands['2'].entries()) {
-      this.state.itemsOwner.push(<p key={index}>Land Owner: {value}</p>)
+      this.state.itemsOwner.push(<p key={index}><font color="#2754BA">Owner: {value}</font></p>)
     }
 
   }
