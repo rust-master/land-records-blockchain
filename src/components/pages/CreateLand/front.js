@@ -14,7 +14,7 @@ class CreateLand extends Component {
 
   async loadBlockchainData() {
     const web3 = window.web3
-    const landCon = new web3.eth.Contract(contract.abi, "0x35d842bb7B746E70b819a8dbB09Ed285E8adf551")
+    const landCon = new web3.eth.Contract(contract.abi, "0x3836671E68524822af1192e2C85e0756E9d31386")
     const detail = await landCon.methods.properties(1).call()
     console.log("Detail: " + detail['currOwner'])
 
@@ -26,7 +26,6 @@ class CreateLand extends Component {
 
 
   }
-
 
   constructor(props) {
     super(props);
@@ -53,7 +52,7 @@ class CreateLand extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x35d842bb7B746E70b819a8dbB09Ed285E8adf551")
+    const landCon = new web3.eth.Contract(contract.abi, "0x3836671E68524822af1192e2C85e0756E9d31386")
     console.log("Owner: " + this.state.owner);
     console.log("Land No: " + this.state.landno);
     console.log("Land Value: " + this.state.price);

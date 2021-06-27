@@ -45,6 +45,7 @@ class SearchProperty extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      itemsIds: [],
       itemsOwner: [],
       items: []
     }
@@ -52,8 +53,8 @@ class SearchProperty extends Component {
 
   async loadBlockchainData() {
     const web3 = window.web3
-    const landCon = new web3.eth.Contract(contract.abi, "0x35d842bb7B746E70b819a8dbB09Ed285E8adf551")
-    const detail = await landCon.methods.properties(1).call()
+    const landCon = new web3.eth.Contract(contract.abi, "0x3836671E68524822af1192e2C85e0756E9d31386")
+    const detail = await landCon.methods.properties(2001).call()
     console.log("Detail: " + detail['currOwner'])
     this.setState({ valueLand: detail['value'] })
     this.setState({ ownerLands: detail['currOwner'] })
@@ -62,10 +63,14 @@ class SearchProperty extends Component {
 
 
     for (const [index, value] of allLands['0'].entries()) {
-      this.state.items.push(<h3 key={index}>{value} Ether</h3>)
+      this.state.itemsIds.push(<h3 key={index}>{value}</h3>)
     }
 
     for (const [index, value] of allLands['1'].entries()) {
+      this.state.items.push(<h3 key={index}>{value} Ether</h3>)
+    }
+
+    for (const [index, value] of allLands['2'].entries()) {
       this.state.itemsOwner.push(<p key={index}>{value}</p>)
     }
 
@@ -80,6 +85,7 @@ class SearchProperty extends Component {
 
   render() {
 
+    const ids = this.state.itemsIds;
     const address = this.state.itemsOwner;
     const price = this.state.items;
 
@@ -150,6 +156,16 @@ class SearchProperty extends Component {
                     title="Contemplative Reptile"
                   /> */}
                       <CardContent>
+                      <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="h4"
+                          className={classes.Typo}
+          
+                        >
+                          {ids[index]}
+                          {/* {this.state.alllands[0]} */}
+                        </Typography>
                         <Typography
                           gutterBottom
                           variant="h3"
