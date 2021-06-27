@@ -52,7 +52,7 @@ class SearchProperty extends Component {
 
   async loadBlockchainData() {
     const web3 = window.web3
-    const landCon = new web3.eth.Contract(contract.abi, "0x41E2B02C09E82816a8c2ee1b2cdf312510a237Ec")
+    const landCon = new web3.eth.Contract(contract.abi, "0x35d842bb7B746E70b819a8dbB09Ed285E8adf551")
     const detail = await landCon.methods.properties(1).call()
     console.log("Detail: " + detail['currOwner'])
     this.setState({ valueLand: detail['value'] })
