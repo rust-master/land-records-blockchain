@@ -162,7 +162,6 @@ class SearchProperty extends Component {
           
                         >
                           {ids[index]}
-                          {/* {this.state.alllands[0]} */}
                         </Typography>
                         <Typography
                           gutterBottom
@@ -172,7 +171,6 @@ class SearchProperty extends Component {
                           key={index}
                         >
                           {value}
-                          {/* {this.state.alllands[0]} */}
                         </Typography>
                         <Typography
                           variant="body2"
@@ -180,7 +178,6 @@ class SearchProperty extends Component {
                           component="p"
                           className={classes.TypoP}
                         >{address[index]}
-                          {/* {this.state.ownerAdd[1]} */}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
