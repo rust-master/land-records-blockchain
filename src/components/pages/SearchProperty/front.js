@@ -21,7 +21,7 @@ const styles = (theme) => ({
   },
   root1: {
     backgroundColor: "#fff",
-    maxWidth: 445,
+    maxWidth: 930,
     marginTop: 10,
     position: "relative",
     marginLeft: 100,
