@@ -10,9 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
-import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json"
-
 
 
 const styles = (theme) => ({
