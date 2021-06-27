@@ -141,7 +141,7 @@ function Navbar() {
                   >
                     <ul>
                       <li>
-                        <h5>{name}</h5>
+                        <h4 style={{color: "red",padding: 10}} >{name}</h4>
                       </li>
                       <li>
                         <a href="/messages">Messages</a>
