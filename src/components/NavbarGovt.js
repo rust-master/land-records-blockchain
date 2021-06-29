@@ -68,7 +68,7 @@ function Navbar() {
   function logout() {
     cookies.remove("username");
     console.log(cookies.get("username"));
-    window.location = "/home";
+    window.location = "/";
   }
 
   return <Home />;

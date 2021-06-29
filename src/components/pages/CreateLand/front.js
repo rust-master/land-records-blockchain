@@ -37,8 +37,10 @@ class CreateLand extends Component {
     console.log("Owner: " + this.state.owner);
     console.log("Land No: " + this.state.landno);
     console.log("Land Value: " + this.state.price);
+    console.log("City: " + this.state.city);
+    console.log("Measurment: " + this.state.measurement);
 
-    const bool = await landCon.methods.createProperty(this.state.landno, this.state.price, this.state.owner).send({ from: this.state.account })
+    const bool = await landCon.methods.createProperty(this.state.landno, this.state.price, this.state.owner, this.state.city, this.state.measurement).send({ from: this.state.account })
 
     console.log("Check: " + bool)
   }
