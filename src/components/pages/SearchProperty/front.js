@@ -24,6 +24,11 @@ const styles = (theme) => ({
     position: "relative",
     marginLeft: 100,
   },
+  Typo1: {
+    color: "#123962",
+    fontWeight: "bold",
+    textAlign: "left",
+  },
   Typo: {
     color: "#1C2237",
     fontWeight: "bold",
@@ -45,7 +50,9 @@ class SearchProperty extends Component {
     this.state = {
       itemsIds: [],
       itemsOwner: [],
-      items: []
+      itemsValues: [],
+      itemsCity: [],
+      itemsMeasure: []
     }
   }
 
@@ -65,11 +72,20 @@ class SearchProperty extends Component {
     }
 
     for (const [index, value] of allLands['1'].entries()) {
-      this.state.items.push(<h3 key={index}><font color="#EF8E19">Value: {value} Ether</font></h3>)
+      this.state.itemsValues.push(<h3 key={index}><font color="#EF8E19">Value: {value} Ether</font></h3>)
     }
 
     for (const [index, value] of allLands['2'].entries()) {
       this.state.itemsOwner.push(<p key={index}><font color="#2754BA">Owner: {value}</font></p>)
+    }
+
+    
+    for (const [index, value] of allLands['3'].entries()) {
+      this.state.itemsCity.push(<span key={index}><font color="#123962">City: {value}</font></span>)
+    }
+
+    for (const [index, value] of allLands['4'].entries()) {
+      this.state.itemsMeasure.push(<span key={index}><font color="#123962">Measurements: {value}</font></span>)
     }
 
   }
@@ -85,7 +101,9 @@ class SearchProperty extends Component {
 
     const ids = this.state.itemsIds;
     const address = this.state.itemsOwner;
-    const price = this.state.items;
+    const price = this.state.itemsValues;
+    const city = this.state.itemsCity;
+    const measure = this.state.itemsMeasure;
 
     const { classes } = this.props;
     return (
@@ -158,7 +176,7 @@ class SearchProperty extends Component {
                           gutterBottom
                           variant="h5"
                           component="h4"
-                          className={classes.Typo}
+                          className={classes.Typo1}
           
                         >
                           {ids[index]}
@@ -171,6 +189,15 @@ class SearchProperty extends Component {
                           key={index}
                         >
                           {value}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="h4"
+                          className={classes.Typo1}
+          
+                        >
+                          {city[index]} <span style={{marginLeft: "35%",color:"#EF8E19"}}>|</span> <span style={{float:"right"}}>{measure[index]}</span>
                         </Typography>
                         <Typography
                           variant="body2"
