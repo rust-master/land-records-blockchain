@@ -36,7 +36,7 @@ contract Land {
 	
     // Get the property details.
 	 function getAllDetails() view public returns (uint[] memory, uint[] memory, address[] memory, string[] memory, string[] memory)  {
-		return (propertiesIDs, propertiesValues,propertiesAddress, propertiesCity,propertiesMeasurement);
+		return (propertiesIDs, propertiesValues, propertiesAddress, propertiesCity, propertiesMeasurement);
 	}
 
 }
