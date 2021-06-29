@@ -23,6 +23,7 @@ class UserSignIn extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((u) => {
         console.log(u);
+        window.location = "/";
       })
       .catch((err) => {
         console.log(err);
