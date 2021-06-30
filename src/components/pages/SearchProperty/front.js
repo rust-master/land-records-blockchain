@@ -8,6 +8,7 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import Slide from '@material-ui/core/Slide';
 import Typography from "@material-ui/core/Typography";
 
 import contract from "../../../build/contracts/Land.json"
@@ -58,7 +59,7 @@ class SearchProperty extends Component {
 
   async loadBlockchainData() {
     const web3 = window.web3
-    const landCon = new web3.eth.Contract(contract.abi, "0x077E9efaFa7bf256faAC14a363d9C38F683D1dBf")
+    const landCon = new web3.eth.Contract(contract.abi, "0x040BA566DB7A49eded6C57afBbCC4802dD11253A")
     // const detail = await landCon.methods.properties(2001).call()
     // console.log("Detail: " + detail['currOwner'])
   
@@ -159,6 +160,7 @@ class SearchProperty extends Component {
             </div>
             {price.map((value, index) => {
               return (
+                <Slide direction="left" in={true} timeout={1000} mountOnEnter unmountOnExit>
                 <div className={classes.main}>
                   <Card className={classes.root1}>
                     <CardActionArea>
@@ -209,6 +211,7 @@ class SearchProperty extends Component {
                     </CardActionArea>
                   </Card>
                 </div>
+                </Slide>
               )
             })}
           </div>
