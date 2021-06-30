@@ -2,7 +2,7 @@ import React from 'react';
 import './HeroSection.css';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
-import Slide from '@material-ui/core/Slide';
+import Zoom from '@material-ui/core/Zoom';
 
 function HeroSection({
   lightBg,
@@ -53,9 +53,9 @@ function HeroSection({
             </div>
             <div className='col'>
               <div className='home__hero-img-wrapper'>
-              <Slide direction="up" in={true} timeout={5000} mountOnEnter unmountOnExit>
+              <Zoom in={true} timeout={3000} style={{ transitionDelay: true ? '1000ms' : '0ms' }}>
                 <img src={img} alt={alt} className='home__hero-img' />
-              </Slide>
+              </Zoom>
               </div>
             </div>
           </div>
