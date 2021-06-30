@@ -43,7 +43,7 @@ class GovermentLogin extends Component {
       cookies.set('username', this.state.email, { path: '/' });
       console.log(cookies.get('username'));
 
-      window.location = '/home'
+      window.location = '/'
 
     } else {
 
