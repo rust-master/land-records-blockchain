@@ -53,9 +53,9 @@ function HeroSection({
             </div>
             <div className='col'>
               <div className='home__hero-img-wrapper'>
-              <Zoom in={true} timeout={3000} style={{ transitionDelay: true ? '1000ms' : '0ms' }}>
-                <img src={img} alt={alt} className='home__hero-img' />
-              </Zoom>
+                <Zoom in={true} timeout={3000} style={{ transitionDelay: true ? '1000ms' : '0ms' }}>
+                  <img src={img} alt={alt} className='home__hero-img' />
+                </Zoom>
               </div>
             </div>
           </div>
