@@ -2,6 +2,7 @@ import React from 'react';
 import './HeroSection.css';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
+import Slide from '@material-ui/core/Slide';
 
 function HeroSection({
   lightBg,
@@ -52,7 +53,9 @@ function HeroSection({
             </div>
             <div className='col'>
               <div className='home__hero-img-wrapper'>
+              <Slide direction="up" in={true} timeout={5000} mountOnEnter unmountOnExit>
                 <img src={img} alt={alt} className='home__hero-img' />
+              </Slide>
               </div>
             </div>
           </div>
