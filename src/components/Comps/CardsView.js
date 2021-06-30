@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import logo from '../Comps/growing.png';
 import logo1 from '../Comps/decreasing.png';
+import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
@@ -49,6 +50,8 @@ export default function ImgMediaCard() {
     const classes = useStyles();
 
     return (
+        <Slide direction="right" in={true} timeout={3000} mountOnEnter unmountOnExit>
+
         <div className={classes.main}>
             <Card className={classes.root1}>
                 <CardActionArea>
@@ -111,5 +114,6 @@ export default function ImgMediaCard() {
                 </CardActionArea>
             </Card>
         </div>
+        </Slide>
     );
 }
