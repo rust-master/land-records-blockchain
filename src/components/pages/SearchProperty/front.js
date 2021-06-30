@@ -62,7 +62,7 @@ class SearchProperty extends Component {
     const landCon = new web3.eth.Contract(contract.abi, "0x040BA566DB7A49eded6C57afBbCC4802dD11253A")
     // const detail = await landCon.methods.properties(2001).call()
     // console.log("Detail: " + detail['currOwner'])
-  
+
 
     const allLands = await landCon.methods.getAllDetails().call()
 
@@ -79,7 +79,7 @@ class SearchProperty extends Component {
       this.state.itemsOwner.push(<p key={index}><font color="#2754BA">Owner: {value}</font></p>)
     }
 
-    
+
     for (const [index, value] of allLands['3'].entries()) {
       this.state.itemsCity.push(<span key={index}><font color="#123962">City: {value}</font></span>)
     }
@@ -161,10 +161,10 @@ class SearchProperty extends Component {
             {price.map((value, index) => {
               return (
                 <Slide direction="left" in={true} timeout={1000} mountOnEnter unmountOnExit>
-                <div className={classes.main}>
-                  <Card className={classes.root1}>
-                    <CardActionArea>
-                      {/* <CardMedia
+                  <div className={classes.main}>
+                    <Card className={classes.root1}>
+                      <CardActionArea>
+                        {/* <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
                     width="140"
@@ -172,45 +172,45 @@ class SearchProperty extends Component {
                     image={logo}
                     title="Contemplative Reptile"
                   /> */}
-                      <CardContent>
-                      <Typography
-                          gutterBottom
-                          variant="h5"
-                          component="h4"
-                          className={classes.Typo1}
-          
-                        >
-                          {ids[index]}
-                        </Typography>
-                        <Typography
-                          gutterBottom
-                          variant="h3"
-                          component="h2"
-                          className={classes.Typo}
-                          key={index}
-                        >
-                          {value}
-                        </Typography>
-                        <Typography
-                          gutterBottom
-                          variant="h5"
-                          component="h4"
-                          className={classes.Typo1}
-          
-                        >
-                          {city[index]} <span style={{marginLeft: "35%",color:"#EF8E19"}}>|</span> <span style={{float:"right"}}>{measure[index]}</span>
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          color="textSecondary"
-                          component="p"
-                          className={classes.TypoP}
-                        >{address[index]}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </div>
+                        <CardContent>
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="h4"
+                            className={classes.Typo1}
+
+                          >
+                            {ids[index]}
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            variant="h3"
+                            component="h2"
+                            className={classes.Typo}
+                            key={index}
+                          >
+                            {value}
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="h4"
+                            className={classes.Typo1}
+
+                          >
+                            {city[index]} <span style={{ marginLeft: "35%", color: "#EF8E19" }}>|</span> <span style={{ float: "right" }}>{measure[index]}</span>
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            component="p"
+                            className={classes.TypoP}
+                          >{address[index]}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </div>
                 </Slide>
               )
             })}
