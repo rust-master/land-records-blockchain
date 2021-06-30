@@ -10,7 +10,7 @@ import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-    main:{
+    main: {
 
         position: 'relative',
     },
@@ -20,20 +20,20 @@ const useStyles = makeStyles({
         position: 'absolute',
         marginLeft: 100,
     },
-    root2:{
+    root2: {
         maxWidth: 345,
         position: 'absolute',
         marginLeft: 480,
         backgroundColor: '#1C2237',
-        marginBottom:40,
+        marginBottom: 40,
     },
-    root3:{
+    root3: {
         backgroundColor: '#1C2237',
         maxWidth: 345,
         position: 'relative',
         marginLeft: 860,
         marginTop: 40,
-        marginBottom:40,
+        marginBottom: 40,
     },
     Typo: {
         color: '#fff',
@@ -52,68 +52,68 @@ export default function ImgMediaCard() {
     return (
         <Slide direction="right" in={true} timeout={3000} mountOnEnter unmountOnExit>
 
-        <div className={classes.main}>
-            <Card className={classes.root1}>
-                <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        alt="Contemplative Reptile"
-                        width="140"
-                        height="270"
-                        image={logo}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                        109,190
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
-                        Property Transferred In Punjab-2021
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-            <Card className={classes.root2}>
-                <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        alt="Contemplative Reptile"
-                        width="140"
-                        height="270"
-                        image={logo1}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                        309,513
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
-                        Property Transferred In Punjab-2020
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-            <Card className={classes.root3}>
-                <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        alt="Contemplative Reptile"
-                        width="140"
-                        height="270"
-                        image={logo}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                        359,972
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
-                        Property Transferred In Punjab-2019
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </div>
+            <div className={classes.main}>
+                <Card className={classes.root1}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            alt="Contemplative Reptile"
+                            width="140"
+                            height="270"
+                            image={logo}
+                            title="Contemplative Reptile"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
+                                109,190
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
+                                Property Transferred In Punjab-2021
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                <Card className={classes.root2}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            alt="Contemplative Reptile"
+                            width="140"
+                            height="270"
+                            image={logo1}
+                            title="Contemplative Reptile"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
+                                309,513
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
+                                Property Transferred In Punjab-2020
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                <Card className={classes.root3}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            alt="Contemplative Reptile"
+                            width="140"
+                            height="270"
+                            image={logo}
+                            title="Contemplative Reptile"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
+                                359,972
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
+                                Property Transferred In Punjab-2019
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </div>
         </Slide>
     );
 }
