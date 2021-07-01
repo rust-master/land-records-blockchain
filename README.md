@@ -2,7 +2,7 @@
 
 # Screens
 
-<img src="Main Splash.PNG" alt"Splash Screen"/>
+<img src="Main Splash.PNG" alt="Splash Screen" />
 
 ## Available Scripts
 
