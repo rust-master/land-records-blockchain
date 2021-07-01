@@ -113,12 +113,9 @@ class SearchProperty extends Component {
     }
 
     for (const [index, value] of allLands["5"].entries()) {
-      this.state.itemsStatus.push(value
-      );
+      this.state.itemsStatus.push(value);
     }
   }
-
-
 
 
 
