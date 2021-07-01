@@ -9,6 +9,7 @@ contract Land {
 		address currOwner;
 		string city;
 		string measurement;
+		string status;
 	}
 	
     mapping(uint => PropertyDetail) public properties;
@@ -17,15 +18,17 @@ contract Land {
     address[] public propertiesAddress;
     string[] public propertiesCity;
     string[] public propertiesMeasurement;
+    string[] public propertiesStatus;
     
 	// Create Property
     function createProperty(uint _propId, uint _value, address _owner, string memory _city, string memory _measurement) public returns (bool)  {
-		properties[_propId] = PropertyDetail(_propId, _value, _owner, _city, _measurement);
+		properties[_propId] = PropertyDetail(_propId, _value, _owner, _city, _measurement,"Not-Available-For-Sale");
 		propertiesIDs.push(_propId);
 		propertiesValues.push(_value);
 		propertiesAddress.push(_owner);
 		propertiesCity.push(_city);
 		propertiesMeasurement.push(_measurement);
+		propertiesStatus.push("Not-Available-For-Sale");
 		return true;
 	}
 	
@@ -35,8 +38,8 @@ contract Land {
 	}
 	
     // Get the property details.
-	 function getAllDetails() view public returns (uint[] memory, uint[] memory, address[] memory, string[] memory, string[] memory)  {
-		return (propertiesIDs, propertiesValues, propertiesAddress, propertiesCity, propertiesMeasurement);
+	 function getAllDetails() view public returns (uint[] memory, uint[] memory, address[] memory, string[] memory, string[] memory, string[] memory)  {
+		return (propertiesIDs, propertiesValues, propertiesAddress, propertiesCity, propertiesMeasurement,propertiesStatus);
 	}
 
 }
