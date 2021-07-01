@@ -114,14 +114,13 @@ class SearchProperty extends Component {
 
     for (const [index, value] of allLands["5"].entries()) {
       this.state.itemsStatus.push(value
-        // <h5 key={index}><font color="#F00946">{value}</font></h5>
       );
     }
   }
 
-  
 
-  
+
+
 
   handleChange(e) {
     this.setState({
@@ -138,36 +137,36 @@ class SearchProperty extends Component {
     const status = this.state.itemsStatus;
 
 
-    
 
-const result2 = status.filter(letter => letter.length > 4);
 
-console.log(result2);
+    const result2 = status.filter(letter => letter.length > 4);
 
-    
+    console.log(result2);
+
+
     console.log("Type: " + xtype(this.state.itemsStatus))
 
     const { classes } = this.props;
 
-    
 
-     let ListTemplate;
 
-     if (status.length) {
+    let ListTemplate;
 
-       ListTemplate = status.filter(item => item == "Not-Available-For-Sale").map((value, index) =>
-        
-                <Slide
-                  direction="left"
-                  in={true}
-                  timeout={1000}
-                  mountOnEnter
-                  unmountOnExit
-                >
-                  <div className={classes.main}>
-                    <Card className={classes.root1}>
-                      <CardActionArea>
-                        {/* <CardMedia
+    if (status.length) {
+
+      ListTemplate = status.filter(item => item == "Not-Available-For-Sale").map((value, index) =>
+
+        <Slide
+          direction="left"
+          in={true}
+          timeout={1000}
+          mountOnEnter
+          unmountOnExit
+        >
+          <div className={classes.main}>
+            <Card className={classes.root1}>
+              <CardActionArea>
+                {/* <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
                     width="140"
@@ -175,105 +174,105 @@ console.log(result2);
                     image={logo}
                     title="Contemplative Reptile"
                   /> */}
-                        <CardContent>
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {ids[index]}
-                          </Typography>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {ids[index]}
+                  </Typography>
 
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {address[index]}
-                          </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {address[index]}
+                  </Typography>
 
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {price[index]}
-                          </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {price[index]}
+                  </Typography>
 
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {city[index]}
-                          </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {city[index]}
+                  </Typography>
 
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {measure[index]}
-                          </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {measure[index]}
+                  </Typography>
 
-                          
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.TypoSt}
-                            key={index}
-                          >
-                            {value}
-                          </Typography>
-                        </CardContent>
-                        <div
-                          style={{
-                            margin: "20px auto 0 auto;",
-                            display: "block",
-                            width: "100%",
-                            height: "50px",
-                            backgroundColor: "#266AFB",
-                          }}
-                        >
-                          <h2
-                            style={{
-                              marginTop: "10px",
-                              marginLeft: "40%",
-                              display: "inline-block",
-                              color: "#fff",
-                              fontFamily: "Arial",
-                              fontWeight: "bold",
-                              textAlign: "center",
-                            }}
-                          >
-                            <img
-                              src={logo}
-                              alt=""
-                              style={{
-                                width: "35px",
-                                height: "35px",
-                                marginBottom: "0px",
-                              }}
-                            />{" "}
-                            Request For Sale
-                          </h2>
-                        </div>
-                      </CardActionArea>
-                    </Card>
-                  </div>
-                </Slide>
-          
-            );
-     }
-   else {
-    ListTemplate = <div > Records Not Found </div>;
-  }
+
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.TypoSt}
+                    key={index}
+                  >
+                    {value}
+                  </Typography>
+                </CardContent>
+                <div
+                  style={{
+                    margin: "20px auto 0 auto;",
+                    display: "block",
+                    width: "100%",
+                    height: "50px",
+                    backgroundColor: "#266AFB",
+                  }}
+                >
+                  <h2
+                    style={{
+                      marginTop: "10px",
+                      marginLeft: "40%",
+                      display: "inline-block",
+                      color: "#fff",
+                      fontFamily: "Arial",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    <img
+                      src={logo}
+                      alt=""
+                      style={{
+                        width: "35px",
+                        height: "35px",
+                        marginBottom: "0px",
+                      }}
+                    />{" "}
+                    Request For Sale
+                  </h2>
+                </div>
+              </CardActionArea>
+            </Card>
+          </div>
+        </Slide>
+
+      );
+    }
+    else {
+      ListTemplate = <div > Records Not Found </div>;
+    }
 
 
 
