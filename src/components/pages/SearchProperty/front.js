@@ -26,17 +26,17 @@ const styles = (theme) => ({
     marginLeft: 100,
   },
   Typo1: {
-    color: "#123962",
+    color: "#266AFB",
     fontWeight: "bold",
     textAlign: "left",
   },
   Typo: {
-    color: "#1C2237",
+    color: "#266AFB",
     fontWeight: "bold",
     textAlign: "center",
   },
   TypoP: {
-    color: "#1C2237",
+    color: "#266AFB",
     textAlign: "center",
   },
 });
@@ -68,24 +68,24 @@ class SearchProperty extends Component {
 
 
     for (const [index, value] of allLands['0'].entries()) {
-      this.state.itemsIds.push(<h3 key={index}><font color="#123962">Land No: {value}</font></h3>)
+      this.state.itemsIds.push(<h5 key={index}><font color="#266AFB">Land No: {value}</font></h5>)
     }
 
     for (const [index, value] of allLands['1'].entries()) {
-      this.state.itemsValues.push(<h3 key={index}><font color="#EF8E19">Value: {value} Ether</font></h3>)
+      this.state.itemsValues.push(<h5 key={index}><font color="#266AFB">Value: {value} Ether</font></h5>)
     }
 
     for (const [index, value] of allLands['2'].entries()) {
-      this.state.itemsOwner.push(<p key={index}><font color="#2754BA">Owner: {value}</font></p>)
+      this.state.itemsOwner.push(<h5 key={index}><font color="#266AFB">Current Owner: {value}</font></h5>)
     }
 
 
     for (const [index, value] of allLands['3'].entries()) {
-      this.state.itemsCity.push(<span key={index}><font color="#123962">City: {value}</font></span>)
+      this.state.itemsCity.push(<h5 key={index}><font color="#266AFB">City: {value}</font></h5>)
     }
 
     for (const [index, value] of allLands['4'].entries()) {
-      this.state.itemsMeasure.push(<span key={index}><font color="#123962">Measurements: {value}</font></span>)
+      this.state.itemsMeasure.push(<h5 key={index}><font color="#266AFB">Measurements: {value}</font></h5>)
     }
 
   }
@@ -175,40 +175,62 @@ class SearchProperty extends Component {
                         <CardContent>
                           <Typography
                             gutterBottom
-                            variant="h5"
-                            component="h4"
+                            variant="h6"
+                            component="h5"
                             className={classes.Typo1}
 
                           >
                             {ids[index]}
                           </Typography>
+
                           <Typography
                             gutterBottom
-                            variant="h3"
-                            component="h2"
-                            className={classes.Typo}
+                            variant="h6"
+                            component="h5"
+                            className={classes.Typo1}
+                          >{address[index]}
+                          </Typography>
+
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h5"
+                            className={classes.Typo1}
                             key={index}
                           >
                             {value}
                           </Typography>
+
                           <Typography
                             gutterBottom
-                            variant="h5"
-                            component="h4"
+                            variant="h6"
+                            component="h5"
                             className={classes.Typo1}
 
                           >
-                            {city[index]} <span style={{ marginLeft: "35%", color: "#EF8E19" }}>|</span> <span style={{ float: "right" }}>{measure[index]}</span>
+                            {city[index]}
                           </Typography>
+
                           <Typography
-                            variant="body2"
-                            color="textSecondary"
-                            component="p"
-                            className={classes.TypoP}
-                          >{address[index]}
+                            gutterBottom
+                            variant="h6"
+                            component="h5"
+                            className={classes.Typo1}
+
+                          >
+                          {measure[index]}
                           </Typography>
+                      
                         </CardContent>
                       </CardActionArea>
+                      {/* <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    width="140"
+                    height="270"
+                    image={logo}
+                    title="Contemplative Reptile"
+                  /> */}
                     </Card>
                   </div>
                 </Slide>
