@@ -14,6 +14,9 @@ import logo from "../SearchProperty/home.png";
 
 import contract from "../../../build/contracts/Land.json";
 
+import xtype from 'xtypejs'
+
+
 const styles = (theme) => ({
   main: {
     position: "relative",
@@ -30,8 +33,8 @@ const styles = (theme) => ({
     fontWeight: "bold",
     textAlign: "left",
   },
-  Typo: {
-    color: "#266AFB",
+  TypoSt: {
+    color: "#F00946",
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -54,6 +57,7 @@ class SearchProperty extends Component {
       itemsValues: [],
       itemsCity: [],
       itemsMeasure: [],
+      itemsStatus: [],
     };
   }
 
@@ -61,7 +65,7 @@ class SearchProperty extends Component {
     const web3 = window.web3;
     const landCon = new web3.eth.Contract(
       contract.abi,
-      "0xE082729b834a6DC7032edAd8e12F3AA049378C45"
+      "0x16e5c8D0196a72a0710Bd6FD3ABE41dfA758f1a1"
     );
     // const detail = await landCon.methods.properties(2001).call()
     // console.log("Detail: " + detail['currOwner'])
@@ -107,7 +111,17 @@ class SearchProperty extends Component {
         </h5>
       );
     }
+
+    for (const [index, value] of allLands["5"].entries()) {
+      this.state.itemsStatus.push(value
+        // <h5 key={index}><font color="#F00946">{value}</font></h5>
+      );
+    }
   }
+
+  
+
+  
 
   handleChange(e) {
     this.setState({
@@ -121,8 +135,148 @@ class SearchProperty extends Component {
     const price = this.state.itemsValues;
     const city = this.state.itemsCity;
     const measure = this.state.itemsMeasure;
+    const status = this.state.itemsStatus;
+
+
+    
+
+const result2 = status.filter(letter => letter.length > 4);
+
+console.log(result2);
+
+    
+    console.log("Type: " + xtype(this.state.itemsStatus))
 
     const { classes } = this.props;
+
+    
+
+     let ListTemplate;
+
+     if (status.length) {
+
+       ListTemplate = status.filter(item => item == "Not-Available-For-Sale").map((value, index) =>
+        
+                <Slide
+                  direction="left"
+                  in={true}
+                  timeout={1000}
+                  mountOnEnter
+                  unmountOnExit
+                >
+                  <div className={classes.main}>
+                    <Card className={classes.root1}>
+                      <CardActionArea>
+                        {/* <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    width="140"
+                    height="270"
+                    image={logo}
+                    title="Contemplative Reptile"
+                  /> */}
+                        <CardContent>
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h5"
+                            className={classes.Typo1}
+                          >
+                            {ids[index]}
+                          </Typography>
+
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h5"
+                            className={classes.Typo1}
+                          >
+                            {address[index]}
+                          </Typography>
+
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h5"
+                            className={classes.Typo1}
+                          >
+                            {price[index]}
+                          </Typography>
+
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h5"
+                            className={classes.Typo1}
+                          >
+                            {city[index]}
+                          </Typography>
+
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h5"
+                            className={classes.Typo1}
+                          >
+                            {measure[index]}
+                          </Typography>
+
+                          
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h5"
+                            className={classes.TypoSt}
+                            key={index}
+                          >
+                            {value}
+                          </Typography>
+                        </CardContent>
+                        <div
+                          style={{
+                            margin: "20px auto 0 auto;",
+                            display: "block",
+                            width: "100%",
+                            height: "50px",
+                            backgroundColor: "#266AFB",
+                          }}
+                        >
+                          <h2
+                            style={{
+                              marginTop: "10px",
+                              marginLeft: "40%",
+                              display: "inline-block",
+                              color: "#fff",
+                              fontFamily: "Arial",
+                              fontWeight: "bold",
+                              textAlign: "center",
+                            }}
+                          >
+                            <img
+                              src={logo}
+                              alt=""
+                              style={{
+                                width: "35px",
+                                height: "35px",
+                                marginBottom: "0px",
+                              }}
+                            />{" "}
+                            Request For Sale
+                          </h2>
+                        </div>
+                      </CardActionArea>
+                    </Card>
+                  </div>
+                </Slide>
+          
+            );
+     }
+   else {
+    ListTemplate = <div > Records Not Found </div>;
+  }
+
+
+
     return (
       <>
         <div
@@ -175,111 +329,7 @@ class SearchProperty extends Component {
                 </div>
               </div>
             </div>
-            {price.map((value, index) => {
-              return (
-                <Slide
-                  direction="left"
-                  in={true}
-                  timeout={1000}
-                  mountOnEnter
-                  unmountOnExit
-                >
-                  <div className={classes.main}>
-                    <Card className={classes.root1}>
-                      <CardActionArea>
-                        {/* <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    width="140"
-                    height="270"
-                    image={logo}
-                    title="Contemplative Reptile"
-                  /> */}
-                        <CardContent>
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {ids[index]}
-                          </Typography>
-
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {address[index]}
-                          </Typography>
-
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                            key={index}
-                          >
-                            {value}
-                          </Typography>
-
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {city[index]}
-                          </Typography>
-
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h5"
-                            className={classes.Typo1}
-                          >
-                            {measure[index]}
-                          </Typography>
-                        </CardContent>
-                        <div
-                          style={{
-                            margin: "20px auto 0 auto;",
-                            display: "block",
-                            width: "100%",
-                            height: "50px",
-                            backgroundColor: "#266AFB",
-                          }}
-                        >
-                          <h2
-                            style={{
-                              marginTop: "10px",
-                              marginLeft: "40%",
-                              display: "inline-block",
-                              color: "#fff",
-                              fontFamily: "Arial",
-                              fontWeight: "bold",
-                              textAlign: "center",
-                            }}
-                          >
-                            <img
-                              src={logo}
-                              alt=""
-                              style={{
-                                width: "35px",
-                                height: "35px",
-                                marginBottom: "0px",
-                              }}
-                            />{"     "}
-                            Request For Sale
-                          </h2>
-                        </div>
-                      </CardActionArea>
-                    </Card>
-                  </div>
-                </Slide>
-              );
-            })}
+            {ListTemplate}
           </div>
         </div>
       </>
