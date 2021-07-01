@@ -45,7 +45,7 @@ class CreateLand extends Component {
       this.setState({ account: accounts[0] })
       console.log("Account: " + this.state.account);
 
-      const landCon = new web3.eth.Contract(contract.abi, "0x28252844a10ABE60B6C74A5AD1C66FCECfEc01f6")
+      const landCon = new web3.eth.Contract(contract.abi, "0xE082729b834a6DC7032edAd8e12F3AA049378C45")
       console.log("Owner: " + this.state.owner);
       console.log("Land No: " + this.state.landno);
       console.log("Land Value: " + this.state.price);
@@ -166,7 +166,7 @@ class CreateLand extends Component {
 
                     <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
                       <Alert onClose={this.handleClose} severity="error">
-                        Owner: {this.state.errori}
+                        {this.state.errori}
                       </Alert>
                     </Snackbar>
 

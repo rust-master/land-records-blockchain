@@ -61,7 +61,7 @@ class SearchProperty extends Component {
     const web3 = window.web3;
     const landCon = new web3.eth.Contract(
       contract.abi,
-      "0x28252844a10ABE60B6C74A5AD1C66FCECfEc01f6"
+      "0xE082729b834a6DC7032edAd8e12F3AA049378C45"
     );
     // const detail = await landCon.methods.properties(2001).call()
     // console.log("Detail: " + detail['currOwner'])
