@@ -10,6 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Slide from '@material-ui/core/Slide';
 import Typography from "@material-ui/core/Typography";
+import logo from '../SearchProperty/growing.png';
 
 import contract from "../../../build/contracts/Land.json"
 
@@ -222,15 +223,11 @@ class SearchProperty extends Component {
                           </Typography>
                       
                         </CardContent>
+                        <div style={{margin:"20px auto 0 auto;",display:"block",width:"100%", height:"50px",backgroundColor:"#266AFB"}}>
+                      <h2 style={{marginTop:"15px",marginLeft:"40%",display:"inline-block",color:"#fff",fontFamily:"Arial",fontWeight:"bold",textAlign:"center"}}>Request For Sale</h2>
+                    </div>
                       </CardActionArea>
-                      {/* <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    width="140"
-                    height="270"
-                    image={logo}
-                    title="Contemplative Reptile"
-                  /> */}
+    
                     </Card>
                   </div>
                 </Slide>
