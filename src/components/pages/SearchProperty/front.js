@@ -219,15 +219,15 @@ class SearchProperty extends Component {
                             className={classes.Typo1}
 
                           >
-                          {measure[index]}
+                            {measure[index]}
                           </Typography>
-                      
+
                         </CardContent>
-                        <div style={{margin:"20px auto 0 auto;",display:"block",width:"100%", height:"50px",backgroundColor:"#266AFB"}}>
-                      <h2 style={{marginTop:"15px",marginLeft:"40%",display:"inline-block",color:"#fff",fontFamily:"Arial",fontWeight:"bold",textAlign:"center"}}><img src={logo} alt="request image" style={{width:"20px",height:"20px"}}/> Request For Sale</h2>
-                    </div>
+                        <div style={{ margin: "20px auto 0 auto;", display: "block", width: "100%", height: "50px", backgroundColor: "#266AFB" }}>
+                          <h2 style={{ marginTop: "15px", marginLeft: "40%", display: "inline-block", color: "#fff", fontFamily: "Arial", fontWeight: "bold", textAlign: "center" }}><img src={logo} alt="request image" style={{ width: "20px", height: "20px" }} /> Request For Sale</h2>
+                        </div>
                       </CardActionArea>
-    
+
                     </Card>
                   </div>
                 </Slide>
