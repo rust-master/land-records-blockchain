@@ -8,7 +8,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
 
-
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -52,10 +51,8 @@ class CreateLand extends Component {
 
     await landCon.methods.createProperty(this.state.landno, this.state.price, this.state.owner, this.state.city, this.state.measurement).send({ from: this.state.account })
 
-    this.setState({open : true})
+    this.setState({ open: true })
 
-
- 
   }
 
   handleChange(e) {
@@ -64,19 +61,16 @@ class CreateLand extends Component {
     });
   }
 
-  handleClose(e ,r){
+  handleClose(e, r) {
     if (r === 'clickaway') {
       return;
     }
 
-    this.setState({open : false})
-
+    this.setState({ open: false })
   }
 
 
   render() {
-    
-
     return (
       <>
         <div
@@ -144,7 +138,6 @@ class CreateLand extends Component {
                       />
 
 
-
                       <Button
                         buttonSize="btn--mobile"
                         buttonColor="blue"
@@ -156,10 +149,11 @@ class CreateLand extends Component {
                     </form>
 
                     <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
-        <Alert onClose={this.handleClose} severity="success">
-          Land Created successfully. Owner: {this.state.owner}
-        </Alert>
-      </Snackbar>
+                      <Alert onClose={this.handleClose} severity="success">
+                        Land Created successfully. Owner: {this.state.owner}
+                      </Alert>
+                    </Snackbar>
+
                   </div>
                 </div>
               </div>
