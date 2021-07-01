@@ -8,12 +8,11 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Slide from '@material-ui/core/Slide';
+import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
-import logo from '../SearchProperty/home.png';
+import logo from "../SearchProperty/home.png";
 
-import contract from "../../../build/contracts/Land.json"
-
+import contract from "../../../build/contracts/Land.json";
 
 const styles = (theme) => ({
   main: {
@@ -44,7 +43,7 @@ const styles = (theme) => ({
 
 class SearchProperty extends Component {
   componentWillMount() {
-    this.loadBlockchainData()
+    this.loadBlockchainData();
   }
 
   constructor(props) {
@@ -54,43 +53,61 @@ class SearchProperty extends Component {
       itemsOwner: [],
       itemsValues: [],
       itemsCity: [],
-      itemsMeasure: []
-    }
+      itemsMeasure: [],
+    };
   }
 
   async loadBlockchainData() {
-    const web3 = window.web3
-    const landCon = new web3.eth.Contract(contract.abi, "0x28252844a10ABE60B6C74A5AD1C66FCECfEc01f6")
+    const web3 = window.web3;
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      "0x28252844a10ABE60B6C74A5AD1C66FCECfEc01f6"
+    );
     // const detail = await landCon.methods.properties(2001).call()
     // console.log("Detail: " + detail['currOwner'])
 
+    const allLands = await landCon.methods.getAllDetails().call();
 
-    const allLands = await landCon.methods.getAllDetails().call()
-
-
-    for (const [index, value] of allLands['0'].entries()) {
-      this.state.itemsIds.push(<h5 key={index}><font color="#266AFB">Land No: {value}</font></h5>)
+    for (const [index, value] of allLands["0"].entries()) {
+      this.state.itemsIds.push(
+        <h5 key={index}>
+          <font color="#266AFB">Land No: {value}</font>
+        </h5>
+      );
     }
 
-    for (const [index, value] of allLands['1'].entries()) {
-      this.state.itemsValues.push(<h5 key={index}><font color="#266AFB">Value: {value} Ether</font></h5>)
+    for (const [index, value] of allLands["1"].entries()) {
+      this.state.itemsValues.push(
+        <h5 key={index}>
+          <font color="#266AFB">Value: {value} Ether</font>
+        </h5>
+      );
     }
 
-    for (const [index, value] of allLands['2'].entries()) {
-      this.state.itemsOwner.push(<h5 key={index}><font color="#266AFB">Current Owner: {value}</font></h5>)
+    for (const [index, value] of allLands["2"].entries()) {
+      this.state.itemsOwner.push(
+        <h5 key={index}>
+          <font color="#266AFB">Current Owner: {value}</font>
+        </h5>
+      );
     }
 
-
-    for (const [index, value] of allLands['3'].entries()) {
-      this.state.itemsCity.push(<h5 key={index}><font color="#266AFB">City: {value}</font></h5>)
+    for (const [index, value] of allLands["3"].entries()) {
+      this.state.itemsCity.push(
+        <h5 key={index}>
+          <font color="#266AFB">City: {value}</font>
+        </h5>
+      );
     }
 
-    for (const [index, value] of allLands['4'].entries()) {
-      this.state.itemsMeasure.push(<h5 key={index}><font color="#266AFB">Measurements: {value}</font></h5>)
+    for (const [index, value] of allLands["4"].entries()) {
+      this.state.itemsMeasure.push(
+        <h5 key={index}>
+          <font color="#266AFB">Measurements: {value}</font>
+        </h5>
+      );
     }
-
   }
-
 
   handleChange(e) {
     this.setState({
@@ -99,7 +116,6 @@ class SearchProperty extends Component {
   }
 
   render() {
-
     const ids = this.state.itemsIds;
     const address = this.state.itemsOwner;
     const price = this.state.itemsValues;
@@ -161,7 +177,13 @@ class SearchProperty extends Component {
             </div>
             {price.map((value, index) => {
               return (
-                <Slide direction="left" in={true} timeout={1000} mountOnEnter unmountOnExit>
+                <Slide
+                  direction="left"
+                  in={true}
+                  timeout={1000}
+                  mountOnEnter
+                  unmountOnExit
+                >
                   <div className={classes.main}>
                     <Card className={classes.root1}>
                       <CardActionArea>
@@ -179,7 +201,6 @@ class SearchProperty extends Component {
                             variant="h6"
                             component="h5"
                             className={classes.Typo1}
-
                           >
                             {ids[index]}
                           </Typography>
@@ -189,7 +210,8 @@ class SearchProperty extends Component {
                             variant="h6"
                             component="h5"
                             className={classes.Typo1}
-                          >{address[index]}
+                          >
+                            {address[index]}
                           </Typography>
 
                           <Typography
@@ -207,7 +229,6 @@ class SearchProperty extends Component {
                             variant="h6"
                             component="h5"
                             className={classes.Typo1}
-
                           >
                             {city[index]}
                           </Typography>
@@ -217,25 +238,46 @@ class SearchProperty extends Component {
                             variant="h6"
                             component="h5"
                             className={classes.Typo1}
-
                           >
                             {measure[index]}
                           </Typography>
-
                         </CardContent>
-                        <div style={{ margin: "20px auto 0 auto;", display: "block", width: "100%", height: "50px", backgroundColor: "#266AFB" }}>
-                          <h2 style={{ marginTop: "15px", marginLeft: "40%", display: "inline-block", color: "#fff", fontFamily: "Arial", fontWeight: "bold", textAlign: "center" }}><img src={logo} alt="request image" style={{ width: "20px", height: "20px" }} /> Request For Sale</h2>
+                        <div
+                          style={{
+                            margin: "20px auto 0 auto;",
+                            display: "block",
+                            width: "100%",
+                            height: "50px",
+                            backgroundColor: "#266AFB",
+                          }}
+                        > 
+                          <h2
+                            style={{
+                              marginTop: "15px",
+                              marginLeft: "40%",
+                              display: "inline-block",
+                              color: "#fff",
+                              fontFamily: "Arial",
+                              fontWeight: "bold",
+                              textAlign: "center",
+                            }}
+                          >
+                           <img
+                        src={logo}
+                        alt=""
+                        style={{ width: "35px", height: "35px", marginBottom:"10px"}}
+                      />{" "}
+                            Request For Sale
+                          </h2>
                         </div>
                       </CardActionArea>
-
                     </Card>
                   </div>
                 </Slide>
-              )
+              );
             })}
           </div>
         </div>
-
       </>
     );
   }
