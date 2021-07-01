@@ -4,6 +4,15 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json"
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 
 class CreateLand extends Component {
@@ -12,6 +21,7 @@ class CreateLand extends Component {
     super(props);
     this.addData = this.addData.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.state = {
       account: "",
       id: "",
@@ -20,6 +30,7 @@ class CreateLand extends Component {
       price: "",
       city: "",
       measurement: "",
+      open: false,
     };
   }
 
@@ -40,9 +51,12 @@ class CreateLand extends Component {
     console.log("City: " + this.state.city);
     console.log("Measurment: " + this.state.measurement);
 
-    const bool = await landCon.methods.createProperty(this.state.landno, this.state.price, this.state.owner, this.state.city, this.state.measurement).send({ from: this.state.account })
+    await landCon.methods.createProperty(this.state.landno, this.state.price, this.state.owner, this.state.city, this.state.measurement).send({ from: this.state.account })
 
-    console.log("Check: " + bool)
+    this.setState({open : true})
+
+
+ 
   }
 
   handleChange(e) {
@@ -51,8 +65,19 @@ class CreateLand extends Component {
     });
   }
 
+  handleClose(e ,r){
+    if (r === 'clickaway') {
+      return;
+    }
+
+    this.setState({open : false})
+
+  }
+
 
   render() {
+    
+
     return (
       <>
         <div
@@ -130,6 +155,12 @@ class CreateLand extends Component {
                       </Button>
 
                     </form>
+
+                    <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+        <Alert onClose={this.handleClose} severity="success">
+          Land Created successfully. Owner: {this.state.owner}
+        </Alert>
+      </Snackbar>
                   </div>
                 </div>
               </div>
