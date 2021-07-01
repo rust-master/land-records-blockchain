@@ -250,7 +250,7 @@ class SearchProperty extends Component {
                             height: "50px",
                             backgroundColor: "#266AFB",
                           }}
-                        > 
+                        >
                           <h2
                             style={{
                               marginTop: "15px",
@@ -262,11 +262,15 @@ class SearchProperty extends Component {
                               textAlign: "center",
                             }}
                           >
-                           <img
-                        src={logo}
-                        alt=""
-                        style={{ width: "35px", height: "35px", marginBottom:"10px"}}
-                      />{" "}
+                            <img
+                              src={logo}
+                              alt=""
+                              style={{
+                                width: "35px",
+                                height: "35px",
+                                marginBottom: "10px",
+                              }}
+                            />{" "}
                             Request For Sale
                           </h2>
                         </div>
