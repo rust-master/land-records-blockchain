@@ -37,26 +37,26 @@ class CreateLand extends Component {
 
   async addData(e) {
     e.preventDefault();
-    try{
+    try {
       const web3 = window.web3
-  
+
       const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
       const accounts = await webeProvider.eth.getAccounts()
       this.setState({ account: accounts[0] })
       console.log("Account: " + this.state.account);
-  
+
       const landCon = new web3.eth.Contract(contract.abi, "0x28252844a10ABE60B6C74A5AD1C66FCECfEc01f6")
       console.log("Owner: " + this.state.owner);
       console.log("Land No: " + this.state.landno);
       console.log("Land Value: " + this.state.price);
       console.log("City: " + this.state.city);
       console.log("Measurment: " + this.state.measurement);
-  
+
       await landCon.methods.createProperty(this.state.landno, this.state.price, this.state.owner, this.state.city, this.state.measurement).send({ from: this.state.account })
-  
+
       this.setState({ open: true })
     }
-    catch(e){
+    catch (e) {
       this.setState({ openi: true })
       this.setState({ errori: e.toString() })
       console.log("Error : ", e.toString())
