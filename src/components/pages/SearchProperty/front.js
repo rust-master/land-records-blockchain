@@ -253,7 +253,7 @@ class SearchProperty extends Component {
                         >
                           <h2
                             style={{
-                              marginTop: "15px",
+                              marginTop: "10px",
                               marginLeft: "40%",
                               display: "inline-block",
                               color: "#fff",
@@ -268,9 +268,9 @@ class SearchProperty extends Component {
                               style={{
                                 width: "35px",
                                 height: "35px",
-                                marginBottom: "10px",
+                                marginBottom: "0px",
                               }}
-                            />{" "}
+                            />{"     "}
                             Request For Sale
                           </h2>
                         </div>
