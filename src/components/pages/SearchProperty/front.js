@@ -61,11 +61,14 @@ class SearchProperty extends Component {
     };
   }
 
+
+
+
   async loadBlockchainData() {
     const web3 = window.web3;
     const landCon = new web3.eth.Contract(
       contract.abi,
-      "0x16e5c8D0196a72a0710Bd6FD3ABE41dfA758f1a1"
+      "0x6E68253Bb0286f977B27704b82bCC511252D4845"
     );
     // const detail = await landCon.methods.properties(2001).call()
     // console.log("Detail: " + detail['currOwner'])
