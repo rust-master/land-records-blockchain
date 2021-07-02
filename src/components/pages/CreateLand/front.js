@@ -12,7 +12,6 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-
 class CreateLand extends Component {
 
   constructor(props) {
@@ -33,6 +32,8 @@ class CreateLand extends Component {
       errori: "",
     };
   }
+
+
 
 
   async addData(e) {
