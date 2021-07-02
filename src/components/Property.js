@@ -36,7 +36,7 @@ class Property extends Component {
 
   async loadBlockchainData() {
     const web3 = window.web3
-    
+
     const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
     const accounts = await webeProvider.eth.getAccounts()
     this.setState({ account: accounts[0] })
