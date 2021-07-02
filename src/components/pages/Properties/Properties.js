@@ -3,6 +3,7 @@ import HeroSection from '../../HeroSection';
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
 import Property from '../../Property';
 
+
 function Properties() {
   return (
     <>
