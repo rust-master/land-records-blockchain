@@ -58,7 +58,7 @@ function Navbar() {
       setUser(firebaseUser);
     });
 
-    try{
+    try {
       const uid = fire.auth().currentUser.uid;
       const database = fire.database();
       const ref = database.ref("users").child(uid);
@@ -69,7 +69,7 @@ function Navbar() {
         }
       });
     }
-    catch(e){
+    catch (e) {
       console.log("Exception: " + e)
     }
 
@@ -85,7 +85,7 @@ function Navbar() {
 
   if (user != null) {
     console.log("User: ", { user });
-    
+
 
     return <Home />;
   } else {
