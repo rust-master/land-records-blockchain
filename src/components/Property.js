@@ -6,7 +6,7 @@ import { BsXDiamondFill } from "react-icons/bs";
 import { GiCrystalize } from "react-icons/gi";
 import { IconContext } from "react-icons/lib";
 import { Link } from "react-router-dom";
-
+import Web3 from "web3";
 import xtype from 'xtypejs'
 
 import contract from "../build/contracts/Land.json";
@@ -23,6 +23,7 @@ class Property extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      account: "",
       itemsIds: [],
       itemsOwner: [],
       itemsValues: [],
@@ -34,8 +35,13 @@ class Property extends Component {
 
 
   async loadBlockchainData() {
+    const web3 = window.web3
+    
+    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+    const accounts = await webeProvider.eth.getAccounts()
+    this.setState({ account: accounts[0] })
+    console.log("Account: " + this.state.account);
 
-    const web3 = window.web3;
     const landCon = new web3.eth.Contract(contract.abi, "0x6E68253Bb0286f977B27704b82bCC511252D4845");
 
     const allLands = await landCon.methods.getAllDetails().call();
@@ -86,7 +92,7 @@ class Property extends Component {
     let ListTemplate;
 
     if (status.length) {
-      ListTemplate = address.filter(item => item != "Not-Available-For-Sale").map((value, index) =>
+      ListTemplate = address.filter(item => item == this.state.account).map((value, index) =>
 
         <Link to="/sign-up" className="pricing__container-card">
           <div className="pricing__container-cardInfo">
