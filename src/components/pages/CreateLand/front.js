@@ -7,6 +7,8 @@ import contract from "../../../build/contracts/Land.json"
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
+import xtype from 'xtypejs'
+
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -47,11 +49,23 @@ class CreateLand extends Component {
     const landCon = new web3.eth.Contract(contract.abi, "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535")
     
     const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
-    const detail = await landCon.methods.landInfoOwner(this.state.id).call({ from: this.state.account })
-    console.log("Assets: " + assets)
-    for(let i=0; i<7; i++){
-      console.log("detail: " + detail[i])
+    
+    for(let i=1; i<=assets.length; i++){
+      
+      const detail = await landCon.methods.landInfoOwner(i).call({ from: this.state.account })
+      
+      console.log("State: " + detail[0])
+      console.log("Destrict: " + detail[1])
+      console.log("Village: " + detail[2])
+
+      console.log("---------------------------------")
     }
+    // const detail = await landCon.methods.landInfoOwner(this.state.id).call({ from: this.state.account })
+    // console.log("Assets: " + assets)
+    // console.log("Assets Size: " + assets.length)
+    console.log("Type Assets: " + xtype(assets))
+    // console.log("Type detail: " + xtype(detail))
+    
 
   }
 
