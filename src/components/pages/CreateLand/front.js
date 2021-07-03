@@ -17,16 +17,18 @@ class CreateLand extends Component {
   constructor(props) {
     super(props);
     this.addData = this.addData.bind(this);
+    this.viewLandAssets = this.viewLandAssets.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.state = {
       account: "",
       id: "",
-      owner: "",
-      landno: "",
-      price: "",
-      city: "",
-      measurement: "",
+      state: "",
+      district : "",
+      village: "",
+      surveyNumber: "",
+      CurrentOwner: "",
+      marketValue: "",
       open: false,
       openi: false,
       errori: "",
@@ -34,6 +36,24 @@ class CreateLand extends Component {
   }
 
 
+  async viewLandAssets(e) {
+    const web3 = window.web3
+
+    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+    const accounts = await webeProvider.eth.getAccounts()
+    this.setState({ account: accounts[0] })
+    console.log("Account: " + this.state.account);
+
+    const landCon = new web3.eth.Contract(contract.abi, "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535")
+    
+    const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
+    const detail = await landCon.methods.landInfoOwner(this.state.id).call({ from: this.state.account })
+    console.log("Assets: " + assets)
+    for(let i=0; i<7; i++){
+      console.log("detail: " + detail[i])
+    }
+
+  }
 
 
   async addData(e) {
@@ -47,13 +67,16 @@ class CreateLand extends Component {
       console.log("Account: " + this.state.account);
 
       const landCon = new web3.eth.Contract(contract.abi, "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535")
-      console.log("Owner: " + this.state.owner);
-      console.log("Land No: " + this.state.landno);
-      console.log("Land Value: " + this.state.price);
-      console.log("City: " + this.state.city);
-      console.log("Measurment: " + this.state.measurement);
+      
+      console.log("CurrentOwner: " + this.state.CurrentOwner);
+      console.log("state: " + this.state.state);
+      console.log("district: " + this.state.district);
+      console.log("village: " + this.state.village);
+      console.log("surveyNumber: " + this.state.surveyNumber);
+      console.log("id: " + this.state.id);
+      console.log("marketValue: " + this.state.marketValue);
 
-      await landCon.methods.createProperty(this.state.landno, this.state.price, this.state.owner, this.state.city, this.state.measurement).send({ from: this.state.account })
+      await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, this.state.CurrentOwner, this.state.marketValue, this.state.id).send({ from: this.state.account })
 
       this.setState({ open: true })
     }
@@ -104,47 +127,67 @@ class CreateLand extends Component {
                   <div className="input-areas">
                     <form>
                       <input
+                      style={{width:"520px"}}
                         className="footer-input"
-                        name="owner"
+                        name="CurrentOwner"
                         type="text"
                         placeholder="Owner Address"
-                        value={this.state.owner}
+                        value={this.state.CurrentOwner}
                         onChange={this.handleChange}
                       />
 
                       <input
                         className="footer-input"
-                        name="landno"
+                        name="state"
                         type="text"
-                        placeholder="Land No"
-                        value={this.state.landno}
+                        placeholder="State"
+                        value={this.state.state}
                         onChange={this.handleChange}
                       />
 
                       <input
                         className="footer-input"
-                        name="price"
+                        name="district"
                         type="text"
-                        placeholder="Land Value"
-                        value={this.state.price}
+                        placeholder="District"
+                        value={this.state.district}
                         onChange={this.handleChange}
                       />
 
                       <input
                         className="footer-input"
-                        name="city"
+                        name="village"
                         type="text"
-                        placeholder="City"
-                        value={this.state.city}
+                        placeholder="Village"
+                        value={this.state.village}
                         onChange={this.handleChange}
                       />
 
                       <input
                         className="footer-input"
-                        name="measurement"
+                        name="surveyNumber"
                         type="text"
-                        placeholder="Measurements"
-                        value={this.state.measurement}
+                        placeholder="Survey Number"
+                        value={this.state.surveyNumber}
+                        onChange={this.handleChange}
+                      />
+
+                       <input
+                        className="footer-input"
+                        name="marketValue"
+                        type="text"
+                        placeholder="Market Value"
+                        value={this.state.marketValue}
+                        onChange={this.handleChange}
+                      />
+
+
+                       <input
+                        className="footer-input"
+                        name="id"
+                        type="text"
+                        placeholder="ID"
+                        value={this.state.id}
                         onChange={this.handleChange}
                       />
 
@@ -159,9 +202,18 @@ class CreateLand extends Component {
 
                     </form>
 
+                    <Button
+                        buttonSize="btn--mobile"
+                        buttonColor="blue"
+                        onClick={this.viewLandAssets}
+                      >
+                        View Assets
+                      </Button>
+
+
                     <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
                       <Alert onClose={this.handleClose} severity="success">
-                        Land Created successfully. Owner: {this.state.owner}
+                        Land Created successfully. Owner: {this.state.CurrentOwner}
                       </Alert>
                     </Snackbar>
 
