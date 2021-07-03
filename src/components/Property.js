@@ -23,13 +23,13 @@ class Property extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      allAssets: [],
+      states: [],
+      district: [],
+      village: [],
+      survyNo: [],
+      status: [],  
       account: "",
-      itemsIds: [],
-      itemsOwner: [],
-      itemsValues: [],
-      itemsCity: [],
-      itemsMeasure: [],
-      itemsStatus: [],
     };
   }
 
@@ -42,72 +42,69 @@ class Property extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535");
+    const landCon = new web3.eth.Contract(contract.abi, "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535")
+    
+    const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
+    
+    this.state.allAssets = assets
 
-    const allLands = await landCon.methods.getAllDetails().call();
+    for(let i=1; i<=assets.length; i++){
+      
+      const detail = await landCon.methods.landInfoOwner(i).call({ from: this.state.account })
+      
+      this.state.states.push(detail[0])
+      this.state.district.push(detail[1])
+      this.state.village.push(detail[2])
+      this.state.survyNo.push(detail[3])
+      this.state.status.push(detail[4])
 
+      console.log("State: " + detail[0])
+      console.log("Destrict: " + detail[1])
+      console.log("Village: " + detail[2])
+      console.log("Status: " + detail[4])
 
-    for (const [index, value] of allLands["0"].entries()) {
-      this.state.itemsIds.push(value);
+      console.log("---------------------------------")
     }
 
-    for (const [index, value] of allLands["1"].entries()) {
-      this.state.itemsValues.push(value);
-    }
-
-    for (const [index, value] of allLands["2"].entries()) {
-      this.state.itemsOwner.push(value);
-    }
-
-    for (const [index, value] of allLands["3"].entries()) {
-      this.state.itemsCity.push(value);
-    }
-
-    for (const [index, value] of allLands["4"].entries()) {
-      this.state.itemsMeasure.push(value);
-    }
-
-    for (const [index, value] of allLands["5"].entries()) {
-      this.state.itemsStatus.push(value);
-    }
-
-  };
+  }
 
 
 
   render() {
 
-    const ids = this.state.itemsIds;
-    const address = this.state.itemsOwner;
-    const price = this.state.itemsValues;
-    const city = this.state.itemsCity;
-    const measure = this.state.itemsMeasure;
-    const status = this.state.itemsStatus;
-
-    const result2 = address.filter(item => item === this.state.account);
-
-    console.log(result2);
+    const dataAll = this.state.allAssets;
+    const statesAll = this.state.states;
+    const districtAll = this.state.district;
+    const villageAll = this.state.village;
+    const survyNoAll = this.state.survyNo;
+    const statusAll = this.state.status;
 
 
+    console.log("Survy : " + survyNoAll[0])
 
 
-    let ListTemplate;
+    let ListTemplate
 
-    if (status.length) {
-      ListTemplate = address.filter(item => item.includes(this.state.account)).map((value, index) =>
+    
+    if (dataAll.length) {
+
+      ListTemplate = dataAll.map((value, index) =>
+
 
         <Link to="/sign-up" className="pricing__container-card">
           <div className="pricing__container-cardInfo">
             <div className="icon">
               <BsXDiamondFill />
             </div>
-            <h3>Land</h3>
-            <h4>{price[index]} Ether</h4>
-            <p>value</p>
+            <h3>Land Info</h3>
+            <h4>{statesAll[index]}</h4>
+            <p>state</p>
             <ul className="pricing__container-features">
-              <li>Property No: {ids[index]}</li>
-              <li style={{fontSize:"10px"}}>City: {value}</li>
-              <li>Measurements: {measure[index]} sq/ft</li>
+              <li>Village: {villageAll[index]}</li>
+              <li style={{fontSize:"10px"}}>District: {districtAll[index]}</li>
+              {/* <li style={{fontSize:"10px"}}>Status: {statusAll[index].toString}</li> */}
+              <li>Survey No: {survyNoAll[index]} sq/ft</li>
+              {/* <li>Survey No: {survyNoAll[index]} sq/ft</li> */}
             </ul>
             <Button buttonSize="btn--wide" buttonColor="primary">
               Mark Available

@@ -59,7 +59,7 @@ class SearchProperty extends Component {
       village: [],
       survyNo: [],
       status: [],  
-      account: [],
+      account: "",
     };
   }
 
