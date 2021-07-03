@@ -84,15 +84,17 @@ class Property extends Component {
     const measure = this.state.itemsMeasure;
     const status = this.state.itemsStatus;
 
-    const result2 = address.filter(letter => letter.length > 4);
+    const result2 = address.filter(item => item === this.state.account);
 
     console.log(result2);
+
+
 
 
     let ListTemplate;
 
     if (status.length) {
-      ListTemplate = address.filter(item => item == this.state.account).map((value, index) =>
+      ListTemplate = address.filter(item => item.includes(this.state.account)).map((value, index) =>
 
         <Link to="/sign-up" className="pricing__container-card">
           <div className="pricing__container-cardInfo">
@@ -104,7 +106,7 @@ class Property extends Component {
             <p>value</p>
             <ul className="pricing__container-features">
               <li>Property No: {ids[index]}</li>
-              <li>City: {city[index]}</li>
+              <li style={{fontSize:"10px"}}>City: {value}</li>
               <li>Measurements: {measure[index]} sq/ft</li>
             </ul>
             <Button buttonSize="btn--wide" buttonColor="primary">
