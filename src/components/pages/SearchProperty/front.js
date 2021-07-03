@@ -12,6 +12,7 @@ import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
 import logo from "../SearchProperty/home.png";
 
+import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
 
 import xtype from 'xtypejs'
@@ -52,12 +53,13 @@ class SearchProperty extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemsIds: [],
-      itemsOwner: [],
-      itemsValues: [],
-      itemsCity: [],
-      itemsMeasure: [],
-      itemsStatus: [],
+      allAssets: [],
+      states: [],
+      district: [],
+      village: [],
+      survyNo: [],
+      status: [],  
+      account: [],
     };
   }
 
@@ -65,59 +67,37 @@ class SearchProperty extends Component {
 
 
   async loadBlockchainData() {
-    const web3 = window.web3;
-    const landCon = new web3.eth.Contract(
-      contract.abi,
-      "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535"
-    );
-    // const detail = await landCon.methods.properties(2001).call()
-    // console.log("Detail: " + detail['currOwner'])
+    const web3 = window.web3
 
-    const allLands = await landCon.methods.getAllDetails().call();
+    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+    const accounts = await webeProvider.eth.getAccounts()
+    this.setState({ account: accounts[0] })
+    console.log("Account: " + this.state.account);
 
-    for (const [index, value] of allLands["0"].entries()) {
-      this.state.itemsIds.push(
-        <h5 key={index}>
-          <font color="#266AFB">Land No: {value}</font>
-        </h5>
-      );
+    const landCon = new web3.eth.Contract(contract.abi, "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535")
+    
+    const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
+    
+    this.state.allAssets = assets
+
+    for(let i=1; i<=assets.length; i++){
+      
+      const detail = await landCon.methods.landInfoOwner(i).call({ from: this.state.account })
+      
+      this.state.states.push(detail[0])
+      this.state.district.push(detail[1])
+      this.state.village.push(detail[2])
+      this.state.survyNo.push(detail[3])
+      this.state.status.push(detail[4])
+
+      console.log("State: " + detail[0])
+      console.log("Destrict: " + detail[1])
+      console.log("Village: " + detail[2])
+      console.log("Status: " + detail[4])
+
+      console.log("---------------------------------")
     }
-
-    for (const [index, value] of allLands["1"].entries()) {
-      this.state.itemsValues.push(
-        <h5 key={index}>
-          <font color="#266AFB">Value: {value} Ether</font>
-        </h5>
-      );
-    }
-
-    for (const [index, value] of allLands["2"].entries()) {
-      this.state.itemsOwner.push(
-        <h5 key={index}>
-          <font color="#266AFB">Current Owner: {value}</font>
-        </h5>
-      );
-    }
-
-    for (const [index, value] of allLands["3"].entries()) {
-      this.state.itemsCity.push(
-        <h5 key={index}>
-          <font color="#266AFB">City: {value}</font>
-        </h5>
-      );
-    }
-
-    for (const [index, value] of allLands["4"].entries()) {
-      this.state.itemsMeasure.push(
-        <h5 key={index}>
-          <font color="#266AFB">Measurements: {value}</font>
-        </h5>
-      );
-    }
-
-    for (const [index, value] of allLands["5"].entries()) {
-      this.state.itemsStatus.push(value);
-    }
+ 
   }
 
 
@@ -129,32 +109,24 @@ class SearchProperty extends Component {
   }
 
   render() {
-    const ids = this.state.itemsIds;
-    const address = this.state.itemsOwner;
-    const price = this.state.itemsValues;
-    const city = this.state.itemsCity;
-    const measure = this.state.itemsMeasure;
-    const status = this.state.itemsStatus;
+    const dataAll = this.state.allAssets;
+    const statesAll = this.state.states;
+    const districtAll = this.state.district;
+    const villageAll = this.state.village;
+    const survyNoAll = this.state.survyNo;
+    const statusAll = this.state.status;
 
 
-
-
-    const result2 = status.filter(letter => letter.length > 4);
-
-    console.log(result2);
-
-
-    console.log("Type: " + xtype(this.state.itemsStatus))
-
+    console.log("Survy : " + survyNoAll[0])
+    
     const { classes } = this.props;
 
+    let ListTemplate
 
 
-    let ListTemplate;
+    if (dataAll.length) {
 
-    if (status.length) {
-
-      ListTemplate = status.filter(item => item == "Not-Available-For-Sale").map((value, index) =>
+      ListTemplate = dataAll.map((value, index) =>
 
         <Slide
           direction="left"
@@ -181,7 +153,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {ids[index]}
+                    {statesAll[index]}
                   </Typography>
 
                   <Typography
@@ -190,7 +162,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {address[index]}
+                    {this.state.account}
                   </Typography>
 
                   <Typography
@@ -199,7 +171,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {price[index]}
+                    {districtAll[index]}
                   </Typography>
 
                   <Typography
@@ -208,7 +180,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {city[index]}
+                    {villageAll[index]}
                   </Typography>
 
                   <Typography
@@ -217,7 +189,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {measure[index]}
+                    {survyNoAll[index]}
                   </Typography>
 
 
@@ -226,9 +198,8 @@ class SearchProperty extends Component {
                     variant="h6"
                     component="h5"
                     className={classes.TypoSt}
-                    key={index}
                   >
-                    {value}
+                    {statusAll[index]}
                   </Typography>
                 </CardContent>
                 <div
@@ -268,6 +239,7 @@ class SearchProperty extends Component {
           </div>
         </Slide>
 
+      
       );
     }
     else {
@@ -328,7 +300,25 @@ class SearchProperty extends Component {
                 </div>
               </div>
             </div>
-            {ListTemplate}
+          
+
+
+
+
+
+
+
+{ListTemplate}
+
+
+
+
+
+
+
+
+
+            
           </div>
         </div>
       </>
