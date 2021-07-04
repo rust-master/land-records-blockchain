@@ -127,8 +127,9 @@ class Property extends Component {
               </ul>
              
               
-              <Button buttonSize="btn--wide" buttonColor="primary"
-                onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
+              <Button buttonSize="btn--wide" buttonColor={statusAll[index] ?  "red" : "primary"}
+              disabled={statusAll[index]}
+              onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
                   { statusAll[index] ?  "Marked" : "Mark Available" }
               </Button>
 

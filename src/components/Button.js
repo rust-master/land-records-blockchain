@@ -11,6 +11,7 @@ export const Button = ({
   children,
   type,
   onClick,
+  disabled,
   buttonStyle,
   buttonSize,
   buttonColor
@@ -25,6 +26,7 @@ export const Button = ({
 
   return (
     <button
+      disabled={disabled}
       className={`btn ${checkButtonStyle} ${checkButtonSize} ${checkButtonColor}`}
       onClick={onClick}
       type={type}
