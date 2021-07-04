@@ -8,11 +8,7 @@ import { IconContext } from "react-icons/lib";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
 import Slide from "@material-ui/core/Slide";
-import xtype from 'xtypejs'
-
 import contract from "../build/contracts/Land.json";
-
-
 
 
 class Property extends Component {
@@ -31,7 +27,7 @@ class Property extends Component {
       survyNo: [],
       marketValue: [],
       measurements: [],
-      status: [],  
+      status: [],
       account: "",
     };
   }
@@ -46,15 +42,15 @@ class Property extends Component {
     console.log("Account: " + this.state.account);
 
     const landCon = new web3.eth.Contract(contract.abi, "0xD39f70CB4D2B86eb9370cE97876a8156f86155cf")
-    
-    const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
-    
+
+    const assets = await landCon.methods.viewAssets().call({ from: this.state.account })
+
     this.state.allAssets = assets
 
-    for(let i=1; i<=assets.length; i++){
-      
+    for (let i = 1; i <= assets.length; i++) {
+
       const detail = await landCon.methods.landInfoOwner(i).call({ from: this.state.account })
-      
+
       this.state.states.push(detail[0])
       this.state.district.push(detail[1])
       this.state.village.push(detail[2])
@@ -76,7 +72,6 @@ class Property extends Component {
   }
 
 
-
   render() {
 
     const dataAll = this.state.allAssets;
@@ -88,39 +83,35 @@ class Property extends Component {
     const marketValueAll = this.state.marketValue;
     const measurementsAll = this.state.measurements;
 
-
-    console.log("Survy : " + survyNoAll[0])
-
-
     let ListTemplate
 
-    
+
     if (dataAll.length) {
 
       ListTemplate = dataAll.map((value, index) =>
 
-      <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
+        <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-        <Link to="/sign-up" className="pricing__container-card"  style={{marginLeft:"10px"}}>
-          <div className="pricing__container-cardInfo">
-            <div className="icon">
-              <BsXDiamondFill />
+          <Link to="/sign-up" className="pricing__container-card" style={{ marginLeft: "10px" }}>
+            <div className="pricing__container-cardInfo">
+              <div className="icon">
+                <BsXDiamondFill />
+              </div>
+              <h3>Land Info</h3>
+              <h4>{marketValueAll[index]}</h4>
+              <p>Ether</p>
+              <ul className="pricing__container-features">
+                <li style={{ fontSize: "10px" }}>State: {statesAll[index]}</li>
+                <li style={{ fontSize: "10px" }}>District: {districtAll[index]}</li>
+                <li style={{ fontSize: "10px" }}>Village: {villageAll[index]}</li>
+                <li >Measurements: {measurementsAll[index]}</li>
+                <li>Survey No: {survyNoAll[index]}</li>
+              </ul>
+              <Button buttonSize="btn--wide" buttonColor="primary">
+                Mark Available
+              </Button>
             </div>
-            <h3>Land Info</h3>
-            <h4>{marketValueAll[index]}</h4>
-            <p>Ether</p>
-            <ul className="pricing__container-features">
-              <li style={{fontSize:"10px"}}>State: {statesAll[index]}</li>
-              <li style={{fontSize:"10px"}}>District: {districtAll[index]}</li>
-              <li style={{fontSize:"10px"}}>Village: {villageAll[index]}</li>
-              <li >Measurements: {measurementsAll[index]}</li>
-              <li>Survey No: {survyNoAll[index]}</li>
-            </ul>
-            <Button  buttonSize="btn--wide" buttonColor="primary">
-              Mark Available
-            </Button>
-          </div>
-        </Link>
+          </Link>
 
         </Slide>
       );
@@ -128,7 +119,6 @@ class Property extends Component {
     else {
       ListTemplate = <div > Wait for Records to Load</div>;
     }
-
 
 
     return (
