@@ -42,7 +42,7 @@ class Property extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535")
+    const landCon = new web3.eth.Contract(contract.abi, "0x85BCF032d114E48c537FbF22Dd740BA714803b08")
     
     const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
     
