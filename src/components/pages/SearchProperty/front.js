@@ -74,7 +74,7 @@ class SearchProperty extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x85BCF032d114E48c537FbF22Dd740BA714803b08")
+    const landCon = new web3.eth.Contract(contract.abi, "0xD39f70CB4D2B86eb9370cE97876a8156f86155cf")
     
     const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
     

@@ -31,6 +31,7 @@ class CreateLand extends Component {
       surveyNumber: "",
       CurrentOwner: "",
       marketValue: "",
+      measurement: "",
       open: false,
       openi: false,
       errori: "",
@@ -46,7 +47,7 @@ class CreateLand extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x85BCF032d114E48c537FbF22Dd740BA714803b08")
+    const landCon = new web3.eth.Contract(contract.abi, "0xD39f70CB4D2B86eb9370cE97876a8156f86155cf")
     
     const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
     
@@ -90,7 +91,7 @@ class CreateLand extends Component {
       console.log("id: " + this.state.id);
       console.log("marketValue: " + this.state.marketValue);
 
-      await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, this.state.CurrentOwner, this.state.marketValue, this.state.id).send({ from: this.state.account })
+      await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, this.state.CurrentOwner, this.state.marketValue, this.state.id, this.state.measurement).send({ from: this.state.account })
 
       this.setState({ open: true })
     }
@@ -195,6 +196,14 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
+                      <input
+                        className="footer-input"
+                        name="measurement"
+                        type="text"
+                        placeholder="Measurements"
+                        value={this.state.measurement}
+                        onChange={this.handleChange}
+                      />
 
                        <input
                         className="footer-input"
