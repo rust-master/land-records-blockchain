@@ -36,8 +36,8 @@ class Property extends Component {
 
 
 
-  myFunction(id,status) {
-    if(!status){
+  myFunction(id, status) {
+    if (!status) {
       console.log("ID : " + id)
     } else {
       console.log("Status : " + status)
@@ -125,12 +125,12 @@ class Property extends Component {
                 <li >Measurements: {measurementsAll[index]}</li>
                 <li>Survey No: {survyNoAll[index]}</li>
               </ul>
-             
-              
-              <Button buttonSize="btn--wide" buttonColor={statusAll[index] ?  "red" : "primary"}
-              disabled={statusAll[index]}
-              onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
-                  { statusAll[index] ?  "Marked" : "Mark Available" }
+
+
+              <Button buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
+                disabled={statusAll[index]}
+                onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
+                {statusAll[index] ? "Marked" : "Mark Available"}
               </Button>
 
             </div>
