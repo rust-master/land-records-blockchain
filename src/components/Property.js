@@ -7,6 +7,7 @@ import { GiCrystalize } from "react-icons/gi";
 import { IconContext } from "react-icons/lib";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
+import Slide from "@material-ui/core/Slide";
 import xtype from 'xtypejs'
 
 import contract from "../build/contracts/Land.json";
@@ -98,8 +99,9 @@ class Property extends Component {
 
       ListTemplate = dataAll.map((value, index) =>
 
+      <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-        <Link to="/sign-up" className="pricing__container-card">
+        <Link to="/sign-up" className="pricing__container-card"  style={{marginLeft:"10px"}}>
           <div className="pricing__container-cardInfo">
             <div className="icon">
               <BsXDiamondFill />
@@ -113,17 +115,18 @@ class Property extends Component {
               <li style={{fontSize:"10px"}}>Village: {villageAll[index]}</li>
               <li >Measurements: {measurementsAll[index]}</li>
               <li>Survey No: {survyNoAll[index]}</li>
-              {/* <li>Survey No: {survyNoAll[index]} sq/ft</li> */}
             </ul>
             <Button  buttonSize="btn--wide" buttonColor="primary">
               Mark Available
             </Button>
           </div>
         </Link>
+
+        </Slide>
       );
     }
     else {
-      ListTemplate = <div > Records Not Found </div>;
+      ListTemplate = <div > Wait for Records to Load</div>;
     }
 
 
