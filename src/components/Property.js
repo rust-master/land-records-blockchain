@@ -28,6 +28,8 @@ class Property extends Component {
       district: [],
       village: [],
       survyNo: [],
+      marketValue: [],
+      measurements: [],
       status: [],  
       account: "",
     };
@@ -57,11 +59,15 @@ class Property extends Component {
       this.state.village.push(detail[2])
       this.state.survyNo.push(detail[3])
       this.state.status.push(detail[4])
+      this.state.marketValue.push(detail[5])
+      this.state.measurements.push(detail[6])
 
       console.log("State: " + detail[0])
       console.log("Destrict: " + detail[1])
       console.log("Village: " + detail[2])
       console.log("Status: " + detail[4])
+      console.log("marketValue: " + detail[5])
+      console.log("measurements: " + detail[6])
 
       console.log("---------------------------------")
     }
@@ -78,6 +84,8 @@ class Property extends Component {
     const villageAll = this.state.village;
     const survyNoAll = this.state.survyNo;
     const statusAll = this.state.status;
+    const marketValueAll = this.state.marketValue;
+    const measurementsAll = this.state.measurements;
 
 
     console.log("Survy : " + survyNoAll[0])
@@ -97,16 +105,17 @@ class Property extends Component {
               <BsXDiamondFill />
             </div>
             <h3>Land Info</h3>
-            <h4>{statesAll[index]}</h4>
-            <p>state</p>
+            <h4>{marketValueAll[index]}</h4>
+            <p>Ether</p>
             <ul className="pricing__container-features">
-              <li>Village: {villageAll[index]}</li>
+              <li style={{fontSize:"10px"}}>State: {statesAll[index]}</li>
               <li style={{fontSize:"10px"}}>District: {districtAll[index]}</li>
-              {/* <li style={{fontSize:"10px"}}>Status: {statusAll[index].toString}</li> */}
-              <li>Survey No: {survyNoAll[index]} sq/ft</li>
+              <li style={{fontSize:"10px"}}>Village: {villageAll[index]}</li>
+              <li >Measurements: {measurementsAll[index]}</li>
+              <li>Survey No: {survyNoAll[index]}</li>
               {/* <li>Survey No: {survyNoAll[index]} sq/ft</li> */}
             </ul>
-            <Button buttonSize="btn--wide" buttonColor="primary">
+            <Button  buttonSize="btn--wide" buttonColor="primary">
               Mark Available
             </Button>
           </div>
