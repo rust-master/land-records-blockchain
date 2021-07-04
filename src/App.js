@@ -34,7 +34,7 @@ const TEXTS = [
 
 class App extends Component {
   componentDidMount() {
-    this.intervalId = setInterval(this.timer.bind(this), 1000);
+    this.intervalId = setInterval(this.timer.bind(this), 400);
   }
 
   async componentWillMount() {

@@ -11,6 +11,7 @@ import Slide from "@material-ui/core/Slide";
 import contract from "../build/contracts/Land.json";
 
 
+
 class Property extends Component {
 
   componentWillMount() {
@@ -21,6 +22,7 @@ class Property extends Component {
     super(props);
     this.state = {
       allAssets: [],
+      ids: [],
       states: [],
       district: [],
       village: [],
@@ -30,6 +32,12 @@ class Property extends Component {
       status: [],
       account: "",
     };
+  }
+
+
+
+  myFunction(d) {
+    console.log("ID : " + d)
   }
 
 
@@ -46,6 +54,11 @@ class Property extends Component {
     const assets = await landCon.methods.viewAssets().call({ from: this.state.account })
 
     this.state.allAssets = assets
+    for (let i = 0; i <= assets.length; i++) {
+      this.state.ids.push(assets[i])
+
+    }
+
 
     for (let i = 1; i <= assets.length; i++) {
 
@@ -66,6 +79,7 @@ class Property extends Component {
       console.log("marketValue: " + detail[5])
       console.log("measurements: " + detail[6])
 
+
       console.log("---------------------------------")
     }
 
@@ -82,9 +96,10 @@ class Property extends Component {
     const statusAll = this.state.status;
     const marketValueAll = this.state.marketValue;
     const measurementsAll = this.state.measurements;
+    const idsAll = this.state.ids;
+
 
     let ListTemplate
-
 
     if (dataAll.length) {
 
@@ -92,7 +107,7 @@ class Property extends Component {
 
         <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-          <Link to="/sign-up" className="pricing__container-card" style={{ marginLeft: "10px" }}>
+          <div className="pricing__container-card" style={{ marginLeft: "10px" }}>
             <div className="pricing__container-cardInfo">
               <div className="icon">
                 <BsXDiamondFill />
@@ -107,19 +122,22 @@ class Property extends Component {
                 <li >Measurements: {measurementsAll[index]}</li>
                 <li>Survey No: {survyNoAll[index]}</li>
               </ul>
-              <Button buttonSize="btn--wide" buttonColor="primary">
+
+              <Button buttonSize="btn--wide" buttonColor="primary"
+                onClick={this.myFunction.bind(this, idsAll[index])} >
                 Mark Available
               </Button>
+
             </div>
-          </Link>
+          </div>
 
         </Slide>
+
       );
     }
     else {
-      ListTemplate = <div > Wait for Records to Load</div>;
+      ListTemplate = <div>Records Not Found</div>;
     }
-
 
     return (
       <IconContext.Provider value={{ color: "#fff", size: 64 }}>
@@ -129,7 +147,6 @@ class Property extends Component {
             <div className="pricing__container">
 
               {ListTemplate}
-
 
             </div>
           </div>

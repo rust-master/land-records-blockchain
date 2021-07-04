@@ -17,7 +17,7 @@
 
 .pricing__container-card:nth-child(2) {
   transform: scale(1.05);
-  background: #242424;
+  background: #0660e9;
 }
 
 .pricing__container-card:hover {
@@ -44,7 +44,7 @@
 }
 
 .pricing__heading {
-  color: #1c2237;
+  color: #EF8E19;
   margin-bottom: 24px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .pricing__container-features {
-  margin: 16px 0 32px;
+  margin: 0px 0 32px;
   list-style: none;
 }
 
