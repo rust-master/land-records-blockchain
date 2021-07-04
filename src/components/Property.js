@@ -36,8 +36,12 @@ class Property extends Component {
 
 
 
-  myFunction(d) {
-    console.log("ID : " + d)
+  myFunction(id,status) {
+    if(!status){
+      console.log("ID : " + id)
+    } else {
+      console.log("Status : " + status)
+    }
   }
 
 
@@ -98,7 +102,6 @@ class Property extends Component {
     const measurementsAll = this.state.measurements;
     const idsAll = this.state.ids;
 
-
     let ListTemplate
 
     if (dataAll.length) {
@@ -122,10 +125,11 @@ class Property extends Component {
                 <li >Measurements: {measurementsAll[index]}</li>
                 <li>Survey No: {survyNoAll[index]}</li>
               </ul>
-
+             
+              
               <Button buttonSize="btn--wide" buttonColor="primary"
-                onClick={this.myFunction.bind(this, idsAll[index])} >
-                Mark Available
+                onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
+                  { statusAll[index] ?  "Marked" : "Mark Available" }
               </Button>
 
             </div>
