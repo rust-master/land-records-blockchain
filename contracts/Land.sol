@@ -62,8 +62,8 @@ contract Land{
         return true;
     }
     //to view details of land for the owner
-    function landInfoOwner(uint id) public view returns(string memory,string memory,string memory,uint256,bool,address,reqStatus){
-        return(land[id].state,land[id].district,land[id].village,land[id].surveyNumber,land[id].isAvailable,land[id].requester,land[id].requestStatus);
+    function landInfoOwner(uint id) public view returns(string memory,string memory,string memory,uint256,bool,uint){
+        return(land[id].state,land[id].district,land[id].village,land[id].surveyNumber,land[id].isAvailable,land[id].marketValue);
     }
         //to view details of land for the buyer
         function landInfoUser(uint id) public view returns(address,uint,bool,address,reqStatus){
