@@ -81,7 +81,7 @@ class CreateLand extends Component {
       this.setState({ account: accounts[0] })
       console.log("Account: " + this.state.account);
 
-      const landCon = new web3.eth.Contract(contract.abi, "0x9113E01de9765d9A56c7E8C932a524fBB4dE5535")
+      const landCon = new web3.eth.Contract(contract.abi, "0xD39f70CB4D2B86eb9370cE97876a8156f86155cf")
       
       console.log("CurrentOwner: " + this.state.CurrentOwner);
       console.log("state: " + this.state.state);
@@ -90,6 +90,7 @@ class CreateLand extends Component {
       console.log("surveyNumber: " + this.state.surveyNumber);
       console.log("id: " + this.state.id);
       console.log("marketValue: " + this.state.marketValue);
+      console.log("measurement: " + this.state.measurement);
 
       await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, this.state.CurrentOwner, this.state.marketValue, this.state.id, this.state.measurement).send({ from: this.state.account })
 
