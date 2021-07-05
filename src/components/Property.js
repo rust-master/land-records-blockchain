@@ -10,8 +10,6 @@ import Web3 from "web3";
 import Slide from "@material-ui/core/Slide";
 import contract from "../build/contracts/Land.json";
 
-
-
 class Property extends Component {
 
   componentWillMount() {
@@ -125,7 +123,6 @@ class Property extends Component {
                 <li >Measurements: {measurementsAll[index]}</li>
                 <li>Survey No: {survyNoAll[index]}</li>
               </ul>
-
 
               <Button buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
                 disabled={statusAll[index]}
