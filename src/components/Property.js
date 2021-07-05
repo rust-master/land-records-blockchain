@@ -58,7 +58,6 @@ class Property extends Component {
     this.state.allAssets = assets
     for (let i = 0; i <= assets.length; i++) {
       this.state.ids.push(assets[i])
-
     }
 
 
@@ -81,10 +80,8 @@ class Property extends Component {
       console.log("marketValue: " + detail[5])
       console.log("measurements: " + detail[6])
 
-
       console.log("---------------------------------")
     }
-
   }
 
 
