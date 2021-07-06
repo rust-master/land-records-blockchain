@@ -17,7 +17,7 @@ class UserSignIn extends Component {
     super(props);
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    
+
     this.handleClose = this.handleClose.bind(this);
     this.state = {
       email: "",
@@ -39,11 +39,11 @@ class UserSignIn extends Component {
         window.location = "/";
       })
       .catch((err) => {
-       this.setState({ errori: "Login Failed" })
+        this.setState({ errori: "Login Failed" })
         console.log(err);
         this.setState({ openi: true })
       });
-      
+
   }
 
   handleChange(e) {
@@ -119,7 +119,7 @@ class UserSignIn extends Component {
 
                     <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
                       <Alert onClose={this.handleClose} severity="error">
-                       Error: {this.state.errori}
+                        Error: {this.state.errori}
                       </Alert>
                     </Snackbar>
 
@@ -127,7 +127,7 @@ class UserSignIn extends Component {
                     <Link to="/goverment-login" className="btn-link" >
                       <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red">
-                        Government Sign In
+                          Government Sign In
                         </Button>
                       </div>
                     </Link>
