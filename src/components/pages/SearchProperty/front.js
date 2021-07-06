@@ -59,7 +59,7 @@ class SearchProperty extends Component {
       district: [],
       village: [],
       survyNo: [],
-      status: [],  
+      status: [],
       account: "",
     };
   }
@@ -76,9 +76,9 @@ class SearchProperty extends Component {
     console.log("Account: " + this.state.account);
 
     const landCon = new web3.eth.Contract(contract.abi, "0xD39f70CB4D2B86eb9370cE97876a8156f86155cf")
-    
-    const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
-    
+
+    const assets = await landCon.methods.viewAssets().call({ from: this.state.account })
+
     this.state.allAssets = assets
 
     for (let i = 0; i <= assets.length; i++) {
@@ -86,10 +86,10 @@ class SearchProperty extends Component {
     }
 
 
-    for(let i=1; i<=assets.length; i++){
-      
+    for (let i = 0; i <= assets.length; i++) {
+
       const detail = await landCon.methods.landInfoOwner(this.state.ids[i]).call({ from: this.state.account })
-      
+
       this.state.states.push(detail[0])
       this.state.district.push(detail[1])
       this.state.village.push(detail[2])
@@ -103,7 +103,7 @@ class SearchProperty extends Component {
 
       console.log("---------------------------------")
     }
- 
+
   }
 
 
@@ -124,7 +124,7 @@ class SearchProperty extends Component {
 
 
     console.log("Survy : " + survyNoAll[0])
-    
+
     const { classes } = this.props;
 
     let ListTemplate
@@ -245,7 +245,7 @@ class SearchProperty extends Component {
           </div>
         </Slide>
 
-      
+
       );
     }
     else {
@@ -306,15 +306,6 @@ class SearchProperty extends Component {
                 </div>
               </div>
             </div>
-          
-
-
-
-
-
-
-
-{ListTemplate}
 
 
 
@@ -323,8 +314,17 @@ class SearchProperty extends Component {
 
 
 
+            {ListTemplate}
 
-            
+
+
+
+
+
+
+
+
+
           </div>
         </div>
       </>
