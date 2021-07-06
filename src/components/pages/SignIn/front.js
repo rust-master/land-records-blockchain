@@ -22,7 +22,6 @@ class UserSignIn extends Component {
     this.state = {
       email: "",
       password: "",
-      open: false,
       openi: false,
       errori: "",
     };
@@ -34,7 +33,6 @@ class UserSignIn extends Component {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((u) => {
-        this.setState({ open: true })
         console.log(u);
         window.location = "/";
       })
@@ -109,13 +107,6 @@ class UserSignIn extends Component {
                       </Button>
 
                     </form>
-
-
-                    <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
-                      <Alert onClose={this.handleClose} severity="success">
-                        Login successfully. Email: {this.state.email}
-                      </Alert>
-                    </Snackbar>
 
                     <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
                       <Alert onClose={this.handleClose} severity="error">
