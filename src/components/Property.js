@@ -61,9 +61,9 @@ class Property extends Component {
     }
 
 
-    for (let i = 1; i <= assets.length; i++) {
+    for (let i = 0; i <= assets.length; i++) {
 
-      const detail = await landCon.methods.landInfoOwner(i).call({ from: this.state.account })
+      const detail = await landCon.methods.landInfoOwner(this.state.ids[i]).call({ from: this.state.account })
 
       this.state.states.push(detail[0])
       this.state.district.push(detail[1])
