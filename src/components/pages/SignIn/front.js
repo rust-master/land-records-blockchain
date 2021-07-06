@@ -17,8 +17,8 @@ class UserSignIn extends Component {
     super(props);
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
     this.handleClose = this.handleClose.bind(this);
+    
     this.state = {
       email: "",
       password: "",
