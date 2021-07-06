@@ -3,6 +3,13 @@ import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import fire from "../fire";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 
 class UserSignIn extends Component {
 
@@ -13,6 +20,9 @@ class UserSignIn extends Component {
     this.state = {
       email: "",
       password: "",
+      open: false,
+      openi: false,
+      errori: "",
     };
   }
 
@@ -22,12 +32,16 @@ class UserSignIn extends Component {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((u) => {
+        this.setState({ open: true })
         console.log(u);
         window.location = "/";
       })
       .catch((err) => {
+       this.setState({ errori: "Login Failed" })
         console.log(err);
+        this.setState({ openi: true })
       });
+      
   }
 
   handleChange(e) {
@@ -84,6 +98,21 @@ class UserSignIn extends Component {
                       </Button>
 
                     </form>
+
+
+                    <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+                      <Alert onClose={this.handleClose} severity="success">
+                        Login successfully. Email: {this.state.email}
+                      </Alert>
+                    </Snackbar>
+
+                    <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
+                      <Alert onClose={this.handleClose} severity="error">
+                       Error: {this.state.errori}
+                      </Alert>
+                    </Snackbar>
+
+
                     <Link to="/goverment-login" className="btn-link" >
                       <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red">
