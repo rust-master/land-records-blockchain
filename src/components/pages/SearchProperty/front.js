@@ -130,7 +130,7 @@ class SearchProperty extends Component {
     let ListTemplate
 
 
-    if (dataAll.length) {
+    if (statesAll.length) {
 
       ListTemplate = dataAll.map((value, index) =>
 
