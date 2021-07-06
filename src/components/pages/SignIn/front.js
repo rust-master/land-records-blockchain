@@ -17,6 +17,8 @@ class UserSignIn extends Component {
     super(props);
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    
+    this.handleClose = this.handleClose.bind(this);
     this.state = {
       email: "",
       password: "",
@@ -48,6 +50,15 @@ class UserSignIn extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  }
+
+  handleClose(e, r) {
+    if (r === 'clickaway') {
+      return;
+    }
+
+    this.setState({ open: false })
+    this.setState({ openi: false })
   }
 
   render() {
