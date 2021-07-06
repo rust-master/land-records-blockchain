@@ -18,7 +18,7 @@ class UserSignIn extends Component {
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    
+
     this.state = {
       email: "",
       password: "",
@@ -113,7 +113,6 @@ class UserSignIn extends Component {
                         Error: {this.state.errori}
                       </Alert>
                     </Snackbar>
-
 
                     <Link to="/goverment-login" className="btn-link" >
                       <div class="btnGoverment">
