@@ -39,6 +39,7 @@ class Property extends Component {
       status: [],
       account: "",
       open: false,
+      openi: false,
     };
   }
 
@@ -59,6 +60,7 @@ class Property extends Component {
 
     } else {
       console.log("Status : " + status)
+      this.setState({ openi: true })
     }
   }
 
@@ -79,7 +81,6 @@ class Property extends Component {
     for (let i = 0; i <= assets.length; i++) {
       this.state.ids.push(assets[i])
     }
-
 
     for (let i = 0; i <= assets.length; i++) {
 
@@ -110,6 +111,7 @@ class Property extends Component {
     }
 
     this.setState({ open: false })
+    this.setState({ openi: false })
   }
 
 
@@ -178,6 +180,13 @@ class Property extends Component {
               <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
                       <Alert onClose={this.handleClose} severity="success">
                         Land Marked successfully.
+                      </Alert>
+                    </Snackbar>
+
+
+                    <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
+                      <Alert onClose={this.handleClose} severity="error">
+                        {"Already Marked"}
                       </Alert>
                     </Snackbar>
 
