@@ -136,7 +136,7 @@ class Property extends Component {
 
         <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-          <div className="pricing__container-card" style={{ marginLeft: "10px" }}>
+          <div className="pricing__container-card">
             <div className="pricing__container-cardInfo">
               <div className="icon">
                 <BsXDiamondFill />
