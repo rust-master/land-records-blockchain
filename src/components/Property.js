@@ -178,17 +178,17 @@ class Property extends Component {
               {ListTemplate}
 
               <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
-                      <Alert onClose={this.handleClose} severity="success">
-                        Land Marked successfully.
-                      </Alert>
-                    </Snackbar>
+                <Alert onClose={this.handleClose} severity="success">
+                  Land Marked successfully.
+                </Alert>
+              </Snackbar>
 
 
-                    <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
-                      <Alert onClose={this.handleClose} severity="error">
-                        {"Already Marked"}
-                      </Alert>
-                    </Snackbar>
+              <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
+                <Alert onClose={this.handleClose} severity="error">
+                  {"Already Marked"}
+                </Alert>
+              </Snackbar>
 
 
             </div>
