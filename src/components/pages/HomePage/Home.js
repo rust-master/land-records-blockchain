@@ -6,13 +6,13 @@ import CardView from '../../Comps/CardsView';
 
 function Home() {
   return (
-    <>
+    <div>
       <CardView />
       <HeroSection {...homeObjOne} />
       <HeroSection {...homeObjThree} />
       <HeroSection {...homeObjTwo} />
       <HeroSection {...homeObjFour} />
-    </>
+    </div>
   );
 }
 

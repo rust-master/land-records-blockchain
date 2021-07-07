@@ -5,10 +5,10 @@ import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
 
 function Requests() {
   return (
-    <>
+    <div>
       <FrontSection {...homeObjOne} />
       <FrontSection {...homeObjTwo} />
-    </>
+    </div>
   );
 }
 

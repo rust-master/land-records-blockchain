@@ -252,7 +252,7 @@ class SearchProperty extends Component {
     }
 
     return (
-      <>
+      <div>
         <div
           className={false ? "home__hero-section" : "home__hero-section darkBg"}
         >
@@ -308,7 +308,7 @@ class SearchProperty extends Component {
 
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
@@ -329,7 +329,7 @@ function FrontSection({
   }
 
   return (
-    <>
+    <div>
       <div
         className={lightBg ? "home__hero-section" : "home__hero-section darkBg"}
       >
@@ -363,7 +363,7 @@ function FrontSection({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

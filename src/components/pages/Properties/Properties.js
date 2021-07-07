@@ -6,11 +6,11 @@ import Property from '../../Property';
 
 function Properties() {
   return (
-    <>
+    <div>
       <Property />
       <HeroSection {...homeObjOne} />
       <HeroSection {...homeObjThree} />
-    </>
+    </div>
   );
 }
 

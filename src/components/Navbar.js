@@ -95,7 +95,7 @@ function Navbar() {
 
   function Home(props) {
     return (
-      <>
+      <div>
         <IconContext.Provider value={{ color: "#fff" }}>
           <nav className="navbar">
             <div className="navbar-container container">
@@ -194,13 +194,13 @@ function Navbar() {
             </div>
           </nav>
         </IconContext.Provider>
-      </>
+      </div>
     );
   }
 
   function LoginSignUp(props) {
     return (
-      <>
+      <div>
         <IconContext.Provider value={{ color: "#fff" }}>
           <nav className="navbar">
             <div className="navbar-container container">
@@ -262,7 +262,7 @@ function Navbar() {
             </div>
           </nav>
         </IconContext.Provider>
-      </>
+      </div>
     );
   }
 }

@@ -5,10 +5,10 @@ import { homeObjOne, homeObjThree, } from './Data';
 
 function SearchProperty() {
   return (
-    <>
+    <div>
 
       <FrontSection {...homeObjThree} />
-    </>
+    </div>
   );
 }
 

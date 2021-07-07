@@ -17,7 +17,7 @@ function HeroSection({
   imgStart
 }) {
   return (
-    <>
+    <div>
       <div
         className={lightBg ? 'home__hero-section' : 'home__hero-section darkBg'}
       >
@@ -61,7 +61,7 @@ function HeroSection({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
