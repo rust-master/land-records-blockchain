@@ -57,6 +57,7 @@ class Property extends Component {
       await landCon.methods.makeAvailable(id).send({ from: this.state.account })
 
       this.setState({ open: true })
+      loadBlockchainData()
 
     } else {
       console.log("Status : " + status)
