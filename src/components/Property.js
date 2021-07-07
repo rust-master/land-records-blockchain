@@ -37,15 +37,13 @@ class Property extends Component {
   async myFunction(id, status) {
     if (!status) {
       console.log("ID : " + id)
-    console.log("Account: " + this.state.account)
+      console.log("Account: " + this.state.account)
 
       const web3 = window.web3
-     
-      const landCon = new web3.eth.Contract(contract.abi, "0xD39f70CB4D2B86eb9370cE97876a8156f86155cf")
-  
-  
-    await landCon.methods.makeAvailable(id).send({ from: this.state.account })
 
+      const landCon = new web3.eth.Contract(contract.abi, "0xD39f70CB4D2B86eb9370cE97876a8156f86155cf")
+
+      await landCon.methods.makeAvailable(id).send({ from: this.state.account })
 
     } else {
       console.log("Status : " + status)
