@@ -251,7 +251,6 @@ class SearchProperty extends Component {
       ListTemplate = <div > Records Not Found </div>;
     }
 
-
     return (
       <>
         <div
