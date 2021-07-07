@@ -307,23 +307,7 @@ class SearchProperty extends Component {
               </div>
             </div>
 
-
-
-
-
-
-
-
             {ListTemplate}
-
-
-
-
-
-
-
-
-
 
           </div>
         </div>
