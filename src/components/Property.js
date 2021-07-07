@@ -82,7 +82,6 @@ class Property extends Component {
       this.state.ids.push(assets[i])
     }
 
-    const trevId = this.state.ids
 
     this.state.allAssets.map(async (value, index) =>
     {
