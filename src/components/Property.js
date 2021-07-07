@@ -8,7 +8,15 @@ import { IconContext } from "react-icons/lib";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
 import Slide from "@material-ui/core/Slide";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import contract from "../build/contracts/Land.json";
+
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 
 class Property extends Component {
 
@@ -18,6 +26,7 @@ class Property extends Component {
 
   constructor(props) {
     super(props);
+    this.handleClose = this.handleClose.bind(this);
     this.state = {
       allAssets: [],
       ids: [],
@@ -29,6 +38,7 @@ class Property extends Component {
       measurements: [],
       status: [],
       account: "",
+      open: false,
     };
   }
 
@@ -44,6 +54,8 @@ class Property extends Component {
       const landCon = new web3.eth.Contract(contract.abi, "0xD39f70CB4D2B86eb9370cE97876a8156f86155cf")
 
       await landCon.methods.makeAvailable(id).send({ from: this.state.account })
+
+      this.setState({ open: true })
 
     } else {
       console.log("Status : " + status)
@@ -90,6 +102,14 @@ class Property extends Component {
 
       console.log("---------------------------------")
     }
+  }
+
+  handleClose(e, r) {
+    if (r === 'clickaway') {
+      return;
+    }
+
+    this.setState({ open: false })
   }
 
 
@@ -154,6 +174,13 @@ class Property extends Component {
             <div className="pricing__container">
 
               {ListTemplate}
+
+              <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+                      <Alert onClose={this.handleClose} severity="success">
+                        Land Marked successfully.
+                      </Alert>
+                    </Snackbar>
+
 
             </div>
           </div>
