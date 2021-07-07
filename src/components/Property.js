@@ -86,7 +86,7 @@ class Property extends Component {
 
     this.state.allAssets.map(async (value, index) =>
     {
-      const detail = await landCon.methods.landInfoOwner(trevId[index]).call({ from: this.state.account })
+      const detail = await landCon.methods.landInfoOwner(this.state.ids[index]).call({ from: this.state.account })
 
       this.state.states.push(detail[0])
       this.state.district.push(detail[1])
