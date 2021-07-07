@@ -82,9 +82,11 @@ class Property extends Component {
       this.state.ids.push(assets[i])
     }
 
-    for (let i = 0; i <= assets.length; i++) {
+    const trevId = this.state.ids
 
-      const detail = await landCon.methods.landInfoOwner(this.state.ids[i]).call({ from: this.state.account })
+    this.state.allAssets.map(async (value, index) =>
+    {
+      const detail = await landCon.methods.landInfoOwner(trevId[index]).call({ from: this.state.account })
 
       this.state.states.push(detail[0])
       this.state.district.push(detail[1])
@@ -102,7 +104,7 @@ class Property extends Component {
       console.log("measurements: " + detail[6])
 
       console.log("---------------------------------")
-    }
+    })
   }
 
   handleClose(e, r) {
