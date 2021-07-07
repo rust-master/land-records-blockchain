@@ -17,6 +17,7 @@ contract Land{
 
     }
     
+    uint[] public propertiesIDs;
 
     //request status
     enum reqStatus {Default,pending,reject,approved}
@@ -61,6 +62,7 @@ contract Land{
         land[id].marketValue = _marketValue;
         land[id].measurement = _measurement;
         profile[_OwnerAddress].assetList.push(id);
+        propertiesIDs.push(id);
         return true;
     }
     //to view details of land for the owner
@@ -105,7 +107,25 @@ contract Land{
     function makeAvailable(uint property)public{
         require(land[property].CurrentOwner == msg.sender);
         land[property].isAvailable=true;
-    } 
+    }
+
+    
+    // Get all the lands ids.
+	 function getAllLands() view public returns (uint[] memory) {
+	     return (propertiesIDs);
+	 }
+	 
+    
+    // show marked Available
+    function viewMarkded(uint id) public view returns(string memory,string memory,string memory,uint256,bool,uint,string memory){
+        if(land[id].isAvailable){
+            return(land[id].state,land[id].district,land[id].village,land[id].surveyNumber,land[id].isAvailable,land[id].marketValue,land[id].measurement);
+        }
+    }
+    
+
+
+
     //buying the approved property
     function buyProperty(uint property)public payable{
         require(land[property].requestStatus == reqStatus.approved);
