@@ -86,9 +86,9 @@ class SearchProperty extends Component {
     }
 
 
-    for (let i = 0; i <= assets.length; i++) {
+    this.state.allAssets.map(async (value, index) => {
 
-      const detail = await landCon.methods.landInfoOwner(this.state.ids[i]).call({ from: this.state.account })
+      const detail = await landCon.methods.landInfoOwner(this.state.ids[index]).call({ from: this.state.account })
 
       this.state.states.push(detail[0])
       this.state.district.push(detail[1])
@@ -102,8 +102,7 @@ class SearchProperty extends Component {
       console.log("Status: " + detail[4])
 
       console.log("---------------------------------")
-    }
-
+    })
   }
 
 
@@ -251,7 +250,6 @@ class SearchProperty extends Component {
     else {
       ListTemplate = <div > Records Not Found </div>;
     }
-
 
 
     return (
