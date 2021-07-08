@@ -61,7 +61,7 @@ class SearchProperty extends Component {
       survyNo: [],
       status: [],
       account: "",
-      counter: 0,
+      counter: [],
     };
   }
 
@@ -105,7 +105,7 @@ class SearchProperty extends Component {
         console.log("Status: " + detail[4])
   
         console.log("---------------------------------")
-        this.setState({counter : this.state.counter + 1})
+        this.state.counter.push(this.state.counter + 1)
       }
     })
   }
@@ -213,6 +213,7 @@ class SearchProperty extends Component {
                   </Typography>
                 </CardContent>
                 <div
+          
                   style={{
                     margin: "20px auto 0 auto;",
                     display: "block",
