@@ -75,7 +75,7 @@ class SearchProperty extends Component {
 
 
 
-  async loadBlockchainData(serachKey) {
+  async loadBlockchainData(searchKey) {
     const web3 = window.web3
 
     const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
@@ -90,13 +90,13 @@ class SearchProperty extends Component {
     this.state.allIDs = allLandsIDs
     console.log("IDs", allLandsIDs)
 
-    console.log("Search Key: " + serachKey)
+    console.log("Search Key: " + searchKey)
 
     this.state.allIDs.map(async (value, index) => {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if (detail[3] && serachKey == detail[0] ) {
+      if (detail[3] && searchKey == detail[0] ) {
         this.state.states.push(detail[0])
         this.state.owners.push(detail[1])
         this.state.district.push(detail[2])
