@@ -58,12 +58,12 @@ class SearchProperty extends Component {
       states: [],
       district: [],
       village: [],
-      survyNo: [],
       status: [],
-      account: "",
-      counter: [],
-    };
+      owners:[],
+      marketValue:[],
+      measure:[],
   }
+}
 
 
   requestToBuy(id) {
@@ -81,7 +81,7 @@ class SearchProperty extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0xA0aa075D4676893EDcF4bFfc7Ad7D29E69f409d8")
+    const landCon = new web3.eth.Contract(contract.abi, "0xac9848f7Bf533A3A3f8617dCC203cEbC49686c3d")
 
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
 
@@ -93,24 +93,23 @@ class SearchProperty extends Component {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if (detail[4]) {
+      if (detail[3]) {
         this.state.states.push(detail[0])
-        this.state.district.push(detail[1])
-        this.state.village.push(detail[2])
-        this.state.survyNo.push(detail[3])
-        this.state.status.push(detail[4])
-        this.state.status.push(detail[5])
+        this.state.owners.push(detail[1])
+        this.state.district.push(detail[2])
+        this.state.status.push(detail[3])
+        this.state.marketValue.push(detail[4])
+        this.state.measure.push(detail[5])
         this.state.ids.push(detail[6])
 
         console.log("State: " + detail[0])
-        console.log("Destrict: " + detail[1])
-        console.log("Village: " + detail[2])
+        console.log("Owner: " + detail[1])
+        console.log("District: " + detail[2])
         console.log("Status: " + detail[4])
         console.log("Mesaurment: " + detail[5])
         console.log("ID: " + detail[6])
 
         console.log("---------------------------------")
-        this.state.counter.push(this.state.counter + 1)
       }
     })
   }
@@ -124,15 +123,14 @@ class SearchProperty extends Component {
   }
 
   render() {
-    const dataAll = this.state.counter;
+    const dataAll = this.state.ids;
     const statesAll = this.state.states;
     const districtAll = this.state.district;
-    const villageAll = this.state.village;
-    const survyNoAll = this.state.survyNo;
+    const ownersAll = this.state.owners;
+    const measureAll = this.state.measure;
+    const marketValueAll = this.state.marketValue;
     const statusAll = this.state.status;
 
-
-    // console.log("Survy : " + survyNoAll[0])
 
     const { classes } = this.props;
 
@@ -152,7 +150,7 @@ class SearchProperty extends Component {
         >
           <div className={classes.main}>
             <Card className={classes.root1}
-              onClick={this.requestToBuy.bind(this, survyNoAll[index])}
+              onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
               <CardActionArea>
                 {/* <CardMedia
@@ -179,7 +177,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {this.state.account}
+                    {ownersAll[index]}
                   </Typography>
 
                   <Typography
@@ -197,7 +195,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {villageAll[index]}
+                    {measureAll[index]}
                   </Typography>
 
                   <Typography
@@ -206,7 +204,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {survyNoAll[index]}
+                    {marketValueAll[index]}
                   </Typography>
 
 
