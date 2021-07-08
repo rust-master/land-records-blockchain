@@ -93,7 +93,7 @@ class SearchProperty extends Component {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      //if (detail[4]) {
+      if (detail[4]) {
         this.state.states.push(detail[0])
         this.state.district.push(detail[1])
         this.state.village.push(detail[2])
@@ -111,7 +111,7 @@ class SearchProperty extends Component {
 
         console.log("---------------------------------")
         this.state.counter.push(this.state.counter + 1)
-      //}
+      }
     })
   }
 
