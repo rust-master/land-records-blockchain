@@ -96,7 +96,7 @@ class SearchProperty extends Component {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if (detail[3] && searchKey == detail[0]) {
+      if (detail[3] && searchKey == detail[0] && this.state.account != detail[1] ) {
         this.state.states.push(detail[0])
         this.state.owners.push(detail[1])
         this.state.district.push(detail[2])
