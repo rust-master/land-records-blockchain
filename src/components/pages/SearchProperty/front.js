@@ -53,7 +53,7 @@ class SearchProperty extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allIDs:[],
+      allIDs: [],
       ids: [],
       states: [],
       district: [],
@@ -66,8 +66,8 @@ class SearchProperty extends Component {
   }
 
 
-  requestToBuy(id){
-    console.log("--requestToBuy-- " , id)
+  requestToBuy(id) {
+    console.log("--requestToBuy-- ", id)
   }
 
 
@@ -86,7 +86,7 @@ class SearchProperty extends Component {
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
 
     this.state.allIDs = allLandsIDs
-    console.log("IDs" , allLandsIDs)
+    console.log("IDs", allLandsIDs)
 
     // for (let i = 0; i <= assets.length; i++) {
     //   this.state.ids.push(assets[i])
@@ -97,18 +97,18 @@ class SearchProperty extends Component {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if(detail[4]){
+      if (detail[4]) {
         this.state.states.push(detail[0])
         this.state.district.push(detail[1])
         this.state.village.push(detail[2])
         this.state.survyNo.push(detail[3])
         this.state.status.push(detail[4])
-  
+
         console.log("State: " + detail[0])
         console.log("Destrict: " + detail[1])
         console.log("Village: " + detail[2])
         console.log("Status: " + detail[4])
-  
+
         console.log("---------------------------------")
         this.state.counter.push(this.state.counter + 1)
       }
@@ -152,7 +152,7 @@ class SearchProperty extends Component {
         >
           <div className={classes.main}>
             <Card className={classes.root1}
-            onClick={this.requestToBuy.bind(this, survyNoAll[index])}
+              onClick={this.requestToBuy.bind(this, survyNoAll[index])}
             >
               <CardActionArea>
                 {/* <CardMedia
@@ -220,7 +220,7 @@ class SearchProperty extends Component {
                   </Typography>
                 </CardContent>
                 <div
-          
+
                   style={{
                     margin: "20px auto 0 auto;",
                     display: "block",
