@@ -47,7 +47,7 @@ class CreateLand extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x6874200DC0EDF1273f50b41A9557DbC2a8c7915b")
+    const landCon = new web3.eth.Contract(contract.abi, "0x70D9d5Ec84364e140Ed4128C5dcc7B8ba39705af")
     
     const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
     
@@ -81,7 +81,7 @@ class CreateLand extends Component {
       this.setState({ account: accounts[0] })
       console.log("Account: " + this.state.account);
 
-      const landCon = new web3.eth.Contract(contract.abi, "0x6874200DC0EDF1273f50b41A9557DbC2a8c7915b")
+      const landCon = new web3.eth.Contract(contract.abi, "0x70D9d5Ec84364e140Ed4128C5dcc7B8ba39705af")
       
       console.log("CurrentOwner: " + this.state.CurrentOwner);
       console.log("state: " + this.state.state);
