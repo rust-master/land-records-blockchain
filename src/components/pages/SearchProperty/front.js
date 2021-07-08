@@ -53,7 +53,7 @@ class SearchProperty extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allAssets: [],
+      allIDs: [],
       ids: [],
       states: [],
       district: [],
@@ -77,18 +77,19 @@ class SearchProperty extends Component {
 
     const landCon = new web3.eth.Contract(contract.abi, "0x70D9d5Ec84364e140Ed4128C5dcc7B8ba39705af")
 
-    const assets = await landCon.methods.viewAssets().call({ from: this.state.account })
+    const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
 
-    this.state.allAssets = assets
+    this.state.allIDs = allLandsIDs
+    console.log("IDs" , allLandsIDs)
 
-    for (let i = 0; i <= assets.length; i++) {
-      this.state.ids.push(assets[i])
-    }
+    // for (let i = 0; i <= assets.length; i++) {
+    //   this.state.ids.push(assets[i])
+    // }
 
 
-    this.state.allAssets.map(async (value, index) => {
+    this.state.allIDs.map(async (value, index) => {
 
-      const detail = await landCon.methods.landInfoOwner(this.state.ids[index]).call({ from: this.state.account })
+      const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
       this.state.states.push(detail[0])
       this.state.district.push(detail[1])
@@ -114,142 +115,142 @@ class SearchProperty extends Component {
   }
 
   render() {
-    const dataAll = this.state.allAssets;
-    const statesAll = this.state.states;
-    const districtAll = this.state.district;
-    const villageAll = this.state.village;
-    const survyNoAll = this.state.survyNo;
-    const statusAll = this.state.status;
+    // const dataAll = this.state.allAssets;
+    // const statesAll = this.state.states;
+    // const districtAll = this.state.district;
+    // const villageAll = this.state.village;
+    // const survyNoAll = this.state.survyNo;
+    // const statusAll = this.state.status;
 
 
-    console.log("Survy : " + survyNoAll[0])
+    // console.log("Survy : " + survyNoAll[0])
 
     const { classes } = this.props;
 
-    let ListTemplate
+    let ListTemplate = <div>Development Phase</div>
 
 
-    if (statesAll.length) {
+    // if (statesAll.length) {
 
-      ListTemplate = dataAll.map((value, index) =>
+    //   ListTemplate = dataAll.map((value, index) =>
 
-        <Slide
-          direction="left"
-          in={true}
-          timeout={1000}
-          mountOnEnter
-          unmountOnExit
-        >
-          <div className={classes.main}>
-            <Card className={classes.root1}>
-              <CardActionArea>
-                {/* <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    width="140"
-                    height="270"
-                    image={logo}
-                    title="Contemplative Reptile"
-                  /> */}
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    {statesAll[index]}
-                  </Typography>
+    //     <Slide
+    //       direction="left"
+    //       in={true}
+    //       timeout={1000}
+    //       mountOnEnter
+    //       unmountOnExit
+    //     >
+    //       <div className={classes.main}>
+    //         <Card className={classes.root1}>
+    //           <CardActionArea>
+    //             {/* <CardMedia
+    //                 component="img"
+    //                 alt="Contemplative Reptile"
+    //                 width="140"
+    //                 height="270"
+    //                 image={logo}
+    //                 title="Contemplative Reptile"
+    //               /> */}
+    //             <CardContent>
+    //               <Typography
+    //                 gutterBottom
+    //                 variant="h6"
+    //                 component="h5"
+    //                 className={classes.Typo1}
+    //               >
+    //                 {statesAll[index]}
+    //               </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    {this.state.account}
-                  </Typography>
+    //               <Typography
+    //                 gutterBottom
+    //                 variant="h6"
+    //                 component="h5"
+    //                 className={classes.Typo1}
+    //               >
+    //                 {this.state.account}
+    //               </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    {districtAll[index]}
-                  </Typography>
+    //               <Typography
+    //                 gutterBottom
+    //                 variant="h6"
+    //                 component="h5"
+    //                 className={classes.Typo1}
+    //               >
+    //                 {districtAll[index]}
+    //               </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    {villageAll[index]}
-                  </Typography>
+    //               <Typography
+    //                 gutterBottom
+    //                 variant="h6"
+    //                 component="h5"
+    //                 className={classes.Typo1}
+    //               >
+    //                 {villageAll[index]}
+    //               </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    {survyNoAll[index]}
-                  </Typography>
-
-
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.TypoSt}
-                  >
-                    {statusAll[index]}
-                  </Typography>
-                </CardContent>
-                <div
-                  style={{
-                    margin: "20px auto 0 auto;",
-                    display: "block",
-                    width: "100%",
-                    height: "50px",
-                    backgroundColor: "#266AFB",
-                  }}
-                >
-                  <h2
-                    style={{
-                      marginTop: "10px",
-                      marginLeft: "40%",
-                      display: "inline-block",
-                      color: "#fff",
-                      fontFamily: "Arial",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                    }}
-                  >
-                    <img
-                      src={logo}
-                      alt=""
-                      style={{
-                        width: "35px",
-                        height: "35px",
-                        marginBottom: "0px",
-                      }}
-                    />{" "}
-                    Request For Sale
-                  </h2>
-                </div>
-              </CardActionArea>
-            </Card>
-          </div>
-        </Slide>
+    //               <Typography
+    //                 gutterBottom
+    //                 variant="h6"
+    //                 component="h5"
+    //                 className={classes.Typo1}
+    //               >
+    //                 {survyNoAll[index]}
+    //               </Typography>
 
 
-      );
-    }
-    else {
-      ListTemplate = <div > Records Not Found </div>;
-    }
+    //               <Typography
+    //                 gutterBottom
+    //                 variant="h6"
+    //                 component="h5"
+    //                 className={classes.TypoSt}
+    //               >
+    //                 {statusAll[index]}
+    //               </Typography>
+    //             </CardContent>
+    //             <div
+    //               style={{
+    //                 margin: "20px auto 0 auto;",
+    //                 display: "block",
+    //                 width: "100%",
+    //                 height: "50px",
+    //                 backgroundColor: "#266AFB",
+    //               }}
+    //             >
+    //               <h2
+    //                 style={{
+    //                   marginTop: "10px",
+    //                   marginLeft: "40%",
+    //                   display: "inline-block",
+    //                   color: "#fff",
+    //                   fontFamily: "Arial",
+    //                   fontWeight: "bold",
+    //                   textAlign: "center",
+    //                 }}
+    //               >
+    //                 <img
+    //                   src={logo}
+    //                   alt=""
+    //                   style={{
+    //                     width: "35px",
+    //                     height: "35px",
+    //                     marginBottom: "0px",
+    //                   }}
+    //                 />{" "}
+    //                 Request For Sale
+    //               </h2>
+    //             </div>
+    //           </CardActionArea>
+    //         </Card>
+    //       </div>
+    //     </Slide>
+
+
+    //   );
+    // }
+    // else {
+    //   ListTemplate = <div > Records Not Found </div>;
+    // }
 
     return (
       <div>
