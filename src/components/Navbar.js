@@ -104,7 +104,7 @@ function Navbar() {
                 <img src={logo} alt="Logo" width="40" height="40" />
                 &nbsp;&nbsp;{" "}
                 <p>
-                  <font color="#EF8E19">B L R S</font>
+                  <font color="#EF8E19">Blockchain</font> Land Records System
                 </p>
               </Link>
               <div className="menu-icon" onClick={handleClick}>
