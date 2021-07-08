@@ -162,22 +162,14 @@ class SearchProperty extends Component {
                     title="Contemplative Reptile"
                   /> */}
                 <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    {statesAll[index]}
-                  </Typography>
 
-                  <Typography
+                <Typography
                     gutterBottom
                     variant="h6"
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {ownersAll[index]}
+                    <h3>Property ID: {dataAll[index]}</h3>
                   </Typography>
 
                   <Typography
@@ -186,7 +178,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {districtAll[index]}
+                   <h3>Current Owner: {ownersAll[index]}</h3>
                   </Typography>
 
                   <Typography
@@ -195,7 +187,17 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {measureAll[index]}
+                   <h3>State: {statesAll[index]}</h3>
+                  </Typography>
+
+
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                   <h3>District: {districtAll[index]}</h3>
                   </Typography>
 
                   <Typography
@@ -204,18 +206,18 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    {marketValueAll[index]}
+                   <h3>Measurements: {measureAll[index]}</h3>
                   </Typography>
-
-
+ 
                   <Typography
                     gutterBottom
                     variant="h6"
                     component="h5"
-                    className={classes.TypoSt}
+                    className={classes.Typo1}
                   >
-                    {statusAll[index]}
+                    <h3>Market Value: {marketValueAll[index]}</h3>
                   </Typography>
+
                 </CardContent>
                 <div
 
