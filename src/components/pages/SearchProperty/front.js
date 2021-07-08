@@ -52,7 +52,6 @@ class SearchProperty extends Component {
 
   constructor(props) {
     super(props);
-    this.requestToBuy = this.requestToBuy.bind(this);
     this.state = {
       allIDs:[],
       ids: [],
@@ -67,8 +66,8 @@ class SearchProperty extends Component {
   }
 
 
-  requestToBuy(){
-    console.log("--requestToBuy--")
+  requestToBuy(id){
+    console.log("--requestToBuy-- " , id)
   }
 
 
@@ -153,7 +152,7 @@ class SearchProperty extends Component {
         >
           <div className={classes.main}>
             <Card className={classes.root1}
-            onClick={this.requestToBuy}
+            onClick={this.requestToBuy.bind(this, survyNoAll[index])}
             >
               <CardActionArea>
                 {/* <CardMedia
