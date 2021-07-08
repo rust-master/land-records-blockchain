@@ -124,7 +124,7 @@ class SearchProperty extends Component {
   }
 
   render() {
-    const dataAll = this.state.ids;
+    const dataAll = this.state.counter;
     const statesAll = this.state.states;
     const districtAll = this.state.district;
     const villageAll = this.state.village;
