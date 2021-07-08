@@ -60,12 +60,12 @@ class SearchProperty extends Component {
       district: [],
       village: [],
       status: [],
-      owners:[],
-      marketValue:[],
-      measure:[],
+      owners: [],
+      marketValue: [],
+      measure: [],
       searchKeyword: "",
+    }
   }
-}
 
 
   requestToBuy(id) {
@@ -96,7 +96,7 @@ class SearchProperty extends Component {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if (detail[3] && searchKey == detail[0] ) {
+      if (detail[3] && searchKey == detail[0]) {
         this.state.states.push(detail[0])
         this.state.owners.push(detail[1])
         this.state.district.push(detail[2])
@@ -166,7 +166,7 @@ class SearchProperty extends Component {
                   /> */}
                 <CardContent>
 
-                <Typography
+                  <Typography
                     gutterBottom
                     variant="h6"
                     component="h5"
@@ -181,7 +181,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                   <h3>Current Owner: {ownersAll[index]}</h3>
+                    <h3>Current Owner: {ownersAll[index]}</h3>
                   </Typography>
 
                   <Typography
@@ -190,7 +190,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                   <h3>State: {statesAll[index]}</h3>
+                    <h3>State: {statesAll[index]}</h3>
                   </Typography>
 
 
@@ -200,7 +200,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                   <h3>District: {districtAll[index]}</h3>
+                    <h3>District: {districtAll[index]}</h3>
                   </Typography>
 
                   <Typography
@@ -209,9 +209,9 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                   <h3>Measurements: {measureAll[index]}</h3>
+                    <h3>Measurements: {measureAll[index]}</h3>
                   </Typography>
- 
+
                   <Typography
                     gutterBottom
                     variant="h6"
@@ -287,29 +287,29 @@ class SearchProperty extends Component {
                     {"Optimized Search"}
                   </h1>
                   <div className="input-areas">
-                 
-                      <input
-                        className="footer-input"
-                        name="searchKeyword"
-                        type="text"
-                        placeholder="Search by State"
-                        value={this.state.searchKeyword}
-                        onChange={this.handleChange}
-                      />
 
-                      {/* <input
+                    <input
+                      className="footer-input"
+                      name="searchKeyword"
+                      type="text"
+                      placeholder="Search by State"
+                      value={this.state.searchKeyword}
+                      onChange={this.handleChange}
+                    />
+
+                    {/* <input
                         className="footer-input"
                         name="text"
                         type="propertyNo"
                         placeholder="Property No"
                       /> */}
 
-                      <Button
-                       onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword)}
-                        buttonSize="btn--wide" buttonColor="blue">
-                        Search
-                      </Button>
-           
+                    <Button
+                      onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword)}
+                      buttonSize="btn--wide" buttonColor="blue">
+                      Search
+                    </Button>
+
                   </div>
                 </div>
               </div>
