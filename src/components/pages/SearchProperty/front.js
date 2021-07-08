@@ -61,6 +61,7 @@ class SearchProperty extends Component {
       survyNo: [],
       status: [],
       account: "",
+      counter: 0,
     };
   }
 
@@ -91,18 +92,21 @@ class SearchProperty extends Component {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      this.state.states.push(detail[0])
-      this.state.district.push(detail[1])
-      this.state.village.push(detail[2])
-      this.state.survyNo.push(detail[3])
-      this.state.status.push(detail[4])
-
-      console.log("State: " + detail[0])
-      console.log("Destrict: " + detail[1])
-      console.log("Village: " + detail[2])
-      console.log("Status: " + detail[4])
-
-      console.log("---------------------------------")
+      if(detail[4]){
+        this.state.states.push(detail[0])
+        this.state.district.push(detail[1])
+        this.state.village.push(detail[2])
+        this.state.survyNo.push(detail[3])
+        this.state.status.push(detail[4])
+  
+        console.log("State: " + detail[0])
+        console.log("Destrict: " + detail[1])
+        console.log("Village: " + detail[2])
+        console.log("Status: " + detail[4])
+  
+        console.log("---------------------------------")
+        this.setState({counter : this.state.counter + 1})
+      }
     })
   }
 
@@ -115,12 +119,12 @@ class SearchProperty extends Component {
   }
 
   render() {
-    // const dataAll = this.state.allAssets;
-    // const statesAll = this.state.states;
-    // const districtAll = this.state.district;
-    // const villageAll = this.state.village;
-    // const survyNoAll = this.state.survyNo;
-    // const statusAll = this.state.status;
+    const dataAll = this.state.counter;
+    const statesAll = this.state.states;
+    const districtAll = this.state.district;
+    const villageAll = this.state.village;
+    const survyNoAll = this.state.survyNo;
+    const statusAll = this.state.status;
 
 
     // console.log("Survy : " + survyNoAll[0])
@@ -130,127 +134,127 @@ class SearchProperty extends Component {
     let ListTemplate = <div>Development Phase</div>
 
 
-    // if (statesAll.length) {
+    if (statesAll.length) {
 
-    //   ListTemplate = dataAll.map((value, index) =>
+      ListTemplate = dataAll.map((value, index) =>
 
-    //     <Slide
-    //       direction="left"
-    //       in={true}
-    //       timeout={1000}
-    //       mountOnEnter
-    //       unmountOnExit
-    //     >
-    //       <div className={classes.main}>
-    //         <Card className={classes.root1}>
-    //           <CardActionArea>
-    //             {/* <CardMedia
-    //                 component="img"
-    //                 alt="Contemplative Reptile"
-    //                 width="140"
-    //                 height="270"
-    //                 image={logo}
-    //                 title="Contemplative Reptile"
-    //               /> */}
-    //             <CardContent>
-    //               <Typography
-    //                 gutterBottom
-    //                 variant="h6"
-    //                 component="h5"
-    //                 className={classes.Typo1}
-    //               >
-    //                 {statesAll[index]}
-    //               </Typography>
+        <Slide
+          direction="left"
+          in={true}
+          timeout={1000}
+          mountOnEnter
+          unmountOnExit
+        >
+          <div className={classes.main}>
+            <Card className={classes.root1}>
+              <CardActionArea>
+                {/* <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    width="140"
+                    height="270"
+                    image={logo}
+                    title="Contemplative Reptile"
+                  /> */}
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {statesAll[index]}
+                  </Typography>
 
-    //               <Typography
-    //                 gutterBottom
-    //                 variant="h6"
-    //                 component="h5"
-    //                 className={classes.Typo1}
-    //               >
-    //                 {this.state.account}
-    //               </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {this.state.account}
+                  </Typography>
 
-    //               <Typography
-    //                 gutterBottom
-    //                 variant="h6"
-    //                 component="h5"
-    //                 className={classes.Typo1}
-    //               >
-    //                 {districtAll[index]}
-    //               </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {districtAll[index]}
+                  </Typography>
 
-    //               <Typography
-    //                 gutterBottom
-    //                 variant="h6"
-    //                 component="h5"
-    //                 className={classes.Typo1}
-    //               >
-    //                 {villageAll[index]}
-    //               </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {villageAll[index]}
+                  </Typography>
 
-    //               <Typography
-    //                 gutterBottom
-    //                 variant="h6"
-    //                 component="h5"
-    //                 className={classes.Typo1}
-    //               >
-    //                 {survyNoAll[index]}
-    //               </Typography>
-
-
-    //               <Typography
-    //                 gutterBottom
-    //                 variant="h6"
-    //                 component="h5"
-    //                 className={classes.TypoSt}
-    //               >
-    //                 {statusAll[index]}
-    //               </Typography>
-    //             </CardContent>
-    //             <div
-    //               style={{
-    //                 margin: "20px auto 0 auto;",
-    //                 display: "block",
-    //                 width: "100%",
-    //                 height: "50px",
-    //                 backgroundColor: "#266AFB",
-    //               }}
-    //             >
-    //               <h2
-    //                 style={{
-    //                   marginTop: "10px",
-    //                   marginLeft: "40%",
-    //                   display: "inline-block",
-    //                   color: "#fff",
-    //                   fontFamily: "Arial",
-    //                   fontWeight: "bold",
-    //                   textAlign: "center",
-    //                 }}
-    //               >
-    //                 <img
-    //                   src={logo}
-    //                   alt=""
-    //                   style={{
-    //                     width: "35px",
-    //                     height: "35px",
-    //                     marginBottom: "0px",
-    //                   }}
-    //                 />{" "}
-    //                 Request For Sale
-    //               </h2>
-    //             </div>
-    //           </CardActionArea>
-    //         </Card>
-    //       </div>
-    //     </Slide>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    {survyNoAll[index]}
+                  </Typography>
 
 
-    //   );
-    // }
-    // else {
-    //   ListTemplate = <div > Records Not Found </div>;
-    // }
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.TypoSt}
+                  >
+                    {statusAll[index]}
+                  </Typography>
+                </CardContent>
+                <div
+                  style={{
+                    margin: "20px auto 0 auto;",
+                    display: "block",
+                    width: "100%",
+                    height: "50px",
+                    backgroundColor: "#266AFB",
+                  }}
+                >
+                  <h2
+                    style={{
+                      marginTop: "10px",
+                      marginLeft: "40%",
+                      display: "inline-block",
+                      color: "#fff",
+                      fontFamily: "Arial",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    <img
+                      src={logo}
+                      alt=""
+                      style={{
+                        width: "35px",
+                        height: "35px",
+                        marginBottom: "0px",
+                      }}
+                    />{" "}
+                    Request For Sale
+                  </h2>
+                </div>
+              </CardActionArea>
+            </Card>
+          </div>
+        </Slide>
+
+
+      );
+    }
+    else {
+      ListTemplate = <div > Records Not Found </div>;
+    }
 
     return (
       <div>
