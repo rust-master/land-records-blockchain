@@ -46,12 +46,13 @@ const styles = (theme) => ({
 });
 
 class SearchProperty extends Component {
-  componentWillMount() {
-    this.loadBlockchainData();
-  }
+  // componentWillMount() {
+  //   this.loadBlockchainData();
+  // }
 
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       allIDs: [],
       ids: [],
@@ -62,6 +63,7 @@ class SearchProperty extends Component {
       owners:[],
       marketValue:[],
       measure:[],
+      searchKeyword: "",
   }
 }
 
@@ -73,7 +75,7 @@ class SearchProperty extends Component {
 
 
 
-  async loadBlockchainData() {
+  async loadBlockchainData(serachKey) {
     const web3 = window.web3
 
     const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
@@ -88,12 +90,13 @@ class SearchProperty extends Component {
     this.state.allIDs = allLandsIDs
     console.log("IDs", allLandsIDs)
 
+    console.log("Search Key: " + serachKey)
 
     this.state.allIDs.map(async (value, index) => {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if (detail[3]) {
+      if (detail[3] && serachKey == detail[0] ) {
         this.state.states.push(detail[0])
         this.state.owners.push(detail[1])
         this.state.district.push(detail[2])
@@ -284,25 +287,29 @@ class SearchProperty extends Component {
                     {"Optimized Search"}
                   </h1>
                   <div className="input-areas">
-                    <form>
+                 
                       <input
                         className="footer-input"
-                        name="text"
-                        type="city"
-                        placeholder="City"
+                        name="searchKeyword"
+                        type="text"
+                        placeholder="Search by State"
+                        value={this.state.searchKeyword}
+                        onChange={this.handleChange}
                       />
 
-                      <input
+                      {/* <input
                         className="footer-input"
                         name="text"
                         type="propertyNo"
                         placeholder="Property No"
-                      />
+                      /> */}
 
-                      <Button buttonSize="btn--wide" buttonColor="blue">
+                      <Button
+                       onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword)}
+                        buttonSize="btn--wide" buttonColor="blue">
                         Search
                       </Button>
-                    </form>
+           
                   </div>
                 </div>
               </div>
