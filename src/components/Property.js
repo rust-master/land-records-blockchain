@@ -52,7 +52,7 @@ class Property extends Component {
 
       const web3 = window.web3
 
-      const landCon = new web3.eth.Contract(contract.abi, "0x70D9d5Ec84364e140Ed4128C5dcc7B8ba39705af")
+      const landCon = new web3.eth.Contract(contract.abi, "0xA0aa075D4676893EDcF4bFfc7Ad7D29E69f409d8")
 
       await landCon.methods.makeAvailable(id).send({ from: this.state.account })
 
@@ -75,7 +75,7 @@ class Property extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x70D9d5Ec84364e140Ed4128C5dcc7B8ba39705af")
+    const landCon = new web3.eth.Contract(contract.abi, "0xA0aa075D4676893EDcF4bFfc7Ad7D29E69f409d8")
 
     const assets = await landCon.methods.viewAssets().call({ from: this.state.account })
 

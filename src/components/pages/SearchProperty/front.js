@@ -81,37 +81,37 @@ class SearchProperty extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x70D9d5Ec84364e140Ed4128C5dcc7B8ba39705af")
+    const landCon = new web3.eth.Contract(contract.abi, "0xA0aa075D4676893EDcF4bFfc7Ad7D29E69f409d8")
 
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
 
     this.state.allIDs = allLandsIDs
     console.log("IDs", allLandsIDs)
 
-    // for (let i = 0; i <= assets.length; i++) {
-    //   this.state.ids.push(assets[i])
-    // }
-
 
     this.state.allIDs.map(async (value, index) => {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if (detail[4]) {
+      //if (detail[4]) {
         this.state.states.push(detail[0])
         this.state.district.push(detail[1])
         this.state.village.push(detail[2])
         this.state.survyNo.push(detail[3])
         this.state.status.push(detail[4])
+        this.state.status.push(detail[5])
+        this.state.ids.push(detail[6])
 
         console.log("State: " + detail[0])
         console.log("Destrict: " + detail[1])
         console.log("Village: " + detail[2])
         console.log("Status: " + detail[4])
+        console.log("Mesaurment: " + detail[5])
+        console.log("ID: " + detail[6])
 
         console.log("---------------------------------")
         this.state.counter.push(this.state.counter + 1)
-      }
+      //}
     })
   }
 
@@ -124,7 +124,7 @@ class SearchProperty extends Component {
   }
 
   render() {
-    const dataAll = this.state.counter;
+    const dataAll = this.state.ids;
     const statesAll = this.state.states;
     const districtAll = this.state.district;
     const villageAll = this.state.village;
