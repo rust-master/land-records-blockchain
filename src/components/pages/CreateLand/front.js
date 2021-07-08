@@ -226,13 +226,13 @@ class CreateLand extends Component {
 
                     </form>
 
-                    <Button
+                    {/* <Button
                         buttonSize="btn--mobile"
                         buttonColor="blue"
                         onClick={this.viewLandAssets}
                       >
                         View Assets
-                      </Button>
+                      </Button> */}
 
 
                     <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
@@ -256,8 +256,8 @@ class CreateLand extends Component {
                     src={"images/svg-6.svg"}
                     alt={"Credit Card"}
                     className="home__hero-img"
-                  />
-                </div>
+                  /> 
+                 </div>
               </div>
             </div>
           </div>
