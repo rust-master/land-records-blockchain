@@ -117,9 +117,9 @@ contract Land{
 	 
     
     // show marked Available
-    function viewMarkded(uint id) public view returns(string memory,string memory,string memory,uint256,bool,uint,string memory){
-        if(land[id].isAvailable){
-            return(land[id].state,land[id].district,land[id].village,land[id].surveyNumber,land[id].isAvailable,land[id].marketValue,land[id].measurement);
+    function viewMarkded(uint id) public view returns(string memory, address ,string memory, bool, uint,string memory, uint){
+        if(land[id].isAvailable == true){
+            return(land[id].state,land[id].CurrentOwner,land[id].district,land[id].isAvailable,land[id].marketValue,land[id].measurement,id);
         }
     }
     
