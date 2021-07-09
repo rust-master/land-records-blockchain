@@ -122,6 +122,13 @@ contract Land{
             return(land[id].state,land[id].CurrentOwner,land[id].district,land[id].isAvailable,land[id].marketValue,land[id].measurement,id);
         }
     }
+
+     // show marked Available
+    function viewMarkdedRemainingData(uint id) public view returns(string memory, uint256){
+        if(land[id].isAvailable){
+            return(land[id].village,land[id].surveyNumber);
+        }
+    }
     
 
 
