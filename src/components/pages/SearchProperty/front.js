@@ -139,8 +139,8 @@ class SearchProperty extends Component {
       }
     })
 
-    if(this.state.states.length<=0){
-      this.setState({placeHolder: "Record Not Found"})
+    if (this.state.states.length <= 0) {
+      this.setState({ placeHolder: "Record Not Found" })
     }
   }
 
