@@ -65,6 +65,7 @@ class SearchProperty extends Component {
       marketValue: [],
       measure: [],
       searchKeyword: "",
+      placeHolder: "Search Record",
     }
   }
 
@@ -137,6 +138,10 @@ class SearchProperty extends Component {
         console.log("---------------------------------")
       }
     })
+
+    if(this.state.states.length<=0){
+      this.setState({placeHolder: "Record Not Found"})
+    }
   }
 
 
@@ -298,7 +303,7 @@ class SearchProperty extends Component {
       );
     }
     else {
-      ListTemplate = <div > Search Records </div>;
+      ListTemplate = <div > {this.state.placeHolder} </div>;
     }
 
     return (
