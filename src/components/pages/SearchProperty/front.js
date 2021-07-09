@@ -96,6 +96,7 @@ class SearchProperty extends Component {
     this.state.allIDs.map(async (value, index) => {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
+      
       const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
 
       if (detail[3] && searchKey == detail[0] && this.state.account != detail[1] ) {
@@ -117,8 +118,8 @@ class SearchProperty extends Component {
         console.log("Mesaurment: " + detail[5])
         console.log("ID: " + detail[6])
 
-        console.log("village: " + detailRemaining[6])
-        console.log("surveyNo: " + detailRemaining[6])
+        console.log("village: " + detailRemaining[0])
+        console.log("surveyNo: " + detailRemaining[1])
 
         console.log("---------------------------------")
       }
@@ -137,6 +138,8 @@ class SearchProperty extends Component {
     const dataAll = this.state.ids;
     const statesAll = this.state.states;
     const districtAll = this.state.district;
+    const villageAll = this.state.village;
+    const surveyNoAll = this.state.surveyNo;
     const ownersAll = this.state.owners;
     const measureAll = this.state.measure;
     const marketValueAll = this.state.marketValue;
@@ -180,7 +183,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h3>Property ID: {dataAll[index]}</h3>
+                    <span style={{color:"#EF8E19"}}>Property ID: {dataAll[index]}</span> <span style={{float:"right",color:"#EF8E19"}}>Survery No: {surveyNoAll[index]}</span>
                   </Typography>
 
                   <Typography
@@ -209,6 +212,15 @@ class SearchProperty extends Component {
                     className={classes.Typo1}
                   >
                     <h3>District: {districtAll[index]}</h3>
+                  </Typography>
+
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    <h3>Village/Town: {villageAll[index]}</h3>
                   </Typography>
 
                   <Typography
