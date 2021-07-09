@@ -79,7 +79,6 @@ class SearchProperty extends Component {
   async loadBlockchainData(searchKey) {
 
     this.state.allIDs = []
-
     this.state.states = []
     this.state.owners = []
     this.state.district = []
@@ -110,10 +109,10 @@ class SearchProperty extends Component {
     this.state.allIDs.map(async (value, index) => {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
-      
+
       const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if (detail[3] && searchKey == detail[0] && this.state.account != detail[1] ) {
+      if (detail[3] && searchKey == detail[0] && this.state.account != detail[1]) {
         this.state.states.push(detail[0])
         this.state.owners.push(detail[1])
         this.state.district.push(detail[2])
@@ -197,7 +196,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h5 style={{textAlign:"center"}}>Current Owner: {ownersAll[index]}</h5>
+                    <h5 style={{ textAlign: "center" }}>Current Owner: {ownersAll[index]}</h5>
                   </Typography>
 
                   <Typography
@@ -206,17 +205,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <span style={{color:"#EF8E19"}}>Property ID: {dataAll[index]}</span> <span style={{float:"right",color:"#EF8E19"}}>Survery No: {surveyNoAll[index]}</span>
-                  </Typography>
-
-
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <span>State: {statesAll[index]}</span> <span style={{float:"right"}}>District: {districtAll[index]}</span>
+                    <span style={{ color: "#EF8E19" }}>Property ID: {dataAll[index]}</span> <span style={{ float: "right", color: "#EF8E19" }}>Survery No: {surveyNoAll[index]}</span>
                   </Typography>
 
 
@@ -226,7 +215,17 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <span>Village/Town: {villageAll[index]}</span> <span style={{float:"right"}}>Measurements: {measureAll[index]}</span>
+                    <span>State: {statesAll[index]}</span> <span style={{ float: "right" }}>District: {districtAll[index]}</span>
+                  </Typography>
+
+
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    <span>Village/Town: {villageAll[index]}</span> <span style={{ float: "right" }}>Measurements: {measureAll[index]}</span>
                   </Typography>
 
                   {/* <Typography
@@ -253,7 +252,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h3 style={{color:"#00AEE6",textAlign:"center"}}>Market Value: {marketValueAll[index]}</h3>
+                    <h3 style={{ color: "#00AEE6", textAlign: "center" }}>Market Value: {marketValueAll[index]}</h3>
                   </Typography>
 
                 </CardContent>
