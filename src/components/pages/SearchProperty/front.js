@@ -197,7 +197,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <span style={{color:"#EF8E19"}}>Property ID: {dataAll[index]}</span> <span style={{float:"right",color:"#EF8E19"}}>Survery No: {surveyNoAll[index]}</span>
+                    <h5 style={{textAlign:"center"}}>Current Owner: {ownersAll[index]}</h5>
                   </Typography>
 
                   <Typography
@@ -206,8 +206,9 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h5 style={{textAlign:"center"}}>Current Owner: {ownersAll[index]}</h5>
+                    <span style={{color:"#EF8E19"}}>Property ID: {dataAll[index]}</span> <span style={{float:"right",color:"#EF8E19"}}>Survery No: {surveyNoAll[index]}</span>
                   </Typography>
+
 
                   <Typography
                     gutterBottom
@@ -252,7 +253,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h2 style={{color:"#EF8E19",textAlign:"center"}}>Market Value: {marketValueAll[index]}</h2>
+                    <h3 style={{color:"#00AEE6",textAlign:"center"}}>Market Value: {marketValueAll[index]}</h3>
                   </Typography>
 
                 </CardContent>
