@@ -257,7 +257,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h3 style={{ color: "#00AEE6", textAlign: "center" }}>Market Value: {marketValueAll[index]}</h3>
+                    <h2 style={{ color: "#00AEE6", textAlign: "center" }}>Market Value: {marketValueAll[index]}</h2>
                   </Typography>
 
                 </CardContent>
