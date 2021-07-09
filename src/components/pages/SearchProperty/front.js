@@ -59,6 +59,7 @@ class SearchProperty extends Component {
       states: [],
       district: [],
       village: [],
+      surveyNo: [],
       status: [],
       owners: [],
       marketValue: [],
@@ -95,6 +96,7 @@ class SearchProperty extends Component {
     this.state.allIDs.map(async (value, index) => {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
+      const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
 
       if (detail[3] && searchKey == detail[0] && this.state.account != detail[1] ) {
         this.state.states.push(detail[0])
@@ -105,12 +107,18 @@ class SearchProperty extends Component {
         this.state.measure.push(detail[5])
         this.state.ids.push(detail[6])
 
+        this.state.village.push(detailRemaining[0])
+        this.state.surveyNo.push(detailRemaining[1])
+
         console.log("State: " + detail[0])
         console.log("Owner: " + detail[1])
         console.log("District: " + detail[2])
         console.log("Status: " + detail[4])
         console.log("Mesaurment: " + detail[5])
         console.log("ID: " + detail[6])
+
+        console.log("village: " + detailRemaining[6])
+        console.log("surveyNo: " + detailRemaining[6])
 
         console.log("---------------------------------")
       }
