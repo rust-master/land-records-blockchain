@@ -77,6 +77,20 @@ class SearchProperty extends Component {
 
 
   async loadBlockchainData(searchKey) {
+
+    this.state.allIDs = []
+
+    this.state.states = []
+    this.state.owners = []
+    this.state.district = []
+    this.state.status = []
+    this.state.marketValue = []
+    this.state.measure = []
+    this.state.ids = []
+
+    this.state.village = []
+    this.state.surveyNo = []
+
     const web3 = window.web3
 
     const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
@@ -192,7 +206,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h3>Current Owner: {ownersAll[index]}</h3>
+                    <h5 style={{textAlign:"center"}}>Current Owner: {ownersAll[index]}</h5>
                   </Typography>
 
                   <Typography
@@ -201,7 +215,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h3>State: {statesAll[index]}</h3>
+                    <span>State: {statesAll[index]}</span> <span style={{float:"right"}}>District: {districtAll[index]}</span>
                   </Typography>
 
 
@@ -211,8 +225,26 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h3>District: {districtAll[index]}</h3>
+                    <span>Village/Town: {villageAll[index]}</span> <span style={{float:"right"}}>Measurements: {measureAll[index]}</span>
                   </Typography>
+
+                  {/* <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    <h3></h3>
+                  </Typography> */}
+
+                  {/* <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h5"
+                    className={classes.Typo1}
+                  >
+                    <h3></h3>
+                  </Typography> */}
 
                   <Typography
                     gutterBottom
@@ -220,25 +252,7 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h3>Village/Town: {villageAll[index]}</h3>
-                  </Typography>
-
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <h3>Measurements: {measureAll[index]}</h3>
-                  </Typography>
-
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <h3 style={{color:"#EF8E19",textAlign:"center"}}>Market Value: {marketValueAll[index]}</h3>
+                    <h2 style={{color:"#EF8E19",textAlign:"center"}}>Market Value: {marketValueAll[index]}</h2>
                   </Typography>
 
                 </CardContent>
