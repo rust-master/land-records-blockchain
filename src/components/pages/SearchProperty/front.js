@@ -65,6 +65,7 @@ class SearchProperty extends Component {
       marketValue: [],
       measure: [],
       searchKeyword: "",
+      searchKeyword1: "",
       placeHolder: "Search Record",
     }
   }
@@ -319,10 +320,10 @@ class SearchProperty extends Component {
                     
                     <input
                       className="footer-input"
-                      name="searchKeyword"
+                      name="searchKeyword1"
                       type="text"
                       placeholder="Search by Distirct"
-                      value={this.state.searchKeyword}
+                      value={this.state.searchKeyword1}
                       onChange={this.handleChange}
                     />
 
