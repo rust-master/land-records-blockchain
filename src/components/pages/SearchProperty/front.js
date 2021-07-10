@@ -65,7 +65,7 @@ class SearchProperty extends Component {
       marketValue: [],
       measure: [],
       searchKeyword: "",
-      searchKeyword1: "",
+      searchKeyword: "",
       placeHolder: "Search Record",
     }
   }
@@ -76,7 +76,7 @@ class SearchProperty extends Component {
   }
 
 
-  async loadBlockchainData(searchKey) {
+  async loadBlockchainData(searchKey, searchValue) {
 
     this.state.allIDs = []
     this.state.states = []
@@ -112,7 +112,7 @@ class SearchProperty extends Component {
 
       const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
 
-      if (detail[3] && searchKey == detail[0] && this.state.account != detail[1]) {
+      if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
         this.state.states.push(detail[0])
         this.state.owners.push(detail[1])
         this.state.district.push(detail[2])
@@ -336,7 +336,7 @@ class SearchProperty extends Component {
                       /> */}
 
                     <Button
-                      onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword)}
+                      onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword,this.state.searchKeyword1)}
                       buttonSize="btn--wide" buttonColor="blue">
                       Search
                     </Button>
