@@ -233,23 +233,6 @@ class SearchProperty extends Component {
                     <span>Village/Town: {villageAll[index]}</span> <span style={{ float: "right" }}>Measurements: {measureAll[index]}</span>
                   </Typography>
 
-                  {/* <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <h3></h3>
-                  </Typography> */}
-
-                  {/* <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <h3></h3>
-                  </Typography> */}
 
                   <Typography
                     gutterBottom
