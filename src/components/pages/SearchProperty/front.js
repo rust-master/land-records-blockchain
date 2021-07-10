@@ -317,7 +317,7 @@ class SearchProperty extends Component {
                       onChange={this.handleChange}
                     />
 
-                    
+
                     <input
                       className="footer-input"
                       name="searchKeyword1"
@@ -336,7 +336,7 @@ class SearchProperty extends Component {
                       /> */}
 
                     <Button
-                      onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword,this.state.searchKeyword1)}
+                      onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword, this.state.searchKeyword1)}
                       buttonSize="btn--wide" buttonColor="blue">
                       Search
                     </Button>
