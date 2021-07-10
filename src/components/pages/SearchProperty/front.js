@@ -69,12 +69,10 @@ class SearchProperty extends Component {
     }
   }
 
-
+  
   requestToBuy(id) {
     console.log("--requestToBuy-- ", id)
   }
-
-
 
 
   async loadBlockchainData(searchKey) {
@@ -143,7 +141,6 @@ class SearchProperty extends Component {
       this.setState({ placeHolder: "Record Not Found" })
     }
   }
-
 
 
   handleChange(e) {
