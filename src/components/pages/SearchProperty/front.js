@@ -69,7 +69,7 @@ class SearchProperty extends Component {
     }
   }
 
-  
+
   requestToBuy(id) {
     console.log("--requestToBuy-- ", id)
   }
@@ -315,6 +315,17 @@ class SearchProperty extends Component {
                       value={this.state.searchKeyword}
                       onChange={this.handleChange}
                     />
+
+                    
+                    <input
+                      className="footer-input"
+                      name="searchKeyword"
+                      type="text"
+                      placeholder="Search by Distirct"
+                      value={this.state.searchKeyword}
+                      onChange={this.handleChange}
+                    />
+
 
                     {/* <input
                         className="footer-input"
