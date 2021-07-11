@@ -172,60 +172,34 @@ class Property extends Component {
               <CardActionArea>
                 <CardContent>
                   <Typography gutterBottom variant="h4" component="h2">
-                    Property No: 1234
+                  Survey No: {survyNoAll[index]}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    Value: 20 Ether
+                    Market Value: {marketValueAll[index]}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    Location: Sahiwal
+                  State: {statesAll[index]}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    Measurements: 120 sq/ft
+                  District: {districtAll[index]}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                  Village: {villageAll[index]}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                  Measurements: {measurementsAll[index]}
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
+                <Button style={{float:"right"}} buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
                   disabled={statusAll[index]}
                   onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
                   {statusAll[index] ? "Marked" : "Mark Available"}
                 </Button>
-                <Button size="small" variant="contained" color="secondary">
-                  Reject
-                </Button>
-                <Button size="small" variant="contained" color="primary" >
-                  Accept
-                </Button>
               </CardActions>
             </Card>
           </div>
-
-          {/* <div className="pricing__container-card">
-            <div className="pricing__container-cardInfo">
-              <div className="icon">
-                <BsXDiamondFill />
-              </div>
-              <img className="pricing__container-cardImage" src={`https://ipfs.io/ipfs/${ipfsAll[index]}`} alt="image" />
-              <h3>Land Info</h3>
-              <h4>{marketValueAll[index]}</h4>
-              <p>Ether</p>
-              <ul className="pricing__container-features">
-                <li style={{ fontSize: "10px" }}>State: {statesAll[index]}</li>
-                <li style={{ fontSize: "10px" }}>District: {districtAll[index]}</li>
-                <li style={{ fontSize: "10px" }}>Village: {villageAll[index]}</li>
-                <li >Measurements: {measurementsAll[index]}</li>
-                <li>Survey No: {survyNoAll[index]}</li>
-              </ul>
-
-              <Button buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
-                disabled={statusAll[index]}
-                onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
-                {statusAll[index] ? "Marked" : "Mark Available"}
-              </Button>
-
-            </div>
-          </div> */}
 
         </Slide>
 
@@ -239,11 +213,10 @@ class Property extends Component {
       <IconContext.Provider value={{ color: "#fff", size: 64 }}>
         <div className="pricing__section">
           <div className="pricing__wrapper">
-            <h1 className="pricing__heading">Properties</h1>
+            <h1 className="pricing__heading" style={{marginLeft:"30px"}}>Properties</h1>
             <div className="pricing__container">
 
               {ListTemplate}
-
 
 
 
