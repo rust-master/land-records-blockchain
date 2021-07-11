@@ -24,7 +24,7 @@ class CreateLand extends Component {
       account: "",
       id: "",
       state: "",
-      district : "",
+      district: "",
       village: "",
       surveyNumber: "",
       CurrentOwner: "",
@@ -49,7 +49,7 @@ class CreateLand extends Component {
       console.log("Account: " + this.state.account);
 
       const landCon = new web3.eth.Contract(contract.abi, "0xd95AE4c78f241D6b992D594E3eD557b2dc6ecC38")
-      
+
       console.log("CurrentOwner: " + this.state.CurrentOwner);
       console.log("state: " + this.state.state);
       console.log("district: " + this.state.district);
@@ -87,13 +87,13 @@ class CreateLand extends Component {
   onSubmit = async (event) => {
     event.preventDefault()
     console.log("Submitting file")
-    if(this.state.buffer == null){
+    if (this.state.buffer == null) {
       alert("Please select a file")
     } else {
       const file = await ipfs.add(this.state.buffer)
       const hash = file[0].hash
       console.log("Hash: " + hash)
-      this.addData(hash)  
+      this.addData(hash)
     }
   }
 
@@ -136,7 +136,7 @@ class CreateLand extends Component {
                   <div className="input-areas">
                     <form>
                       <input
-                      style={{width:"520px"}}
+                        style={{ width: "520px" }}
                         className="footer-input"
                         name="CurrentOwner"
                         type="text"
@@ -181,7 +181,7 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
-                       <input
+                      <input
                         className="footer-input"
                         name="marketValue"
                         type="text"
@@ -199,7 +199,7 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
-                       <input
+                      <input
                         className="footer-input"
                         name="id"
                         type="text"
@@ -248,8 +248,8 @@ class CreateLand extends Component {
                     src={this.state.fileImage}
                     alt={"Credit Card"}
                     className="home__hero-img"
-                  /> 
-                 </div>
+                  />
+                </div>
               </div>
             </div>
           </div>
