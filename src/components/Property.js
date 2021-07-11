@@ -6,6 +6,15 @@ import { BsXDiamondFill } from "react-icons/bs";
 import { GiCrystalize } from "react-icons/gi";
 import { IconContext } from "react-icons/lib";
 import { Link } from "react-router-dom";
+
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button1 from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 import Web3 from "web3";
 import Slide from "@material-ui/core/Slide";
 import Snackbar from '@material-ui/core/Snackbar';
@@ -58,7 +67,7 @@ class Property extends Component {
       await landCon.methods.makeAvailable(id).send({ from: this.state.account })
 
       this.setState({ open: true })
-      
+
       this.loadBlockchainData();
 
     } else {
@@ -86,8 +95,7 @@ class Property extends Component {
     }
 
 
-    this.state.allAssets.map(async (value, index) =>
-    {
+    this.state.allAssets.map(async (value, index) => {
       const detail = await landCon.methods.landInfoOwner(this.state.ids[index]).call({ from: this.state.account })
       const remainignDetail = await landCon.methods.remainingDetail(this.state.ids[index]).call({ from: this.state.account })
 
@@ -188,6 +196,39 @@ class Property extends Component {
             <div className="pricing__container">
 
               {ListTemplate}
+
+              <div>
+                {/* <Card className={makeStyles({
+                  maxWidth: 345,
+                })}>
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography gutterBottom variant="h4" component="h2">
+                        Property No: 1234
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        Value: 20 Ether
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        Location: Sahiwal
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        Measurements: 120 sq/ft
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button1 size="small" variant="contained" color="secondary">
+                      Reject
+                    </Button1>
+                    <Button1 size="small" variant="contained" color="primary" >
+                      Accept
+                    </Button1>
+                  </CardActions>
+                </Card>
+              </div> */}
+              
+
 
               <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
                 <Alert onClose={this.handleClose} severity="success">
