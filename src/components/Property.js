@@ -50,7 +50,6 @@ class Property extends Component {
   }
 
 
-
   async myFunction(id, status) {
     if (!status) {
       console.log("ID : " + id)
@@ -150,7 +149,7 @@ class Property extends Component {
 
         <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-          <div style={{maxWidth:"1030px", marginBottom:"60px", marginLeft: "5%"}}>
+          <div style={{ maxWidth: "1030px", marginBottom: "60px", marginLeft: "5%" }}>
             <Card className={makeStyles({
               maxWidth: 345,
             })}>
@@ -182,8 +181,8 @@ class Property extends Component {
                   Measurements: {measurementsAll[index]}
                 </Typography>
               </CardContent>
-              <CardActions style={{ float:"right" }}>
-                <Button  buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "blue"}
+              <CardActions style={{ float: "right" }}>
+                <Button buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "blue"}
                   disabled={statusAll[index]}
                   onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
                   {statusAll[index] ? "Marked" : "Mark Available"}
@@ -201,34 +200,34 @@ class Property extends Component {
     }
 
     return (
-        <div>
-          <div
-            className={false ? "home__hero-section" : "home__hero-section darkBg"}
-          >
-            <div className="container">
-              <h1 className="pricing__heading">Properties</h1>
+      <div>
+        <div
+          className={false ? "home__hero-section" : "home__hero-section darkBg"}
+        >
+          <div className="container">
+            <h1 className="pricing__heading">Properties</h1>
 
-              {ListTemplate}
-
-
-              <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
-                <Alert onClose={this.handleClose} severity="success">
-                  Land Marked successfully.
-                </Alert>
-              </Snackbar>
+            {ListTemplate}
 
 
-              <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
-                <Alert onClose={this.handleClose} severity="error">
-                  {"Already Marked"}
-                </Alert>
-              </Snackbar>
+            <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+              <Alert onClose={this.handleClose} severity="success">
+                Land Marked successfully.
+              </Alert>
+            </Snackbar>
+
+
+            <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
+              <Alert onClose={this.handleClose} severity="error">
+                {"Already Marked"}
+              </Alert>
+            </Snackbar>
 
 
 
-            </div>
           </div>
         </div>
+      </div>
     );
   }
 }
