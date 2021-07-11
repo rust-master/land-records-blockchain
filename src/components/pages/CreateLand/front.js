@@ -34,7 +34,7 @@ class CreateLand extends Component {
       openi: false,
       errori: "",
       buffer: null,
-      fileImage: null,
+      fileImage: "images/svg-8.svg",
     };
   }
 
