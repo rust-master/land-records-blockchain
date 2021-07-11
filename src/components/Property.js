@@ -12,6 +12,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from "@material-ui/core/CardMedia";
 import Button1 from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
@@ -154,7 +155,53 @@ class Property extends Component {
 
         <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-          <div className="pricing__container-card">
+
+
+          <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+            <Card className={makeStyles({
+              maxWidth: 345,
+            })}>
+              <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                width="140"
+                height="270"
+                image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
+                title="Contemplative Reptile"
+              />
+              <CardActionArea>
+                <CardContent>
+                  <Typography gutterBottom variant="h4" component="h2">
+                    Property No: 1234
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Value: 20 Ether
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Location: Sahiwal
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Measurements: 120 sq/ft
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
+                  disabled={statusAll[index]}
+                  onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
+                  {statusAll[index] ? "Marked" : "Mark Available"}
+                </Button>
+                <Button size="small" variant="contained" color="secondary">
+                  Reject
+                </Button>
+                <Button size="small" variant="contained" color="primary" >
+                  Accept
+                </Button>
+              </CardActions>
+            </Card>
+          </div>
+
+          {/* <div className="pricing__container-card">
             <div className="pricing__container-cardInfo">
               <div className="icon">
                 <BsXDiamondFill />
@@ -178,7 +225,7 @@ class Property extends Component {
               </Button>
 
             </div>
-          </div>
+          </div> */}
 
         </Slide>
 
@@ -197,37 +244,7 @@ class Property extends Component {
 
               {ListTemplate}
 
-              {/* <div> */}
-                {/* <Card className={makeStyles({
-                  maxWidth: 345,
-                })}>
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h4" component="h2">
-                        Property No: 1234
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                        Value: 20 Ether
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                        Location: Sahiwal
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                        Measurements: 120 sq/ft
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <Button1 size="small" variant="contained" color="secondary">
-                      Reject
-                    </Button1>
-                    <Button1 size="small" variant="contained" color="primary" >
-                      Accept
-                    </Button1>
-                  </CardActions>
-                </Card>
-              </div> */}
-              
+
 
 
               <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
