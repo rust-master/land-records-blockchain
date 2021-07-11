@@ -149,7 +149,7 @@ class Property extends Component {
 
         <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-          <div style={{ maxWidth: "1030px", marginBottom: "60px", marginLeft: "6%" }}>
+          <div style={{ maxWidth: "1030px", marginBottom: "60px", marginLeft: "5.5%" }}>
             <Card className={makeStyles({
               maxWidth: 345,
             })}>
