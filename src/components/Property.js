@@ -171,7 +171,7 @@ class Property extends Component {
               />
               <CardActionArea>
                 <CardContent>
-                  <Typography gutterBottom variant="h4" component="h2">
+                  <Typography gutterBottom variant="h4" component="h3">
                   Survey No: {survyNoAll[index]}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
