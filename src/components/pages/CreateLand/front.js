@@ -18,8 +18,6 @@ class CreateLand extends Component {
 
   constructor(props) {
     super(props);
-    // this.addData = this.addData.bind(this);
-    this.viewLandAssets = this.viewLandAssets.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.state = {
@@ -37,38 +35,6 @@ class CreateLand extends Component {
       errori: "",
       buffer: null,
     };
-  }
-
-
-  async viewLandAssets(e) {
-    const web3 = window.web3
-
-    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-    const accounts = await webeProvider.eth.getAccounts()
-    this.setState({ account: accounts[0] })
-    console.log("Account: " + this.state.account);
-
-    const landCon = new web3.eth.Contract(contract.abi, "0xd95AE4c78f241D6b992D594E3eD557b2dc6ecC38")
-    
-    const assets = await landCon.methods.viewAssets().call({ from: this.state.account } )
-    
-    for(let i=1; i<=assets.length; i++){
-      
-      const detail = await landCon.methods.landInfoOwner(i).call({ from: this.state.account })
-      
-      console.log("State: " + detail[0])
-      console.log("Destrict: " + detail[1])
-      console.log("Village: " + detail[2])
-
-      console.log("---------------------------------")
-    }
-    // const detail = await landCon.methods.landInfoOwner(this.state.id).call({ from: this.state.account })
-    // console.log("Assets: " + assets)
-    // console.log("Assets Size: " + assets.length)
-    console.log("Type Assets: " + xtype(assets))
-    // console.log("Type detail: " + xtype(detail))
-    
-
   }
 
 
@@ -256,14 +222,6 @@ class CreateLand extends Component {
                       </Button>
 
                     </form>
-
-                    {/* <Button
-                        buttonSize="btn--mobile"
-                        buttonColor="blue"
-                        onClick={this.viewLandAssets}
-                      >
-                        View Assets
-                      </Button> */}
 
 
                     <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
