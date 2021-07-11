@@ -167,7 +167,7 @@ class Property extends Component {
                   Survey No: {survyNoAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Market Value: {marketValueAll[index]}
+                  Market Value: {marketValueAll[index]} Ether
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   State: {statesAll[index]}
@@ -183,7 +183,7 @@ class Property extends Component {
                 </Typography>
               </CardContent>
               <CardActions style={{ float:"right" }}>
-                <Button  buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
+                <Button  buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "blue"}
                   disabled={statusAll[index]}
                   onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
                   {statusAll[index] ? "Marked" : "Mark Available"}
