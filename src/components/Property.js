@@ -150,19 +150,17 @@ class Property extends Component {
 
         <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-
-
-          <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+          <div style={{maxWidth:"1030px", marginBottom:"20px"}}>
             <Card className={makeStyles({
               maxWidth: 345,
             })}>
               <CardMedia
                 component="img"
-                alt="Contemplative Reptile"
-                width="140"
-                height="270"
+                alt="Image not load"
+                width="1030"
+                height="550"
                 image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
-                title="Contemplative Reptile"
+                title={survyNoAll[index]}
               />
               <CardContent>
                 <Typography gutterBottom variant="h4" component="h3">
@@ -184,8 +182,8 @@ class Property extends Component {
                   Measurements: {measurementsAll[index]}
                 </Typography>
               </CardContent>
-              <CardActions style={{ float: "right" }}>
-                <Button buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
+              <CardActions style={{ float:"right" }}>
+                <Button  buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
                   disabled={statusAll[index]}
                   onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
                   {statusAll[index] ? "Marked" : "Mark Available"}
@@ -203,11 +201,13 @@ class Property extends Component {
     }
 
     return (
-      <IconContext.Provider value={{ color: "#fff", size: 64 }}>
-        <div className="pricing__section">
-          <div className="pricing__wrapper">
-            <h1 className="pricing__heading" style={{ marginLeft: "10px" }}>Properties</h1>
-            <div className="pricing__container">
+        <div>
+          <div
+            className={false ? "home__hero-section" : "home__hero-section darkBg"}
+          >
+            <div className="container">
+              <h1 className="pricing__heading">Properties</h1>
+
 
               {ListTemplate}
 
@@ -226,10 +226,10 @@ class Property extends Component {
               </Snackbar>
 
 
+
             </div>
           </div>
         </div>
-      </IconContext.Provider>
     );
   }
 }
