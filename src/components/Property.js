@@ -169,30 +169,28 @@ class Property extends Component {
                 image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
                 title="Contemplative Reptile"
               />
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h4" component="h3">
+              <CardContent>
+                <Typography gutterBottom variant="h4" component="h3">
                   Survey No: {survyNoAll[index]}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Market Value: {marketValueAll[index]}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Market Value: {marketValueAll[index]}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
                   State: {statesAll[index]}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
                   District: {districtAll[index]}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
                   Village: {villageAll[index]}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
                   Measurements: {measurementsAll[index]}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button style={{float:"right"}} buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
+                </Typography>
+              </CardContent>
+              <CardActions style={{ float: "right" }}>
+                <Button buttonSize="btn--wide" buttonColor={statusAll[index] ? "red" : "primary"}
                   disabled={statusAll[index]}
                   onClick={this.myFunction.bind(this, idsAll[index], statusAll[index])} >
                   {statusAll[index] ? "Marked" : "Mark Available"}
@@ -213,11 +211,10 @@ class Property extends Component {
       <IconContext.Provider value={{ color: "#fff", size: 64 }}>
         <div className="pricing__section">
           <div className="pricing__wrapper">
-            <h1 className="pricing__heading" style={{marginLeft:"30px"}}>Properties</h1>
+            <h1 className="pricing__heading" style={{ marginLeft: "10px" }}>Properties</h1>
             <div className="pricing__container">
 
               {ListTemplate}
-
 
 
               <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
