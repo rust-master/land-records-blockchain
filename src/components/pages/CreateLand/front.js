@@ -34,6 +34,7 @@ class CreateLand extends Component {
       openi: false,
       errori: "",
       buffer: null,
+      fileImage: null,
     };
   }
 
@@ -73,6 +74,8 @@ class CreateLand extends Component {
   captureFile = async (event) => {
     event.preventDefault()
     const file = event.target.files[0]
+    this.setState({ fileImage: URL.createObjectURL(event.target.files[0]) })
+    console.log("File: " + file)
     const reader = new window.FileReader()
     reader.readAsArrayBuffer(file)
     reader.onloadend = () => {
@@ -242,7 +245,7 @@ class CreateLand extends Component {
               <div className="col">
                 <div className="home__hero-img-wrapper">
                   <img
-                    src={"images/svg-6.svg"}
+                    src={this.state.fileImage}
                     alt={"Credit Card"}
                     className="home__hero-img"
                   /> 

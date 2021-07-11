@@ -36,6 +36,7 @@ class Property extends Component {
       survyNo: [],
       marketValue: [],
       measurements: [],
+      ipfsHash: [],
       status: [],
       account: "",
       open: false,
@@ -88,6 +89,7 @@ class Property extends Component {
     this.state.allAssets.map(async (value, index) =>
     {
       const detail = await landCon.methods.landInfoOwner(this.state.ids[index]).call({ from: this.state.account })
+      const remainignDetail = await landCon.methods.remainingDetail(this.state.ids[index]).call({ from: this.state.account })
 
       this.state.states.push(detail[0])
       this.state.district.push(detail[1])
@@ -97,12 +99,16 @@ class Property extends Component {
       this.state.marketValue.push(detail[5])
       this.state.measurements.push(detail[6])
 
+      this.state.ipfsHash.push(remainignDetail)
+
       console.log("State: " + detail[0])
       console.log("Destrict: " + detail[1])
       console.log("Village: " + detail[2])
       console.log("Status: " + detail[4])
       console.log("marketValue: " + detail[5])
       console.log("measurements: " + detail[6])
+
+      console.log("ipfsHash: " + remainignDetail)
 
       console.log("---------------------------------")
     })
@@ -130,6 +136,8 @@ class Property extends Component {
     const measurementsAll = this.state.measurements;
     const idsAll = this.state.ids;
 
+    const ipfsAll = this.state.ipfsHash;
+
     let ListTemplate
 
     if (dataAll.length) {
@@ -143,6 +151,7 @@ class Property extends Component {
               <div className="icon">
                 <BsXDiamondFill />
               </div>
+              <img className="pricing__container-cardImage" src={`https://ipfs.io/ipfs/${ipfsAll[index]}`} alt="image" />
               <h3>Land Info</h3>
               <h4>{marketValueAll[index]}</h4>
               <p>Ether</p>
