@@ -18,7 +18,7 @@ class CreateLand extends Component {
 
   constructor(props) {
     super(props);
-    this.addData = this.addData.bind(this);
+    // this.addData = this.addData.bind(this);
     this.viewLandAssets = this.viewLandAssets.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -37,7 +37,6 @@ class CreateLand extends Component {
       errori: "",
       buffer: null,
     };
-    this.captureFile = this.captureFile.bind(this);
   }
 
 
@@ -73,8 +72,7 @@ class CreateLand extends Component {
   }
 
 
-  async addData(e) {
-    e.preventDefault();
+  async addData(hash) {
     try {
       const web3 = window.web3
 
@@ -94,7 +92,7 @@ class CreateLand extends Component {
       console.log("marketValue: " + this.state.marketValue);
       console.log("measurement: " + this.state.measurement);
 
-      await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, this.state.CurrentOwner, this.state.marketValue, this.state.id, this.state.measurement).send({ from: this.state.account })
+      await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, this.state.CurrentOwner, this.state.marketValue, this.state.id, this.state.measurement, hash).send({ from: this.state.account })
 
       this.setState({ open: true })
     }
@@ -106,7 +104,7 @@ class CreateLand extends Component {
 
   }
 
-  captureFile(event) {
+  captureFile = async (event) => {
     event.preventDefault()
     const file = event.target.files[0]
     const reader = new window.FileReader()
@@ -114,6 +112,19 @@ class CreateLand extends Component {
     reader.onloadend = () => {
       this.setState({ buffer: Buffer(reader.result) })
       console.log('buffer', this.state.buffer)
+    }
+  }
+
+  onSubmit = async (event) => {
+    event.preventDefault()
+    console.log("Submitting file")
+    if(this.state.buffer == null){
+      alert("Please select a file")
+    } else {
+      const file = await ipfs.add(this.state.buffer)
+      const hash = file[0].hash
+      console.log("Hash: " + hash)
+      this.addData(hash)  
     }
   }
 
@@ -239,7 +250,7 @@ class CreateLand extends Component {
                       <Button
                         buttonSize="btn--mobile"
                         buttonColor="blue"
-                        onClick={this.addData}
+                        onClick={this.onSubmit}
                       >
                         Create Land
                       </Button>
