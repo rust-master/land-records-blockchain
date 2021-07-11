@@ -149,7 +149,7 @@ class Property extends Component {
 
         <Slide direction="left" in={true} timeout={1500} mountOnEnter unmountOnExit>
 
-          <div style={{ maxWidth: "1030px", marginBottom: "60px", marginLeft: "5%" }}>
+          <div style={{ maxWidth: "1030px", marginBottom: "60px", marginLeft: "6%" }}>
             <Card className={makeStyles({
               maxWidth: 345,
             })}>
@@ -209,21 +209,17 @@ class Property extends Component {
 
             {ListTemplate}
 
-
             <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
               <Alert onClose={this.handleClose} severity="success">
                 Land Marked successfully.
               </Alert>
             </Snackbar>
 
-
             <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
               <Alert onClose={this.handleClose} severity="error">
                 {"Already Marked"}
               </Alert>
             </Snackbar>
-
-
 
           </div>
         </div>
