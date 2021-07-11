@@ -11,6 +11,7 @@ contract Land{
         address payable CurrentOwner;
         uint marketValue;
         string measurement;
+        string ipfsHash;
         bool isAvailable;
         address requester;
         reqStatus requestStatus;
@@ -51,7 +52,7 @@ contract Land{
     //Registration of land details.
     function Registration(string memory _state,string memory _district,
         string memory _village,uint256 _surveyNumber,
-        address payable _OwnerAddress,uint _marketValue,uint id, string memory _measurement
+        address payable _OwnerAddress,uint _marketValue,uint id, string memory _measurement , string memory _ipfsHash
         ) public returns(bool) {
         require(superAdmin[_village] == msg.sender || owner == msg.sender);
         land[id].state = _state;
@@ -61,6 +62,7 @@ contract Land{
         land[id].CurrentOwner = _OwnerAddress;
         land[id].marketValue = _marketValue;
         land[id].measurement = _measurement;
+        land[id].ipfsHash = _ipfsHash;
         profile[_OwnerAddress].assetList.push(id);
         propertiesIDs.push(id);
         return true;
@@ -69,6 +71,11 @@ contract Land{
     function landInfoOwner(uint id) public view returns(string memory,string memory,string memory,uint256,bool,uint,string memory){
         return(land[id].state,land[id].district,land[id].village,land[id].surveyNumber,land[id].isAvailable,land[id].marketValue,land[id].measurement);
     }
+
+    function remainingDetail(uint id) public view returns(string memory){
+        return land[id].ipfsHash;
+    }
+
         //to view details of land for the buyer
         function landInfoUser(uint id) public view returns(address,uint,bool,address,reqStatus){
         return(land[id].CurrentOwner,land[id].marketValue,land[id].isAvailable,land[id].requester,land[id].requestStatus);
