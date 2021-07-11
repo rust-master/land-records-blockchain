@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import { Button } from "./Button";
 import "./Property.css";
-import { FaFire } from "react-icons/fa";
-import { BsXDiamondFill } from "react-icons/bs";
-import { GiCrystalize } from "react-icons/gi";
 import { IconContext } from "react-icons/lib";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from "@material-ui/core/CardMedia";
-import Button1 from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import Web3 from "web3";
