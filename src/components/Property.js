@@ -197,7 +197,7 @@ class Property extends Component {
 
               {ListTemplate}
 
-              <div>
+              {/* <div> */}
                 {/* <Card className={makeStyles({
                   maxWidth: 345,
                 })}>
