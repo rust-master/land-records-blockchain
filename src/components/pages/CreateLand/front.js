@@ -7,7 +7,6 @@ import contract from "../../../build/contracts/Land.json"
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import ipfs from '../../../ipfs'
-import xtype from 'xtypejs'
 
 
 function Alert(props) {
