@@ -6,7 +6,7 @@ import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json"
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-
+import ipfs from '../../../ipfs'
 import xtype from 'xtypejs'
 
 
@@ -35,7 +35,9 @@ class CreateLand extends Component {
       open: false,
       openi: false,
       errori: "",
+      buffer: null,
     };
+    this.captureFile = this.captureFile.bind(this);
   }
 
 
@@ -102,6 +104,17 @@ class CreateLand extends Component {
       console.log("Error : ", e.toString())
     }
 
+  }
+
+  captureFile(event) {
+    event.preventDefault()
+    const file = event.target.files[0]
+    const reader = new window.FileReader()
+    reader.readAsArrayBuffer(file)
+    reader.onloadend = () => {
+      this.setState({ buffer: Buffer(reader.result) })
+      console.log('buffer', this.state.buffer)
+    }
   }
 
   handleChange(e) {
@@ -213,6 +226,13 @@ class CreateLand extends Component {
                         placeholder="ID"
                         value={this.state.id}
                         onChange={this.handleChange}
+                      />
+
+                      <input
+                        className="footer-input"
+                        name="sdf"
+                        type="file"
+                        onChange={this.captureFile}
                       />
 
 
