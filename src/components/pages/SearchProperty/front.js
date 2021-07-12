@@ -55,6 +55,7 @@ class SearchProperty extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       allIDs: [],
+      allImgID: [],
       ids: [],
       states: [],
       district: [],
@@ -80,6 +81,7 @@ class SearchProperty extends Component {
   async loadBlockchainData(searchKey, searchValue) {
 
     this.state.allIDs = []
+    this.state.allImgID = []
     this.state.states = []
     this.state.owners = []
     this.state.district = []
@@ -87,6 +89,7 @@ class SearchProperty extends Component {
     this.state.marketValue = []
     this.state.measure = []
     this.state.ids = []
+    this.state.ipfsHash = []
 
     this.state.village = []
     this.state.surveyNo = []
@@ -103,17 +106,36 @@ class SearchProperty extends Component {
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
 
     this.state.allIDs = allLandsIDs
+    this.state.allImgID = allLandsIDs
     console.log("IDs", allLandsIDs)
 
     console.log("Search Key: " + searchKey)
+
+    this.state.allIDs.map(async (value, index) => {
+      
+      const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
+      const remainignDetail = await landCon.methods.remainingDetail(this.state.allIDs[index]).call({ from: this.state.account })
+
+      
+      if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
+     
+
+        this.state.ipfsHash.push(remainignDetail)
+
+        console.log("ipfsHash: " + remainignDetail)
+
+        console.log("---------------------------------")
+      }
+
+
+    })
+
 
     this.state.allIDs.map(async (value, index) => {
 
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
 
       const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
-
-      const remainignDetail = await landCon.methods.remainingDetail(this.state.ids[index]).call({ from: this.state.account })
 
 
       if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
@@ -128,7 +150,7 @@ class SearchProperty extends Component {
         this.state.village.push(detailRemaining[0])
         this.state.surveyNo.push(detailRemaining[1])
 
-        this.state.ipfsHash.push(remainignDetail)
+       
 
         console.log("State: " + detail[0])
         console.log("Owner: " + detail[1])
@@ -140,7 +162,6 @@ class SearchProperty extends Component {
         console.log("village: " + detailRemaining[0])
         console.log("surveyNo: " + detailRemaining[1])
 
-        console.log("ipfsHash: " + remainignDetail)
 
         console.log("---------------------------------")
       }
@@ -199,7 +220,7 @@ class SearchProperty extends Component {
                   width="1030"
                   height="550"
                   image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
-                  title={surveyNoAll[index]}
+                  title={"Image Search"}
                 />
                 <CardContent>
 
