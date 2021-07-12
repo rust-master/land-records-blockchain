@@ -199,7 +199,7 @@ class SearchProperty extends Component {
                 width="1030"
                 height="550"
                 image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
-                title={survyNoAll[index]}
+                title={surveyNoAll[index]}
               />
                 <CardContent>
 
