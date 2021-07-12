@@ -112,13 +112,13 @@ class SearchProperty extends Component {
     console.log("Search Key: " + searchKey)
 
     this.state.allIDs.map(async (value, index) => {
-      
+
       const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
       const remainignDetail = await landCon.methods.remainingDetail(this.state.allIDs[index]).call({ from: this.state.account })
 
-      
+
       if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
-     
+
 
         this.state.ipfsHash.push(remainignDetail)
 
@@ -150,7 +150,7 @@ class SearchProperty extends Component {
         this.state.village.push(detailRemaining[0])
         this.state.surveyNo.push(detailRemaining[1])
 
-       
+
 
         console.log("State: " + detail[0])
         console.log("Owner: " + detail[1])
