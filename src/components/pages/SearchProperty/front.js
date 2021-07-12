@@ -169,6 +169,8 @@ class SearchProperty extends Component {
     const marketValueAll = this.state.marketValue;
     const statusAll = this.state.status;
 
+    const ipfsAll = this.state.ipfsHash;
+
 
     const { classes } = this.props;
 
@@ -191,14 +193,14 @@ class SearchProperty extends Component {
               onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
               <CardActionArea>
-                {/* <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    width="140"
-                    height="270"
-                    image={logo}
-                    title="Contemplative Reptile"
-                  /> */}
+              <CardMedia
+                component="img"
+                alt="Image not load"
+                width="1030"
+                height="550"
+                image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
+                title={survyNoAll[index]}
+              />
                 <CardContent>
 
                   <Typography
