@@ -64,6 +64,7 @@ class SearchProperty extends Component {
       owners: [],
       marketValue: [],
       measure: [],
+      ipfsHash: [],
       searchKeyword: "",
       searchKeyword: "",
       placeHolder: "Search Record",
@@ -112,6 +113,9 @@ class SearchProperty extends Component {
 
       const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
 
+      const remainignDetail = await landCon.methods.remainingDetail(this.state.ids[index]).call({ from: this.state.account })
+
+
       if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
         this.state.states.push(detail[0])
         this.state.owners.push(detail[1])
@@ -124,6 +128,8 @@ class SearchProperty extends Component {
         this.state.village.push(detailRemaining[0])
         this.state.surveyNo.push(detailRemaining[1])
 
+        this.state.ipfsHash.push(remainignDetail)
+
         console.log("State: " + detail[0])
         console.log("Owner: " + detail[1])
         console.log("District: " + detail[2])
@@ -133,6 +139,8 @@ class SearchProperty extends Component {
 
         console.log("village: " + detailRemaining[0])
         console.log("surveyNo: " + detailRemaining[1])
+
+        console.log("ipfsHash: " + remainignDetail)
 
         console.log("---------------------------------")
       }
