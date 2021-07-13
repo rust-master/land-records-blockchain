@@ -81,7 +81,8 @@ Formatter.js Bug removed
 
 ### Project Supervisor
 - Mr. Amir Ali Rizvi (Blockchain Expert)
-- Lecturer at COMSATS Sahiwal 
+- Lecturer at COMSATS Sahiwal
+- <a href="https://web.facebook.com/amir.a.rizvi1">Facebook Profile</a> 
 
 ### Project Student Members
 - Muhammad Zaryab Rafique
