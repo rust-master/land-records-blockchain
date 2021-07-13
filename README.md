@@ -80,4 +80,9 @@ Formatter.js Bug removed
 <h2 align="center">Project Development Team</h2>
 
 ### Project Supervisor
-#### Mr. Amir Ali Rizvi
+- Mr. Amir Ali Rizvi (Blockchain Expert)
+- Lecturer at COMSATS Sahiwal 
+
+### Project Student Members
+- Muhammad Zaryab Rafique
+- Muhammad Zohiab Arshad
