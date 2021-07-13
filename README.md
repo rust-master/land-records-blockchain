@@ -77,5 +77,7 @@ Formatter.js Bug removed
 
 <hr>
 
-# Project Supervisor
+<h3 align="center">Project Team</h3>
+
+### Project Supervisor
 
