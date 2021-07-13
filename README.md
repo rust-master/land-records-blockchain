@@ -74,3 +74,8 @@ MetaMask is the easiest way to interact with dapps in a browser. It is an extens
 ### Formatter.js Bug
 Formatter.js Bug removed
 <a href="https://stackoverflow.com/questions/66374242/web3-formatter-js-loading-issue">Solution Link</a>
+
+<hr>
+
+# Project Supervisor
+
