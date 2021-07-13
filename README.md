@@ -77,7 +77,7 @@ Formatter.js Bug removed
 
 <hr>
 
-<h3 align="center">Project Team</h3>
+<h2 align="center">Project Development Team</h2>
 
 ### Project Supervisor
-
+#### Mr. Amir Ali Rizvi
