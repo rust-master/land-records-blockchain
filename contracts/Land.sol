@@ -80,6 +80,10 @@ contract Land{
         return(land[id].CurrentOwner,land[id].state,land[id].district,land[id].village,land[id].surveyNumber,land[id].marketValue,land[id].measurement);
     }
 
+     function showAllLandsRemainig(uint id) public view returns(uint){
+        return(id);
+    }
+
         //to view details of land for the buyer
         function landInfoUser(uint id) public view returns(address,uint,bool,address,reqStatus){
         return(land[id].CurrentOwner,land[id].marketValue,land[id].isAvailable,land[id].requester,land[id].requestStatus);

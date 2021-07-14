@@ -61,7 +61,6 @@ class SearchProperty extends Component {
       district: [],
       village: [],
       surveyNo: [],
-      status: [],
       owners: [],
       marketValue: [],
       measure: [],
@@ -82,7 +81,6 @@ class SearchProperty extends Component {
     this.state.states = []
     this.state.owners = []
     this.state.district = []
-    this.state.status = []
     this.state.marketValue = []
     this.state.measure = []
     this.state.ids = []
@@ -121,33 +119,27 @@ class SearchProperty extends Component {
 
     this.state.allIDs.map(async (value, index) => {
 
-      const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
+      const detail = await landCon.methods.showAllLands(this.state.allIDs[index]).call({ from: this.state.account })
+      const remainignDetail = await landCon.methods.showAllLandsRemainig(this.state.allIDs[index]).call({ from: this.state.account })
 
-      const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
-
-
-      this.state.states.push(detail[0])
-      this.state.owners.push(detail[1])
+      this.state.owners.push(detail[0])
+      this.state.states.push(detail[1])
       this.state.district.push(detail[2])
-      this.state.status.push(detail[3])
-      this.state.marketValue.push(detail[4])
-      this.state.measure.push(detail[5])
-      this.state.ids.push(detail[6])
-
-      this.state.village.push(detailRemaining[0])
-      this.state.surveyNo.push(detailRemaining[1])
+      this.state.village.push(detail[3])
+      this.state.surveyNo.push(detail[4])
+      this.state.marketValue.push(detail[5])
+      this.state.measure.push(detail[6])
+      this.state.ids.push(remainignDetail[0])
 
 
-      console.log("State: " + detail[0])
-      console.log("Owner: " + detail[1])
+      console.log("Owner: " + detail[0])
+      console.log("State: " + detail[1])
       console.log("District: " + detail[2])
-      console.log("Status: " + detail[4])
-      console.log("Mesaurment: " + detail[5])
-      console.log("ID: " + detail[6])
-
-      console.log("village: " + detailRemaining[0])
-      console.log("surveyNo: " + detailRemaining[1])
-
+      console.log("village: " + detail[3])
+      console.log("surveyNo: " + detail[4])
+      console.log("marketValue: " + detail[5])
+      console.log("Mesaurment: " + detail[6])
+      console.log("ID: " + remainignDetail[0])
 
       console.log("---------------------------------")
 
@@ -174,7 +166,6 @@ class SearchProperty extends Component {
     const ownersAll = this.state.owners;
     const measureAll = this.state.measure;
     const marketValueAll = this.state.marketValue;
-    const statusAll = this.state.status;
 
     const ipfsAll = this.state.ipfsHash;
 
