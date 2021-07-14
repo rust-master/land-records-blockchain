@@ -9,6 +9,7 @@ import GovermentLogin from "./components/pages/GovermentLogin/GovtLogin";
 import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
 
 import CreateLand from "./components/pages/CreateLand/CreatLand";
+import ShowAllLands from "./components/pages/ShowAllLands/ShowAllLands";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -149,6 +150,12 @@ class App extends Component {
 
               {this.state.cookie ? (
                 <Route path="/create-land" component={CreateLand} />
+              ) : (
+                <Route path="/goverment-login" component={GovermentLogin} />
+              )}
+
+              {this.state.cookie ? (
+                <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/goverment-login" component={GovermentLogin} />
               )}

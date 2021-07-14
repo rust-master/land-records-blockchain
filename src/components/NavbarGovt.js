@@ -100,6 +100,16 @@ function Navbar() {
 
                 <li className="nav-item">
                   <Link
+                    to="/show-all-lands"
+                    className="nav-links"
+                    onClick={closeMobileMenu}
+                  >
+                    All Lands
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link
                     to="/create-land"
                     className="nav-links"
                     onClick={closeMobileMenu}
@@ -108,15 +118,6 @@ function Navbar() {
                   </Link>
                 </li>
 
-                <li className="nav-item">
-                  <Link
-                    to="/properties"
-                    className="nav-links"
-                    onClick={closeMobileMenu}
-                  >
-                    Tax Wallet
-                  </Link>
-                </li>
                 <li className="nav-item">
                   <Link
                     to="/requests"
