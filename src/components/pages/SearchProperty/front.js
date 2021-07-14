@@ -151,7 +151,6 @@ class SearchProperty extends Component {
         this.state.surveyNo.push(detailRemaining[1])
 
 
-
         console.log("State: " + detail[0])
         console.log("Owner: " + detail[1])
         console.log("District: " + detail[2])
@@ -191,7 +190,6 @@ class SearchProperty extends Component {
     const statusAll = this.state.status;
 
     const ipfsAll = this.state.ipfsHash;
-
 
     const { classes } = this.props;
 
@@ -357,14 +355,6 @@ class SearchProperty extends Component {
                       value={this.state.searchKeyword1}
                       onChange={this.handleChange}
                     />
-
-
-                    {/* <input
-                        className="footer-input"
-                        name="text"
-                        type="propertyNo"
-                        placeholder="Property No"
-                      /> */}
 
                     <Button
                       onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword, this.state.searchKeyword1)}
