@@ -86,4 +86,6 @@ Formatter.js Bug removed
 
 ### Project Student Members
 - Muhammad Zaryab Rafique
+- - <a href="https://www.linkedin.com/in/zaryab-programmer">LindedIn Profile</a> 
+- - <a href="https://mzaryabrafique.live/">Website</a> 
 - Muhammad Zohiab Arshad
