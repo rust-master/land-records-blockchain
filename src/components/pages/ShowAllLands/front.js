@@ -46,9 +46,10 @@ const styles = (theme) => ({
 });
 
 class SearchProperty extends Component {
-  // componentWillMount() {
-  //   this.loadBlockchainData();
-  // }
+  
+  componentWillMount() {
+    this.loadBlockchainData();
+  }
 
   constructor(props) {
     super(props);
@@ -66,9 +67,7 @@ class SearchProperty extends Component {
       marketValue: [],
       measure: [],
       ipfsHash: [],
-      searchKeyword: "",
-      searchKeyword: "",
-      placeHolder: "Search Record",
+      placeHolder: "Loading Records",
     }
   }
 
@@ -78,7 +77,7 @@ class SearchProperty extends Component {
   }
 
 
-  async loadBlockchainData(searchKey, searchValue) {
+  async loadBlockchainData() {
 
     this.state.allIDs = []
     this.state.allImgID = []
@@ -109,24 +108,16 @@ class SearchProperty extends Component {
     this.state.allImgID = allLandsIDs
     console.log("IDs", allLandsIDs)
 
-    console.log("Search Key: " + searchKey)
 
     this.state.allIDs.map(async (value, index) => {
 
-      const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
       const remainignDetail = await landCon.methods.remainingDetail(this.state.allIDs[index]).call({ from: this.state.account })
-
-
-      if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
-
-
+     
         this.state.ipfsHash.push(remainignDetail)
 
         console.log("ipfsHash: " + remainignDetail)
 
         console.log("---------------------------------")
-      }
-
 
     })
 
@@ -138,7 +129,6 @@ class SearchProperty extends Component {
       const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
 
 
-      if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
         this.state.states.push(detail[0])
         this.state.owners.push(detail[1])
         this.state.district.push(detail[2])
@@ -163,7 +153,7 @@ class SearchProperty extends Component {
 
 
         console.log("---------------------------------")
-      }
+
     })
 
     if (this.state.states.length <= 0) {
@@ -329,51 +319,14 @@ class SearchProperty extends Component {
                 flexDirection: "" === "start" ? "row-reverse" : "row",
               }}
             >
-              <div className="col">
+             
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"Search Land to Buy"}</div>
+                  <div className="top-line">{"Lands"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
-                    {"Optimized Search"}
+                    {"All; Lands"}
                   </h1>
-                  <div className="input-areas">
 
-                    <input
-                      className="footer-input"
-                      name="searchKeyword"
-                      type="text"
-                      placeholder="Search by State"
-                      value={this.state.searchKeyword}
-                      onChange={this.handleChange}
-                    />
-
-
-                    <input
-                      className="footer-input"
-                      name="searchKeyword1"
-                      type="text"
-                      placeholder="Search by Distirct"
-                      value={this.state.searchKeyword1}
-                      onChange={this.handleChange}
-                    />
-
-                    <Button
-                      onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword, this.state.searchKeyword1)}
-                      buttonSize="btn--wide" buttonColor="blue">
-                      Search
-                    </Button>
-
-                  </div>
                 </div>
-              </div>
-              <div className="col">
-                <div className="home__hero-img-wrapper">
-                  <img
-                    src={"images/svg-7.svg"}
-                    alt={"Credit Card"}
-                    className="home__hero-img"
-                  />
-                </div>
-              </div>
             </div>
 
             {ListTemplate}
