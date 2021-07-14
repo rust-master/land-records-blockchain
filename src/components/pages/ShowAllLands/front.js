@@ -185,7 +185,7 @@ class SearchProperty extends Component {
           mountOnEnter
           unmountOnExit
         >
-          <div className={classes.main}>
+          <div className={classes.main}  style={{marginBottom: "60px"}}>
             <Card className={classes.root1}
               onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
@@ -276,9 +276,9 @@ class SearchProperty extends Component {
             >
 
               <div className="home__hero-text-wrapper">
-                <div className="top-line">{"Lands"}</div>
+                <div className="top-line">{"Lands by Goverment"}</div>
                 <h1 className={true ? "heading" : "heading dark"}>
-                  {"All; Lands"}
+                  {"All Lands"}
                 </h1>
 
               </div>
