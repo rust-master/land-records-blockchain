@@ -96,7 +96,7 @@ class SearchProperty extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0xd68196109dCa7F384A2Ad0ee2C42f83A330Ff5Cf")
+    const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
 
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
 
@@ -249,39 +249,6 @@ class SearchProperty extends Component {
                   </Typography>
 
                 </CardContent>
-                <div
-
-                  style={{
-                    margin: "20px auto 0 auto;",
-                    display: "block",
-                    width: "100%",
-                    height: "50px",
-                    backgroundColor: "#266AFB",
-                  }}
-                >
-                  <h2
-                    style={{
-                      marginTop: "10px",
-                      marginLeft: "40%",
-                      display: "inline-block",
-                      color: "#fff",
-                      fontFamily: "Arial",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                    }}
-                  >
-                    <img
-                      src={logo}
-                      alt=""
-                      style={{
-                        width: "35px",
-                        height: "35px",
-                        marginBottom: "0px",
-                      }}
-                    />{" "}
-                    Request For Sale
-                  </h2>
-                </div>
               </CardActionArea>
             </Card>
           </div>
