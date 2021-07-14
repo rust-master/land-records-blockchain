@@ -185,7 +185,7 @@ class SearchProperty extends Component {
           mountOnEnter
           unmountOnExit
         >
-          <div className={classes.main}  style={{marginBottom: "40px", marginLeft: "5%"}}>
+          <div className={classes.main}  style={{marginBottom: "40px", marginLeft: "3%"}}>
             <Card className={classes.root1}
               onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
