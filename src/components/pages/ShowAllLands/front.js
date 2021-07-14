@@ -46,7 +46,7 @@ const styles = (theme) => ({
 });
 
 class SearchProperty extends Component {
-  
+
   componentWillMount() {
     this.loadBlockchainData();
   }
@@ -56,7 +56,6 @@ class SearchProperty extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       allIDs: [],
-      allImgID: [],
       ids: [],
       states: [],
       district: [],
@@ -80,7 +79,6 @@ class SearchProperty extends Component {
   async loadBlockchainData() {
 
     this.state.allIDs = []
-    this.state.allImgID = []
     this.state.states = []
     this.state.owners = []
     this.state.district = []
@@ -105,19 +103,18 @@ class SearchProperty extends Component {
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
 
     this.state.allIDs = allLandsIDs
-    this.state.allImgID = allLandsIDs
     console.log("IDs", allLandsIDs)
 
 
     this.state.allIDs.map(async (value, index) => {
 
       const remainignDetail = await landCon.methods.remainingDetail(this.state.allIDs[index]).call({ from: this.state.account })
-     
-        this.state.ipfsHash.push(remainignDetail)
 
-        console.log("ipfsHash: " + remainignDetail)
+      this.state.ipfsHash.push(remainignDetail)
 
-        console.log("---------------------------------")
+      console.log("ipfsHash: " + remainignDetail)
+
+      console.log("---------------------------------")
 
     })
 
@@ -129,30 +126,30 @@ class SearchProperty extends Component {
       const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
 
 
-        this.state.states.push(detail[0])
-        this.state.owners.push(detail[1])
-        this.state.district.push(detail[2])
-        this.state.status.push(detail[3])
-        this.state.marketValue.push(detail[4])
-        this.state.measure.push(detail[5])
-        this.state.ids.push(detail[6])
+      this.state.states.push(detail[0])
+      this.state.owners.push(detail[1])
+      this.state.district.push(detail[2])
+      this.state.status.push(detail[3])
+      this.state.marketValue.push(detail[4])
+      this.state.measure.push(detail[5])
+      this.state.ids.push(detail[6])
 
-        this.state.village.push(detailRemaining[0])
-        this.state.surveyNo.push(detailRemaining[1])
-
-
-        console.log("State: " + detail[0])
-        console.log("Owner: " + detail[1])
-        console.log("District: " + detail[2])
-        console.log("Status: " + detail[4])
-        console.log("Mesaurment: " + detail[5])
-        console.log("ID: " + detail[6])
-
-        console.log("village: " + detailRemaining[0])
-        console.log("surveyNo: " + detailRemaining[1])
+      this.state.village.push(detailRemaining[0])
+      this.state.surveyNo.push(detailRemaining[1])
 
 
-        console.log("---------------------------------")
+      console.log("State: " + detail[0])
+      console.log("Owner: " + detail[1])
+      console.log("District: " + detail[2])
+      console.log("Status: " + detail[4])
+      console.log("Mesaurment: " + detail[5])
+      console.log("ID: " + detail[6])
+
+      console.log("village: " + detailRemaining[0])
+      console.log("surveyNo: " + detailRemaining[1])
+
+
+      console.log("---------------------------------")
 
     })
 
@@ -319,14 +316,14 @@ class SearchProperty extends Component {
                 flexDirection: "" === "start" ? "row-reverse" : "row",
               }}
             >
-             
-                <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"Lands"}</div>
-                  <h1 className={true ? "heading" : "heading dark"}>
-                    {"All; Lands"}
-                  </h1>
 
-                </div>
+              <div className="home__hero-text-wrapper">
+                <div className="top-line">{"Lands"}</div>
+                <h1 className={true ? "heading" : "heading dark"}>
+                  {"All; Lands"}
+                </h1>
+
+              </div>
             </div>
 
             {ListTemplate}
