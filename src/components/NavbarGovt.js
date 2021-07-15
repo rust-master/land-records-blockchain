@@ -87,6 +87,7 @@ function Navbar() {
                   <font color="#EF8E19">Blockchain</font> Land Records System
                 </p>
               </Link>
+              
               <div className="menu-icon" onClick={handleClick}>
                 {click ? <FaTimes /> : <FaBars />}
               </div>
@@ -124,7 +125,7 @@ function Navbar() {
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
-                    Verify
+                    <span style={{color:"#EF8E19"}}>Tax: 0 Ether</span>
                   </Link>
                 </li>
 
