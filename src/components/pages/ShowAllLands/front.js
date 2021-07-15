@@ -171,7 +171,7 @@ class SearchProperty extends Component {
 
     const { classes } = this.props;
 
-    let ListTemplate = <div>Development Phase</div>
+    let ListTemplate 
 
 
     if (statesAll.length) {
