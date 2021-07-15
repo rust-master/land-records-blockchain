@@ -54,22 +54,20 @@ function ImgMediaCard() {
     const [totalIDs, settotalIDs] = useState([]);
 
 
-    const getData = async () => {
-        const web3 = window.web3
-
-        const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-        const accounts = await webeProvider.eth.getAccounts()
-     
-        const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
-    
-        const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
-        settotalIDs(allLandsIDs)
-        console.log("Total IDs: " + allLandsIDs)
-    };
-       
+    // write async function inside useEffect
     useEffect(() => {
-        getData();
-    }, [getData]);
+        async function getTotalIDs() {
+            const web3 = window.web3
+            const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+            const accounts = await webeProvider.eth.getAccounts()
+         
+            const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
+            const allLandsIDs = await lan
+            settotalIDs(result);
+        }
+        getTotalIDs();
+
+    }, []);
 
 
     return (
