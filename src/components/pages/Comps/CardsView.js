@@ -62,8 +62,8 @@ function ImgMediaCard() {
             const accounts = await webeProvider.eth.getAccounts()
          
             const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
-            const allLandsIDs = await lan
-            settotalIDs(result);
+            const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
+            settotalIDs(allLandsIDs);
         }
         getTotalIDs();
 
