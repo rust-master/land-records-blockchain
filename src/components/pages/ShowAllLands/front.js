@@ -158,6 +158,8 @@ class SearchProperty extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     const dataAll = this.state.ids;
     const statesAll = this.state.states;
     const districtAll = this.state.district;
@@ -166,13 +168,9 @@ class SearchProperty extends Component {
     const ownersAll = this.state.owners;
     const measureAll = this.state.measure;
     const marketValueAll = this.state.marketValue;
-
     const ipfsAll = this.state.ipfsHash;
 
-    const { classes } = this.props;
-
     let ListTemplate 
-
 
     if (statesAll.length) {
 
@@ -254,7 +252,6 @@ class SearchProperty extends Component {
           </div>
         </Slide>
 
-
       );
     }
     else {
@@ -274,14 +271,13 @@ class SearchProperty extends Component {
                 flexDirection: "" === "start" ? "row-reverse" : "row",
               }}
             >
-
               <div className="home__hero-text-wrapper">
                 <div className="top-line">{"Lands by Goverment"}</div>
                 <h1 className={true ? "heading" : "heading dark"}>
                   {"All Lands"}
                 </h1>
-
               </div>
+              
             </div>
 
             {ListTemplate}
