@@ -54,21 +54,22 @@ function ImgMediaCard() {
     const [totalIDs, settotalIDs] = useState([]);
 
 
-    // write async function inside useEffect
+
     useEffect(() => {
-        async function getTotalIDs() {
+        async function getToken() { 
             const web3 = window.web3
+
             const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
             const accounts = await webeProvider.eth.getAccounts()
          
             const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
-            const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
-            settotalIDs(allLandsIDs);
+            const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
+
+            settotalIDs(allLandsIDs.length)
+            console.log("Total IDs: " + allLandsIDs.length)
         }
-        getTotalIDs();
-
-    }, []);
-
+        getToken();
+     }, [])
 
     return (
         <Slide direction="right" in={true} timeout={3000} mountOnEnter unmountOnExit>
@@ -89,7 +90,7 @@ function ImgMediaCard() {
                                 {totalIDs}
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
-                                Property Transferred In Punjab-2021
+                                Total Registered Lands In Pakistan-2021
                             </Typography>
                         </CardContent>
                     </CardActionArea>
