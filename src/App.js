@@ -140,12 +140,12 @@ class App extends Component {
               {this.state.user ? (
                 <Route path="/requests" component={Requests} />
               ) : (
-                <Route path="/sign-up" component={SignUp} />
+                <Route path="/sign-in" component={SignIn} />
               )}
               {this.state.user ? (
                 <Route path="/properties" component={Properties} />
               ) : (
-                <Route path="/goverment-login" component={GovermentLogin} />
+                <Route path="/sign-up" component={SignUp} />
               )}
 
               {this.state.cookie ? (
