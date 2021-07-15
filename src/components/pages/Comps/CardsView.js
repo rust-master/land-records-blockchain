@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -48,10 +48,29 @@ const useStyles = makeStyles({
     },
 });
 
-export default function ImgMediaCard() {
+function ImgMediaCard() {
     const classes = useStyles();
 
+    const [totalIDs, settotalIDs] = useState([]);
+
+
+    const getData = async () => {
+        const web3 = window.web3
+
+        const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+        const accounts = await webeProvider.eth.getAccounts()
+     
+        const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
     
+        const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
+        settotalIDs(allLandsIDs)
+        console.log("Total IDs: " + allLandsIDs)
+    };
+       
+    useEffect(() => {
+        getData();
+    }, [getData]);
+
 
     return (
         <Slide direction="right" in={true} timeout={3000} mountOnEnter unmountOnExit>
@@ -69,7 +88,7 @@ export default function ImgMediaCard() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                                109,190
+                                {totalIDs}
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
                                 Property Transferred In Punjab-2021
@@ -121,3 +140,5 @@ export default function ImgMediaCard() {
         </Slide>
     );
 }
+
+export default ImgMediaCard;
