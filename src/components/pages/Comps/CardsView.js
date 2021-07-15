@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -53,15 +53,12 @@ function ImgMediaCard() {
 
     const [totalIDs, settotalIDs] = useState([]);
 
-
-
     useEffect(() => {
-        async function getToken() { 
+        async function getToken() {
             const web3 = window.web3
-
             const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
             const accounts = await webeProvider.eth.getAccounts()
-         
+
             const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
             const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
 
@@ -69,7 +66,7 @@ function ImgMediaCard() {
             console.log("Total IDs: " + allLandsIDs.length)
         }
         getToken();
-     }, [])
+    }, [])
 
     return (
         <Slide direction="right" in={true} timeout={3000} mountOnEnter unmountOnExit>
