@@ -8,6 +8,8 @@ import logo from '../Comps/growing.png';
 import logo1 from '../Comps/decreasing.png';
 import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
+import Web3 from "web3";
+import contract from "../../../build/contracts/Land.json";
 
 const useStyles = makeStyles({
     main: {
@@ -48,6 +50,8 @@ const useStyles = makeStyles({
 
 export default function ImgMediaCard() {
     const classes = useStyles();
+
+    
 
     return (
         <Slide direction="right" in={true} timeout={3000} mountOnEnter unmountOnExit>
