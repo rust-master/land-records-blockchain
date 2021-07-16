@@ -104,10 +104,10 @@ function ImgMediaCard() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                                309,513
+                                0
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
-                                Property Transferred In Punjab-2020
+                            Total Registered Lands In Pakistan-2020
                             </Typography>
                         </CardContent>
                     </CardActionArea>
@@ -124,10 +124,10 @@ function ImgMediaCard() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                                359,972
+                                0
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
-                                Property Transferred In Punjab-2019
+                            Total Registered Lands In Pakistan-2019
                             </Typography>
                         </CardContent>
                     </CardActionArea>
