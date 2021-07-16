@@ -104,10 +104,10 @@ function ImgMediaCard() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                            No Land
+                                No Land
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
-                            Total Registered Lands In Pakistan-2020
+                                Total Registered Lands In Pakistan-2020
                             </Typography>
                         </CardContent>
                     </CardActionArea>
@@ -124,10 +124,10 @@ function ImgMediaCard() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                            No Land
+                                No Land
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
-                            Total Registered Lands In Pakistan-2019
+                                Total Registered Lands In Pakistan-2019
                             </Typography>
                         </CardContent>
                     </CardActionArea>
