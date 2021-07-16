@@ -125,7 +125,7 @@ function Navbar() {
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
-                    <span style={{color:"#EF8E19"}}>Tax: 0 Ether</span>
+
                   </Link>
                 </li>
 
@@ -146,7 +146,7 @@ function Navbar() {
                         <h4 style={{color: "red",padding: 10}} >{name}</h4>
                       </li>
                       <li>
-                        <a href="/messages">Messages</a>
+                    <span style={{color:"#EF8E19"}}>Tax: 0 Ether</span>
                       </li>
                       <li>
                         <a href="/trips">Trips</a>
