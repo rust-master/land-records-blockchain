@@ -87,7 +87,7 @@ function Navbar() {
                   <font color="#EF8E19">Blockchain</font> Land Records System
                 </p>
               </Link>
-              
+
               <div className="menu-icon" onClick={handleClick}>
                 {click ? <FaTimes /> : <FaBars />}
               </div>
@@ -143,10 +143,10 @@ function Navbar() {
                   >
                     <ul>
                       <li>
-                        <h4 style={{color: "red",padding: 10}} >{name}</h4>
+                        <h4 style={{ color: "red", padding: 10 }} >{name}</h4>
                       </li>
                       <li>
-                    <h4 style={{color:"#EF8E19"}}>Tax: 0 Ether</h4>
+                        <h4 style={{ color: "#EF8E19" }}>Tax: 0 Ether</h4>
                       </li>
                       <li>
                         <a href="/trips">Trips</a>
