@@ -104,7 +104,7 @@ function ImgMediaCard() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                                0
+                            No Land
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
                             Total Registered Lands In Pakistan-2020
@@ -124,7 +124,7 @@ function ImgMediaCard() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                                0
+                            No Land
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
                             Total Registered Lands In Pakistan-2019
