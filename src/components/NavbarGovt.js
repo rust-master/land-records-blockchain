@@ -125,7 +125,7 @@ function Navbar() {
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
-
+                    Land Update
                   </Link>
                 </li>
 
@@ -146,7 +146,7 @@ function Navbar() {
                         <h4 style={{color: "red",padding: 10}} >{name}</h4>
                       </li>
                       <li>
-                    <span style={{color:"#EF8E19"}}>Tax: 0 Ether</span>
+                    <h4 style={{color:"#EF8E19"}}>Tax: 0 Ether</h4>
                       </li>
                       <li>
                         <a href="/trips">Trips</a>
