@@ -75,9 +75,9 @@ function Navbar() {
       const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
       const accounts = await webeProvider.eth.getAccounts()
 
-      const boo = web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether'); 
-      console.log(boo)
-      setbalance(boo)
+      const blnce = web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether'); 
+      console.log(blnce)
+      setbalance(blnce)
   }
   getBalance();
 
