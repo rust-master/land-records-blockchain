@@ -59,10 +59,10 @@ function ImgMediaCard() {
             const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
             const accounts = await webeProvider.eth.getAccounts()
 
-            const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
+            const landCon = new web3.eth.Contract(contract.abi, "0xF0Cf36e9E8E8e6501e99605FD93550fBEAB71C6a")
             const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
 
-            settotalIDs(allLandsIDs.length)
+            settotalIDs(allLandsIDs)
             console.log("Total IDs: " + allLandsIDs.length)
         }
         getToken();
@@ -84,7 +84,7 @@ function ImgMediaCard() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h3" component="h2" className={classes.Typo}>
-                                {totalIDs.length ? totalIDs : "No Land"}
+                                {totalIDs.length ? totalIDs.length : "No Land"}
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p" className={classes.TypoP}>
                                 Total Registered Lands In Pakistan-2021

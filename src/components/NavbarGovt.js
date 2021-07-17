@@ -7,6 +7,7 @@ import { IconContext } from "react-icons/lib";
 import logo from "../components/logo.png";
 import Cookies from "universal-cookie";
 import "./menu.css";
+import Web3 from "web3";
 
 function Navbar() {
   const dropdownRef = useRef(null);
@@ -14,6 +15,8 @@ function Navbar() {
   const onClick = () => setIsActive(!isActive);
 
   const [name, setName] = useState(false);
+
+  const [balance, setbalance] = useState("");
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const cookies = new Cookies();
@@ -64,6 +67,21 @@ function Navbar() {
   useEffect(() => {
     setName(cookies.get("username"));
   }, [cookies]);
+
+  // Getting Balance of MetaMask Account
+  useEffect(() => {
+    async function getBalance() {
+      const web3 = window.web3
+      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+      const accounts = await webeProvider.eth.getAccounts()
+
+      const boo = web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether'); 
+      console.log(boo)
+      setbalance(boo)
+  }
+  getBalance();
+
+  }, [])
 
   function logout() {
     cookies.remove("username");
@@ -146,7 +164,7 @@ function Navbar() {
                         <h4 style={{ color: "red", padding: 10 }} >{name}</h4>
                       </li>
                       <li>
-                        <h4 style={{ color: "#EF8E19" }}>Tax: 0 Ether</h4>
+                        <h4 style={{ color: "#EF8E19" }}>Balance: {balance} ETH</h4>
                       </li>
                       <li>
                         <a href="/trips">Trips</a>
