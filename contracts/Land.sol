@@ -124,6 +124,11 @@ contract Land{
         land[property].isAvailable=true;
     }
 
+    // change the market value after some years
+     function changeMarketValue(uint property, uint _marketValue)public{
+        land[property].marketValue=_marketValue;
+    }
+
     
     // Get all the lands ids.
 	 function getAllLands() view public returns (uint[] memory) {
