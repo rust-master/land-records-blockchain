@@ -16,12 +16,14 @@ class ChangeMarketValue extends Component {
     }
   }
 
-
-
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  }
+
+  async changeMarketValueData(sendValue){
+    console.log("Data " +sendValue )
   }
 
   render() {
@@ -41,7 +43,7 @@ class ChangeMarketValue extends Component {
             >
               <div className="col">
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"Market of Land Changes After Years"}</div>
+                  <div className="top-line">{"Market Value of Land Changes After Years"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"Change Market Value"}
                   </h1>
@@ -50,17 +52,17 @@ class ChangeMarketValue extends Component {
                     <input
                       className="footer-input"
                       name="changeValue"
-                      type="text"
+                      type="number"
                       placeholder="Change Value"
                       value={this.state.changeValue}
                       onChange={this.handleChange}
                     />
 
-                    {/* <Button
-                      onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword, this.state.searchKeyword1)}
+                    <Button
+                      onClick={this.changeMarketValueData.bind(this, this.state.changeValue)}
                       buttonSize="btn--wide" buttonColor="blue">
-                      Search
-                    </Button> */}
+                      Change Market Value
+                    </Button>
 
                   </div>
                 </div>
