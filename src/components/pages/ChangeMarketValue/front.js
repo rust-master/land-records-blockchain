@@ -1,18 +1,27 @@
 import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
 
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 class ChangeMarketValue extends Component {
 
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.state = {
       allIDs: [],
       changeValue: [],
+      open: false,
+      openi: false,
     }
   }
 
@@ -20,6 +29,15 @@ class ChangeMarketValue extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  }
+
+  handleClose(e, r) {
+    if (r === 'clickaway') {
+      return;
+    }
+
+    this.setState({ open: false })
+    this.setState({ openi: false })
   }
 
   async changeMarketValueData(sendValue) {
@@ -42,11 +60,13 @@ class ChangeMarketValue extends Component {
         await landCon.methods.changeMarketValue(this.state.allIDs[index],sendValue).send({ from: accounts[0] })
   
       })
-    }else{
-      console.log("Value is 0")
+
+      this.setState({ open: true })
+
+    } else {
+      this.setState({ openi: true })
     }
 
-  
   }
 
   render() {
@@ -90,6 +110,20 @@ class ChangeMarketValue extends Component {
                     </Button>
 
                   </div>
+
+                  
+                  <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+                      <Alert onClose={this.handleClose} severity="success">
+                        Market Value Change of All Lands Succefully
+                      </Alert>
+                    </Snackbar>
+
+                    <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
+                      <Alert onClose={this.handleClose} severity="error">
+                        Market Value is Wrong. Please Try Again
+                      </Alert>
+                    </Snackbar>
+
                 </div>
               </div>
               <div className="col">
