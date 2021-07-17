@@ -121,7 +121,7 @@ function Navbar() {
 
                 <li className="nav-item">
                   <Link
-                    to="/requests"
+                    to="/change-market-value"
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
