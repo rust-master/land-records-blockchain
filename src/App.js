@@ -10,6 +10,7 @@ import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
 
 import CreateLand from "./components/pages/CreateLand/CreatLand";
 import ShowAllLands from "./components/pages/ShowAllLands/ShowAllLands";
+import ChangeMarketValue from "./components/pages/ChangeMarketValue/ChangeMarketValue";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -159,6 +160,13 @@ class App extends Component {
               ) : (
                 <Route path="/goverment-login" component={GovermentLogin} />
               )}
+
+              {this.state.cookie ? (
+                <Route path="/change-market-value" component={ChangeMarketValue} />
+              ) : (
+                <Route path="/goverment-login" component={GovermentLogin} />
+              )}
+
             </Switch>
             <Footer />
           </Router>
