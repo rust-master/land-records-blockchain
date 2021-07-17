@@ -24,6 +24,7 @@ class ChangeMarketValue extends Component {
 
   async changeMarketValueData(sendValue) {
     console.log("Data " + sendValue)
+    this.state.allIDs = []
 
     const web3 = window.web3
     const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
@@ -32,8 +33,19 @@ class ChangeMarketValue extends Component {
     const landCon = new web3.eth.Contract(contract.abi, "0x5ec9Df553fBF2498Aa252f62999DB6F46e25E164")
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
 
-    console.log("Total IDs: " + allLandsIDs.length)
+    this.state.allIDs = allLandsIDs
+    console.log("IDs", this.state.allIDs)
 
+    this.state.allIDs.map(async (value, index) => {
+
+      const detail = await landCon.methods.showAllLands(this.state.allIDs[index]).call({ from: accounts[0] })
+      var newValue = detail[5] + sendValue
+
+      //await landCon.methods.changeMarketValue(this.state.allIDs[index],newValue).send({ from: accounts[0] })
+
+    console.log("newValue " + newValue)
+
+    })
   }
 
   render() {
