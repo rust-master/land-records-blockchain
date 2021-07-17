@@ -124,6 +124,10 @@ contract Land{
         land[property].isAvailable=true;
     }
 
+    function showMarketValue(uint id) public view returns(uint256){
+        return land[id].marketValue;
+    }
+
     // change the market value after some years
      function changeMarketValue(uint property, uint _marketValue)public{
         uint256 marketValueGet = showMarketValue(property);    
