@@ -131,7 +131,7 @@ contract Land{
     // change the market value after some years
      function changeMarketValue(uint property, uint _marketValue)public{
         uint256 marketValueGet = showMarketValue(property);    
-        land[property].marketValue=marketValueGet +_marketValue;  
+        land[property].marketValue=marketValueGet + _marketValue;  
     }
 
     
