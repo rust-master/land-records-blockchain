@@ -71,6 +71,7 @@ class ChangeMarketValue extends Component {
                       className="footer-input"
                       name="changeValue"
                       type="number"
+                      min="0"
                       placeholder="Change Value"
                       value={this.state.changeValue}
                       onChange={this.handleChange}
