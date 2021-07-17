@@ -22,12 +22,22 @@ class ChangeMarketValue extends Component {
     });
   }
 
-  async changeMarketValueData(sendValue){
-    console.log("Data " +sendValue )
+  async changeMarketValueData(sendValue) {
+    console.log("Data " + sendValue)
+
+    const web3 = window.web3
+    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+    const accounts = await webeProvider.eth.getAccounts()
+
+    const landCon = new web3.eth.Contract(contract.abi, "0xc268D1cf5B568dDD50cB0728b2290Fd81E3E00a0")
+    const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
+
+    console.log("Total IDs: " + allLandsIDs.length)
+
   }
 
   render() {
-   
+
     return (
       <div>
         <div
@@ -50,6 +60,7 @@ class ChangeMarketValue extends Component {
                   <div className="input-areas">
 
                     <input
+                      style={{ width: "520px" }}
                       className="footer-input"
                       name="changeValue"
                       type="number"
