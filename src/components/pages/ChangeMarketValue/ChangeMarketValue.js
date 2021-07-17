@@ -1,6 +1,6 @@
 import React from 'react';
 import FrontSection from './front';
-import { homeObjOne, homeObjThree, } from './Data';
+import {homeObjThree, } from './Data';
 
 
 function ChangeMarketValue() {
