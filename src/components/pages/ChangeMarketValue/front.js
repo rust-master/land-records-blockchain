@@ -36,35 +36,35 @@ class ChangeMarketValue extends Component {
       return;
     }
 
-    this.setState({ open: false })
-    this.setState({ openi: false })
+    this.setState({ open: false });
+    this.setState({ openi: false });
   }
 
   async changeMarketValueData(sendValue) {
     console.log("Data " + sendValue)
     this.state.allIDs = []
 
-    const web3 = window.web3
-    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-    const accounts = await webeProvider.eth.getAccounts()
+    const web3 = window.web3;
+    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545");
+    const accounts = await webeProvider.eth.getAccounts();
 
-    const landCon = new web3.eth.Contract(contract.abi, "0xF0Cf36e9E8E8e6501e99605FD93550fBEAB71C6a")
-    const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
+    const landCon = new web3.eth.Contract(contract.abi, "0xF0Cf36e9E8E8e6501e99605FD93550fBEAB71C6a");
+    const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] });
 
-    this.state.allIDs = allLandsIDs
-    console.log("IDs", this.state.allIDs)
+    this.state.allIDs = allLandsIDs;
+    console.log("IDs", this.state.allIDs);
 
     if (sendValue > 0) {
       this.state.allIDs.map(async (value, index) => {
 
-        await landCon.methods.changeMarketValue(this.state.allIDs[index], sendValue).send({ from: accounts[0] })
+        await landCon.methods.changeMarketValue(this.state.allIDs[index], sendValue).send({ from: accounts[0] });
 
-      })
+      });
 
-      this.setState({ open: true })
+      this.setState({ open: true });
 
     } else {
-      this.setState({ openi: true })
+      this.setState({ openi: true });
     }
 
   }
