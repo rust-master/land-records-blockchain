@@ -187,7 +187,7 @@ class SearchProperty extends Component {
             <Card className={classes.root1}
               onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
-              <CardActionArea>
+              {/* <CardActionArea> */}
                 <CardMedia
                   component="img"
                   alt="Image not load"
@@ -247,7 +247,7 @@ class SearchProperty extends Component {
                   </Typography>
 
                 </CardContent>
-              </CardActionArea>
+              {/* </CardActionArea> */}
             </Card>
           </div>
         </Slide>
