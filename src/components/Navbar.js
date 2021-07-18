@@ -182,7 +182,7 @@ function Navbar() {
                         <h3>{name}</h3>
                       </li>
                       <li>
-                        <a href="/messages">Messages</a>
+                        <h4 style={{ color: "#EF8E19" }}>Balance: {balance} ETH</h4>
                       </li>
                       <li>
                         <a href="/trips">Trips</a>
