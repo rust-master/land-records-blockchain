@@ -274,7 +274,7 @@ class SearchProperty extends Component {
               <div className="home__hero-text-wrapper">
                 <div className="top-line">{"Registered Lands by Goverment"}</div>
                 <h1 className={true ? "heading" : "heading dark"}>
-                  {"All Lands"}
+                  {"All Registered Lands"}
                 </h1>
               </div>
               
