@@ -179,7 +179,7 @@ function Navbar() {
                   >
                     <ul>
                       <li>
-                        <h3 style={{color: "red"}}>{name}</h3>
+                        <h3 style={{color: "#35A246"}}>{name}</h3>
                       </li>
                       <li>
                         <h4 style={{ color: "#EF8E19" }}>Balance: {balance} ETH</h4>
