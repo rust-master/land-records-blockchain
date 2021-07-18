@@ -59,7 +59,7 @@ function ImgMediaCard() {
             const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
             const accounts = await webeProvider.eth.getAccounts()
 
-            const landCon = new web3.eth.Contract(contract.abi, "0xF0Cf36e9E8E8e6501e99605FD93550fBEAB71C6a")
+            const landCon = new web3.eth.Contract(contract.abi, "0x30dD1a044975bc0E555c7a6aF5eBeA12Aa8D47A0")
             const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] })
 
             settotalIDs(allLandsIDs)
