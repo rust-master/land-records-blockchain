@@ -193,13 +193,13 @@ function Navbar() {
                       <li>
                         {button ? (
                           <Link to="/">
-                            <Button onClick={() => fire.auth().signOut()}>
+                            <Button buttonSize="btn--wide" onClick={() => fire.auth().signOut()}>
                               Sign Out
                             </Button>
                           </Link>
                         ) : (
                           <Link to="/">
-                            <Button onClick={() => fire.auth().signOut()}>
+                            <Button buttonSize="btn--wide" onClick={() => fire.auth().signOut()}>
                               Sign Out
                             </Button>
                           </Link>
