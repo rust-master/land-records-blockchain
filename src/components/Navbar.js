@@ -185,7 +185,7 @@ function Navbar() {
                         <h4 style={{ color: "#EF8E19" }}>Balance: {balance} ETH</h4>
                       </li>
                       <li>
-                        <a href="/trips">Trips</a>
+                        <a href="/settings">Settings</a>
                       </li>
                       <li>
                         <a href="/saved">Saved</a>
