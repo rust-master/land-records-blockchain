@@ -8,6 +8,7 @@ import { IconContext } from "react-icons/lib";
 import logo from "../components/logo.png";
 import fire from "../components/pages/fire";
 import "./menu.css";
+import Web3 from "web3";
 
 function Navbar() {
   const dropdownRef = useRef(null);
@@ -15,6 +16,7 @@ function Navbar() {
   const onClick = () => setIsActive(!isActive);
 
   const [name, setName] = useState(false);
+  const [balance, setbalance] = useState("");
 
   useEffect(() => {
     const pageClickEvent = (e) => {
@@ -82,6 +84,22 @@ function Navbar() {
       // window.removeEventListener('resize', showButton)
     };
   }, []);
+
+  // Getting Balance of MetaMask Account
+  useEffect(() => {
+    async function getBalance() {
+      const web3 = window.web3
+      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+      const accounts = await webeProvider.eth.getAccounts()
+
+      const blnce = web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether'); 
+      console.log(blnce)
+      setbalance(blnce)
+  }
+  getBalance();
+
+  }, [])
+
 
   if (user != null) {
     console.log("User: ", { user });
