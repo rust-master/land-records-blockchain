@@ -70,18 +70,9 @@ class ShowAllLands extends Component {
   }
 
 
-  requestToBuy(id) {
-    console.log("--requestToBuy-- ", id)
-  }
-
-
   async loadBlockchainData() {
 
-    for (let i = 0; i <= 7; i++) {
-      for(let j=0; j<=i; j++) {
-        console.log("#")
-      }    
-    }
+  
 
     this.state.allIDs = []
     this.state.states = []
@@ -194,7 +185,7 @@ class ShowAllLands extends Component {
         >
           <div className={classes.main} style={{ marginBottom: "40px", marginLeft: "2.5%" }}>
             <Card className={classes.root1}
-              onClick={this.requestToBuy.bind(this, dataAll[index])}
+              
             >
               {/* <CardActionArea> */}
                 <CardMedia
@@ -310,7 +301,7 @@ function FrontSection({
   imgStart,
 }) {
   if (form) {
-    return <SearchProperty />;
+    return <ShowAllLands />;
   }
 
   return (
