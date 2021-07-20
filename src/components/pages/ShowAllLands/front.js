@@ -45,7 +45,7 @@ const styles = (theme) => ({
   },
 });
 
-class SearchProperty extends Component {
+class ShowAllLands extends Component {
 
   componentWillMount() {
     this.loadBlockchainData();
@@ -76,6 +76,12 @@ class SearchProperty extends Component {
 
 
   async loadBlockchainData() {
+
+    for (let i = 0; i <= 7; i++) {
+      for(let j=0; j<=i; j++) {
+        console.log("#")
+      }    
+    }
 
     this.state.allIDs = []
     this.state.states = []
@@ -148,6 +154,9 @@ class SearchProperty extends Component {
     if (this.state.states.length <= 0) {
       this.setState({ placeHolder: "Record Not Found" })
     }
+
+ 
+    
   }
 
 
@@ -343,4 +352,4 @@ function FrontSection({
   );
 }
 
-export default withStyles(styles)(SearchProperty);
+export default withStyles(styles)(ShowAllLands);
