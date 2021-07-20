@@ -72,7 +72,7 @@ class ShowAllLands extends Component {
 
   async loadBlockchainData() {
 
-  
+
 
     this.state.allIDs = []
     this.state.states = []
@@ -146,8 +146,8 @@ class ShowAllLands extends Component {
       this.setState({ placeHolder: "Record Not Found" })
     }
 
- 
-    
+
+
   }
 
 
@@ -170,7 +170,7 @@ class ShowAllLands extends Component {
     const marketValueAll = this.state.marketValue;
     const ipfsAll = this.state.ipfsHash;
 
-    let ListTemplate 
+    let ListTemplate
 
     if (statesAll.length) {
 
@@ -185,68 +185,68 @@ class ShowAllLands extends Component {
         >
           <div className={classes.main} style={{ marginBottom: "40px", marginLeft: "2.5%" }}>
             <Card className={classes.root1}
-              
+
             >
               {/* <CardActionArea> */}
-                <CardMedia
-                  component="img"
-                  alt="Image Loading....."
-                  width="1030"
-                  height="550"
-                  image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
-                  title={`${ipfsAll[index]}`}
-                />
-                <CardContent>
+              <CardMedia
+                component="img"
+                alt="Image Loading....."
+                width="1030"
+                height="550"
+                image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
+                title={`${ipfsAll[index]}`}
+              />
+              <CardContent>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <h5 style={{ textAlign: "center" }}>Current Owner: {ownersAll[index]}</h5>
-                  </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <h5 style={{ textAlign: "center" }}>Current Owner: {ownersAll[index]}</h5>
+                </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <span style={{ color: "#EF8E19" }}>Property ID: {dataAll[index]}</span> <span style={{ float: "right", color: "#EF8E19" }}>Survery No: {surveyNoAll[index]}</span>
-                  </Typography>
-
-
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <span>State: {statesAll[index]}</span> <span style={{ float: "right" }}>District: {districtAll[index]}</span>
-                  </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span style={{ color: "#EF8E19" }}>Property ID: {dataAll[index]}</span> <span style={{ float: "right", color: "#EF8E19" }}>Survery No: {surveyNoAll[index]}</span>
+                </Typography>
 
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <span>Village/Town: {villageAll[index]}</span> <span style={{ float: "right" }}>Measurements: {measureAll[index]}</span>
-                  </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>State: {statesAll[index]}</span> <span style={{ float: "right" }}>District: {districtAll[index]}</span>
+                </Typography>
 
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <h2 style={{ color: "#00AEE6", textAlign: "center" }}>Market Value: {marketValueAll[index]}</h2>
-                  </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>Village/Town: {villageAll[index]}</span> <span style={{ float: "right" }}>Measurements: {measureAll[index]}</span>
+                </Typography>
 
-                </CardContent>
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <h2 style={{ color: "#00AEE6", textAlign: "center" }}>Market Value: {marketValueAll[index]}</h2>
+                </Typography>
+
+              </CardContent>
               {/* </CardActionArea> */}
             </Card>
           </div>
@@ -277,7 +277,7 @@ class ShowAllLands extends Component {
                   {"All Registered Lands"}
                 </h1>
               </div>
-              
+
             </div>
 
             {ListTemplate}
