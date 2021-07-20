@@ -190,7 +190,7 @@ class SearchProperty extends Component {
               {/* <CardActionArea> */}
                 <CardMedia
                   component="img"
-                  alt="Image not load"
+                  alt="Image Loading....."
                   width="1030"
                   height="550"
                   image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
