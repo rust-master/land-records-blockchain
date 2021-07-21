@@ -100,10 +100,10 @@ class App extends Component {
               height={"20%"}
               width={"20%"}
             />
-            <h1 className="Textblock" style={{ fontSize: 45, marginBottom:30 }}>
+            <h1 className="Textblock" style={{ fontSize: 45, marginBottom: 30 }}>
               Blockchain
             </h1>
-            <h1 className="Textland" style={{ fontSize: 45, marginBottom:30 }}>
+            <h1 className="Textland" style={{ fontSize: 45, marginBottom: 30 }}>
               <TextTransition
                 text={TEXTS[this.state.index % TEXTS.length]}
                 springConfig={presets.wobbly}
