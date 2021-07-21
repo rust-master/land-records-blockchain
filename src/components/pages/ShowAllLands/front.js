@@ -72,8 +72,6 @@ class ShowAllLands extends Component {
 
   async loadBlockchainData() {
 
-
-
     this.state.allIDs = []
     this.state.states = []
     this.state.owners = []
@@ -146,10 +144,7 @@ class ShowAllLands extends Component {
       this.setState({ placeHolder: "Record Not Found" })
     }
 
-
-
   }
-
 
   handleChange(e) {
     this.setState({
