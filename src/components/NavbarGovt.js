@@ -7,6 +7,7 @@ import { IconContext } from "react-icons/lib";
 import logo from "../components/logo.png";
 import Cookies from "universal-cookie";
 import "./menu.css";
+import "../App.css"
 import Web3 from "web3";
 
 function Navbar() {
@@ -99,7 +100,7 @@ function Navbar() {
             <div className="navbar-container container">
               <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                 {/* <MdFingerprint className="navbar-icon" /> */}
-                <img src={logo} alt="Logo" width="40" height="40" />
+                <img src={logo} alt="Logo" className="App-logo" width="40" height="40" />
                 &nbsp;&nbsp;{" "}
                 <p>
                   <font color="#EF8E19">Blockchain</font> Land Records System
