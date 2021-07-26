@@ -13,7 +13,7 @@ import contract from "../../../build/contracts/Land.json";
 
 const useStyles = makeStyles({
     main: {
-
+        marginLeft: 80,
         position: 'relative',
     },
     root1: {
