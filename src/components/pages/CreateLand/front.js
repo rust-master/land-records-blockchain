@@ -29,6 +29,7 @@ class CreateLand extends Component {
       CurrentOwner: "",
       marketValue: "",
       measurement: "",
+      landType: "",
       open: false,
       openi: false,
       errori: "",
@@ -57,8 +58,11 @@ class CreateLand extends Component {
       console.log("id: " + this.state.id);
       console.log("marketValue: " + this.state.marketValue);
       console.log("measurement: " + this.state.measurement);
+      console.log("landType: " + this.state.landType);
 
-      await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, this.state.CurrentOwner, this.state.marketValue, this.state.id, this.state.measurement, hash).send({ from: this.state.account })
+      // await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, 
+      //   this.state.CurrentOwner, this.state.marketValue, this.state.id, 
+      //   this.state.measurement, hash, this.state.landType).send({ from: this.state.account })
 
       this.setState({ open: true })
     }
@@ -84,16 +88,16 @@ class CreateLand extends Component {
   }
 
   onSubmit = async (event) => {
-    event.preventDefault()
-    console.log("Submitting file")
-    if (this.state.buffer == null) {
-      alert("Please select a file")
-    } else {
-      const file = await ipfs.add(this.state.buffer)
-      const hash = file[0].hash
-      console.log("Hash: " + hash)
-      this.addData(hash)
-    }
+    // event.preventDefault()
+    // console.log("Submitting file")
+    // if (this.state.buffer == null) {
+    //   alert("Please select a file")
+    // } else {
+    //   const file = await ipfs.add(this.state.buffer)
+    //   const hash = file[0].hash
+    //   console.log("Hash: " + hash)
+      this.addData("hash")
+    // }
   }
 
   handleChange(e) {
@@ -197,6 +201,17 @@ class CreateLand extends Component {
                         value={this.state.measurement}
                         onChange={this.handleChange}
                       />
+
+                      <select 
+                        className="footer-input"
+                        name="landType" 
+                        value={this.state.landType} 
+                        onChange={this.handleChange}
+                      >
+                       <option value="A">Apple</option>
+                       <option value="B">Banana</option>
+                       <option value="C">Cranberry</option>
+                      </select>
 
                       <input
                         className="footer-input"
