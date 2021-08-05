@@ -159,12 +159,13 @@ contract Land{
     
 
 
-
+    // make chages to send Ether 
+    //
     //buying the approved property
     function buyProperty(uint property)public payable{
         require(land[property].requestStatus == reqStatus.approved);
-        require(msg.value >= (land[property].marketValue+((land[property].marketValue)/10)));
-        land[property].CurrentOwner.transfer(land[property].marketValue);
+        require(msg.value >= land[property].marketValue);
+        land[property].CurrentOwner.transfer(msg.value);
         removeOwnership(land[property].CurrentOwner,property);
         land[property].CurrentOwner=msg.sender;
         land[property].isAvailable=false;
