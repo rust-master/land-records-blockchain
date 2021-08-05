@@ -93,7 +93,7 @@ class ShowAllLands extends Component {
     this.setState({ account: accounts[0] })
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x30dD1a044975bc0E555c7a6aF5eBeA12Aa8D47A0")
+    const landCon = new web3.eth.Contract(contract.abi, "0x7b92cdcFC4d8df9cF0b35c403999e27D353B6Dfe")
 
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
 
