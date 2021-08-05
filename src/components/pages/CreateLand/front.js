@@ -178,7 +178,8 @@ class CreateLand extends Component {
                       <input
                         className="footer-input"
                         name="surveyNumber"
-                        type="text"
+                        type="number"
+                        min="1"
                         placeholder="Survey Number"
                         value={this.state.surveyNumber}
                         onChange={this.handleChange}
@@ -187,7 +188,8 @@ class CreateLand extends Component {
                       <input
                         className="footer-input"
                         name="marketValue"
-                        type="text"
+                        type="number"
+                        min="1"
                         placeholder="Market Value"
                         value={this.state.marketValue}
                         onChange={this.handleChange}
@@ -196,7 +198,8 @@ class CreateLand extends Component {
                       <input
                         className="footer-input"
                         name="measurement"
-                        type="text"
+                        type="number"
+                        min="1"
                         placeholder="Measurements"
                         value={this.state.measurement}
                         onChange={this.handleChange}
@@ -206,7 +209,8 @@ class CreateLand extends Component {
                       <input
                         className="footer-input"
                         name="id"
-                        type="text"
+                        type="number"
+                        min="1"
                         placeholder="ID"
                         value={this.state.id}
                         onChange={this.handleChange}
