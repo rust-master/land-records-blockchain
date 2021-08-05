@@ -15,8 +15,7 @@ import logo from "../SearchProperty/home.png";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
 
-import xtype from 'xtypejs'
-
+import xtype from "xtypejs";
 
 const styles = (theme) => ({
   main: {
@@ -46,7 +45,6 @@ const styles = (theme) => ({
 });
 
 class ShowAllLands extends Component {
-
   componentWillMount() {
     this.loadBlockchainData();
   }
@@ -67,87 +65,90 @@ class ShowAllLands extends Component {
       ipfsHash: [],
       landType: [],
       placeHolder: "Loading Records",
-    }
+    };
   }
 
-
   async loadBlockchainData() {
+    this.state.allIDs = [];
+    this.state.states = [];
+    this.state.owners = [];
+    this.state.district = [];
+    this.state.marketValue = [];
+    this.state.measure = [];
+    this.state.ids = [];
+    this.state.ipfsHash = [];
+    this.state.landType = [];
 
-    this.state.allIDs = []
-    this.state.states = []
-    this.state.owners = []
-    this.state.district = []
-    this.state.marketValue = []
-    this.state.measure = []
-    this.state.ids = []
-    this.state.ipfsHash = []
-    this.state.landType = []
+    this.state.village = [];
+    this.state.surveyNo = [];
 
-    this.state.village = []
-    this.state.surveyNo = []
+    const web3 = window.web3;
 
-    const web3 = window.web3
-
-    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-    const accounts = await webeProvider.eth.getAccounts()
-    this.setState({ account: accounts[0] })
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x42D108627ebA89Eb1006224c26a03BF2DaC24f8f")
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      "0x42D108627ebA89Eb1006224c26a03BF2DaC24f8f"
+    );
 
-    const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
+    const allLandsIDs = await landCon.methods
+      .getAllLands()
+      .call({ from: this.state.account });
 
-    this.state.allIDs = allLandsIDs
-    console.log("IDs", allLandsIDs)
-
-
-    this.state.allIDs.map(async (value, index) => {
-
-      const remainignDetail = await landCon.methods.remainingDetail(this.state.allIDs[index]).call({ from: this.state.account })
-
-      this.state.ipfsHash.push(remainignDetail[0])
-      this.state.landType.push(remainignDetail[1])
-
-      console.log("ipfsHash: " + remainignDetail[0])
-      console.log("landType: " + remainignDetail[1])
-
-      console.log("---------------------------------")
-
-    })
-
+    this.state.allIDs = allLandsIDs;
+    console.log("IDs", allLandsIDs);
 
     this.state.allIDs.map(async (value, index) => {
+      const remainignDetail = await landCon.methods
+        .remainingDetail(this.state.allIDs[index])
+        .call({ from: this.state.account });
 
-      const detail = await landCon.methods.showAllLands(this.state.allIDs[index]).call({ from: this.state.account })
-      const remainignDetail = await landCon.methods.showAllLandsRemainig(this.state.allIDs[index]).call({ from: this.state.account })
+      this.state.ipfsHash.push(remainignDetail[0]);
+      this.state.landType.push(remainignDetail[1]);
 
-      this.state.owners.push(detail[0])
-      this.state.states.push(detail[1])
-      this.state.district.push(detail[2])
-      this.state.village.push(detail[3])
-      this.state.surveyNo.push(detail[4])
-      this.state.marketValue.push(detail[5])
-      this.state.measure.push(detail[6])
-      this.state.ids.push(remainignDetail[0])
+      console.log("ipfsHash: " + remainignDetail[0]);
+      console.log("landType: " + remainignDetail[1]);
 
+      console.log("---------------------------------");
+    });
 
-      console.log("Owner: " + detail[0])
-      console.log("State: " + detail[1])
-      console.log("District: " + detail[2])
-      console.log("village: " + detail[3])
-      console.log("surveyNo: " + detail[4])
-      console.log("marketValue: " + detail[5])
-      console.log("Mesaurment: " + detail[6])
-      console.log("ID: " + remainignDetail[0])
+    this.state.allIDs.map(async (value, index) => {
+      const detail = await landCon.methods
+        .showAllLands(this.state.allIDs[index])
+        .call({ from: this.state.account });
+      const remainignDetail = await landCon.methods
+        .showAllLandsRemainig(this.state.allIDs[index])
+        .call({ from: this.state.account });
 
-      console.log("---------------------------------")
+      this.state.owners.push(detail[0]);
+      this.state.states.push(detail[1]);
+      this.state.district.push(detail[2]);
+      this.state.village.push(detail[3]);
+      this.state.surveyNo.push(detail[4]);
+      this.state.marketValue.push(detail[5]);
+      this.state.measure.push(detail[6]);
+      this.state.ids.push(remainignDetail[0]);
 
-    })
+      console.log("Owner: " + detail[0]);
+      console.log("State: " + detail[1]);
+      console.log("District: " + detail[2]);
+      console.log("village: " + detail[3]);
+      console.log("surveyNo: " + detail[4]);
+      console.log("marketValue: " + detail[5]);
+      console.log("Mesaurment: " + detail[6]);
+      console.log("ID: " + remainignDetail[0]);
+
+      console.log("---------------------------------");
+    });
 
     if (this.state.states.length <= 0) {
-      this.setState({ placeHolder: "Record Not Found" })
+      this.setState({ placeHolder: "Record Not Found" });
     }
-
   }
 
   handleChange(e) {
@@ -170,14 +171,12 @@ class ShowAllLands extends Component {
     const ipfsAll = this.state.ipfsHash;
     const landTupeAll = this.state.landType;
 
-    let ListTemplate
+    let ListTemplate;
 
-    console.log("Length", statesAll.length)
+    console.log("Length", statesAll.length);
 
     if (statesAll.length) {
-
-      ListTemplate = dataAll.map((value, index) =>
-
+      ListTemplate = dataAll.map((value, index) => (
         <Slide
           direction="left"
           in={true}
@@ -185,10 +184,11 @@ class ShowAllLands extends Component {
           mountOnEnter
           unmountOnExit
         >
-          <div className={classes.main} style={{ marginBottom: "40px", marginLeft: "2.5%" }}>
-            <Card className={classes.root1}
-
-            >
+          <div
+            className={classes.main}
+            style={{ marginBottom: "40px", marginLeft: "2.5%" }}
+          >
+            <Card className={classes.root1}>
               {/* <CardActionArea> */}
               <CardMedia
                 component="img"
@@ -199,14 +199,15 @@ class ShowAllLands extends Component {
                 title={`${ipfsAll[index]}`}
               />
               <CardContent>
-
                 <Typography
                   gutterBottom
                   variant="h6"
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <h5 style={{ textAlign: "center" }}>Current Owner: {ownersAll[index]}</h5>
+                  <h5 style={{ textAlign: "center" }}>
+                    Current Owner: {ownersAll[index]}
+                  </h5>
                 </Typography>
 
                 <Typography
@@ -215,9 +216,13 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span style={{ color: "#EF8E19" }}>Property ID: {dataAll[index]}</span> <span style={{ float: "right", color: "#EF8E19" }}>Survery No: {surveyNoAll[index]}</span>
+                  <span style={{ color: "#EF8E19" }}>
+                    Property ID: {dataAll[index]}
+                  </span>{" "}
+                  <span style={{ float: "right", color: "#EF8E19" }}>
+                    Survery No: {surveyNoAll[index]}
+                  </span>
                 </Typography>
-
 
                 <Typography
                   gutterBottom
@@ -225,9 +230,11 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span>State: {statesAll[index]}</span> <span style={{ float: "right" }}>District: {districtAll[index]}</span>
+                  <span>State: {statesAll[index]}</span>{" "}
+                  <span style={{ float: "right" }}>
+                    District: {districtAll[index]}
+                  </span>
                 </Typography>
-
 
                 <Typography
                   gutterBottom
@@ -235,9 +242,11 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span>Village/Town: {villageAll[index]}</span> <span style={{ float: "right" }}>Measurements: {measureAll[index]}</span>
+                  <span>Village/Town: {villageAll[index]}</span>{" "}
+                  <span style={{ float: "right" }}>
+                    Measurements: {measureAll[index]}
+                  </span>
                 </Typography>
-
 
                 <Typography
                   gutterBottom
@@ -248,26 +257,24 @@ class ShowAllLands extends Component {
                   <span>Land Type: {landTupeAll[index]}</span>
                 </Typography>
 
-
                 <Typography
                   gutterBottom
                   variant="h6"
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <h2 style={{ color: "#00AEE6", textAlign: "center" }}>Market Value: {marketValueAll[index]}</h2>
+                  <h2 style={{ color: "#00AEE6", textAlign: "center" }}>
+                    Market Value: {marketValueAll[index]}
+                  </h2>
                 </Typography>
-
               </CardContent>
               {/* </CardActionArea> */}
             </Card>
           </div>
         </Slide>
-
-      );
-    }
-    else {
-      ListTemplate = <div > {this.state.placeHolder} </div>;
+      ));
+    } else {
+      ListTemplate = <div> {this.state.placeHolder} </div>;
     }
 
     return (
@@ -284,16 +291,16 @@ class ShowAllLands extends Component {
               }}
             >
               <div className="home__hero-text-wrapper">
-                <div className="top-line">{"Registered Lands by Goverment"}</div>
+                <div className="top-line">
+                  {"Registered Lands by Goverment"}
+                </div>
                 <h1 className={true ? "heading" : "heading dark"}>
                   {"All Registered Lands"}
                 </h1>
               </div>
-
             </div>
 
             {ListTemplate}
-
           </div>
         </div>
       </div>
