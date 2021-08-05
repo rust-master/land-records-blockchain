@@ -172,6 +172,8 @@ class ShowAllLands extends Component {
 
     let ListTemplate
 
+    console.log("Length", statesAll.length)
+
     if (statesAll.length) {
 
       ListTemplate = dataAll.map((value, index) =>
