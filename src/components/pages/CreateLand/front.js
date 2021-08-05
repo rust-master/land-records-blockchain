@@ -48,7 +48,7 @@ class CreateLand extends Component {
       this.setState({ account: accounts[0] })
       console.log("Account: " + this.state.account);
 
-      const landCon = new web3.eth.Contract(contract.abi, "0x7b92cdcFC4d8df9cF0b35c403999e27D353B6Dfe")
+      const landCon = new web3.eth.Contract(contract.abi, "0x42D108627ebA89Eb1006224c26a03BF2DaC24f8f")
 
       console.log("CurrentOwner: " + this.state.CurrentOwner);
       console.log("state: " + this.state.state);

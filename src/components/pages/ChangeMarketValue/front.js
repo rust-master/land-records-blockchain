@@ -48,7 +48,7 @@ class ChangeMarketValue extends Component {
     const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545");
     const accounts = await webeProvider.eth.getAccounts();
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x7b92cdcFC4d8df9cF0b35c403999e27D353B6Dfe");
+    const landCon = new web3.eth.Contract(contract.abi, "0x42D108627ebA89Eb1006224c26a03BF2DaC24f8f");
     const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] });
 
     this.state.allIDs = allLandsIDs;
