@@ -96,7 +96,7 @@ class CreateLand extends Component {
     //   const file = await ipfs.add(this.state.buffer)
     //   const hash = file[0].hash
     //   console.log("Hash: " + hash)
-      this.addData("hash")
+    this.addData("hash")
     // }
   }
 
@@ -213,15 +213,16 @@ class CreateLand extends Component {
                       />
 
                       <select
-                        style={{ width: "260px" }} 
+                        style={{ width: "260px" }}
                         className="footer-input"
-                        name="landType" 
-                        value={this.state.landType} 
+                        name="landType"
+                        value={this.state.landType}
                         onChange={this.handleChange}
                       >
-                       <option value="A">Apple</option>
-                       <option value="B">Banana</option>
-                       <option value="C">Cranberry</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Plot">Plot</option>
                       </select>
 
                       <input
