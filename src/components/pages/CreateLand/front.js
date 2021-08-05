@@ -60,9 +60,9 @@ class CreateLand extends Component {
       console.log("measurement: " + this.state.measurement);
       console.log("landType: " + this.state.landType);
 
-      // await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, 
-      //   this.state.CurrentOwner, this.state.marketValue, this.state.id, 
-      //   this.state.measurement, hash, this.state.landType).send({ from: this.state.account })
+      await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, 
+        this.state.CurrentOwner, this.state.marketValue, this.state.id, 
+        this.state.measurement, hash, this.state.landType).send({ from: this.state.account })
 
       this.setState({ open: true })
     }
@@ -88,16 +88,16 @@ class CreateLand extends Component {
   }
 
   onSubmit = async (event) => {
-    // event.preventDefault()
-    // console.log("Submitting file")
-    // if (this.state.buffer == null) {
-    //   alert("Please select a file")
-    // } else {
-    //   const file = await ipfs.add(this.state.buffer)
-    //   const hash = file[0].hash
-    //   console.log("Hash: " + hash)
+    event.preventDefault()
+    console.log("Submitting file")
+    if (this.state.buffer == null) {
+      alert("Please select a file")
+    } else {
+      const file = await ipfs.add(this.state.buffer)
+      const hash = file[0].hash
+      console.log("Hash: " + hash)
     this.addData("hash")
-    // }
+    }
   }
 
   handleChange(e) {
