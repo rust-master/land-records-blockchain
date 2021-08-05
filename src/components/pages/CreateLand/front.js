@@ -96,7 +96,7 @@ class CreateLand extends Component {
       const file = await ipfs.add(this.state.buffer)
       const hash = file[0].hash
       console.log("Hash: " + hash)
-    this.addData("hash")
+    this.addData(hash)
     }
   }
 
