@@ -12,6 +12,7 @@ contract Land{
         uint marketValue;
         string measurement;
         string ipfsHash;
+        string landType;
         bool isAvailable;
         address requester;
         reqStatus requestStatus;
@@ -52,7 +53,7 @@ contract Land{
     //Registration of land details.
     function Registration(string memory _state,string memory _district,
         string memory _village,uint256 _surveyNumber,
-        address payable _OwnerAddress,uint _marketValue,uint id, string memory _measurement , string memory _ipfsHash
+        address payable _OwnerAddress,uint _marketValue,uint id, string memory _measurement , string memory _ipfsHash , string memory _landType
         ) public returns(bool) {
         require(superAdmin[_village] == msg.sender || owner == msg.sender);
         land[id].state = _state;
@@ -62,6 +63,7 @@ contract Land{
         land[id].CurrentOwner = _OwnerAddress;
         land[id].marketValue = _marketValue;
         land[id].measurement = _measurement;
+        land[id].landType = _landType;
         land[id].ipfsHash = _ipfsHash;
         profile[_OwnerAddress].assetList.push(id);
         propertiesIDs.push(id);
