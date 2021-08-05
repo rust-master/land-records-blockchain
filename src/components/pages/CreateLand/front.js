@@ -139,7 +139,7 @@ class CreateLand extends Component {
                   <div className="input-areas">
                     <form>
                       <input
-                        style={{ width: "520px" }}
+                        style={{ width: "530px" }}
                         className="footer-input"
                         name="CurrentOwner"
                         type="text"
@@ -226,6 +226,7 @@ class CreateLand extends Component {
                       </select>
 
                       <input
+                       style={{ width: "530px" }}
                         className="footer-input"
                         name="sdf"
                         type="file"
