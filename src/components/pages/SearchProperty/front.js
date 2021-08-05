@@ -15,8 +15,7 @@ import logo from "../SearchProperty/home.png";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
 
-import xtype from 'xtypejs'
-
+import xtype from "xtypejs";
 
 const styles = (theme) => ({
   main: {
@@ -69,108 +68,118 @@ class SearchProperty extends Component {
       searchKeyword: "",
       searchKeyword: "",
       placeHolder: "Search Record",
-    }
+    };
   }
-
 
   requestToBuy(id) {
-    console.log("--requestToBuy-- ", id)
+    console.log("--requestToBuy-- ", id);
   }
-
 
   async loadBlockchainData(searchKey, searchValue) {
+    this.state.allIDs = [];
+    this.state.allImgID = [];
+    this.state.states = [];
+    this.state.owners = [];
+    this.state.district = [];
+    this.state.status = [];
+    this.state.marketValue = [];
+    this.state.measure = [];
+    this.state.ids = [];
+    this.state.ipfsHash = [];
 
-    this.state.allIDs = []
-    this.state.allImgID = []
-    this.state.states = []
-    this.state.owners = []
-    this.state.district = []
-    this.state.status = []
-    this.state.marketValue = []
-    this.state.measure = []
-    this.state.ids = []
-    this.state.ipfsHash = []
+    this.state.village = [];
+    this.state.surveyNo = [];
 
-    this.state.village = []
-    this.state.surveyNo = []
+    const web3 = window.web3;
 
-    const web3 = window.web3
-
-    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-    const accounts = await webeProvider.eth.getAccounts()
-    this.setState({ account: accounts[0] })
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
     console.log("Account: " + this.state.account);
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x42D108627ebA89Eb1006224c26a03BF2DaC24f8f")
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      "0x42D108627ebA89Eb1006224c26a03BF2DaC24f8f"
+    );
 
-    const allLandsIDs = await landCon.methods.getAllLands().call({ from: this.state.account })
+    const allLandsIDs = await landCon.methods
+      .getAllLands()
+      .call({ from: this.state.account });
 
-    this.state.allIDs = allLandsIDs
-    this.state.allImgID = allLandsIDs
-    console.log("IDs", allLandsIDs)
+    this.state.allIDs = allLandsIDs;
+    this.state.allImgID = allLandsIDs;
+    console.log("IDs", allLandsIDs);
 
-    console.log("Search Key: " + searchKey)
-
-    this.state.allIDs.map(async (value, index) => {
-
-      const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
-      const remainignDetail = await landCon.methods.remainingDetail(this.state.allIDs[index]).call({ from: this.state.account })
-
-
-      if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
-
-
-        this.state.ipfsHash.push(remainignDetail)
-
-        console.log("ipfsHash: " + remainignDetail)
-
-        console.log("---------------------------------")
-      }
-
-
-    })
-
+    console.log("Search Key: " + searchKey);
 
     this.state.allIDs.map(async (value, index) => {
+      const detail = await landCon.methods
+        .viewMarkded(this.state.allIDs[index])
+        .call({ from: this.state.account });
+      const remainignDetail = await landCon.methods
+        .remainingDetail(this.state.allIDs[index])
+        .call({ from: this.state.account });
 
-      const detail = await landCon.methods.viewMarkded(this.state.allIDs[index]).call({ from: this.state.account })
+      if (
+        detail[3] &&
+        searchKey == detail[0] &&
+        searchValue == detail[2] &&
+        this.state.account != detail[1]
+      ) {
+        this.state.ipfsHash.push(remainignDetail);
 
-      const detailRemaining = await landCon.methods.viewMarkdedRemainingData(this.state.allIDs[index]).call({ from: this.state.account })
+        console.log("ipfsHash: " + remainignDetail);
 
-
-      if (detail[3] && searchKey == detail[0] && searchValue == detail[2] && this.state.account != detail[1]) {
-        this.state.states.push(detail[0])
-        this.state.owners.push(detail[1])
-        this.state.district.push(detail[2])
-        this.state.status.push(detail[3])
-        this.state.marketValue.push(detail[4])
-        this.state.measure.push(detail[5])
-        this.state.ids.push(detail[6])
-
-        this.state.village.push(detailRemaining[0])
-        this.state.surveyNo.push(detailRemaining[1])
-
-
-        console.log("State: " + detail[0])
-        console.log("Owner: " + detail[1])
-        console.log("District: " + detail[2])
-        console.log("Status: " + detail[4])
-        console.log("Mesaurment: " + detail[5])
-        console.log("ID: " + detail[6])
-
-        console.log("village: " + detailRemaining[0])
-        console.log("surveyNo: " + detailRemaining[1])
-
-
-        console.log("---------------------------------")
+        console.log("---------------------------------");
       }
-    })
+    });
+
+    this.state.allIDs.map(async (value, index) => {
+      const detail = await landCon.methods
+        .viewMarkded(this.state.allIDs[index])
+        .call({ from: this.state.account });
+
+      const detailRemaining = await landCon.methods
+        .viewMarkdedRemainingData(this.state.allIDs[index])
+        .call({ from: this.state.account });
+
+      if (
+        detail[3] &&
+        searchKey == detail[0] &&
+        searchValue == detail[2] &&
+        this.state.account != detail[1]
+      ) {
+        this.state.states.push(detail[0]);
+        this.state.owners.push(detail[1]);
+        this.state.district.push(detail[2]);
+        this.state.status.push(detail[3]);
+        this.state.marketValue.push(detail[4]);
+        this.state.measure.push(detail[5]);
+        this.state.ids.push(detail[6]);
+
+        this.state.village.push(detailRemaining[0]);
+        this.state.surveyNo.push(detailRemaining[1]);
+
+        console.log("State: " + detail[0]);
+        console.log("Owner: " + detail[1]);
+        console.log("District: " + detail[2]);
+        console.log("Status: " + detail[4]);
+        console.log("Mesaurment: " + detail[5]);
+        console.log("ID: " + detail[6]);
+
+        console.log("village: " + detailRemaining[0]);
+        console.log("surveyNo: " + detailRemaining[1]);
+
+        console.log("---------------------------------");
+      }
+    });
 
     if (this.state.states.length <= 0) {
-      this.setState({ placeHolder: "Record Not Found" })
+      this.setState({ placeHolder: "Record Not Found" });
     }
   }
-
 
   handleChange(e) {
     this.setState({
@@ -193,13 +202,10 @@ class SearchProperty extends Component {
 
     const { classes } = this.props;
 
-    let ListTemplate = <div>Development Phase</div>
-
+    let ListTemplate = <div>Development Phase</div>;
 
     if (statesAll.length) {
-
-      ListTemplate = dataAll.map((value, index) =>
-
+      ListTemplate = dataAll.map((value, index) => (
         <Slide
           direction="left"
           in={true}
@@ -208,7 +214,8 @@ class SearchProperty extends Component {
           unmountOnExit
         >
           <div className={classes.main}>
-            <Card className={classes.root1}
+            <Card
+              className={classes.root1}
               onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
               <CardActionArea>
@@ -221,14 +228,15 @@ class SearchProperty extends Component {
                   title={"Image Search"}
                 />
                 <CardContent>
-
                   <Typography
                     gutterBottom
                     variant="h6"
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h5 style={{ textAlign: "center" }}>Current Owner: {ownersAll[index]}</h5>
+                    <h5 style={{ textAlign: "center" }}>
+                      Current Owner: {ownersAll[index]}
+                    </h5>
                   </Typography>
 
                   <Typography
@@ -237,9 +245,13 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <span style={{ color: "#EF8E19" }}>Property ID: {dataAll[index]}</span> <span style={{ float: "right", color: "#EF8E19" }}>Survery No: {surveyNoAll[index]}</span>
+                    <span style={{ color: "#EF8E19" }}>
+                      Property ID: {dataAll[index]}
+                    </span>{" "}
+                    <span style={{ float: "right", color: "#EF8E19" }}>
+                      Survery No: {surveyNoAll[index]}
+                    </span>
                   </Typography>
-
 
                   <Typography
                     gutterBottom
@@ -247,9 +259,11 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <span>State: {statesAll[index]}</span> <span style={{ float: "right" }}>District: {districtAll[index]}</span>
+                    <span>State: {statesAll[index]}</span>{" "}
+                    <span style={{ float: "right" }}>
+                      District: {districtAll[index]}
+                    </span>
                   </Typography>
-
 
                   <Typography
                     gutterBottom
@@ -257,9 +271,11 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <span>Village/Town: {villageAll[index]}</span> <span style={{ float: "right" }}>Measurements: {measureAll[index]}</span>
+                    <span>Village/Town: {villageAll[index]}</span>{" "}
+                    <span style={{ float: "right" }}>
+                      Measurements: {measureAll[index]}
+                    </span>
                   </Typography>
-
 
                   <Typography
                     gutterBottom
@@ -267,12 +283,12 @@ class SearchProperty extends Component {
                     component="h5"
                     className={classes.Typo1}
                   >
-                    <h2 style={{ color: "#00AEE6", textAlign: "center" }}>Market Value: {marketValueAll[index]}</h2>
+                    <h2 style={{ color: "#00AEE6", textAlign: "center" }}>
+                      Market Value: {marketValueAll[index]}
+                    </h2>
                   </Typography>
-
                 </CardContent>
                 <div
-
                   style={{
                     margin: "20px auto 0 auto;",
                     display: "block",
@@ -308,12 +324,9 @@ class SearchProperty extends Component {
             </Card>
           </div>
         </Slide>
-
-
-      );
-    }
-    else {
-      ListTemplate = <div > {this.state.placeHolder} </div>;
+      ));
+    } else {
+      ListTemplate = <div> {this.state.placeHolder} </div>;
     }
 
     return (
@@ -336,7 +349,6 @@ class SearchProperty extends Component {
                     {"Optimized Search"}
                   </h1>
                   <div className="input-areas">
-
                     <input
                       className="footer-input"
                       name="searchKeyword"
@@ -345,7 +357,6 @@ class SearchProperty extends Component {
                       value={this.state.searchKeyword}
                       onChange={this.handleChange}
                     />
-
 
                     <input
                       className="footer-input"
@@ -357,11 +368,16 @@ class SearchProperty extends Component {
                     />
 
                     <Button
-                      onClick={this.loadBlockchainData.bind(this, this.state.searchKeyword, this.state.searchKeyword1)}
-                      buttonSize="btn--wide" buttonColor="blue">
+                      onClick={this.loadBlockchainData.bind(
+                        this,
+                        this.state.searchKeyword,
+                        this.state.searchKeyword1
+                      )}
+                      buttonSize="btn--wide"
+                      buttonColor="blue"
+                    >
                       Search
                     </Button>
-
                   </div>
                 </div>
               </div>
@@ -377,7 +393,6 @@ class SearchProperty extends Component {
             </div>
 
             {ListTemplate}
-
           </div>
         </div>
       </div>
