@@ -57,7 +57,8 @@ class ChangeMarketValue extends Component {
     if (sendValue > 0) {
       this.state.allIDs.map(async (value, index) => {
 
-        await landCon.methods.changeMarketValue(this.state.allIDs[index], sendValue).send({ from: accounts[0] });
+        await landCon.methods.changeMarketValue(this.state.allIDs[index], 
+          sendValue).send({ from: accounts[0] });
 
       });
 
