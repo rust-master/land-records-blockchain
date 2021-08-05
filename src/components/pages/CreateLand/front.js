@@ -202,16 +202,6 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
-                      <select 
-                        className="footer-input"
-                        name="landType" 
-                        value={this.state.landType} 
-                        onChange={this.handleChange}
-                      >
-                       <option value="A">Apple</option>
-                       <option value="B">Banana</option>
-                       <option value="C">Cranberry</option>
-                      </select>
 
                       <input
                         className="footer-input"
@@ -221,6 +211,18 @@ class CreateLand extends Component {
                         value={this.state.id}
                         onChange={this.handleChange}
                       />
+
+                      <select
+                        style={{ width: "260px" }} 
+                        className="footer-input"
+                        name="landType" 
+                        value={this.state.landType} 
+                        onChange={this.handleChange}
+                      >
+                       <option value="A">Apple</option>
+                       <option value="B">Banana</option>
+                       <option value="C">Cranberry</option>
+                      </select>
 
                       <input
                         className="footer-input"
