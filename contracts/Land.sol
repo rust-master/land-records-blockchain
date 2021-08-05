@@ -74,8 +74,8 @@ contract Land{
         return(land[id].state,land[id].district,land[id].village,land[id].surveyNumber,land[id].isAvailable,land[id].marketValue,land[id].measurement);
     }
 
-    function remainingDetail(uint id) public view returns(string memory){
-        return land[id].ipfsHash;
+    function remainingDetail(uint id) public view returns(string memory, string memory){
+        return(land[id].ipfsHash, land[id].landType);
     }
 
     function showAllLands(uint id) public view returns(address,string memory,string memory,string memory,uint256,uint,string memory){

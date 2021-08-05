@@ -65,6 +65,7 @@ class ShowAllLands extends Component {
       marketValue: [],
       measure: [],
       ipfsHash: [],
+      landType: [],
       placeHolder: "Loading Records",
     }
   }
@@ -80,6 +81,7 @@ class ShowAllLands extends Component {
     this.state.measure = []
     this.state.ids = []
     this.state.ipfsHash = []
+    this.state.landType = []
 
     this.state.village = []
     this.state.surveyNo = []
@@ -103,9 +105,11 @@ class ShowAllLands extends Component {
 
       const remainignDetail = await landCon.methods.remainingDetail(this.state.allIDs[index]).call({ from: this.state.account })
 
-      this.state.ipfsHash.push(remainignDetail)
+      this.state.ipfsHash.push(remainignDetail[0])
+      this.state.landType.push(remainignDetail[1])
 
-      console.log("ipfsHash: " + remainignDetail)
+      console.log("ipfsHash: " + remainignDetail[0])
+      console.log("landType: " + remainignDetail[1])
 
       console.log("---------------------------------")
 
@@ -164,6 +168,7 @@ class ShowAllLands extends Component {
     const measureAll = this.state.measure;
     const marketValueAll = this.state.marketValue;
     const ipfsAll = this.state.ipfsHash;
+    const landTupeAll = this.state.landType;
 
     let ListTemplate
 
@@ -229,6 +234,16 @@ class ShowAllLands extends Component {
                   className={classes.Typo1}
                 >
                   <span>Village/Town: {villageAll[index]}</span> <span style={{ float: "right" }}>Measurements: {measureAll[index]}</span>
+                </Typography>
+
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>Land Type: {landTupeAll[index]}</span>
                 </Typography>
 
 
