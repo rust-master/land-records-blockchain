@@ -32,21 +32,28 @@ class RequestedLandsFront extends Component {
   }
 
   async processRequest(idLand, reqStatus) {
-    console.log("ID : " , idLand);
-    console.log("reqStatus : " , reqStatus);
+    console.log("ID : ", idLand);
+    console.log("reqStatus : ", reqStatus);
 
-    const web3 = window.web3
+    const web3 = window.web3;
 
-      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-      const accounts = await webeProvider.eth.getAccounts()
-      this.setState({ account: accounts[0] })
-      console.log("Account: " + this.state.account);
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
 
-      const landContract = new web3.eth.Contract(contract.abi, "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD")
+    const landContract = new web3.eth.Contract(
+      contract.abi,
+      "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
+    );
 
-      await landContract.methods.processRequest(idLand, reqStatus).send({ from: this.state.account })
+    await landContract.methods
+      .processRequest(idLand, reqStatus)
+      .send({ from: this.state.account });
 
-      console.log("Process Request Confirm");
+    console.log("Process Request Confirm");
   }
 
   async loadBlockchainData() {
@@ -79,19 +86,21 @@ class RequestedLandsFront extends Component {
         .landInfoUser(this.state.ids[index])
         .call({ from: this.state.account });
 
-      this.state.owner.push(detail[0]);
-      this.state.marketValue.push(detail[1]);
-      this.state.status.push(detail[2]);
-      this.state.requester.push(detail[3]);
-      this.state.requestStatus.push(detail[4]);
+      if (detail[0] != this.state.account && detail[3] == this.state.account) {
+        this.state.owner.push(detail[0]);
+        this.state.marketValue.push(detail[1]);
+        this.state.status.push(detail[2]);
+        this.state.requester.push(detail[3]);
+        this.state.requestStatus.push(detail[4]);
 
-      console.log("owner: " + detail[0]);
-      console.log("marketValue: " + detail[1]);
-      console.log("status: " + detail[2]);
-      console.log("requester: " + detail[3]);
-      console.log("requestStatus: " + detail[4]);
+        console.log("owner: " + detail[0]);
+        console.log("marketValue: " + detail[1]);
+        console.log("status: " + detail[2]);
+        console.log("requester: " + detail[3]);
+        console.log("requestStatus: " + detail[4]);
 
-      console.log("---------------------------------");
+        console.log("---------------------------------");
+      }
     });
   }
 
@@ -106,7 +115,7 @@ class RequestedLandsFront extends Component {
 
     let ListTemplate;
 
-    if (dataAll.length) {
+    if (dataAll.length && marketValueAll.length > 0) {
       ListTemplate = dataAll.map((value, index) => (
         <div>
           <Card
@@ -116,7 +125,12 @@ class RequestedLandsFront extends Component {
           >
             <CardActionArea>
               <CardContent>
-                <Typography style={{fontSize:18}} gutterBottom variant="h6" component="h6">
+                <Typography
+                  style={{ fontSize: 18 }}
+                  gutterBottom
+                  variant="h6"
+                  component="h6"
+                >
                   Buyer: {requesterAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -126,15 +140,21 @@ class RequestedLandsFront extends Component {
                   Owner : {ownerAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Request Status: {requestStatusAll[index] == 1 ? "Default" : "pending"}
+                  Request Status:{" "}
+                  {requestStatusAll[index] == 1 ? "Default" : "pending"}
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions style={{float:"right"}}>
-              <Button size="small" variant="contained" color="secondary" >
+            <CardActions style={{ float: "right" }}>
+              <Button size="small" variant="contained" color="secondary">
                 Reject
               </Button>
-              <Button size="small" variant="contained" color="primary" onClick={this.processRequest.bind(this, dataAll[index], 3)}>
+              <Button
+                size="small"
+                variant="contained"
+                color="primary"
+                onClick={this.processRequest.bind(this, dataAll[index], 3)}
+              >
                 Accept
               </Button>
             </CardActions>
@@ -160,9 +180,9 @@ class RequestedLandsFront extends Component {
             >
               <div className="col">
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"VIEW REQUESTS"}</div>
+                  <div className="top-line">{"VIEW REQUESTED LANDS"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
-                    {"Requests"}
+                    {"Requested Lands"}
                   </h1>
                   <div className="input-areas"></div>
 
