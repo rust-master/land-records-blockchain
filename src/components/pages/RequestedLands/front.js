@@ -37,23 +37,27 @@ class RequestedLandsFront extends Component {
     console.log("toAccount : ", toAccount);
     console.log("valueLand : ", valueLand);
 
-    // const web3 = window.web3;
+    const web3 = window.web3;
 
-    // const webeProvider = new Web3(
-    //   Web3.givenProvider || "http://localhost:7545"
-    // );
-    // const accounts = await webeProvider.eth.getAccounts();
-    // this.setState({ account: accounts[0] });
-    // console.log("Account: " + this.state.account);
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
 
-    // const landContract = new web3.eth.Contract(
-    //   contract.abi,
-    //   "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
-    // );
+    const landContract = new web3.eth.Contract(
+      contract.abi,
+      "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
+    );
 
-    // await landContract.methods
-    //   .buyProperty(idLand)
-    //   .send({from: this.state.account});
+    await landContract.methods
+      .buyProperty(idLand)
+      .send({
+        from: this.state.account,
+        usdEthBasis: valueLand,
+        value: web3.utils.toWei(valueLand, 'ether'),
+      });
 
     console.log("Buy Land Confirm");
   }
