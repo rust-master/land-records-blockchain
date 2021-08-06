@@ -22,6 +22,7 @@ class RequestsFront extends Component {
     this.state = {
       allAssets: [],
       ids: [],
+      idsReq: [],
       owner: [],
       marketValue: [],
       status: [],
@@ -35,16 +36,16 @@ class RequestsFront extends Component {
     console.log("ID : " , idLand);
     console.log("reqStatus : " , reqStatus);
 
-    const web3 = window.web3
+    // const web3 = window.web3
 
-      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-      const accounts = await webeProvider.eth.getAccounts()
-      this.setState({ account: accounts[0] })
-      console.log("Account: " + this.state.account);
+    //   const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+    //   const accounts = await webeProvider.eth.getAccounts()
+    //   this.setState({ account: accounts[0] })
+    //   console.log("Account: " + this.state.account);
 
-      const landContract = new web3.eth.Contract(contract.abi, "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A")
+    //   const landContract = new web3.eth.Contract(contract.abi, "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A")
 
-      await landContract.methods.processRequest(idLand, reqStatus).send({ from: this.state.account })
+    //   await landContract.methods.processRequest(idLand, reqStatus).send({ from: this.state.account })
 
       console.log("Process Request Confirm");
   }
@@ -78,20 +79,26 @@ class RequestsFront extends Component {
       const detail = await landCon.methods
         .landInfoUser(this.state.ids[index])
         .call({ from: this.state.account });
+    
+      if(detail[4] == 1 || detail[4] == 3){
+        this.state.owner.push(detail[0]);
+        this.state.marketValue.push(detail[1]);
+        this.state.status.push(detail[2]);
+        this.state.requester.push(detail[3]);
+        this.state.requestStatus.push(detail[4]);
 
-      this.state.owner.push(detail[0]);
-      this.state.marketValue.push(detail[1]);
-      this.state.status.push(detail[2]);
-      this.state.requester.push(detail[3]);
-      this.state.requestStatus.push(detail[4]);
-
-      console.log("owner: " + detail[0]);
-      console.log("marketValue: " + detail[1]);
-      console.log("status: " + detail[2]);
-      console.log("requester: " + detail[3]);
-      console.log("requestStatus: " + detail[4]);
-
-      console.log("---------------------------------");
+        this.state.idsReq.push(this.state.ids[index]);
+  
+        console.log("owner: " + detail[0]);
+        console.log("marketValue: " + detail[1]);
+        console.log("status: " + detail[2]);
+        console.log("requester: " + detail[3]);
+        console.log("requestStatus: " + detail[4]);
+        console.log("idsReq: " +this.state.ids[index]);
+  
+        console.log("---------------------------------");
+      }
+    
     });
   }
 
@@ -102,12 +109,14 @@ class RequestsFront extends Component {
     const statusAll = this.state.status;
     const requesterAll = this.state.requester;
     const requestStatusAll = this.state.requestStatus;
-    const idsAll = this.state.ids;
+    const idsAll = this.state.idsReq;
+
+    console.log("Length:", ownerAll.length);
 
     let ListTemplate;
 
-    if (dataAll.length) {
-      ListTemplate = dataAll.map((value, index) => (
+    if (ownerAll.length) {
+      ListTemplate = ownerAll.map((value, index) => (
         <div>
           <Card
             className={makeStyles({
@@ -134,7 +143,7 @@ class RequestsFront extends Component {
               <Button size="small" variant="contained" color="secondary" >
                 Reject
               </Button>
-              <Button size="small" variant="contained" color="primary" onClick={this.processRequest.bind(this, dataAll[index], 3)}>
+              <Button size="small" variant="contained" color="primary" onClick={this.processRequest.bind(this, idsAll[index], 3)}>
                 Accept
               </Button>
             </CardActions>

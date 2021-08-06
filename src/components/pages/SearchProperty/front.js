@@ -328,7 +328,7 @@ class SearchProperty extends Component {
                         marginBottom: "0px",
                       }}
                     />{" "}
-                    Request For Sale
+                    Request to Buy
                   </h2>
                 </div>
               </CardActionArea>
