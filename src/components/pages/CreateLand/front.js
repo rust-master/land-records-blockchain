@@ -3,18 +3,16 @@ import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
-import contract from "../../../build/contracts/Land.json"
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
-import ipfs from '../../../ipfs'
-
+import contract from "../../../build/contracts/Land.json";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import ipfs from "../../../ipfs";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 class CreateLand extends Component {
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -38,17 +36,21 @@ class CreateLand extends Component {
     };
   }
 
-
   async addData(hash) {
     try {
-      const web3 = window.web3
+      const web3 = window.web3;
 
-      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-      const accounts = await webeProvider.eth.getAccounts()
-      this.setState({ account: accounts[0] })
+      const webeProvider = new Web3(
+        Web3.givenProvider || "http://localhost:7545"
+      );
+      const accounts = await webeProvider.eth.getAccounts();
+      this.setState({ account: accounts[0] });
       console.log("Account: " + this.state.account);
 
-      const landCon = new web3.eth.Contract(contract.abi, "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A")
+      const landCon = new web3.eth.Contract(
+        contract.abi,
+        "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
+      );
 
       console.log("CurrentOwner: " + this.state.CurrentOwner);
       console.log("state: " + this.state.state);
@@ -60,45 +62,54 @@ class CreateLand extends Component {
       console.log("measurement: " + this.state.measurement);
       console.log("landType: " + this.state.landType);
 
-      await landCon.methods.Registration(this.state.state, this.state.district, this.state.village, this.state.surveyNumber, 
-        this.state.CurrentOwner, this.state.marketValue, this.state.id, 
-        this.state.measurement, hash, this.state.landType).send({ from: this.state.account })
+      await landCon.methods
+        .Registration(
+          this.state.state,
+          this.state.district,
+          this.state.village,
+          this.state.surveyNumber,
+          this.state.CurrentOwner,
+          this.state.marketValue,
+          this.state.id,
+          this.state.measurement,
+          hash,
+          this.state.landType
+        )
+        .send({ from: this.state.account });
 
-      this.setState({ open: true })
+      this.setState({ open: true });
+    } catch (e) {
+      this.setState({ openi: true });
+      this.setState({ errori: e.toString() });
+      console.log("Error : ", e.toString());
     }
-    catch (e) {
-      this.setState({ openi: true })
-      this.setState({ errori: e.toString() })
-      console.log("Error : ", e.toString())
-    }
-
   }
 
   captureFile = async (event) => {
-    event.preventDefault()
-    const file = event.target.files[0]
-    this.setState({ fileImage: URL.createObjectURL(event.target.files[0]) })
-    console.log("File: " + file)
-    const reader = new window.FileReader()
-    reader.readAsArrayBuffer(file)
+    event.preventDefault();
+    const file = event.target.files[0];
+    this.setState({ fileImage: URL.createObjectURL(event.target.files[0]) });
+    console.log("File: " + file);
+    const reader = new window.FileReader();
+    reader.readAsArrayBuffer(file);
     reader.onloadend = () => {
-      this.setState({ buffer: Buffer(reader.result) })
-      console.log('buffer', this.state.buffer)
-    }
-  }
+      this.setState({ buffer: Buffer(reader.result) });
+      console.log("buffer", this.state.buffer);
+    };
+  };
 
   onSubmit = async (event) => {
-    event.preventDefault()
-    console.log("Submitting file")
+    event.preventDefault();
+    console.log("Submitting file");
     if (this.state.buffer == null) {
-      alert("Please select a file")
+      alert("Please select a file");
     } else {
-      const file = await ipfs.add(this.state.buffer)
-      const hash = file[0].hash
-      console.log("Hash: " + hash)
-    this.addData(hash)
+      const file = await ipfs.add(this.state.buffer);
+      const hash = file[0].hash;
+      console.log("Hash: " + hash);
+      this.addData(hash);
     }
-  }
+  };
 
   handleChange(e) {
     this.setState({
@@ -107,14 +118,13 @@ class CreateLand extends Component {
   }
 
   handleClose(e, r) {
-    if (r === 'clickaway') {
+    if (r === "clickaway") {
       return;
     }
 
-    this.setState({ open: false })
-    this.setState({ openi: false })
+    this.setState({ open: false });
+    this.setState({ openi: false });
   }
-
 
   render() {
     return (
@@ -205,7 +215,6 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
-
                       <input
                         className="footer-input"
                         name="id"
@@ -230,13 +239,12 @@ class CreateLand extends Component {
                       </select>
 
                       <input
-                       style={{ width: "530px" }}
+                        style={{ width: "530px" }}
                         className="footer-input"
                         name="sdf"
                         type="file"
                         onChange={this.captureFile}
                       />
-
 
                       <Button
                         buttonSize="btn--mobile"
@@ -245,22 +253,28 @@ class CreateLand extends Component {
                       >
                         Create Land
                       </Button>
-
                     </form>
 
-
-                    <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+                    <Snackbar
+                      open={this.state.open}
+                      autoHideDuration={6000}
+                      onClose={this.handleClose}
+                    >
                       <Alert onClose={this.handleClose} severity="success">
-                        Land Created successfully. Owner: {this.state.CurrentOwner}
+                        Land Created successfully. Owner:{" "}
+                        {this.state.CurrentOwner}
                       </Alert>
                     </Snackbar>
 
-                    <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
+                    <Snackbar
+                      open={this.state.openi}
+                      autoHideDuration={6000}
+                      onClose={this.handleClose}
+                    >
                       <Alert onClose={this.handleClose} severity="error">
                         {this.state.errori}
                       </Alert>
                     </Snackbar>
-
                   </div>
                 </div>
               </div>
