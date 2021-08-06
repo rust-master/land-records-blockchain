@@ -78,6 +78,55 @@ class RequestsFront extends Component {
   }
 
   render() {
+    const dataAll = this.state.allAssets;
+    const ownweAll = this.state.owner;
+    const marketValueAll = this.state.marketValue;
+    const statusAll = this.state.status;
+    const requesterAll = this.state.requester;
+    const requestStatusAll = this.state.requestStatus;
+    const idsAll = this.state.ids;
+
+    let ListTemplate;
+
+    if (dataAll.length) {
+      ListTemplate = dataAll.map((value, index) => (
+        <div>
+          <Card
+            className={makeStyles({
+              maxWidth: 345,
+            })}
+          >
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h4" component="h2">
+                  Property No: 1234
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Value: 20 Ether
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Location: Sahiwal
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Measurements: 120 sq/ft
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" variant="contained" color="secondary">
+                Reject
+              </Button>
+              <Button size="small" variant="contained" color="primary">
+                Accept
+              </Button>
+            </CardActions>
+          </Card>
+        </div>
+      ));
+    } else {
+      ListTemplate = <div>Records Not Found</div>;
+    }
+
     return (
       <div>
         <div
@@ -97,235 +146,7 @@ class RequestsFront extends Component {
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"Requests"}
                   </h1>
-                  <div className="input-areas">
-                    <div>
-                      <Card
-                        className={makeStyles({
-                          maxWidth: 345,
-                        })}
-                      >
-                        <CardActionArea>
-                          <CardContent>
-                            <Typography
-                              gutterBottom
-                              variant="h4"
-                              component="h2"
-                            >
-                              Property No: 1234
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Value: 20 Ether
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Location: Sahiwal
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Measurements: 120 sq/ft
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            color="secondary"
-                          >
-                            Reject
-                          </Button>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            color="primary"
-                          >
-                            Accept
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </div>
-
-                    <div style={{ marginTop: 40 }}>
-                      <Card
-                        className={makeStyles({
-                          maxWidth: 345,
-                        })}
-                      >
-                        <CardActionArea>
-                          <CardContent>
-                            <Typography
-                              gutterBottom
-                              variant="h4"
-                              component="h2"
-                            >
-                              Property No: 2334
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Value: 40 Ether
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Location: Lahore
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Measurements: 110 sq/ft
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            color="secondary"
-                          >
-                            Reject
-                          </Button>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            color="primary"
-                          >
-                            Accept
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </div>
-
-                    <div style={{ marginTop: 40 }}>
-                      <Card
-                        className={makeStyles({
-                          maxWidth: 345,
-                        })}
-                      >
-                        <CardActionArea>
-                          <CardContent>
-                            <Typography
-                              gutterBottom
-                              variant="h4"
-                              component="h2"
-                            >
-                              Property No: 1454
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Value: 20 Ether
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Location: Sahiwal
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Measurements: 120 sq/ft
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            color="secondary"
-                          >
-                            Reject
-                          </Button>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            color="primary"
-                          >
-                            Accept
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </div>
-
-                    <div style={{ marginTop: 40 }}>
-                      <Card
-                        className={makeStyles({
-                          maxWidth: 345,
-                        })}
-                      >
-                        <CardActionArea>
-                          <CardContent>
-                            <Typography
-                              gutterBottom
-                              variant="h4"
-                              component="h2"
-                            >
-                              Property No: 2554
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Value: 30 Ether
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Location: Karachi
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              Measurements: 130 sq/ft
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            color="secondary"
-                          >
-                            Reject
-                          </Button>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            color="primary"
-                          >
-                            Accept
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </div>
-                  </div>
+                  <div className="input-areas"></div>
                 </div>
               </div>
               <div className="col">
