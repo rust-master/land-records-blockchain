@@ -138,9 +138,9 @@ class SearchProperty extends Component {
         searchValue == detail[2] &&
         this.state.account != detail[1]
       ) {
-        this.state.ipfsHash.push(remainignDetail);
+        this.state.ipfsHash.push(remainignDetail[0]);
 
-        console.log("ipfsHash: " + remainignDetail);
+        console.log("ipfsHash: " + remainignDetail[0]);
 
         console.log("---------------------------------");
       }
