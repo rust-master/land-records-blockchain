@@ -31,6 +31,11 @@ class RequestsFront extends Component {
     };
   }
 
+  async processRequest(idLand, reqStatus) {
+    console.log("ID : " , idLand);
+    console.log("reqStatus : " , reqStatus);
+  }
+
   async loadBlockchainData() {
     const web3 = window.web3;
 
@@ -108,15 +113,15 @@ class RequestsFront extends Component {
                   Owner : {ownerAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Request Status:{requestStatusAll[index] == 1 ? "Default" : "pending"}
+                  Request Status: {requestStatusAll[index] == 1 ? "Default" : "pending"}
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions style={{float:"right"}}>
-              <Button size="small" variant="contained" color="secondary">
+              <Button size="small" variant="contained" color="secondary" >
                 Reject
               </Button>
-              <Button size="small" variant="contained" color="primary">
+              <Button size="small" variant="contained" color="primary" onClick={this.processRequest.bind(this, dataAll[index], 3)}>
                 Accept
               </Button>
             </CardActions>
