@@ -31,26 +31,28 @@ class RequestedLandsFront extends Component {
     };
   }
 
-  async buyLand(idLand) {
+  async buyLand(idLand, toAccount, valueLand) {
     console.log("ID : ", idLand);
+    console.log("toAccount : ", toAccount);
+    console.log("valueLand : ", valueLand);
 
-    // const web3 = window.web3;
+    const web3 = window.web3;
 
-    // const webeProvider = new Web3(
-    //   Web3.givenProvider || "http://localhost:7545"
-    // );
-    // const accounts = await webeProvider.eth.getAccounts();
-    // this.setState({ account: accounts[0] });
-    // console.log("Account: " + this.state.account);
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
 
-    // const landContract = new web3.eth.Contract(
-    //   contract.abi,
-    //   "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
-    // );
+    const landContract = new web3.eth.Contract(
+      contract.abi,
+      "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
+    );
 
-    // await landContract.methods
-    //   .processRequest(idLand, reqStatus)
-    //   .send({ from: this.state.account });
+    await landContract.methods
+      .buyProperty(idLand)
+      .send({from: this.state.account});
 
     console.log("Buy Land Confirm");
   }
@@ -152,7 +154,7 @@ class RequestedLandsFront extends Component {
                 size="small"
                 variant="contained"
                 color="secondary"
-                onClick={this.buyLand.bind(this, dataAll[index])}
+                onClick={this.buyLand.bind(this, dataAll[index], ownerAll[index] ,marketValueAll[index] )}
               >
                 Buy
               </Button>
