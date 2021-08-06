@@ -34,7 +34,6 @@ class RequestedLandsFront extends Component {
   async buyLand(idLand) {
     console.log("ID : ", idLand);
 
-
     // const web3 = window.web3;
 
     // const webeProvider = new Web3(
@@ -146,7 +145,7 @@ class RequestedLandsFront extends Component {
               </CardContent>
             </CardActionArea>
             <CardActions style={{ float: "right" }}>
-              <Button size="small" variant="contained" color="primary">
+              <Button size="small" variant="contained" color="blue">
                 Refuse to Buy
               </Button>
               <Button
