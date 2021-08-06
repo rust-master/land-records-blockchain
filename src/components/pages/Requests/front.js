@@ -36,16 +36,16 @@ class RequestsFront extends Component {
     console.log("ID : " , idLand);
     console.log("reqStatus : " , reqStatus);
 
-    // const web3 = window.web3
+    const web3 = window.web3
 
-    //   const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-    //   const accounts = await webeProvider.eth.getAccounts()
-    //   this.setState({ account: accounts[0] })
-    //   console.log("Account: " + this.state.account);
+      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+      const accounts = await webeProvider.eth.getAccounts()
+      this.setState({ account: accounts[0] })
+      console.log("Account: " + this.state.account);
 
-    //   const landContract = new web3.eth.Contract(contract.abi, "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A")
+      const landContract = new web3.eth.Contract(contract.abi, "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A")
 
-    //   await landContract.methods.processRequest(idLand, reqStatus).send({ from: this.state.account })
+      await landContract.methods.processRequest(idLand, reqStatus).send({ from: this.state.account })
 
       console.log("Process Request Confirm");
   }
