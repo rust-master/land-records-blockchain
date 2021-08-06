@@ -34,6 +34,19 @@ class RequestsFront extends Component {
   async processRequest(idLand, reqStatus) {
     console.log("ID : " , idLand);
     console.log("reqStatus : " , reqStatus);
+
+    const web3 = window.web3
+
+      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+      const accounts = await webeProvider.eth.getAccounts()
+      this.setState({ account: accounts[0] })
+      console.log("Account: " + this.state.account);
+
+      const landContract = new web3.eth.Contract(contract.abi, "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD")
+
+      await landContract.methods.processRequest(idLand, reqStatus).send({ from: this.state.account })
+
+      console.log("Process Request Confirm");
   }
 
   async loadBlockchainData() {
