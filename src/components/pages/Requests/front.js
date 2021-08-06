@@ -98,7 +98,7 @@ class RequestsFront extends Component {
           >
             <CardActionArea>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h5">
+                <Typography style={{fontSize:18}} gutterBottom variant="h6" component="h6">
                   Buyer: {requesterAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -108,12 +108,11 @@ class RequestsFront extends Component {
                   Owner : {ownerAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Request Status:{" "}
-                  {requestStatusAll[index] == 1 ? "Default" : "pending"}
+                  Request Status:{requestStatusAll[index] == 1 ? "Default" : "pending"}
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
+            <CardActions style={{float:"right"}}>
               <Button size="small" variant="contained" color="secondary">
                 Reject
               </Button>
