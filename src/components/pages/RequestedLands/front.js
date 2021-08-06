@@ -20,7 +20,7 @@ class RequestedLandsFront extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allAssets: [],
+      allLandsData: [],
       ids: [],
       owner: [],
       marketValue: [],
@@ -72,16 +72,16 @@ class RequestedLandsFront extends Component {
       "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
     );
 
-    const assets = await landCon.methods
-      .viewAssets()
+    const allLands = await landCon.methods
+      .getAllLands()
       .call({ from: this.state.account });
 
-    this.state.allAssets = assets;
-    for (let i = 0; i <= assets.length; i++) {
-      this.state.ids.push(assets[i]);
+    this.state.allLandsData = allLands;
+    for (let i = 0; i <= allLands.length; i++) {
+      this.state.ids.push(allLands[i]);
     }
 
-    this.state.allAssets.map(async (value, index) => {
+    this.state.allLandsData.map(async (value, index) => {
       const detail = await landCon.methods
         .landInfoUser(this.state.ids[index])
         .call({ from: this.state.account });
@@ -105,7 +105,7 @@ class RequestedLandsFront extends Component {
   }
 
   render() {
-    const dataAll = this.state.allAssets;
+    const dataAll = this.state.allLandsData;
     const ownerAll = this.state.owner;
     const marketValueAll = this.state.marketValue;
     const statusAll = this.state.status;
@@ -141,13 +141,13 @@ class RequestedLandsFront extends Component {
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Request Status:{" "}
-                  {requestStatusAll[index] == 1 ? "Default" : "pending"}
+                  {requestStatusAll[index] == 1 ? "Pending" : "Accepted"}
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions style={{ float: "right" }}>
-              <Button size="small" variant="contained" color="secondary">
-                Reject
+              <Button size="small" variant="contained" color="primary">
+                Refuse to Buy
               </Button>
               <Button
                 size="small"
