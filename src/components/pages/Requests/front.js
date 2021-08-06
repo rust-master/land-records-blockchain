@@ -79,7 +79,7 @@ class RequestsFront extends Component {
 
   render() {
     const dataAll = this.state.allAssets;
-    const ownweAll = this.state.owner;
+    const ownerAll = this.state.owner;
     const marketValueAll = this.state.marketValue;
     const statusAll = this.state.status;
     const requesterAll = this.state.requester;
@@ -99,16 +99,16 @@ class RequestsFront extends Component {
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h4" component="h2">
-                  Property No: 1234
+                  Owner: {ownerAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Value: 20 Ether
+                  Value: {marketValueAll[index]} Ether
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Location: Sahiwal
+                  Buyer : {requesterAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Measurements: 120 sq/ft
+                Request Status: {requestStatusAll[index]}
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -147,6 +147,9 @@ class RequestsFront extends Component {
                     {"Requests"}
                   </h1>
                   <div className="input-areas"></div>
+                  
+                  {ListTemplate}
+
                 </div>
               </div>
               <div className="col">
