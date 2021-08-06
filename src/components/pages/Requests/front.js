@@ -126,7 +126,7 @@ class RequestsFront extends Component {
                   Owner : {ownerAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Request Status: {requestStatusAll[index] == 1 ? "Default" : "pending"}
+                  Request Status: {requestStatusAll[index] == 1 ? "Default" : "Accepted"}
                 </Typography>
               </CardContent>
             </CardActionArea>
