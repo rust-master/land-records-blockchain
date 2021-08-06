@@ -55,7 +55,7 @@ class Property extends Component {
 
       const landCon = new web3.eth.Contract(
         contract.abi,
-        "0x42D108627ebA89Eb1006224c26a03BF2DaC24f8f"
+        "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
       );
 
       await landCon.methods
@@ -83,7 +83,7 @@ class Property extends Component {
 
     const landCon = new web3.eth.Contract(
       contract.abi,
-      "0x42D108627ebA89Eb1006224c26a03BF2DaC24f8f"
+      "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
     );
 
     const assets = await landCon.methods
