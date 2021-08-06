@@ -108,7 +108,7 @@ class RequestsFront extends Component {
                   Buyer : {requesterAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                Request Status: {requestStatusAll[index]}
+                  Request Status: {requestStatusAll[index]}
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -147,9 +147,8 @@ class RequestsFront extends Component {
                     {"Requests"}
                   </h1>
                   <div className="input-areas"></div>
-                  
-                  {ListTemplate}
 
+                  {ListTemplate}
                 </div>
               </div>
               <div className="col">
