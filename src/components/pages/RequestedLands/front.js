@@ -102,7 +102,7 @@ class RequestedLandsFront extends Component {
         console.log("status: " + detail[2]);
         console.log("requester: " + detail[3]);
         console.log("requestStatus: " + detail[4]);
-        console.log("idsReq: " +this.state.ids[index]);
+        console.log("idsReq: " + this.state.ids[index]);
 
         console.log("---------------------------------");
       }
@@ -158,7 +158,12 @@ class RequestedLandsFront extends Component {
                 size="small"
                 variant="contained"
                 color="secondary"
-                onClick={this.buyLand.bind(this, idsAll[index], ownerAll[index] ,marketValueAll[index] )}
+                onClick={this.buyLand.bind(
+                  this,
+                  idsAll[index],
+                  ownerAll[index],
+                  marketValueAll[index]
+                )}
               >
                 Buy
               </Button>
