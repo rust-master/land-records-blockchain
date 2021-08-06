@@ -9,7 +9,82 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import Web3 from "web3";
+import contract from "../../../build/contracts/Land.json"
+
 class RequestsFront extends Component {
+
+  componentWillMount() {
+    this.loadBlockchainData();
+  }
+
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      allAssets: [],
+      ids: [],
+      owner: [],
+      marketValue: [],
+      status: [],
+      requester: [],
+      requestStatus: [],
+      account: "",
+    }
+  }
+
+  async loadBlockchainData() {
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
+
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
+    );
+
+    const assets = await landCon.methods
+    .viewAssets()
+    .call({ from: this.state.account });
+
+    this.state.allAssets = assets;
+    for (let i = 0; i <= assets.length; i++) {
+      this.state.ids.push(assets[i]);
+    }
+
+    this.state.allAssets.map(async (value, index) => {
+      
+      const detail = await landCon.methods
+        .landInfoUser(this.state.ids[index])
+        .call({ from: this.state.account });
+        
+
+      this.state.owner.push(detail[0]);
+      this.state.marketValue.push(detail[1]);
+      this.state.status.push(detail[2]);
+      this.state.requester.push(detail[3]);
+      this.state.requestStatus.push(detail[4]);
+
+
+
+      console.log("owner: " + detail[0]);
+      console.log("marketValue: " + detail[1]);
+      console.log("status: " + detail[2]);
+      console.log("requester: " + detail[3]);
+      console.log("requestStatus: " + detail[4]);
+
+
+      console.log("---------------------------------");
+    });
+
+  }
+
 
   render() {
     return (

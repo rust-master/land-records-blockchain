@@ -99,6 +99,7 @@ class Property extends Component {
       const detail = await landCon.methods
         .landInfoOwner(this.state.ids[index])
         .call({ from: this.state.account });
+
       const remainignDetail = await landCon.methods
         .remainingDetail(this.state.ids[index])
         .call({ from: this.state.account });
@@ -111,7 +112,7 @@ class Property extends Component {
       this.state.marketValue.push(detail[5]);
       this.state.measurements.push(detail[6]);
 
-      this.state.ipfsHash.push(remainignDetail);
+      this.state.ipfsHash.push(remainignDetail[0]);
 
       console.log("State: " + detail[0]);
       console.log("Destrict: " + detail[1]);
