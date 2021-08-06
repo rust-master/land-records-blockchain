@@ -7,7 +7,7 @@ import SignUp from "./components/pages/SignUp/SignUp";
 import SignIn from "./components/pages/SignIn/SignIn";
 import GovermentLogin from "./components/pages/GovermentLogin/GovtLogin";
 import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
-import RequestedLands from "./components/pages/RequestedLands/RequestedLands"
+import RequestedLands from "./components/pages/RequestedLands/RequestedLands";
 
 import CreateLand from "./components/pages/CreateLand/CreatLand";
 import ShowAllLands from "./components/pages/ShowAllLands/ShowAllLands";
@@ -93,7 +93,7 @@ class App extends Component {
     return (
       <div>
         {this.state.loading ? (
-          <div className="App" height={"100%"}> 
+          <div className="App" height={"100%"}>
             <ReactLoading
               type={"cubes"}
               color={"#EF8E19"}
@@ -101,7 +101,10 @@ class App extends Component {
               height={"20%"}
               width={"20%"}
             />
-            <h1 className="Textblock" style={{ fontSize: 45, marginBottom: 10 }}>
+            <h1
+              className="Textblock"
+              style={{ fontSize: 45, marginBottom: 10 }}
+            >
               Blockchain
             </h1>
             <h1 className="Textland" style={{ fontSize: 45, marginBottom: 10 }}>
@@ -149,7 +152,7 @@ class App extends Component {
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
-               {this.state.user ? (
+              {this.state.user ? (
                 <Route path="/requested-lands" component={RequestedLands} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
@@ -168,11 +171,13 @@ class App extends Component {
               )}
 
               {this.state.cookie ? (
-                <Route path="/change-market-value" component={ChangeMarketValue} />
+                <Route
+                  path="/change-market-value"
+                  component={ChangeMarketValue}
+                />
               ) : (
                 <Route path="/goverment-login" component={GovermentLogin} />
               )}
-
             </Switch>
             <Footer />
           </Router>
