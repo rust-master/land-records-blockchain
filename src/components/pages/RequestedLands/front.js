@@ -31,29 +31,29 @@ class RequestedLandsFront extends Component {
     };
   }
 
-  async processRequest(idLand, reqStatus) {
+  async buyLand(idLand) {
     console.log("ID : ", idLand);
-    console.log("reqStatus : ", reqStatus);
 
-    const web3 = window.web3;
 
-    const webeProvider = new Web3(
-      Web3.givenProvider || "http://localhost:7545"
-    );
-    const accounts = await webeProvider.eth.getAccounts();
-    this.setState({ account: accounts[0] });
-    console.log("Account: " + this.state.account);
+    // const web3 = window.web3;
 
-    const landContract = new web3.eth.Contract(
-      contract.abi,
-      "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
-    );
+    // const webeProvider = new Web3(
+    //   Web3.givenProvider || "http://localhost:7545"
+    // );
+    // const accounts = await webeProvider.eth.getAccounts();
+    // this.setState({ account: accounts[0] });
+    // console.log("Account: " + this.state.account);
 
-    await landContract.methods
-      .processRequest(idLand, reqStatus)
-      .send({ from: this.state.account });
+    // const landContract = new web3.eth.Contract(
+    //   contract.abi,
+    //   "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
+    // );
 
-    console.log("Process Request Confirm");
+    // await landContract.methods
+    //   .processRequest(idLand, reqStatus)
+    //   .send({ from: this.state.account });
+
+    console.log("Buy Land Confirm");
   }
 
   async loadBlockchainData() {
@@ -152,10 +152,10 @@ class RequestedLandsFront extends Component {
               <Button
                 size="small"
                 variant="contained"
-                color="primary"
-                onClick={this.processRequest.bind(this, dataAll[index], 3)}
+                color="secondary"
+                onClick={this.buyLand.bind(this, dataAll[index])}
               >
-                Accept
+                Buy
               </Button>
             </CardActions>
           </Card>
