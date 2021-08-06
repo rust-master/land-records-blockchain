@@ -3,7 +3,7 @@ import FrontSection from './front';
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
 
 
-function Requests() {
+function RequestedLands() {
   return (
     <div>
       <FrontSection {...homeObjOne} />
@@ -12,4 +12,4 @@ function Requests() {
   );
 }
 
-export default Requests;
+export default RequestedLands;

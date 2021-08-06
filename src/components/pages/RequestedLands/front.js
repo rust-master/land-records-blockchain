@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
 
-class RequestsFront extends Component {
+class RequestedLandsFront extends Component {
   componentWillMount() {
     this.loadBlockchainData();
   }
@@ -198,7 +198,7 @@ function FrontSection({
   imgStart,
 }) {
   if (form) {
-    return <RequestsFront />;
+    return <RequestedLandsFront />;
   }
 
   return (
