@@ -47,7 +47,7 @@ class RequestedLandsFront extends Component {
 
     const landContract = new web3.eth.Contract(
       contract.abi,
-      "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
+      "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
     );
 
     await landContract.methods
@@ -70,7 +70,7 @@ class RequestedLandsFront extends Component {
 
     const landCon = new web3.eth.Contract(
       contract.abi,
-      "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
+      "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
     );
 
     const allLands = await landCon.methods

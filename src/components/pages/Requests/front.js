@@ -42,7 +42,7 @@ class RequestsFront extends Component {
       this.setState({ account: accounts[0] })
       console.log("Account: " + this.state.account);
 
-      const landContract = new web3.eth.Contract(contract.abi, "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD")
+      const landContract = new web3.eth.Contract(contract.abi, "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A")
 
       await landContract.methods.processRequest(idLand, reqStatus).send({ from: this.state.account })
 
@@ -62,7 +62,7 @@ class RequestsFront extends Component {
 
     const landCon = new web3.eth.Contract(
       contract.abi,
-      "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD"
+      "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
     );
 
     const assets = await landCon.methods
