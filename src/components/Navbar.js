@@ -8,7 +8,7 @@ import { IconContext } from "react-icons/lib";
 import logo from "../components/logo.png";
 import fire from "../components/pages/fire";
 import "./menu.css";
-import "../App.css"
+import "../App.css";
 import Web3 from "web3";
 
 function Navbar() {
@@ -71,11 +71,9 @@ function Navbar() {
           setName(snapshot.val().name);
         }
       });
+    } catch (e) {
+      console.log("Exception: " + e);
     }
-    catch (e) {
-      console.log("Exception: " + e)
-    }
-
   }, []);
 
   useEffect(() => {
@@ -89,22 +87,24 @@ function Navbar() {
   // Getting Balance of MetaMask Account
   useEffect(() => {
     async function getBalance() {
-      const web3 = window.web3
-      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-      const accounts = await webeProvider.eth.getAccounts()
+      const web3 = window.web3;
+      const webeProvider = new Web3(
+        Web3.givenProvider || "http://localhost:7545"
+      );
+      const accounts = await webeProvider.eth.getAccounts();
 
-      const blnce = web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether'); 
-      console.log(blnce)
-      setbalance(blnce)
-  }
-  getBalance();
-
-  }, [])
-
+      const blnce = web3.utils.fromWei(
+        await web3.eth.getBalance(accounts[0]),
+        "ether"
+      );
+      console.log(blnce);
+      setbalance(blnce);
+    }
+    getBalance();
+  }, []);
 
   if (user != null) {
     console.log("User: ", { user });
-
 
     return <Home />;
   } else {
@@ -120,7 +120,13 @@ function Navbar() {
             <div className="navbar-container container">
               <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                 {/* <MdFingerprint className="navbar-icon" /> */}
-                <img src={logo} className="App-logo" alt="Logo" width="40" height="40" />
+                <img
+                  src={logo}
+                  className="App-logo"
+                  alt="Logo"
+                  width="40"
+                  height="40"
+                />
                 &nbsp;&nbsp;{" "}
                 <p>
                   <font color="#EF8E19">Blockchain</font> Land Records System
@@ -180,27 +186,41 @@ function Navbar() {
                   >
                     <ul>
                       <li>
-                        <h3 style={{color: "#35A246"}}>{name}</h3>
+                        <h3 style={{ color: "#35A246" }}>{name}</h3>
                       </li>
                       <li>
-                        <h4 style={{ color: "#EF8E19" }}>Balance: {balance} ETH</h4>
+                        <h4 style={{ color: "#EF8E19" }}>
+                          Balance: {balance} ETH
+                        </h4>
                       </li>
                       <li>
                         <a href="/settings">Settings</a>
                       </li>
                       <li>
-                        <a href="/requested-lands">Requested Lands</a>
+                        <Link
+                          to="/requested-lands"
+                          className="nav-links"
+                          onClick={closeMobileMenu}
+                        >
+                       Requested Lands
+                        </Link>
                       </li>
                       <li>
                         {button ? (
                           <Link to="/">
-                            <Button buttonSize="btn--wide" onClick={() => fire.auth().signOut()}>
+                            <Button
+                              buttonSize="btn--wide"
+                              onClick={() => fire.auth().signOut()}
+                            >
                               Sign Out
                             </Button>
                           </Link>
                         ) : (
                           <Link to="/">
-                            <Button buttonSize="btn--wide" onClick={() => fire.auth().signOut()}>
+                            <Button
+                              buttonSize="btn--wide"
+                              onClick={() => fire.auth().signOut()}
+                            >
                               Sign Out
                             </Button>
                           </Link>
@@ -227,7 +247,13 @@ function Navbar() {
                 {/* <MdFingerprint className="navbar-icon" />
                 Blockchain Land Records System */}
                 {/* <img src={logo} alt="Logo" width="40" height="40" />&nbsp;<p style={{ color: '#EF8E19' }}>Blockchain</p> &nbsp; <p>Land Records System</p> */}
-                <img src={logo} className="App-logo" alt="Logo" width="40" height="40" />{" "}
+                <img
+                  src={logo}
+                  className="App-logo"
+                  alt="Logo"
+                  width="40"
+                  height="40"
+                />{" "}
                 &nbsp;&nbsp;{" "}
                 <p>
                   <font color="#EF8E19">Blockchain</font> Land Records System
