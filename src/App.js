@@ -150,7 +150,7 @@ class App extends Component {
                 <Route path="/sign-up" component={SignUp} />
               )}
                {this.state.user ? (
-                <Route path="/requestedLands" component={RequestedLands} />
+                <Route path="/requested-lands" component={RequestedLands} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}

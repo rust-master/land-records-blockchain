@@ -189,7 +189,7 @@ function Navbar() {
                         <a href="/settings">Settings</a>
                       </li>
                       <li>
-                        <a href="/saved">Saved</a>
+                        <a href="/requested-lands">Requested Lands</a>
                       </li>
                       <li>
                         {button ? (
