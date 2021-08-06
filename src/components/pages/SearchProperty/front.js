@@ -45,9 +45,6 @@ const styles = (theme) => ({
 });
 
 class SearchProperty extends Component {
-  // componentWillMount() {
-  //   this.loadBlockchainData();
-  // }
 
   constructor(props) {
     super(props);
@@ -218,7 +215,7 @@ class SearchProperty extends Component {
               className={classes.root1}
               onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
-              <CardActionArea>
+              
                 <CardMedia
                   component="img"
                   alt="Image not load"
@@ -288,6 +285,7 @@ class SearchProperty extends Component {
                     </h2>
                   </Typography>
                 </CardContent>
+                <CardActionArea>
                 <div
                   style={{
                     margin: "20px auto 0 auto;",
