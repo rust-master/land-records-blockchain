@@ -98,19 +98,19 @@ class RequestsFront extends Component {
           >
             <CardActionArea>
               <CardContent>
-                <Typography gutterBottom variant="h4" component="h3">
-                  Owner: {ownerAll[index]}
+                <Typography gutterBottom variant="h4" component="h4">
+                Buyer: {requesterAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Value: {marketValueAll[index]} Ether
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Buyer : {requesterAll[index]}
+                  Owner : {ownerAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                 
                   Request Status: {requestStatusAll[index] == 1 ? "Default" : "pending"}
-                  
+
                 </Typography>
               </CardContent>
             </CardActionArea>
