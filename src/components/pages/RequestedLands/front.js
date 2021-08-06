@@ -22,6 +22,7 @@ class RequestedLandsFront extends Component {
     this.state = {
       allLandsData: [],
       ids: [],
+      idsReq: [],
       owner: [],
       marketValue: [],
       status: [],
@@ -36,23 +37,23 @@ class RequestedLandsFront extends Component {
     console.log("toAccount : ", toAccount);
     console.log("valueLand : ", valueLand);
 
-    const web3 = window.web3;
+    // const web3 = window.web3;
 
-    const webeProvider = new Web3(
-      Web3.givenProvider || "http://localhost:7545"
-    );
-    const accounts = await webeProvider.eth.getAccounts();
-    this.setState({ account: accounts[0] });
-    console.log("Account: " + this.state.account);
+    // const webeProvider = new Web3(
+    //   Web3.givenProvider || "http://localhost:7545"
+    // );
+    // const accounts = await webeProvider.eth.getAccounts();
+    // this.setState({ account: accounts[0] });
+    // console.log("Account: " + this.state.account);
 
-    const landContract = new web3.eth.Contract(
-      contract.abi,
-      "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
-    );
+    // const landContract = new web3.eth.Contract(
+    //   contract.abi,
+    //   "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
+    // );
 
-    await landContract.methods
-      .buyProperty(idLand)
-      .send({from: this.state.account});
+    // await landContract.methods
+    //   .buyProperty(idLand)
+    //   .send({from: this.state.account});
 
     console.log("Buy Land Confirm");
   }
@@ -94,11 +95,14 @@ class RequestedLandsFront extends Component {
         this.state.requester.push(detail[3]);
         this.state.requestStatus.push(detail[4]);
 
+        this.state.idsReq.push(this.state.ids[index]);
+
         console.log("owner: " + detail[0]);
         console.log("marketValue: " + detail[1]);
         console.log("status: " + detail[2]);
         console.log("requester: " + detail[3]);
         console.log("requestStatus: " + detail[4]);
+        console.log("idsReq: " +this.state.ids[index]);
 
         console.log("---------------------------------");
       }
@@ -112,12 +116,12 @@ class RequestedLandsFront extends Component {
     const statusAll = this.state.status;
     const requesterAll = this.state.requester;
     const requestStatusAll = this.state.requestStatus;
-    const idsAll = this.state.ids;
+    const idsAll = this.state.idsReq;
 
     let ListTemplate;
 
-    if (dataAll.length && marketValueAll.length > 0) {
-      ListTemplate = dataAll.map((value, index) => (
+    if (ownerAll.length && marketValueAll.length > 0) {
+      ListTemplate = ownerAll.map((value, index) => (
         <div>
           <Card
             className={makeStyles({
@@ -154,7 +158,7 @@ class RequestedLandsFront extends Component {
                 size="small"
                 variant="contained"
                 color="secondary"
-                onClick={this.buyLand.bind(this, dataAll[index], ownerAll[index] ,marketValueAll[index] )}
+                onClick={this.buyLand.bind(this, idsAll[index], ownerAll[index] ,marketValueAll[index] )}
               >
                 Buy
               </Button>
