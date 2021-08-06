@@ -7,6 +7,7 @@ import SignUp from "./components/pages/SignUp/SignUp";
 import SignIn from "./components/pages/SignIn/SignIn";
 import GovermentLogin from "./components/pages/GovermentLogin/GovtLogin";
 import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
+import RequestedLands from "./components/pages/RequestedLands/RequestedLands"
 
 import CreateLand from "./components/pages/CreateLand/CreatLand";
 import ShowAllLands from "./components/pages/ShowAllLands/ShowAllLands";
@@ -92,7 +93,7 @@ class App extends Component {
     return (
       <div>
         {this.state.loading ? (
-          <div className="App" height={"100%"}>
+          <div className="App" height={"100%"}> 
             <ReactLoading
               type={"cubes"}
               color={"#EF8E19"}
@@ -145,6 +146,11 @@ class App extends Component {
               )}
               {this.state.user ? (
                 <Route path="/properties" component={Properties} />
+              ) : (
+                <Route path="/sign-up" component={SignUp} />
+              )}
+               {this.state.user ? (
+                <Route path="/requestedLands" component={RequestedLands} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
