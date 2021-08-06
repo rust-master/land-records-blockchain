@@ -68,8 +68,21 @@ class SearchProperty extends Component {
     };
   }
 
-  requestToBuy(id) {
+  async requestToBuy(id) {
     console.log("--requestToBuy-- ", id);
+
+    const web3 = window.web3
+
+      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
+      const accounts = await webeProvider.eth.getAccounts()
+      this.setState({ account: accounts[0] })
+      console.log("Account: " + this.state.account);
+
+      const landContract = new web3.eth.Contract(contract.abi, "0xdB2655705f835ab52ca6Ab04AFd2650D1C7047cD")
+
+      await landContract.methods.requstToLandOwner(id).send({ from: this.state.account })
+
+      console.log("Confirm");
   }
 
   async loadBlockchainData(searchKey, searchValue) {
