@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import fire from "../fire";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 const database = fire.database();
-const ref = database.ref('AdminLogin');
+const ref = database.ref("AdminLogin");
 
 const cookies = new Cookies();
-
 
 class GovermentLogin extends Component {
   constructor(props) {
@@ -22,33 +21,31 @@ class GovermentLogin extends Component {
       defaultPassword: "",
     };
 
-    ref.on("value", snapshot => {
-      console.log("FireB ", snapshot)
+    ref.on("value", (snapshot) => {
+      console.log("FireB ", snapshot);
       if (snapshot && snapshot.exists()) {
-        this.state.defaultEmail = snapshot.val().email
-        this.state.defaultPassword = snapshot.val().password
+        this.state.defaultEmail = snapshot.val().email;
+        this.state.defaultPassword = snapshot.val().password;
       }
-    })
-
+    });
   }
-
-
 
   login(e) {
     e.preventDefault();
     // eslint-disable-next-line eqeqeq
-    if (this.state.email == this.state.defaultEmail && this.state.password == this.state.defaultPassword) {
+    if (
+      this.state.email == this.state.defaultEmail &&
+      this.state.password == this.state.defaultPassword
+    ) {
       console.log("Passed");
 
-      cookies.set('username', this.state.email, { path: '/' });
-      console.log(cookies.get('username'));
+      cookies.set("username", this.state.email, { path: "/" });
+      console.log(cookies.get("username"));
 
-      window.location = '/'
-
+      window.location = "/";
     } else {
-
-      cookies.set('username', 'null', { path: '/' });
-      console.log(cookies.get('username'));
+      cookies.set("username", "null", { path: "/" });
+      console.log(cookies.get("username"));
 
       console.log("Failed");
     }
@@ -101,11 +98,14 @@ class GovermentLogin extends Component {
                     </form>
 
                     <div class="btnGoverment">
-                      <Button buttonSize="btn--wide" buttonColor="red" onClick={this.login}>
+                      <Button
+                        buttonSize="btn--wide"
+                        buttonColor="red"
+                        onClick={this.login}
+                      >
                         Government Sign In
                       </Button>
                     </div>
-
                   </div>
                 </div>
               </div>
