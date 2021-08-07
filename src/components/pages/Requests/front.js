@@ -44,7 +44,7 @@ class RequestsFront extends Component {
     const accounts = await webeProvider.eth.getAccounts();
     this.setState({ account: accounts[0] });
     console.log("Account: " + this.state.account);
-    
+
     const netId = await web3.eth.net.getId();
     const deployedNetwork = contract.networks[netId];
 
@@ -55,7 +55,7 @@ class RequestsFront extends Component {
       deployedNetwork.address
     );
 
-    await landContract.methods
+    await landCon.methods
       .processRequest(idLand, reqStatus)
       .send({ from: this.state.account });
 

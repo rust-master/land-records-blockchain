@@ -51,13 +51,11 @@ class RequestedLandsFront extends Component {
       "0x9826512B2C6786843E45F514cc636DE2CCDf6455"
     );
 
-    await landContract.methods
-      .buyProperty(idLand)
-      .send({
-        from: this.state.account,
-        usdEthBasis: valueLand,
-        value: web3.utils.toWei(valueLand, 'ether'),
-      });
+    await landContract.methods.buyProperty(idLand).send({
+      from: this.state.account,
+      usdEthBasis: valueLand,
+      value: web3.utils.toWei(valueLand, "ether"),
+    });
 
     console.log("Buy Land Confirm");
   }

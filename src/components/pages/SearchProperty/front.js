@@ -45,7 +45,6 @@ const styles = (theme) => ({
 });
 
 class SearchProperty extends Component {
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -71,26 +70,30 @@ class SearchProperty extends Component {
   async requestToBuy(id) {
     console.log("--requestToBuy-- ", id);
 
-    const web3 = window.web3
+    const web3 = window.web3;
 
-      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-      const accounts = await webeProvider.eth.getAccounts()
-      this.setState({ account: accounts[0] })
-      console.log("Account: " + this.state.account);
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
 
-      const netId = await web3.eth.net.getId();
-      const deployedNetwork = contract.networks[netId];
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
 
-      console.log(deployedNetwork.address);
+    console.log(deployedNetwork.address);
 
-      const landCon = new web3.eth.Contract(
-        contract.abi,
-        deployedNetwork.address
-      );
-      
-      await landContract.methods.requstToLandOwner(id).send({ from: this.state.account })
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
 
-      console.log("Confirm");
+    await landContract.methods
+      .requstToLandOwner(id)
+      .send({ from: this.state.account });
+
+    console.log("Confirm");
   }
 
   async loadBlockchainData(searchKey, searchValue) {
@@ -236,77 +239,76 @@ class SearchProperty extends Component {
               className={classes.root1}
               onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
-              
-                <CardMedia
-                  component="img"
-                  alt="Image not load"
-                  width="1030"
-                  height="550"
-                  image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
-                  title={"Image Search"}
-                />
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <h5 style={{ textAlign: "center" }}>
-                      Current Owner: {ownersAll[index]}
-                    </h5>
-                  </Typography>
+              <CardMedia
+                component="img"
+                alt="Image not load"
+                width="1030"
+                height="550"
+                image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
+                title={"Image Search"}
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <h5 style={{ textAlign: "center" }}>
+                    Current Owner: {ownersAll[index]}
+                  </h5>
+                </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <span style={{ color: "#EF8E19" }}>
-                      Property ID: {dataAll[index]}
-                    </span>{" "}
-                    <span style={{ float: "right", color: "#EF8E19" }}>
-                      Survery No: {surveyNoAll[index]}
-                    </span>
-                  </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span style={{ color: "#EF8E19" }}>
+                    Property ID: {dataAll[index]}
+                  </span>{" "}
+                  <span style={{ float: "right", color: "#EF8E19" }}>
+                    Survery No: {surveyNoAll[index]}
+                  </span>
+                </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <span>State: {statesAll[index]}</span>{" "}
-                    <span style={{ float: "right" }}>
-                      District: {districtAll[index]}
-                    </span>
-                  </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>State: {statesAll[index]}</span>{" "}
+                  <span style={{ float: "right" }}>
+                    District: {districtAll[index]}
+                  </span>
+                </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <span>Village/Town: {villageAll[index]}</span>{" "}
-                    <span style={{ float: "right" }}>
-                      Measurements: {measureAll[index]}
-                    </span>
-                  </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>Village/Town: {villageAll[index]}</span>{" "}
+                  <span style={{ float: "right" }}>
+                    Measurements: {measureAll[index]}
+                  </span>
+                </Typography>
 
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h5"
-                    className={classes.Typo1}
-                  >
-                    <h2 style={{ color: "#00AEE6", textAlign: "center" }}>
-                      Market Value: {marketValueAll[index]}
-                    </h2>
-                  </Typography>
-                </CardContent>
-                <CardActionArea>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <h2 style={{ color: "#00AEE6", textAlign: "center" }}>
+                    Market Value: {marketValueAll[index]}
+                  </h2>
+                </Typography>
+              </CardContent>
+              <CardActionArea>
                 <div
                   style={{
                     margin: "20px auto 0 auto;",
