@@ -32,14 +32,6 @@ class RequestsFront extends Component {
     };
   }
 
-  async requestLand() {
-    const { account } = this.props;
-    const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-    const contractAddress = await web3.eth.getContractAddress(contract.abi, contract.bytecode);
-   
-  }
-
-
   async processRequest(idLand, reqStatus) {
     console.log("ID : ", idLand);
     console.log("reqStatus : ", reqStatus);
@@ -52,10 +44,15 @@ class RequestsFront extends Component {
     const accounts = await webeProvider.eth.getAccounts();
     this.setState({ account: accounts[0] });
     console.log("Account: " + this.state.account);
+    
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
 
-    const landContract = new web3.eth.Contract(
+    console.log(deployedNetwork.address);
+
+    const landCon = new web3.eth.Contract(
       contract.abi,
-      "0x9826512B2C6786843E45F514cc636DE2CCDf6455"
+      deployedNetwork.address
     );
 
     await landContract.methods
