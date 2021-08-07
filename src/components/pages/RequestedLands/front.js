@@ -163,13 +163,19 @@ class RequestedLandsFront extends Component {
               </CardContent>
             </CardActionArea>
             <CardActions style={{ float: "right" }}>
-              <Button size="small" variant="contained" color="blue">
+              <Button
+                size="small"
+                variant="contained"
+                color={requestStatusAll[index] == 1 ? "blue" : "blue"}
+                disabled={requestStatusAll[index] == 1 ? "true" : "false"}
+              >
                 Refuse to Buy
               </Button>
               <Button
                 size="small"
                 variant="contained"
-                color="secondary"
+                color={requestStatusAll[index] == 1 ? "blue" : "secondary"}
+                disabled={requestStatusAll[index] == 1 ? "true" : "false"}
                 onClick={this.buyLand.bind(
                   this,
                   idsAll[index],
