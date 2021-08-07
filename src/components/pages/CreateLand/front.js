@@ -47,42 +47,43 @@ class CreateLand extends Component {
       this.setState({ account: accounts[0] });
       console.log("Account: " + this.state.account);
 
-      const contractAddress = await web3.eth.getContractAddress(contract.abi, contract.bytecode);
+      const netId = await web3.eth.net.getId();
+      const deployedNetwork = contract.networks[netId];
+      
+      console.log(deployedNetwork.address);
 
-      console.log("Contract Address: " + contractAddress);
+      const landCon = new web3.eth.Contract(
+        contract.abi,
+        deployedNetwork.address
+      );
 
-      // const landCon = new web3.eth.Contract(
-      //   contract.abi,
-      //   contractAddress
-      // );
+      console.log("CurrentOwner: " + this.state.CurrentOwner);
+      console.log("state: " + this.state.state);
+      console.log("district: " + this.state.district);
+      console.log("village: " + this.state.village);
+      console.log("surveyNumber: " + this.state.surveyNumber);
+      console.log("id: " + this.state.id);
+      console.log("marketValue: " + this.state.marketValue);
+      console.log("measurement: " + this.state.measurement);
+      console.log("landType: " + this.state.landType);
 
-      // console.log("CurrentOwner: " + this.state.CurrentOwner);
-      // console.log("state: " + this.state.state);
-      // console.log("district: " + this.state.district);
-      // console.log("village: " + this.state.village);
-      // console.log("surveyNumber: " + this.state.surveyNumber);
-      // console.log("id: " + this.state.id);
-      // console.log("marketValue: " + this.state.marketValue);
-      // console.log("measurement: " + this.state.measurement);
-      // console.log("landType: " + this.state.landType);
+      await landCon.methods
+        .Registration(
+          this.state.state,
+          this.state.district,
+          this.state.village,
+          this.state.surveyNumber,
+          this.state.CurrentOwner,
+          this.state.marketValue,
+          this.state.id,
+          this.state.measurement,
+          hash,
+          this.state.landType,
+          this.state.account
+        )
+        .send({ from: this.state.account });
 
-      // await landCon.methods
-      //   .Registration(
-      //     this.state.state,
-      //     this.state.district,
-      //     this.state.village,
-      //     this.state.surveyNumber,
-      //     this.state.CurrentOwner,
-      //     this.state.marketValue,
-      //     this.state.id,
-      //     this.state.measurement,
-      //     hash,
-      //     this.state.landType,
-      //     this.state.account
-      //   )
-      //   .send({ from: this.state.account });
-
-      // this.setState({ open: true });
+      this.setState({ open: true });
     } catch (e) {
       this.setState({ openi: true });
       this.setState({ errori: e.toString() });
