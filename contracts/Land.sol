@@ -15,6 +15,7 @@ contract Land {
         bool isAvailable;
         address requester;
         reqStatus requestStatus;
+        address createByGovt;
     }
 
     uint256[] public propertiesIDs;
@@ -66,7 +67,8 @@ contract Land {
         uint256 id,
         string memory _measurement,
         string memory _ipfsHash,
-        string memory _landType
+        string memory _landType,
+        address _createByGovt
     ) public returns (bool) {
         require(superAdmin[_village] == msg.sender || owner == msg.sender);
         land[id].state = _state;
@@ -78,6 +80,7 @@ contract Land {
         land[id].measurement = _measurement;
         land[id].landType = _landType;
         land[id].ipfsHash = _ipfsHash;
+        land[id].createByGovt = _createByGovt;
         profile[_OwnerAddress].assetList.push(id);
         propertiesIDs.push(id);
         return true;
