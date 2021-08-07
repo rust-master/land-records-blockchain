@@ -163,11 +163,7 @@ class RequestedLandsFront extends Component {
               </CardContent>
             </CardActionArea>
             <CardActions style={{ float: "right" }}>
-              <Button
-                size="small"
-                variant="contained"
-                color= "primary"
-              >
+              <Button size="small" variant="contained" color="primary">
                 Refuse to Buy
               </Button>
               <Button
@@ -181,7 +177,7 @@ class RequestedLandsFront extends Component {
                   marketValueAll[index]
                 )}
               >
-                Buy 
+                Buy
               </Button>
             </CardActions>
           </Card>

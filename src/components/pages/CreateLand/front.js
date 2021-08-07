@@ -49,7 +49,7 @@ class CreateLand extends Component {
 
       const netId = await web3.eth.net.getId();
       const deployedNetwork = contract.networks[netId];
-      
+
       console.log(deployedNetwork.address);
 
       const landCon = new web3.eth.Contract(
