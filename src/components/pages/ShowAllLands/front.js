@@ -63,6 +63,7 @@ class ShowAllLands extends Component {
       measure: [],
       ipfsHash: [],
       landType: [],
+      createdBy: [],
       placeHolder: "Loading Records",
     };
   }
@@ -109,9 +110,11 @@ class ShowAllLands extends Component {
 
       this.state.ipfsHash.push(remainignDetail[0]);
       this.state.landType.push(remainignDetail[1]);
+      this.state.createdBy.push(remainignDetail[2]);
 
       console.log("ipfsHash: " + remainignDetail[0]);
       console.log("landType: " + remainignDetail[1]);
+      console.log("createdBy: " + remainignDetail[2]);
 
       console.log("---------------------------------");
     });
@@ -166,6 +169,7 @@ class ShowAllLands extends Component {
     const marketValueAll = this.state.marketValue;
     const ipfsAll = this.state.ipfsHash;
     const landTupeAll = this.state.landType;
+    const createdByAll = this.state.createdBy;
 
     let ListTemplate;
 
@@ -250,7 +254,9 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span>Land Type: {landTupeAll[index]}</span>
+                  <span>Land Type: {landTupeAll[index]}</span> <span style={{ float: "right" }}>
+                  Created By: {createdByAll[index]}
+                  </span>
                 </Typography>
 
                 <Typography
