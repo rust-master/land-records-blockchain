@@ -32,6 +32,14 @@ class RequestsFront extends Component {
     };
   }
 
+  async requestLand() {
+    const { account } = this.props;
+    const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    const contractAddress = await web3.eth.getContractAddress(contract.abi, contract.bytecode);
+   
+  }
+
+
   async processRequest(idLand, reqStatus) {
     console.log("ID : ", idLand);
     console.log("reqStatus : ", reqStatus);

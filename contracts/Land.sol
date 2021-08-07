@@ -68,7 +68,7 @@ contract Land {
         string memory _measurement,
         string memory _ipfsHash,
         string memory _landType,
-        address _createByGovt
+        address payable _createByGovt
     ) public returns (bool) {
         require(superAdmin[_village] == msg.sender || owner == msg.sender);
         land[id].state = _state;
