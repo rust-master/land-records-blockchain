@@ -49,7 +49,7 @@ class CreateLand extends Component {
 
       const landCon = new web3.eth.Contract(
         contract.abi,
-        "0xF72Be9337B25e92FED161dA1cbfe05777719ec7A"
+        "0x9826512B2C6786843E45F514cc636DE2CCDf6455"
       );
 
       console.log("CurrentOwner: " + this.state.CurrentOwner);
