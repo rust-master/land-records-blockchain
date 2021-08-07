@@ -114,9 +114,9 @@ contract Land {
     function remainingDetail(uint256 id)
         public
         view
-        returns (string memory, string memory)
+        returns (string memory, string memory, address)
     {
-        return (land[id].ipfsHash, land[id].landType);
+        return (land[id].ipfsHash, land[id].landType, land[id].createByGovt);
     }
 
     function showAllLands(uint256 id)
@@ -143,10 +143,7 @@ contract Land {
         );
     }
 
-    function showAllLandsRemainig(uint256 id) public view returns (uint256) {
-        return (id);
-    }
-
+   
     //to view details of land for the buyer
     function landInfoUser(uint256 id)
         public

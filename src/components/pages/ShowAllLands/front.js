@@ -54,7 +54,6 @@ class ShowAllLands extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       allIDs: [],
-      ids: [],
       states: [],
       district: [],
       village: [],
@@ -121,9 +120,7 @@ class ShowAllLands extends Component {
       const detail = await landCon.methods
         .showAllLands(this.state.allIDs[index])
         .call({ from: this.state.account });
-      const remainignDetail = await landCon.methods
-        .showAllLandsRemainig(this.state.allIDs[index])
-        .call({ from: this.state.account });
+
 
       this.state.owners.push(detail[0]);
       this.state.states.push(detail[1]);
@@ -132,7 +129,7 @@ class ShowAllLands extends Component {
       this.state.surveyNo.push(detail[4]);
       this.state.marketValue.push(detail[5]);
       this.state.measure.push(detail[6]);
-      this.state.ids.push(remainignDetail[0]);
+   
 
       console.log("Owner: " + detail[0]);
       console.log("State: " + detail[1]);
@@ -141,7 +138,6 @@ class ShowAllLands extends Component {
       console.log("surveyNo: " + detail[4]);
       console.log("marketValue: " + detail[5]);
       console.log("Mesaurment: " + detail[6]);
-      console.log("ID: " + remainignDetail[0]);
 
       console.log("---------------------------------");
     });
@@ -160,7 +156,7 @@ class ShowAllLands extends Component {
   render() {
     const { classes } = this.props;
 
-    const dataAll = this.state.ids;
+    const dataAll = this.state.allLandsIDs;
     const statesAll = this.state.states;
     const districtAll = this.state.district;
     const villageAll = this.state.village;
