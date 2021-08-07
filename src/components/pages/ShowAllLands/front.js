@@ -164,7 +164,7 @@ class ShowAllLands extends Component {
   render() {
     const { classes } = this.props;
 
-    const dataAll = this.state.allLandsIDs;
+    const dataAll = this.state.allIDs;
     const statesAll = this.state.states;
     const districtAll = this.state.district;
     const villageAll = this.state.village;
