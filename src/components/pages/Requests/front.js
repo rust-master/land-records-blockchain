@@ -73,9 +73,14 @@ class RequestsFront extends Component {
     this.setState({ account: accounts[0] });
     console.log("Account: " + this.state.account);
 
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    console.log(deployedNetwork.address);
+
     const landCon = new web3.eth.Contract(
       contract.abi,
-      "0x9826512B2C6786843E45F514cc636DE2CCDf6455"
+      deployedNetwork.address
     );
 
     const assets = await landCon.methods

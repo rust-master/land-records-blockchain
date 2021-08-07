@@ -53,9 +53,14 @@ class Property extends Component {
 
       const web3 = window.web3;
 
+      const netId = await web3.eth.net.getId();
+      const deployedNetwork = contract.networks[netId];
+  
+      console.log(deployedNetwork.address);
+  
       const landCon = new web3.eth.Contract(
         contract.abi,
-        "0x9826512B2C6786843E45F514cc636DE2CCDf6455"
+        deployedNetwork.address
       );
 
       await landCon.methods
