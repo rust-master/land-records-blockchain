@@ -166,16 +166,14 @@ class RequestedLandsFront extends Component {
               <Button
                 size="small"
                 variant="contained"
-                color={requestStatusAll[index] == 1 ? "blue" : "blue"}
-                disabled={requestStatusAll[index] == 1 ? "true" : "false"}
+                color= "primary"
               >
                 Refuse to Buy
               </Button>
               <Button
                 size="small"
                 variant="contained"
-                color={requestStatusAll[index] == 1 ? "blue" : "secondary"}
-                disabled={requestStatusAll[index] == 1 ? "true" : "false"}
+                color="secondary"
                 onClick={this.buyLand.bind(
                   this,
                   idsAll[index],
@@ -183,7 +181,7 @@ class RequestedLandsFront extends Component {
                   marketValueAll[index]
                 )}
               >
-                Buy
+                Buy 
               </Button>
             </CardActions>
           </Card>
