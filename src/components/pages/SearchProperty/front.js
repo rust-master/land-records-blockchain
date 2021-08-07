@@ -89,7 +89,7 @@ class SearchProperty extends Component {
       deployedNetwork.address
     );
 
-    await landContract.methods
+    await landCon.methods
       .requstToLandOwner(id)
       .send({ from: this.state.account });
 
