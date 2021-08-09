@@ -66,14 +66,15 @@ class Profile extends Component {
               </div>
               <div className="col">
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"SIGN UP TODAY"}</div>
+                  <div className="top-line">{"Profle"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
-                    {"Join BLRS"}
+                    {"BLRS Profile"}
                   </h1>
                   <div className="input-areas">
                     <form>
                       <div>
                         <input
+                          style={{width: "100%"}}
                           className="footer-input"
                           name="name"
                           type="text"
@@ -84,6 +85,7 @@ class Profile extends Component {
                       </div>
                       <div>
                         <input
+                         style={{width: "100%"}}
                           className="footer-input"
                           name="email"
                           type="email"
@@ -94,6 +96,7 @@ class Profile extends Component {
                       </div>
                       <div>
                         <input
+                         style={{width: "100%"}}
                           className="footer-input"
                           name="password"
                           type="password"
