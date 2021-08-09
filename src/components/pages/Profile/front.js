@@ -4,7 +4,8 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
 import fire from "../fire";
 
 function Alert(props) {
@@ -160,7 +161,6 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <ProgressBar now={this.state.progress} label={this.state.progress} />;
         <div
           className={false ? "home__hero-section" : "home__hero-section darkBg"}
         >
@@ -181,12 +181,42 @@ class Profile extends Component {
                   />
                 </div>
               </div>
+
               <div className="col">
                 <div className="home__hero-text-wrapper">
                   <div className="top-line">{"Profile"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"BLRS Profile"}
                   </h1>
+                  <Progress
+                   theme={
+                    {
+                      error: {
+                        symbol: this.state.progress + '%',
+                        trailColor: 'pink',
+                        color: 'red'
+                      },
+                      default: {
+                        symbol: this.state.progress + '%',
+                        trailColor: 'lightblue',
+                        color: 'blue'
+                      },
+                      active: {
+                        symbol: this.state.progress + '%',
+                        trailColor: 'yellow',
+                        color: 'orange'
+                      },
+                      success: {
+                        symbol: this.state.progress + '%',
+                        trailColor: 'lime',
+                        color: 'green'
+                      }
+                    }
+                  }
+                  style={{marginBottom: 30}}
+                    percent={this.state.progress}
+                    status={this.state.progress == 100 ? "success" : "active"}
+                  />
                   <div className="input-areas">
                     <form>
                       <div>
