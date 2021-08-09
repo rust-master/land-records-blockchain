@@ -17,6 +17,7 @@ function Navbar() {
   const onClick = () => setIsActive(!isActive);
 
   const [name, setName] = useState(false);
+  const [profileLink, setprofileLink] = useState(false);
   const [balance, setbalance] = useState("");
 
   useEffect(() => {
@@ -69,6 +70,7 @@ function Navbar() {
         console.log("FireB ", snapshot);
         if (snapshot && snapshot.exists()) {
           setName(snapshot.val().name);
+          setprofileLink(snapshot.val().profileLink);
         }
       });
     } catch (e) {
@@ -178,7 +180,7 @@ function Navbar() {
                     <img
                       width="40"
                       height="40"
-                      src="https://s.gravatar.com/avatar/46674a2cfe508b7d5a19d1153f90dfe5"
+                      src={profileLink}
                       alt="User avatar"
                     />
                   </button>
