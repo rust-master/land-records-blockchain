@@ -63,8 +63,6 @@ class Profile extends Component {
         const ref = database.ref("users").child(uid);
         ref.update({ name: this.state.name });
 
-        this.handleRender();
-
         this.setState({ open: true });
       } else {
         this.setState({ openi: true });
@@ -125,31 +123,37 @@ class Profile extends Component {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        // progress function ....
+        // file upload progress report
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
         this.setState({ progress: progress });
-        console.log("Progress" + this.state.progress );
+        console.log("Progress" + this.state.progress);
       },
       (error) => {
+        // file upload failed
         console.log(error);
+      },
+      () => {
+        // file upload completed
+        storage
+          .ref(`profiles`)
+          .child(file.name)
+          .getDownloadURL()
+          .then(
+            (url) => {
+              // got download URL
+              this.setState({ imageUrl: url });
+              console.log("url : " + url);
+              this.handleRender();
+            },
+            (error) => {
+              // failed to get download URL
+              console.log(error);
+            }
+          );
       }
-    ); // PROBLEM: this bracket & semi-colon closes off on()
-    () => {
-      // <-- which means this function is floating and never actually called
-      // complete function ....
-      storage.ref(`profiles`).child(`${file.name}`).getDownloadURL()
-        .then((url) => {
-          this.setState({imageUrl : url})
-          console.log(url); // why url is not updated?
-        }), // PROBLEM: this comma is outside of then()
-        (error) => {
-          // <-- meaning this error function is also floating and never called
-          // error function ....
-          console.log(error);
-        };
-    };
+    );
   };
 
   render() {
