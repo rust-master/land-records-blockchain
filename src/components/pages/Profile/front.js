@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import fire from "../fire";
 
 class Profile extends Component {
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -24,11 +23,14 @@ class Profile extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((u) => {
         const user = fire.auth().currentUser.uid;
-        fire.database().ref('users/' + user).set({
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password
-        });
+        fire
+          .database()
+          .ref("users/" + user)
+          .set({
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -74,7 +76,7 @@ class Profile extends Component {
                     <form>
                       <div>
                         <input
-                          style={{width: "100%"}}
+                          style={{ width: "100%" }}
                           className="footer-input"
                           name="name"
                           type="text"
@@ -85,7 +87,7 @@ class Profile extends Component {
                       </div>
                       <div>
                         <input
-                         style={{width: "100%"}}
+                          style={{ width: "100%" }}
                           className="footer-input"
                           name="email"
                           type="email"
@@ -96,7 +98,7 @@ class Profile extends Component {
                       </div>
                       <div>
                         <input
-                         style={{width: "100%"}}
+                          style={{ width: "100%" }}
                           className="footer-input"
                           name="password"
                           type="password"
@@ -107,6 +109,7 @@ class Profile extends Component {
                       </div>
 
                       <Button
+                        style={{ float: "right" }}
                         buttonSize="btn--wide"
                         buttonColor="blue"
                         onClick={this.signup}
