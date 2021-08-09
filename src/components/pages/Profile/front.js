@@ -30,6 +30,8 @@ class Profile extends Component {
         console.log("FireB ", snapshot);
         if (snapshot && snapshot.exists()) {
           this.setState({ name: snapshot.val().name });
+          this.setState({ email: snapshot.val().email });
+          this.setState({ password: snapshot.val().password });
         }
       });
     } catch (e) {
