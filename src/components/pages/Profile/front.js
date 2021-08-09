@@ -29,7 +29,7 @@ class Profile extends Component {
       errori: "",
       profileImage: "",
       image: null,
-      downloadURL: null,
+      getImageURL: "",
       progress: 0,
     };
   }
@@ -63,10 +63,12 @@ class Profile extends Component {
         const ref = database.ref("users").child(uid);
         ref.update({ name: this.state.name });
 
-        setTimeout(function () {
-          ref.update({ profileLink: this.state.downloadURL });
-          console.log("downloadURL " + this.state.downloadURL);
-        }, 2000);
+        
+        // setTimeout(function () {
+          console.log("downloadURL " + this.state.getImageURL);
+          ref.update({ profileLink: this.state.getImageURL });
+          
+        // }, 1000);
 
         this.setState({ open: true });
       } else {
@@ -123,7 +125,7 @@ class Profile extends Component {
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
           this.setState({
-            downloadURL: url,
+            getImageURL: url,
           });
         });
       }
@@ -163,8 +165,15 @@ class Profile extends Component {
                     <form>
                       <div>
                         <img
-                          src={"images/svg-6.svg"}
-                          alt={"Credit Card"}
+                          style={{
+                            width: 100,
+                            height: 100,
+                            marginBottom: 20,
+  
+                            horizentalAlign: "center"
+                          }}
+                          src={this.state.profileImage}
+                          alt={"Profile Image"}
                           className="home__hero-img"
                         />
                       </div>
