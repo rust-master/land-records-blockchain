@@ -4,7 +4,7 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import { Progress } from 'react-sweet-progress';
+import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 import fire from "../fire";
 
@@ -188,11 +188,11 @@ class Profile extends Component {
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"BLRS Profile"}
                   </h1>
-                  <Progress 
-                  style={{marginBottom: 30}}
-                  type="circle" 
-                  percent={this.state.progress} 
-                  status={this.state.progress == 100 ? "success" : "error"} 
+                  <Progress
+                    style={{ marginBottom: 30 }}
+                    type="circle"
+                    percent={this.state.progress}
+                    status={this.state.progress == 100 ? "success" : "error"}
                   />
                   <div className="input-areas">
                     <form>
