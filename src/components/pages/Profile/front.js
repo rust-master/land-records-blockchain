@@ -117,12 +117,12 @@ class Profile extends Component {
                       </div>
 
                       <Button
-                        style={{ float: "right" }}
+                       style={{ marginLeft: "200px" }}
                         buttonSize="btn--wide"
                         buttonColor="blue"
                         onClick={this.changeProfile}
                       >
-                        Sign Up
+                        Save
                       </Button>
                     </form>
                   </div>
