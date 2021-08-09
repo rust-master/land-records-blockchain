@@ -29,7 +29,7 @@ class Profile extends Component {
       errori: "",
       image: null,
       downloadURL: null,
-      progress:0,
+      progress: 0,
     };
   }
 
@@ -54,18 +54,17 @@ class Profile extends Component {
   changeProfile(e) {
     e.preventDefault();
     try {
-      this.handleUpload()
+      this.handleUpload();
       if (navigator.onLine) {
         const uid = fire.auth().currentUser.uid;
         const database = fire.database();
         const ref = database.ref("users").child(uid);
         ref.update({ name: this.state.name });
 
-        setTimeout(function() {
-          ref.update({ profileLink: this.state.downloadURL }); 
-          console.log("downloadURL " +this.state.downloadURL)
+        setTimeout(function () {
+          ref.update({ profileLink: this.state.downloadURL });
+          console.log("downloadURL " + this.state.downloadURL);
         }, 2000);
-
 
         this.setState({ open: true });
       } else {
@@ -110,7 +109,7 @@ class Profile extends Component {
     var uploadTask = storageRef.child("profiles/" + file.name).put(file);
 
     uploadTask.on(
-      'state_changed',
+      "state_changed",
       (snapshot) => {
         var progress =
           Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -120,7 +119,6 @@ class Profile extends Component {
         throw error;
       },
       () => {
-
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
           this.setState({
             downloadURL: url,
@@ -161,6 +159,14 @@ class Profile extends Component {
                   </h1>
                   <div className="input-areas">
                     <form>
+                      <div>
+                        <img
+                          src={"images/svg-6.svg"}
+                          alt={"Credit Card"}
+                          className="home__hero-img"
+                        />
+                      </div>
+
                       <div>
                         <input
                           style={{ width: "100%" }}
