@@ -8,7 +8,7 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.signup = this.signup.bind(this);
+    this.changeProfile = this.changeProfile.bind(this);
     this.state = {
       name: "",
       email: "",
@@ -16,25 +16,8 @@ class Profile extends Component {
     };
   }
 
-  signup(e) {
+  changeProfile(e) {
     e.preventDefault();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then((u) => {
-        const user = fire.auth().currentUser.uid;
-        fire
-          .database()
-          .ref("users/" + user)
-          .set({
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   handleChange(e) {
@@ -91,6 +74,7 @@ class Profile extends Component {
                           className="footer-input"
                           name="email"
                           type="email"
+                          disabled="true"
                           placeholder="Your Email"
                           onChange={this.handleChange}
                           value={this.state.email}
@@ -112,7 +96,7 @@ class Profile extends Component {
                         style={{ float: "right" }}
                         buttonSize="btn--wide"
                         buttonColor="blue"
-                        onClick={this.signup}
+                        onClick={this.changeProfile}
                       >
                         Sign Up
                       </Button>
