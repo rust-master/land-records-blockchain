@@ -29,7 +29,7 @@ class Profile extends Component {
       errori: "",
       profileImage: "",
       image: null,
-      getImageURL: "",
+      imageUrl: null,
       progress: 0,
     };
   }
@@ -63,12 +63,7 @@ class Profile extends Component {
         const ref = database.ref("users").child(uid);
         ref.update({ name: this.state.name });
 
-        
-        setTimeout(function () {
-          console.log("downloadURL " + this.state.getImageURL);
-          ref.update({ profileLink: this.state.getImageURL });
-          
-        }, 2000);
+        this.handleRender();
 
         this.setState({ open: true });
       } else {
@@ -105,6 +100,21 @@ class Profile extends Component {
     this.setState({ openi: false });
   }
 
+  handleRender = () => {
+    try {
+      const uid = fire.auth().currentUser.uid;
+      const database = fire.database();
+      const ref = database.ref("users").child(uid);
+
+      console.log("downloadURL " + this.state.imageUrl);
+      ref.update({ profileLink: this.state.imageUrl });
+    } catch (e) {
+      // this.setState({ openi: true });
+      // this.setState({ errori: e.toString() });
+      console.log("Exception: " + e);
+    }
+  };
+
   handleUpload = () => {
     console.log(this.state.image);
     let file = this.state.image;
@@ -115,21 +125,31 @@ class Profile extends Component {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        var progress =
-          Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        this.setState({ progress });
+        // progress function ....
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        this.setState({ progress: progress });
+        console.log("Progress" + this.state.progress );
       },
       (error) => {
-        throw error;
-      },
-      () => {
-        uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-          this.setState({
-            getImageURL: url,
-          });
-        });
+        console.log(error);
       }
-    );
+    ); // PROBLEM: this bracket & semi-colon closes off on()
+    () => {
+      // <-- which means this function is floating and never actually called
+      // complete function ....
+      storage.ref(`profiles`).child(`${file.name}`).getDownloadURL()
+        .then((url) => {
+          this.setState({imageUrl : url})
+          console.log(url); // why url is not updated?
+        }), // PROBLEM: this comma is outside of then()
+        (error) => {
+          // <-- meaning this error function is also floating and never called
+          // error function ....
+          console.log(error);
+        };
+    };
   };
 
   render() {
@@ -169,8 +189,8 @@ class Profile extends Component {
                             width: 100,
                             height: 100,
                             marginBottom: 20,
-  
-                            horizentalAlign: "center"
+
+                            horizentalAlign: "center",
                           }}
                           src={this.state.profileImage}
                           alt={"Profile Image"}
