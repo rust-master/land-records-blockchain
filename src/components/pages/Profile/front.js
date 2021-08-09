@@ -53,9 +53,8 @@ class Profile extends Component {
   }
 
   changeProfile(e) {
-    try {
     e.preventDefault();
-
+    try {
     const uid = fire.auth().currentUser.uid;
     const database = fire.database();
     const ref = database.ref("users").child(uid);
@@ -167,7 +166,7 @@ class Profile extends Component {
                       onClose={this.handleClose}
                     >
                       <Alert onClose={this.handleClose} severity="success">
-                        Profile Change successfully
+                        Profile changed successfully
                         {this.state.CurrentOwner}
                       </Alert>
                     </Snackbar>
