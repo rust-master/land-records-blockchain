@@ -4,6 +4,7 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 import fire from "../fire";
 
 function Alert(props) {
@@ -159,6 +160,7 @@ class Profile extends Component {
   render() {
     return (
       <div>
+        <ProgressBar now={this.state.progress} label={this.state.progress} />;
         <div
           className={false ? "home__hero-section" : "home__hero-section darkBg"}
         >
