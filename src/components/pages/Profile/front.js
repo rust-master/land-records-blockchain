@@ -60,9 +60,12 @@ class Profile extends Component {
         const database = fire.database();
         const ref = database.ref("users").child(uid);
         ref.update({ name: this.state.name });
-        ref.update({ profileLink: this.state.downloadURL });
 
-        console.log("downloadURL " +this.state.downloadURL)
+        setTimeout(function() {
+          ref.update({ profileLink: this.state.downloadURL }); 
+          console.log("downloadURL " +this.state.downloadURL)
+        }, 2000);
+
 
         this.setState({ open: true });
       } else {
