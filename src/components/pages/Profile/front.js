@@ -204,7 +204,7 @@ class Profile extends Component {
                     }
                   }}
                     style={{ marginBottom: 30 }}
-                    // percent={this.state.progress}
+                    percent={this.state.progress}
                     status={this.state.progress == 100 ? "success" : "active"}
                   />
                   <div className="input-areas">
