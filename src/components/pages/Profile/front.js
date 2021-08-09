@@ -27,6 +27,7 @@ class Profile extends Component {
       open: false,
       openi: false,
       errori: "",
+      profileImage: "",
       image: null,
       downloadURL: null,
       progress: 0,
@@ -44,6 +45,7 @@ class Profile extends Component {
           this.setState({ name: snapshot.val().name });
           this.setState({ email: snapshot.val().email });
           this.setState({ password: snapshot.val().password });
+          this.setState({ profileImage: snapshot.val().profileLink });
         }
       });
     } catch (e) {
