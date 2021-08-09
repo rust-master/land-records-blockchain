@@ -4,8 +4,7 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import { Progress } from "react-sweet-progress";
-import "react-sweet-progress/lib/style.css";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 import fire from "../fire";
 
 function Alert(props) {
@@ -188,35 +187,7 @@ class Profile extends Component {
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"BLRS Profile"}
                   </h1>
-                  <Progress
-                   theme={
-                    {
-                      error: {
-                        symbol: this.state.progress + '%',
-                        trailColor: 'pink',
-                        color: 'red'
-                      },
-                      default: {
-                        symbol: this.state.progress + '%',
-                        trailColor: 'lightblue',
-                        color: 'blue'
-                      },
-                      active: {
-                        symbol: this.state.progress + '%',
-                        trailColor: 'yellow',
-                        color: 'orange'
-                      },
-                      success: {
-                        symbol: this.state.progress + '%',
-                        trailColor: 'lime',
-                        color: 'green'
-                      }
-                    }
-                  }
-                  style={{marginBottom: 30}}
-                    percent={this.state.progress}
-                    status={this.state.progress == 100 ? "success" : "active"}
-                  />
+                  <ProgressBar now={this.state.progress} label={`${this.state.progress}%`} />
                   <div className="input-areas">
                     <form>
                       <div>
