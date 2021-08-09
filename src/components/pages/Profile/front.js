@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import fire from "../fire";
 
 class Profile extends Component {
+
+  componentWillMount() {
+    this.loadFirebaseData();
+  }
+
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -14,6 +19,22 @@ class Profile extends Component {
       email: "",
       password: "",
     };
+  }
+
+  loadFirebaseData() {
+  try {
+      const uid = fire.auth().currentUser.uid;
+      const database = fire.database();
+      const ref = database.ref("users").child(uid);
+      ref.on("value", (snapshot) => {
+        console.log("FireB ", snapshot);
+        if (snapshot && snapshot.exists()) {
+          this.setState({ name: snapshot.val().name });
+        }
+      });
+    } catch (e) {
+      console.log("Exception: " + e);
+    }
   }
 
   changeProfile(e) {
