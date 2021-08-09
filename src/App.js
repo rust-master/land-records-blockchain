@@ -8,6 +8,7 @@ import SignIn from "./components/pages/SignIn/SignIn";
 import GovermentLogin from "./components/pages/GovermentLogin/GovtLogin";
 import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
 import RequestedLands from "./components/pages/RequestedLands/RequestedLands";
+import Profile from "./components/pages/Profile/Profile";
 
 import CreateLand from "./components/pages/CreateLand/CreatLand";
 import ShowAllLands from "./components/pages/ShowAllLands/ShowAllLands";
@@ -154,6 +155,11 @@ class App extends Component {
               )}
               {this.state.user ? (
                 <Route path="/requested-lands" component={RequestedLands} />
+              ) : (
+                <Route path="/sign-up" component={SignUp} />
+              )}
+                {this.state.user ? (
+                <Route path="/profile" component={Profile} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
