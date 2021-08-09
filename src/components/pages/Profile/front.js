@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import fire from "../fire";
 
 class Profile extends Component {
-
   componentWillMount() {
     this.loadFirebaseData();
   }
@@ -22,7 +21,7 @@ class Profile extends Component {
   }
 
   loadFirebaseData() {
-  try {
+    try {
       const uid = fire.auth().currentUser.uid;
       const database = fire.database();
       const ref = database.ref("users").child(uid);
@@ -117,7 +116,7 @@ class Profile extends Component {
                       </div>
 
                       <Button
-                       style={{ marginLeft: "200px" }}
+                        style={{ marginLeft: "200px" }}
                         buttonSize="btn--wide"
                         buttonColor="blue"
                         onClick={this.changeProfile}
