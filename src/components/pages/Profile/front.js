@@ -4,7 +4,7 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import fire from "../fire";
 
-class UserSignUp extends Component {
+class Profile extends Component {
 
   constructor(props) {
     super(props);
@@ -134,7 +134,7 @@ function FrontSection({
   imgStart,
 }) {
   if (form) {
-    return <UserSignUp />;
+    return <Profile />;
   }
 
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import FrontSection from './front';
-import { homeObjOne, homeObjThree, } from './Data';
+import { homeObjOne, homeObjThree} from './Data';
 
 
-function SignUp() {
+function Profile() {
   return (
     <div>
       <FrontSection {...homeObjOne} />
@@ -12,4 +12,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Profile;
