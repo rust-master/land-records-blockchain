@@ -55,12 +55,18 @@ class Profile extends Component {
   changeProfile(e) {
     e.preventDefault();
     try {
-    const uid = fire.auth().currentUser.uid;
-    const database = fire.database();
-    const ref = database.ref("users").child(uid);
-    ref.update({'name': this.state.name})
+    if(navigator.onLine){
+      const uid = fire.auth().currentUser.uid;
+      const database = fire.database();
+      const ref = database.ref("users").child(uid);
+      ref.update({'name': this.state.name})
+  
+      this.setState({ open: true });
+    } else {
+      this.setState({ openi: true });
+      this.setState({ errori: "Network not connected. Please connect internet!" });
+    }
 
-    this.setState({ open: true });
     } catch (e) {
       this.setState({ openi: true });
       this.setState({ errori: e.toString() });

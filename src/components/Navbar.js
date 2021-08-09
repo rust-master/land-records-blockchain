@@ -176,8 +176,8 @@ function Navbar() {
                   <button onClick={onClick} className="menu-trigger">
                     <span>User</span>
                     <img
-                      width="35"
-                      height="35"
+                      width="40"
+                      height="40"
                       src="https://s.gravatar.com/avatar/46674a2cfe508b7d5a19d1153f90dfe5"
                       alt="User avatar"
                     />
