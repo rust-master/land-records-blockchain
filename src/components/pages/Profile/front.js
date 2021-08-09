@@ -109,6 +109,7 @@ class Profile extends Component {
                           className="footer-input"
                           name="password"
                           type="password"
+                          disabled="true"
                           placeholder="Your Password"
                           value={this.state.password}
                           onChange={this.handleChange}
