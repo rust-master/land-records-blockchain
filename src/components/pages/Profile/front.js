@@ -39,13 +39,16 @@ class Profile extends Component {
   }
 
   changeProfile(e) {
+    try {
     e.preventDefault();
 
     const uid = fire.auth().currentUser.uid;
     const database = fire.database();
     const ref = database.ref("users").child(uid);
     ref.update({'name': this.state.name})
-  
+    } catch (e) {
+      console.log("Exception: " + e);
+    }
   }
 
   handleChange(e) {
