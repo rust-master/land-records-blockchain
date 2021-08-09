@@ -64,11 +64,11 @@ class Profile extends Component {
         ref.update({ name: this.state.name });
 
         
-        // setTimeout(function () {
+        setTimeout(function () {
           console.log("downloadURL " + this.state.getImageURL);
           ref.update({ profileLink: this.state.getImageURL });
           
-        // }, 1000);
+        }, 2000);
 
         this.setState({ open: true });
       } else {
@@ -157,7 +157,7 @@ class Profile extends Component {
               </div>
               <div className="col">
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"Profle"}</div>
+                  <div className="top-line">{"Profile"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"BLRS Profile"}
                   </h1>
