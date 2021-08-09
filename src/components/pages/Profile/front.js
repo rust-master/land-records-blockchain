@@ -189,10 +189,23 @@ class Profile extends Component {
                     {"BLRS Profile"}
                   </h1>
                   <Progress
+                   theme={{
+                    success: {
+                      symbol: '🏄‍',
+                      color: 'rgb(223, 105, 180)'
+                    },
+                    active: {
+                      symbol: '😀',
+                      color: '#fbc630'
+                    },
+                    default: {
+                      symbol: '😱',
+                      color: '#fbc630'
+                    }
+                  }}
                     style={{ marginBottom: 30 }}
-                    type="circle"
-                    percent={this.state.progress}
-                    status={this.state.progress == 100 ? "success" : "error"}
+                    // percent={this.state.progress}
+                    status={this.state.progress == 100 ? "success" : "active"}
                   />
                   <div className="input-areas">
                     <form>
