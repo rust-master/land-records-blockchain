@@ -176,7 +176,9 @@ function Navbar() {
                   <button onClick={onClick} className="menu-trigger">
                     <span>User</span>
                     <img
-                      src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
+                      width="35"
+                      height="35"
+                      src="https://s.gravatar.com/avatar/46674a2cfe508b7d5a19d1153f90dfe5"
                       alt="User avatar"
                     />
                   </button>
@@ -194,7 +196,13 @@ function Navbar() {
                         </h4>
                       </li>
                       <li>
-                        <a href="/settings">Settings</a>
+                      <Link
+                          to="/profile"
+                          className="nav-links"
+                          onClick={closeMobileMenu}
+                        >
+                          Profile
+                        </Link>
                       </li>
                       <li>
                         <Link
