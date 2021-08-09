@@ -6,7 +6,6 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import fire from "../fire";
 
-
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -28,6 +27,9 @@ class Profile extends Component {
       open: false,
       openi: false,
       errori: "",
+      image: null,
+      downloadURL: null,
+      progress:0,
     };
   }
 
@@ -44,9 +46,6 @@ class Profile extends Component {
           this.setState({ password: snapshot.val().password });
         }
       });
-
-     
-
     } catch (e) {
       console.log("Exception: " + e);
     }
@@ -55,18 +54,23 @@ class Profile extends Component {
   changeProfile(e) {
     e.preventDefault();
     try {
-    if(navigator.onLine){
-      const uid = fire.auth().currentUser.uid;
-      const database = fire.database();
-      const ref = database.ref("users").child(uid);
-      ref.update({'name': this.state.name})
-  
-      this.setState({ open: true });
-    } else {
-      this.setState({ openi: true });
-      this.setState({ errori: "Network not connected. Please connect internet!" });
-    }
+      this.handleUpload()
+      if (navigator.onLine) {
+        const uid = fire.auth().currentUser.uid;
+        const database = fire.database();
+        const ref = database.ref("users").child(uid);
+        ref.update({ name: this.state.name });
+        ref.push({ proflieLink: this.state.downloadURL });
 
+        console.log("downloadURL " +this.state.downloadURL)
+
+        this.setState({ open: true });
+      } else {
+        this.setState({ openi: true });
+        this.setState({
+          errori: "Network not connected. Please connect internet!",
+        });
+      }
     } catch (e) {
       this.setState({ openi: true });
       this.setState({ errori: e.toString() });
@@ -78,6 +82,12 @@ class Profile extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+
+    if (e.target.files[0]) {
+      this.setState({
+        image: e.target.files[0],
+      });
+    }
   }
 
   handleClose(e, r) {
@@ -88,6 +98,34 @@ class Profile extends Component {
     this.setState({ open: false });
     this.setState({ openi: false });
   }
+
+  handleUpload = () => {
+    console.log(this.state.image);
+    let file = this.state.image;
+    var storage = fire.storage();
+    var storageRef = storage.ref();
+    var uploadTask = storageRef.child("profiles/" + file.name).put(file);
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        var progress =
+          Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        this.setState({ progress });
+      },
+      (error) => {
+        throw error;
+      },
+      () => {
+
+        uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+          this.setState({
+            downloadURL: url,
+          });
+        });
+      }
+    );
+  };
 
   render() {
     return (
@@ -156,6 +194,16 @@ class Profile extends Component {
                         />
                       </div>
 
+                      <div>
+                        <input
+                          style={{ width: "100%" }}
+                          className="footer-input"
+                          name="image"
+                          type="file"
+                          onChange={this.handleChange}
+                        />
+                      </div>
+
                       <Button
                         style={{ marginLeft: "200px" }}
                         buttonSize="btn--wide"
@@ -186,7 +234,6 @@ class Profile extends Component {
                         {this.state.errori}
                       </Alert>
                     </Snackbar>
-
                   </div>
                 </div>
               </div>
