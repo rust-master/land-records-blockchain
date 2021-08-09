@@ -27,7 +27,8 @@ class UserSignUp extends Component {
         fire.database().ref('users/' + user).set({
           name: this.state.name,
           email: this.state.email,
-          password: this.state.password
+          password: this.state.password,
+          profileLink: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
         });
       })
       .catch((err) => {
