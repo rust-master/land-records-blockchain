@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import fire from "../fire";
+
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 class Profile extends Component {
   componentWillMount() {
@@ -13,10 +20,14 @@ class Profile extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.changeProfile = this.changeProfile.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.state = {
       name: "",
       email: "",
       password: "",
+      open: false,
+      openi: false,
+      errori: "",
     };
   }
 
@@ -33,6 +44,9 @@ class Profile extends Component {
           this.setState({ password: snapshot.val().password });
         }
       });
+
+     
+
     } catch (e) {
       console.log("Exception: " + e);
     }
@@ -46,7 +60,11 @@ class Profile extends Component {
     const database = fire.database();
     const ref = database.ref("users").child(uid);
     ref.update({'name': this.state.name})
+
+    this.setState({ open: true });
     } catch (e) {
+      this.setState({ openi: true });
+      this.setState({ errori: e.toString() });
       console.log("Exception: " + e);
     }
   }
@@ -55,6 +73,15 @@ class Profile extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  }
+
+  handleClose(e, r) {
+    if (r === "clickaway") {
+      return;
+    }
+
+    this.setState({ open: false });
+    this.setState({ openi: false });
   }
 
   render() {
@@ -133,6 +160,28 @@ class Profile extends Component {
                         Save
                       </Button>
                     </form>
+
+                    <Snackbar
+                      open={this.state.open}
+                      autoHideDuration={6000}
+                      onClose={this.handleClose}
+                    >
+                      <Alert onClose={this.handleClose} severity="success">
+                        Profile Change successfully
+                        {this.state.CurrentOwner}
+                      </Alert>
+                    </Snackbar>
+
+                    <Snackbar
+                      open={this.state.openi}
+                      autoHideDuration={6000}
+                      onClose={this.handleClose}
+                    >
+                      <Alert onClose={this.handleClose} severity="error">
+                        {this.state.errori}
+                      </Alert>
+                    </Snackbar>
+
                   </div>
                 </div>
               </div>
