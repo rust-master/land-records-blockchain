@@ -114,7 +114,11 @@ contract Land {
     function remainingDetail(uint256 id)
         public
         view
-        returns (string memory, string memory, address)
+        returns (
+            string memory,
+            string memory,
+            address
+        )
     {
         return (land[id].ipfsHash, land[id].landType, land[id].createByGovt);
     }
@@ -143,7 +147,6 @@ contract Land {
         );
     }
 
-   
     //to view details of land for the buyer
     function landInfoUser(uint256 id)
         public
@@ -196,16 +199,6 @@ contract Land {
     //viewing request for the lands
     function viewRequest(uint256 property) public view returns (address) {
         return (land[property].requester);
-    }
-
-    //processing request for the land by accepting or rejecting
-    function processRequest(uint256 property, reqStatus status) public {
-        require(land[property].CurrentOwner == msg.sender);
-        land[property].requestStatus = status;
-        if (status == reqStatus.reject) {
-            land[property].requester = address(0);
-            land[property].requestStatus = reqStatus.Default;
-        }
     }
 
     //availing land for sale.
@@ -267,8 +260,16 @@ contract Land {
         }
     }
 
-    // make chages to send Ether
-    //
+    //processing request for the land by accepting or rejecting
+    function processRequest(uint256 property, reqStatus status) public {
+        require(land[property].CurrentOwner == msg.sender);
+        land[property].requestStatus = status;
+        if (status == reqStatus.reject) {
+            land[property].requester = address(0);
+            land[property].requestStatus = reqStatus.Default;
+        }
+    }
+
     //buying the approved property
     function buyProperty(uint256 property) public payable {
         require(land[property].requestStatus == reqStatus.approved);

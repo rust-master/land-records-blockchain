@@ -65,12 +65,12 @@ class App extends Component {
     }
   }
 
-  state = {
-    index: 0,
-    loading: true,
-    user: false,
-    cookie: cookies.get("username"),
-  };
+    state = {
+      index: 0,
+      loading: true,
+      user: false,
+      cookie: cookies.get("username"),
+    };
 
   timer() {
     this.setState({
