@@ -16,7 +16,8 @@ contract Land {
         address requester;
         reqStatus requestStatus;
         address createByGovt;
-    }
+        string orderEndTime;
+    } 
 
     uint256[] public propertiesIDs;
 
