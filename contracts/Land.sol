@@ -105,7 +105,7 @@ contract Land {
         return true;
     }
 
-    // add lat and lng function
+    // Updating land details. Polyline
     function registerLandPolyline(
         string memory _lat,
         string memory _lng,
