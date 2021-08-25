@@ -4,16 +4,14 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Auth.json";
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-
 class UserSignIn extends Component {
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -49,21 +47,21 @@ class UserSignIn extends Component {
     );
 
     await authContract.methods
-    .loginUser(this.state.account, this.state.password).send({ from: this.state.account })
+      .loginUser(this.state.account, this.state.password)
+      .send({ from: this.state.account });
 
     const checkIsUser = await userAuth.methods
-    .checkIsUserLogged(this.state.address)
-    .call({ from: this.state.address });
+      .checkIsUserLogged(this.state.address)
+      .call({ from: this.state.address });
 
     console.log(checkIsUser);
 
     if (checkIsUser) {
       window.location = "/";
     } else {
-      this.setState({ errori: "Login Failed" })
-      this.setState({ openi: true })
+      this.setState({ errori: "Login Failed" });
+      this.setState({ openi: true });
     }
-
   }
 
   handleChange(e) {
@@ -73,12 +71,12 @@ class UserSignIn extends Component {
   }
 
   handleClose(e, r) {
-    if (r === 'clickaway') {
+    if (r === "clickaway") {
       return;
     }
 
-    this.setState({ open: false })
-    this.setState({ openi: false })
+    this.setState({ open: false });
+    this.setState({ openi: false });
   }
 
   render() {
@@ -127,16 +125,19 @@ class UserSignIn extends Component {
                       >
                         Sign In
                       </Button>
-
                     </form>
 
-                    <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
+                    <Snackbar
+                      open={this.state.openi}
+                      autoHideDuration={6000}
+                      onClose={this.handleClose}
+                    >
                       <Alert onClose={this.handleClose} severity="error">
                         Error: {this.state.errori}
                       </Alert>
                     </Snackbar>
 
-                    <Link to="/goverment-login" className="btn-link" >
+                    <Link to="/goverment-login" className="btn-link">
                       <div class="btnGoverment">
                         <Button buttonSize="btn--wide" buttonColor="red">
                           Government Sign In
