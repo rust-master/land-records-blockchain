@@ -113,9 +113,15 @@ contract Land {
         string memory _south,
         string memory _east,
         string memory _west,
+        uint256 id
     ) public returns (bool) {
-        land[id].lat = 
-
+        land[id].lat = _lat;
+        land[id].lng = _lng;
+        land[id].north = _north;
+        land[id].south = _south;
+        land[id].east = _east;
+        land[id].west = _west;
+        return true;
     }
 
     //to view details of land for the owner
