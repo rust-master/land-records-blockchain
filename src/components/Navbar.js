@@ -10,6 +10,7 @@ import fire from "../components/pages/fire";
 import "./menu.css";
 import "../App.css";
 import Web3 from "web3";
+import Cookies from "universal-cookie";
 
 function Navbar() {
   const dropdownRef = useRef(null);
@@ -19,6 +20,8 @@ function Navbar() {
   const [name, setName] = useState(false);
   const [profileLink, setprofileLink] = useState(false);
   const [balance, setbalance] = useState("");
+
+  const cookies = new Cookies();
 
   useEffect(() => {
     const pageClickEvent = (e) => {
