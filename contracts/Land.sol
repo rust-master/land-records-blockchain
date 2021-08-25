@@ -5,15 +5,25 @@ contract Land {
     struct landDetails {
         string state;
         string district;
-        string village;
-        uint256 surveyNumber;
+        string villageTown;
+        uint256 khataNumber;
+        uint256 khatooniNumber;
         address payable CurrentOwner;
+        string ownerName;
+        address previousOwner;
         uint256 marketValue;
-        string measurement;
         string ipfsHash;
         string landType;
-        bool isAvailable;
+        string squareFoots;
+        string inches;
+        string lat;
+        string lng;
+        string north;
+        string south;
+        string east;
+        string west;
         address requester;
+        bool isAvailable;
         reqStatus requestStatus;
         address createByGovt;
         string orderEndTime;
@@ -62,25 +72,45 @@ contract Land {
         string memory _state,
         string memory _district,
         string memory _village,
-        uint256 _surveyNumber,
+        uint256 _khataNumber,
+        uint256 _khatooniNumber,
         address payable _OwnerAddress,
+        string _ownerName,
+        address _previousOwner,
         uint256 _marketValue,
         uint256 id,
-        string memory _measurement,
+        string memory _squareFoots,
+        string memory _inches,
+        string memory _lat,
+        string memory _lng,
+        string memory _north,
+        string memory _south,
+        string memory _east,
+        string memory _west,
         string memory _ipfsHash,
         string memory _landType,
-        address payable _createByGovt
+        address _createByGovt
     ) public returns (bool) {
         require(superAdmin[_village] == msg.sender || owner == msg.sender);
         land[id].state = _state;
         land[id].district = _district;
         land[id].village = _village;
-        land[id].surveyNumber = _surveyNumber;
+        land[id].khataNumber = _khataNumber;
+        land[id].khatooniNumber = _khatooniNumber;
         land[id].CurrentOwner = _OwnerAddress;
+        land[id].ownerName = _ownerName;
+        land[id].previousOwner = _previousOwner;
         land[id].marketValue = _marketValue;
-        land[id].measurement = _measurement;
-        land[id].landType = _landType;
+        land[id].squareFoots = _squareFoots;
+        land[id].inches = _inches;
+        land[id].lat = _lat;
+        land[id].lng = _lng;
+        land[id].north = _north;
+        land[id].south = _south;
+        land[id].east = _east;
+        land[id].west = _west;
         land[id].ipfsHash = _ipfsHash;
+        land[id].landType = _landType;
         land[id].createByGovt = _createByGovt;
         profile[_OwnerAddress].assetList.push(id);
         propertiesIDs.push(id);
@@ -96,19 +126,23 @@ contract Land {
             string memory,
             string memory,
             uint256,
+            uint256,
             bool,
             uint256,
-            string memory
+            string memory,
+            string memory,
         )
     {
         return (
             land[id].state,
             land[id].district,
             land[id].village,
-            land[id].surveyNumber,
+            land[id].khataNumber,
+            land[id].khatooniNumber,
             land[id].isAvailable,
             land[id].marketValue,
-            land[id].measurement
+            land[id].squareFoots,
+            land[id].inches,
         );
     }
 
@@ -118,10 +152,26 @@ contract Land {
         returns (
             string memory,
             string memory,
+            string memory,
+            string memory,
+            string memory,
+            string memory,
+            string memory,
+            string memory,
             address
         )
     {
-        return (land[id].ipfsHash, land[id].landType, land[id].createByGovt);
+        return (
+            land[id].ipfsHash, 
+            land[id].landType,
+            land[id].lat,
+            land[id].lng,
+            land[id].north,
+            land[id].south,
+            land[id].east,
+            land[id].west, 
+            land[id].createByGovt
+            );
     }
 
     function showAllLands(uint256 id)
