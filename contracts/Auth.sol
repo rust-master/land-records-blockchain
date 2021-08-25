@@ -122,4 +122,8 @@ contract Auth {
     function logoutAdmin(address _address) public {
         admin[_address].isAdminLoggedIn = false;
     }
+
+    function getAdminBalance(address _address) public view returns (uint256) {
+        return (admin[_address].adminAddress.balance);
+    }
 }
