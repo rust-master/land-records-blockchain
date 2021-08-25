@@ -81,12 +81,6 @@ contract Land {
         uint256 id,
         string memory _squareFoots,
         string memory _inches,
-        string memory _lat,
-        string memory _lng,
-        string memory _north,
-        string memory _south,
-        string memory _east,
-        string memory _west,
         string memory _ipfsHash,
         string memory _landType,
         address _createByGovt
@@ -103,18 +97,25 @@ contract Land {
         land[id].marketValue = _marketValue;
         land[id].squareFoots = _squareFoots;
         land[id].inches = _inches;
-        land[id].lat = _lat;
-        land[id].lng = _lng;
-        land[id].north = _north;
-        land[id].south = _south;
-        land[id].east = _east;
-        land[id].west = _west;
         land[id].ipfsHash = _ipfsHash;
         land[id].landType = _landType;
         land[id].createByGovt = _createByGovt;
         profile[_OwnerAddress].assetList.push(id);
         propertiesIDs.push(id);
         return true;
+    }
+
+    // add lat and lng function
+    function registerLandPolyline(
+        string memory _lat,
+        string memory _lng,
+        string memory _north,
+        string memory _south,
+        string memory _east,
+        string memory _west,
+    ) public returns (bool) {
+        land[id].lat = 
+
     }
 
     //to view details of land for the owner
@@ -125,8 +126,6 @@ contract Land {
             string memory,
             string memory,
             string memory,
-            uint256,
-            uint256,
             bool,
             uint256,
             string memory,
@@ -137,8 +136,6 @@ contract Land {
             land[id].state,
             land[id].district,
             land[id].villageTown,
-            land[id].khataNumber,
-            land[id].khatooniNumber,
             land[id].isAvailable,
             land[id].marketValue,
             land[id].squareFoots,
@@ -156,21 +153,17 @@ contract Land {
             string memory,
             string memory,
             string memory,
-            string memory,
-            string memory,
-            address
+            string memory
         )
     {
         return (
             land[id].ipfsHash, 
-            land[id].landType,
             land[id].lat,
             land[id].lng,
             land[id].north,
             land[id].south,
             land[id].east,
-            land[id].west, 
-            land[id].createByGovt
+            land[id].west
             );
     }
 
@@ -183,8 +176,6 @@ contract Land {
             string memory,
             string memory,
             uint256,
-            uint256,
-            uint256,
             string memory
         )
     {
@@ -193,8 +184,6 @@ contract Land {
             land[id].state,
             land[id].district,
             land[id].villageTown,
-            land[id].khataNumber,
-            land[id].khatooniNumber,
             land[id].marketValue,
             land[id].squareFoots
         );
