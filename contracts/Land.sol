@@ -27,7 +27,7 @@ contract Land {
         reqStatus requestStatus;
         address createByGovt;
         string orderEndTime;
-    } 
+    }
 
     uint256[] public propertiesIDs;
 
@@ -163,14 +163,14 @@ contract Land {
         )
     {
         return (
-            land[id].ipfsHash, 
+            land[id].ipfsHash,
             land[id].lat,
             land[id].lng,
             land[id].north,
             land[id].south,
             land[id].east,
             land[id].west
-            );
+        );
     }
 
     function showAllLands(uint256 id)
