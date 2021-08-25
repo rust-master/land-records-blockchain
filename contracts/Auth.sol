@@ -60,6 +60,10 @@ contract Auth {
         user[_address].isUserLoggedIn = false;
     }
 
+    function getUserBalance(address _address) public view returns (uint256) {
+        return (user[_address].addr.balance);
+    }
+
     struct AdminDetail {
         address adminAddress;
         string name;
