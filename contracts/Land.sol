@@ -71,11 +71,11 @@ contract Land {
     function Registration(
         string memory _state,
         string memory _district,
-        string memory _village,
+        string memory _villageTown,
         uint256 _khataNumber,
         uint256 _khatooniNumber,
         address payable _OwnerAddress,
-        string _ownerName,
+        string memory _ownerName,
         address _previousOwner,
         uint256 _marketValue,
         uint256 id,
@@ -91,10 +91,10 @@ contract Land {
         string memory _landType,
         address _createByGovt
     ) public returns (bool) {
-        require(superAdmin[_village] == msg.sender || owner == msg.sender);
+        require(superAdmin[_villageTown] == msg.sender || owner == msg.sender);
         land[id].state = _state;
         land[id].district = _district;
-        land[id].village = _village;
+        land[id].villageTown = _villageTown;
         land[id].khataNumber = _khataNumber;
         land[id].khatooniNumber = _khatooniNumber;
         land[id].CurrentOwner = _OwnerAddress;
@@ -130,19 +130,19 @@ contract Land {
             bool,
             uint256,
             string memory,
-            string memory,
+            string memory
         )
     {
         return (
             land[id].state,
             land[id].district,
-            land[id].village,
+            land[id].villageTown,
             land[id].khataNumber,
             land[id].khatooniNumber,
             land[id].isAvailable,
             land[id].marketValue,
             land[id].squareFoots,
-            land[id].inches,
+            land[id].inches
         );
     }
 
@@ -184,6 +184,7 @@ contract Land {
             string memory,
             uint256,
             uint256,
+            uint256,
             string memory
         )
     {
@@ -191,10 +192,11 @@ contract Land {
             land[id].CurrentOwner,
             land[id].state,
             land[id].district,
-            land[id].village,
-            land[id].surveyNumber,
+            land[id].villageTown,
+            land[id].khataNumber,
+            land[id].khatooniNumber,
             land[id].marketValue,
-            land[id].measurement
+            land[id].squareFoots
         );
     }
 
@@ -294,7 +296,7 @@ contract Land {
                 land[id].district,
                 land[id].isAvailable,
                 land[id].marketValue,
-                land[id].measurement,
+                land[id].squareFoots,
                 id
             );
         }
@@ -307,7 +309,7 @@ contract Land {
         returns (string memory, uint256)
     {
         if (land[id].isAvailable) {
-            return (land[id].village, land[id].surveyNumber);
+            return (land[id].villageTown, land[id].khataNumber);
         }
     }
 
