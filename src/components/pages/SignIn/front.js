@@ -3,8 +3,11 @@ import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
+
 import contract from "../../../build/contracts/Auth.json";
 import Snackbar from "@material-ui/core/Snackbar";
+import Cookies from "universal-cookie";
+
 import MuiAlert from "@material-ui/lab/Alert";
 
 function Alert(props) {
@@ -54,11 +57,18 @@ class UserSignIn extends Component {
       .checkIsUserLogged(this.state.address)
       .call({ from: this.state.address });
 
-    console.log(checkIsUser);
+    console.log("Login : " + checkIsUser);
 
     if (checkIsUser) {
+
+      cookies.set("checkIsUserLogged", checkIsUser, { path: "/" });
+      console.log(cookies.get("checkIsUserLogged"));
       window.location = "/";
+
     } else {
+      cookies.set("checkIsUserLogged", "null", { path: "/" });
+      console.log(cookies.get("checkIsUserLogged"));
+
       this.setState({ errori: "Login Failed" });
       this.setState({ openi: true });
     }
