@@ -17,15 +17,13 @@ contract Auth {
         address _address,
         string memory _name,
         string memory _password,
-        string memory _cnic,
-        string memory _ipfsImageHash
+        string memory _cnic
     ) public notAdmin returns (bool) {
         require(user[_address].addr != msg.sender);
         user[_address].addr = _address;
         user[_address].name = _name;
         user[_address].password = _password;
         user[_address].CNIC = _cnic;
-        user[_address].ipfsImageHash = _ipfsImageHash;
         user[_address].isUserLoggedIn = false;
         return true;
     }

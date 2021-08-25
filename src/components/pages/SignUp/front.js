@@ -2,38 +2,53 @@ import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
-import fire from "../fire";
+
+import Web3 from "web3";
+import contract from "../../../build/contracts/Auth.json";
 
 class UserSignUp extends Component {
 
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.signup = this.signup.bind(this);
     this.state = {
       name: "",
-      email: "",
       password: "",
+      cnic: "",
+      account: "",
     };
   }
 
-  signup(e) {
+  async signup(e) {
     e.preventDefault();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then((u) => {
-        const user = fire.auth().currentUser.uid;
-        fire.database().ref('users/' + user).set({
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password,
-          profileLink: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    console.log(deployedNetwork.address);
+
+    const authContract = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    await authContract.methods
+          .registerUser(
+            this.state.account,
+            this.state.name,
+            this.state.password,
+            this.state.cnic
+          )
+          .send({ from: this.state.account });
+
   }
 
   handleChange(e) {
@@ -107,7 +122,7 @@ class UserSignUp extends Component {
                       <Button
                         buttonSize="btn--wide"
                         buttonColor="blue"
-                        onClick={this.signup}
+                        onClick={this.signup.bind(this)}
                       >
                         Sign Up
                       </Button>
