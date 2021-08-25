@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
-import fire from "../fire";
+import Web3 from "web3";
+import contract from "../../../build/contracts/Auth.json";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -15,32 +16,53 @@ class UserSignIn extends Component {
 
   constructor(props) {
     super(props);
-    this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      email: "",
+      account: "",
       password: "",
       openi: false,
       errori: "",
     };
   }
 
-  login(e) {
+  async login(e) {
     e.preventDefault();
-    fire
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((u) => {
-        console.log(u);
-        window.location = "/";
-      })
-      .catch((err) => {
-        this.setState({ errori: "Login Failed" })
-        console.log(err);
-        this.setState({ openi: true })
-      });
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    console.log(deployedNetwork.address);
+
+    const authContract = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    await authContract.methods
+    .loginUser(this.state.account, this.state.password).send({ from: this.state.account })
+
+    const checkIsUser = await userAuth.methods
+    .checkIsUserLogged(this.state.address)
+    .call({ from: this.state.address });
+
+    console.log(checkIsUser);
+
+    if (checkIsUser) {
+      window.location = "/";
+    } else {
+      this.setState({ errori: "Login Failed" })
+      this.setState({ openi: true })
+    }
 
   }
 
