@@ -7,7 +7,6 @@ import Web3 from "web3";
 import contract from "../../../build/contracts/Auth.json";
 
 class UserSignUp extends Component {
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -41,14 +40,13 @@ class UserSignUp extends Component {
     );
 
     await authContract.methods
-          .registerUser(
-            this.state.account,
-            this.state.name,
-            this.state.password,
-            this.state.cnic
-          )
-          .send({ from: this.state.account });
-
+      .registerUser(
+        this.state.account,
+        this.state.name,
+        this.state.password,
+        this.state.cnic
+      )
+      .send({ from: this.state.account });
   }
 
   handleChange(e) {
