@@ -22,11 +22,14 @@ import Footer from "./components/pages/Footer.js/Footer";
 import ReactLoading from "react-loading";
 import TextTransition, { presets } from "react-text-transition";
 import Web3 from "web3";
-import fire from "../src/components/pages/fire";
+
 import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
-console.log(cookies.get("username"));
+const cookiesAdmin = new Cookies();
+const cookiesUser = new Cookies();
+
+console.log(cookiesAdmin.get("checkIsAdmin"));
+console.log(cookiesUser.get("checkIsUserLogged"));
 
 const TEXTS = [
   "Land Records System",
@@ -69,8 +72,8 @@ class App extends Component {
     state = {
       index: 0,
       loading: true,
-      user: false,
-      cookie: cookies.get("username"),
+      cookieAdmin: cookiesAdmin.get("checkIsAdmin"),
+      cookieUser: cookiesUser.get("checkIsUserLogged"),
     };
 
   timer() {
@@ -79,11 +82,6 @@ class App extends Component {
     });
     if (this.state.index > 6) {
       clearInterval(this.intervalId);
-      fire.auth().onAuthStateChanged((firebaseUser) => {
-        this.setState({
-          user: firebaseUser,
-        });
-      });
     }
   }
 
@@ -125,7 +123,7 @@ class App extends Component {
           </div>
         ) : (
           <Router>
-            {this.state.cookie ? <NavbarGovt /> : <Navbar />}
+            {this.state.cookieAdmin ? <NavbarGovt /> : <Navbar />}
 
             <Switch>
               <Route path="/" exact component={Home} />
@@ -134,50 +132,50 @@ class App extends Component {
               <Route path="/sign-in" component={SignIn} />
               <Route path="/sign-up" component={SignUp} />
               <Route path="/search-property" component={SearchProperty} /> */}
-              {this.state.user ? (
+              {this.state.cookieUser ? (
                 <Route path="/properties" component={Properties} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
-              {this.state.user ? (
+              {this.state.cookieUser ? (
                 <Route path="/search-property" component={SearchProperty} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
-              {this.state.user ? (
+              {this.state.cookieUser ? (
                 <Route path="/requests" component={Requests} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
-              {this.state.user ? (
+              {this.state.cookieUser ? (
                 <Route path="/properties" component={Properties} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
-              {this.state.user ? (
+              {this.state.cookieUser ? (
                 <Route path="/requested-lands" component={RequestedLands} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
-                {this.state.user ? (
+                {this.state.cookieUser ? (
                 <Route path="/profile" component={Profile} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
 
-              {this.state.cookie ? (
+              {this.state.cookieAdmin ? (
                 <Route path="/create-land" component={CreateLand} />
               ) : (
                 <Route path="/goverment-login" component={GovermentLogin} />
               )}
 
-              {this.state.cookie ? (
+              {this.state.cookieAdmin ? (
                 <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/goverment-login" component={GovermentLogin} />
               )}
 
-              {this.state.cookie ? (
+              {this.state.cookieAdmin ? (
                 <Route
                   path="/change-market-value"
                   component={ChangeMarketValue}

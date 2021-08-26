@@ -66,7 +66,7 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
-    setName(cookies.get("username"));
+    setName(cookies.get("checkIsAdmin"));
   }, [cookies]);
 
   // Getting Balance of MetaMask Account
@@ -85,8 +85,8 @@ function Navbar() {
   }, [])
 
   function logout() {
-    cookies.remove("username");
-    console.log(cookies.get("username"));
+    cookies.remove("checkIsAdmin");
+    console.log(cookies.get("checkIsAdmin"));
     window.location = "/";
   }
 
