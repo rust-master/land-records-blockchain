@@ -7,7 +7,6 @@ import Cookies from "universal-cookie";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Auth.json";
 
-
 const cookies = new Cookies();
 
 class GovermentLogin extends Component {
@@ -20,7 +19,7 @@ class GovermentLogin extends Component {
     };
   }
 
- async login(e) {
+  async login(e) {
     e.preventDefault();
 
     const web3 = window.web3;
@@ -114,8 +113,6 @@ class GovermentLogin extends Component {
                     </form>
 
                     <div class="btnGoverment">
-                      
-
                       <Link to="/goverment-signup">
                         <Button buttonSize="btn--wide" buttonColor="blue">
                           {"Sign Up"}
@@ -130,12 +127,9 @@ class GovermentLogin extends Component {
                       >
                         Government Sign In
                       </Button>
-
                     </div>
 
-                    <div className="btnGoverment">
-                     
-                    </div>
+                    <div className="btnGoverment"></div>
                   </div>
                 </div>
               </div>
