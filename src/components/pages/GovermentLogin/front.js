@@ -114,21 +114,27 @@ class GovermentLogin extends Component {
                     </form>
 
                     <div class="btnGoverment">
+                      
+
+                      <Link to="/goverment-signup">
+                        <Button buttonSize="btn--wide" buttonColor="blue">
+                          {"Sign Up"}
+                        </Button>
+                      </Link>
+
                       <Button
+                        style={{ marginLeft: "10px" }}
                         buttonSize="btn--wide"
                         buttonColor="red"
                         onClick={this.login.bind(this)}
                       >
                         Government Sign In
                       </Button>
+
                     </div>
 
                     <div className="btnGoverment">
-                      <Link to="/goverment-signup">
-                        <Button buttonSize="btn--wide" buttonColor="blue">
-                          {"Sign Up"}
-                        </Button>
-                      </Link>
+                     
                     </div>
                   </div>
                 </div>

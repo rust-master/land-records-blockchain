@@ -80,7 +80,7 @@ class GovermentSignUp extends Component {
             >
               <div className="col">
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"GOVERTMENT SIGN IN"}</div>
+                  <div className="top-line">{"GOVERTMENT SIGN UP"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"Blockchain based Land Records System"}
                   </h1>
