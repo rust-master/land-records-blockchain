@@ -7,7 +7,6 @@ import Cookies from "universal-cookie";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Auth.json";
 
-
 class GovermentSignUp extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +19,7 @@ class GovermentSignUp extends Component {
     };
   }
 
- async signUp(e) {
+  async signUp(e) {
     e.preventDefault();
 
     const web3 = window.web3;
@@ -48,7 +47,7 @@ class GovermentSignUp extends Component {
         this.state.name,
         this.state.password,
         this.state.ipfsHash
-        )
+      )
       .send({ from: this.state.account });
 
     const checkIsAdmin = await authContract.methods
@@ -57,7 +56,6 @@ class GovermentSignUp extends Component {
 
     console.log("checkIsAdmin : " + checkIsAdmin[0]);
     console.log("checkIsAdmin : " + checkIsAdmin[1]);
-
   }
 
   handleChange(e) {
@@ -147,7 +145,7 @@ function FrontSection({
   imgStart,
 }) {
   if (form) {
-    return <GovermentLogin />;
+    return <GovermentSignUp />;
   }
 
   return (

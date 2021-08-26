@@ -122,6 +122,14 @@ class GovermentLogin extends Component {
                         Government Sign In
                       </Button>
                     </div>
+
+                    <div className="btnGoverment">
+                      <Link to="/goverment-signup">
+                        <Button buttonSize="btn--wide" buttonColor="blue">
+                          {"Sign Up"}
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

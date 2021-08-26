@@ -6,6 +6,7 @@ import Requests from "./components/pages/Requests/Requests";
 import SignUp from "./components/pages/SignUp/SignUp";
 import SignIn from "./components/pages/SignIn/SignIn";
 import GovermentLogin from "./components/pages/GovermentLogin/GovtLogin";
+import GovermentSignUp from "./components/pages/GovermentSignUp/GovtSignUp";
 import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
 import RequestedLands from "./components/pages/RequestedLands/RequestedLands";
 import Profile from "./components/pages/Profile/Profile";
@@ -182,7 +183,7 @@ class App extends Component {
                   component={ChangeMarketValue}
                 />
               ) : (
-                <Route path="/goverment-login" component={GovermentLogin} />
+                <Route path="/goverment-signup" component={GovermentSignUp} />
               )}
             </Switch>
             <Footer />
