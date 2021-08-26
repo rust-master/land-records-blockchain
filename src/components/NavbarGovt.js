@@ -30,8 +30,6 @@ class Navbar extends React.Component {
     };
   }
 
-
-
   componentWillMount() {
     console.log("isActive", this.state.isActive);
 
@@ -68,7 +66,6 @@ class Navbar extends React.Component {
     }
   }
 
-
   handleClick() {
     this.setState({ click: !this.state.click });
   }
@@ -77,8 +74,6 @@ class Navbar extends React.Component {
     this.setState({ click: false });
   }
 
-
-
   showButton() {
     if (window.innerWidth <= 960) {
       this.setState({ button: false });
@@ -86,7 +81,6 @@ class Navbar extends React.Component {
       this.setState({ button: true });
     }
   }
-
 
   async getBalance() {
     const web3 = window.web3;
