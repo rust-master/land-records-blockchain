@@ -118,11 +118,11 @@ class Navbar extends React.Component {
 
     await authContract.methods
       .logoutAdmin(accounts[0])
-      .send({ from: this.state.account });
+      .send({ from: accounts[0] });
 
     const checkIsAdmin = await authContract.methods
-      .checkIsAdminLogged(this.state.account)
-      .call({ from: this.state.account });
+      .checkIsAdminLogged(accounts[0])
+      .call({ from: accounts[0] });
 
     console.log("checkIsAdmin : " + checkIsAdmin[0]);
     console.log("checkIsAdmin : " + checkIsAdmin[1]);
