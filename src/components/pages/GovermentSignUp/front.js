@@ -36,6 +36,10 @@ class GovermentSignUp extends Component {
 
     console.log(deployedNetwork.address);
 
+    console.log("name:", this.state.name);
+    console.log("password:", this.state.password);
+    console.log("ipfsHash:", this.state.ipfsHash);
+
     const authContract = new web3.eth.Contract(
       contract.abi,
       deployedNetwork.address
@@ -51,8 +55,8 @@ class GovermentSignUp extends Component {
       .send({ from: this.state.account });
 
     const checkIsAdmin = await authContract.methods
-      .checkIsAdminLogged(this.state.address)
-      .call({ from: this.state.address });
+      .checkIsAdminLogged(this.state.account)
+      .call({ from: this.state.account });
 
     console.log("checkIsAdmin : " + checkIsAdmin[0]);
     console.log("checkIsAdmin : " + checkIsAdmin[1]);
