@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
-import fire from "../fire";
-import Cookies from "universal-cookie";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Auth.json";
 
@@ -117,7 +115,7 @@ class GovermentSignUp extends Component {
                         Government Sign Up
                       </Button>
                       <span> {" | "} </span>
-                      
+
                       <Link to="/goverment-login">
                         <Button buttonSize="btn--wide" buttonColor="blue">
                           {"Sign In"}
