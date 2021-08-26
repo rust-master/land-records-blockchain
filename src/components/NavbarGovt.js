@@ -11,87 +11,167 @@ import "../App.css";
 import Web3 from "web3";
 import contract from "../build/contracts/Auth.json";
 
-function Navbar() {
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useState(false);
-  const onClick = () => setIsActive(!isActive);
+const cookies = new Cookies();
 
-  const [name, setName] = useState(false);
+class Navbar extends React.Component {
 
-  const [balance, setbalance] = useState("");
+  constructor(props) {
+    super(props);
+    this.state = {
+      showMenu: false,
+      isActive: false,
+      name: false,
+      balance: "",
+      dropdownRef: useRef(null),
+      click: false,
+      button: true,
+    }
+  }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const cookies = new Cookies();
+  // const dropdownRef = useRef(null);
+  // const [isActive, setIsActive] = useState(false);
+  // const onClick = () => setIsActive(!isActive);
 
-  useEffect(() => {
-    const pageClickEvent = (e) => {
-      // If the active element exists and is clicked outside of
-      if (
-        dropdownRef.current !== null &&
-        !dropdownRef.current.contains(e.target)
-      ) {
-        setIsActive(!isActive);
-      }
-    };
+  onClick() {
+    this.setState({isActive: !this.state.isActive});
+  }
 
-    // If the item is active (ie open) then listen for clicks
-    if (isActive) {
-      window.addEventListener("click", pageClickEvent);
+  componentWillMount() {
+
+    if(this.state.isActive) {
+
+    this.pageClickEvent();
+
+    if (this.state.isActive) {
+      window.addEventListener("click", this.state.pageClickEvent);
     }
 
-    return () => {
-      window.removeEventListener("click", pageClickEvent);
-    };
-  }, [isActive]);
+    window.removeEventListener("click", this.state.pageClickEvent);
 
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
+    }
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+    this.showButton();
 
-  const showButton = () => {
+    window.addEventListener("resize", this.state.button);
+
+    this.setState({name: cookies.get("checkIsAdmin")});
+
+    this.getBalance();
+
+  }
+
+  pageClickEvent(e) {
+    if (
+      this.state.dropdownRef.current !== null &&
+      !this.state.dropdownRef.current.contains(e.target)
+    ) {
+      this.setState({isActive: !this.state.isActive});
+    }
+  }
+
+
+
+  // useEffect(() => {
+  //   const pageClickEvent = (e) => {
+  //     // If the active element exists and is clicked outside of
+  //     if (
+  //       dropdownRef.current !== null &&
+  //       !dropdownRef.current.contains(e.target)
+  //     ) {
+  //       setIsActive(!isActive);
+  //     }
+  //   };
+
+  //   // If the item is active (ie open) then listen for clicks
+  //   if (isActive) {
+  //     window.addEventListener("click", pageClickEvent);
+  //   }
+
+  //   return () => {
+  //     window.removeEventListener("click", pageClickEvent);
+  //   };
+  // }, [isActive]);
+
+
+  // const [click, setClick] = useState(false);
+  // const [button, setButton] = useState(true);
+
+  handleClick() {
+    this.setState({click: !this.state.click});
+  }
+  
+  closeMobileMenu() {
+    this.setState({click: false});
+  }
+
+  // const handleClick = () => setClick(!click);
+  // const closeMobileMenu = () => setClick(false);
+
+  showButton() {
     if (window.innerWidth <= 960) {
-      setButton(false);
+      this.setState({button: false});
     } else {
-      setButton(true);
+      this.setState({button: true});
     }
-  };
+  }
 
-  useEffect(() => {
-    showButton();
-    window.addEventListener("resize", showButton);
-    return {
-      // window.removeEventListener('resize', showButton)
-    };
-  }, []);
+  // const showButton = () => {
+  //   if (window.innerWidth <= 960) {
+  //     setButton(false);
+  //   } else {
+  //     setButton(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    setName(cookies.get("checkIsAdmin"));
-  }, [cookies]);
+  // useEffect(() => {
+  //   showButton();
+  //   window.addEventListener("resize", showButton);
+  //   return {
+  //     // window.removeEventListener('resize', showButton)
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+  //   setName(cookies.get("checkIsAdmin"));
+  // }, [cookies]);
 
   // Getting Balance of MetaMask Account
-  useEffect(() => {
-    async function getBalance() {
-      const web3 = window.web3;
-      const webeProvider = new Web3(
-        Web3.givenProvider || "http://localhost:7545"
-      );
-      const accounts = await webeProvider.eth.getAccounts();
+  // useEffect(() => {
+  //   async function getBalance() {
+  //     const web3 = window.web3;
+  //     const webeProvider = new Web3(
+  //       Web3.givenProvider || "http://localhost:7545"
+  //     );
+  //     const accounts = await webeProvider.eth.getAccounts();
 
-      const blnce = web3.utils.fromWei(
-        await web3.eth.getBalance(accounts[0]),
-        "ether"
-      );
-      console.log(blnce);
-      setbalance(blnce);
-    }
-    getBalance();
-  }, []);
+  //     const blnce = web3.utils.fromWei(
+  //       await web3.eth.getBalance(accounts[0]),
+  //       "ether"
+  //     );
+  //     console.log(blnce);
+  //     setbalance(blnce);
+  //   }
+  //   getBalance();
+  // }, []);
+
+  async getBalance() {
+    const web3 = window.web3;
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+
+    const blnce = web3.utils.fromWei(
+      await web3.eth.getBalance(accounts[0]),
+      "ether"
+    );
+    console.log(blnce);
+    this.setState({balance: blnce});
+  }
 
   // async function to logout
 
- async function logout() {
+ async logout() {
     const web3 = window.web3;
 
     const webeProvider = new Web3(
@@ -124,20 +204,14 @@ function Navbar() {
     window.location = "/";
   }
 
-  function handleClickLogout() {
-    logout();
-  }
 
-
-  return <Home />;
-
-  function Home(props) {
+  render() {
     return (
       <div>
         <IconContext.Provider value={{ color: "#fff" }}>
           <nav className="navbar">
             <div className="navbar-container container">
-              <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+              <Link to="/" className="navbar-logo" onClick={this.closeMobileMenu}>
                 {/* <MdFingerprint className="navbar-icon" /> */}
                 <img
                   src={logo}
@@ -152,12 +226,12 @@ function Navbar() {
                 </p>
               </Link>
 
-              <div className="menu-icon" onClick={handleClick}>
-                {click ? <FaTimes /> : <FaBars />}
+              <div className="menu-icon" onClick={this.handleClick}>
+                {this.state.click ? <FaTimes /> : <FaBars />}
               </div>
-              <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <ul className={this.state.click ? "nav-menu active" : "nav-menu"}>
                 <li className="nav-item">
-                  <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                  <Link to="/" className="nav-links" onClick={this.closeMobileMenu}>
                     {" "}
                     Home
                   </Link>
@@ -167,7 +241,7 @@ function Navbar() {
                   <Link
                     to="/show-all-lands"
                     className="nav-links"
-                    onClick={closeMobileMenu}
+                    onClick={this.closeMobileMenu}
                   >
                     All Lands
                   </Link>
@@ -177,7 +251,7 @@ function Navbar() {
                   <Link
                     to="/create-land"
                     className="nav-links"
-                    onClick={closeMobileMenu}
+                    onClick={this.closeMobileMenu}
                   >
                     Create Land
                   </Link>
@@ -187,14 +261,14 @@ function Navbar() {
                   <Link
                     to="/change-market-value"
                     className="nav-links"
-                    onClick={closeMobileMenu}
+                    onClick={this.closeMobileMenu}
                   >
                     Land Update
                   </Link>
                 </li>
 
                 <div className="menu-container">
-                  <button onClick={onClick} className="menu-trigger">
+                  <button onClick={this.onClick} className="menu-trigger">
                     <span>Government</span>
                     <img
                       src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
@@ -202,16 +276,16 @@ function Navbar() {
                     />
                   </button>
                   <nav
-                    ref={dropdownRef}
-                    className={`menu ${isActive ? "active" : "inactive"}`}
+                    ref={this.state.dropdownRef}
+                    className={`menu ${this.state.isActive ? "active" : "inactive"}`}
                   >
                     <ul>
                       <li>
-                        <h4 style={{ color: "red", padding: 10 }}>{name}</h4>
+                        <h4 style={{ color: "red", padding: 10 }}>{this.state.name}</h4>
                       </li>
                       <li>
                         <h4 style={{ color: "#EF8E19" }}>
-                          Balance: {balance} ETH
+                          Balance: {this.state.balance} ETH
                         </h4>
                       </li>
                       <li>
@@ -221,7 +295,7 @@ function Navbar() {
                         <a href="/saved">Saved</a>
                       </li>
                       <li>
-                        <Button buttonSize="btn--wide" onClick={handleClickLogout}>
+                        <Button buttonSize="btn--wide" onClick={this.logout.bind(this)}>
                           Logout
                         </Button>
                       </li>
