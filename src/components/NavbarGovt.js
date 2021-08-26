@@ -14,13 +14,12 @@ import contract from "../build/contracts/Auth.json";
 const cookies = new Cookies();
 
 class Navbar extends React.Component {
-
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this)
-    this.showButton = this.showButton.bind(this)
-    this.handleClick = this.handleClick.bind(this)
-    this.closeMobileMenu = this.closeMobileMenu.bind(this)
+    this.onClick = this.onClick.bind(this);
+    this.showButton = this.showButton.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.closeMobileMenu = this.closeMobileMenu.bind(this);
     this.state = {
       isActive: false,
       name: false,
@@ -28,45 +27,36 @@ class Navbar extends React.Component {
       dropdownRef: null,
       click: false,
       button: true,
-    }
+    };
   }
 
-  // const dropdownRef = useRef(null);
-  // const [isActive, setIsActive] = useState(false);
-  // const onClick = () => setIsActive(!isActive);
 
-  
 
   componentWillMount() {
-
     console.log("isActive", this.state.isActive);
 
-    if(this.state.isActive) {
-
-    this.pageClickEvent();
-
     if (this.state.isActive) {
-      window.addEventListener("click", this.state.pageClickEvent);
-    }
+      this.pageClickEvent();
 
-    window.removeEventListener("click", this.state.pageClickEvent);
+      if (this.state.isActive) {
+        window.addEventListener("click", this.state.pageClickEvent);
+      }
 
+      window.removeEventListener("click", this.state.pageClickEvent);
     }
 
     this.showButton();
 
     window.addEventListener("resize", this.showButton());
 
-    this.setState({name: cookies.get("checkIsAdmin")});
+    this.setState({ name: cookies.get("checkIsAdmin") });
     console.log("name", this.state.name);
 
     this.getBalance();
-
   }
 
-
   onClick() {
-    this.setState({isActive: !this.state.isActive});
+    this.setState({ isActive: !this.state.isActive });
   }
 
   pageClickEvent(e) {
@@ -74,94 +64,29 @@ class Navbar extends React.Component {
       this.state.dropdownRef.current !== null &&
       !this.state.dropdownRef.current.contains(e.target)
     ) {
-      this.setState({isActive: !this.state.isActive});
+      this.setState({ isActive: !this.state.isActive });
     }
   }
 
 
-
-  // useEffect(() => {
-  //   const pageClickEvent = (e) => {
-  //     // If the active element exists and is clicked outside of
-  //     if (
-  //       dropdownRef.current !== null &&
-  //       !dropdownRef.current.contains(e.target)
-  //     ) {
-  //       setIsActive(!isActive);
-  //     }
-  //   };
-
-  //   // If the item is active (ie open) then listen for clicks
-  //   if (isActive) {
-  //     window.addEventListener("click", pageClickEvent);
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener("click", pageClickEvent);
-  //   };
-  // }, [isActive]);
-
-
-  // const [click, setClick] = useState(false);
-  // const [button, setButton] = useState(true);
-
   handleClick() {
-    this.setState({click: !this.state.click});
-  }
-  
-  closeMobileMenu() {
-    this.setState({click: false});
+    this.setState({ click: !this.state.click });
   }
 
-  // const handleClick = () => setClick(!click);
-  // const closeMobileMenu = () => setClick(false);
+  closeMobileMenu() {
+    this.setState({ click: false });
+  }
+
+
 
   showButton() {
     if (window.innerWidth <= 960) {
-      this.setState({button: false});
+      this.setState({ button: false });
     } else {
-      this.setState({button: true});
+      this.setState({ button: true });
     }
   }
 
-  // const showButton = () => {
-  //   if (window.innerWidth <= 960) {
-  //     setButton(false);
-  //   } else {
-  //     setButton(true);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   showButton();
-  //   window.addEventListener("resize", showButton);
-  //   return {
-  //     // window.removeEventListener('resize', showButton)
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   setName(cookies.get("checkIsAdmin"));
-  // }, [cookies]);
-
-  // Getting Balance of MetaMask Account
-  // useEffect(() => {
-  //   async function getBalance() {
-  //     const web3 = window.web3;
-  //     const webeProvider = new Web3(
-  //       Web3.givenProvider || "http://localhost:7545"
-  //     );
-  //     const accounts = await webeProvider.eth.getAccounts();
-
-  //     const blnce = web3.utils.fromWei(
-  //       await web3.eth.getBalance(accounts[0]),
-  //       "ether"
-  //     );
-  //     console.log(blnce);
-  //     setbalance(blnce);
-  //   }
-  //   getBalance();
-  // }, []);
 
   async getBalance() {
     const web3 = window.web3;
@@ -175,12 +100,12 @@ class Navbar extends React.Component {
       "ether"
     );
     console.log(blnce);
-    this.setState({balance: blnce});
+    this.setState({ balance: blnce });
   }
 
   // async function to logout
 
- async logout() {
+  async logout() {
     const web3 = window.web3;
 
     const webeProvider = new Web3(
@@ -213,14 +138,17 @@ class Navbar extends React.Component {
     window.location = "/";
   }
 
-
   render() {
     return (
       <div>
         <IconContext.Provider value={{ color: "#fff" }}>
           <nav className="navbar">
             <div className="navbar-container container">
-              <Link to="/" className="navbar-logo" onClick={this.closeMobileMenu}>
+              <Link
+                to="/"
+                className="navbar-logo"
+                onClick={this.closeMobileMenu}
+              >
                 {/* <MdFingerprint className="navbar-icon" /> */}
                 <img
                   src={logo}
@@ -240,7 +168,11 @@ class Navbar extends React.Component {
               </div>
               <ul className={this.state.click ? "nav-menu active" : "nav-menu"}>
                 <li className="nav-item">
-                  <Link to="/" className="nav-links" onClick={this.closeMobileMenu}>
+                  <Link
+                    to="/"
+                    className="nav-links"
+                    onClick={this.closeMobileMenu}
+                  >
                     {" "}
                     Home
                   </Link>
@@ -286,11 +218,15 @@ class Navbar extends React.Component {
                   </button>
                   <nav
                     ref={this.state.dropdownRef}
-                    className={`menu ${this.state.isActive ? "active" : "inactive"}`}
+                    className={`menu ${
+                      this.state.isActive ? "active" : "inactive"
+                    }`}
                   >
                     <ul>
                       <li>
-                        <h4 style={{ color: "red", padding: 10 }}>{this.state.name}</h4>
+                        <h4 style={{ color: "red", padding: 10 }}>
+                          {this.state.name}
+                        </h4>
                       </li>
                       <li>
                         <h4 style={{ color: "#EF8E19" }}>
@@ -304,7 +240,10 @@ class Navbar extends React.Component {
                         <a href="/saved">Saved</a>
                       </li>
                       <li>
-                        <Button buttonSize="btn--wide" onClick={this.logout.bind(this)}>
+                        <Button
+                          buttonSize="btn--wide"
+                          onClick={this.logout.bind(this)}
+                        >
                           Logout
                         </Button>
                       </li>
