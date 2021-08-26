@@ -115,20 +115,18 @@ class GovermentLogin extends Component {
                     <div class="btnGoverment">
                       <Link to="/goverment-signup">
                         <Button buttonSize="btn--wide" buttonColor="blue">
-                          {"Sign Up"}
+                          {"Government Sign Up"}
                         </Button>
                       </Link>
-                      <span> {" "} </span>
+                      <span> {"  "} </span>
                       <Button
                         buttonSize="btn--wide"
                         buttonColor="red"
                         onClick={this.login.bind(this)}
                       >
-                        Government Sign In
+                        {"Government Sign In"}
                       </Button>
                     </div>
-
-                    <div className="btnGoverment"></div>
                   </div>
                 </div>
               </div>
