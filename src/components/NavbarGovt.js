@@ -7,8 +7,9 @@ import { IconContext } from "react-icons/lib";
 import logo from "../components/logo.png";
 import Cookies from "universal-cookie";
 import "./menu.css";
-import "../App.css"
+import "../App.css";
 import Web3 from "web3";
+import contract from "../build/contracts/Auth.json";
 
 function Navbar() {
   const dropdownRef = useRef(null);
@@ -72,23 +73,61 @@ function Navbar() {
   // Getting Balance of MetaMask Account
   useEffect(() => {
     async function getBalance() {
-      const web3 = window.web3
-      const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545")
-      const accounts = await webeProvider.eth.getAccounts()
+      const web3 = window.web3;
+      const webeProvider = new Web3(
+        Web3.givenProvider || "http://localhost:7545"
+      );
+      const accounts = await webeProvider.eth.getAccounts();
 
-      const blnce = web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether'); 
-      console.log(blnce)
-      setbalance(blnce)
-  }
-  getBalance();
+      const blnce = web3.utils.fromWei(
+        await web3.eth.getBalance(accounts[0]),
+        "ether"
+      );
+      console.log(blnce);
+      setbalance(blnce);
+    }
+    getBalance();
+  }, []);
 
-  }, [])
+  // async function to logout
 
-  function logout() {
+ async function logout() {
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    console.log("Account: " + accounts[0]);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    const authContract = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    await authContract.methods
+      .logoutAdmin(accounts[0])
+      .send({ from: this.state.account });
+
+    const checkIsAdmin = await authContract.methods
+      .checkIsAdminLogged(this.state.account)
+      .call({ from: this.state.account });
+
+    console.log("checkIsAdmin : " + checkIsAdmin[0]);
+    console.log("checkIsAdmin : " + checkIsAdmin[1]);
+
     cookies.remove("checkIsAdmin");
     console.log(cookies.get("checkIsAdmin"));
     window.location = "/";
   }
+
+  function handleClickLogout() {
+    logout();
+  }
+
 
   return <Home />;
 
@@ -100,7 +139,13 @@ function Navbar() {
             <div className="navbar-container container">
               <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                 {/* <MdFingerprint className="navbar-icon" /> */}
-                <img src={logo} alt="Logo" className="App-logo" width="40" height="40" />
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="App-logo"
+                  width="40"
+                  height="40"
+                />
                 &nbsp;&nbsp;{" "}
                 <p>
                   <font color="#EF8E19">Blockchain</font> Land Records System
@@ -162,10 +207,12 @@ function Navbar() {
                   >
                     <ul>
                       <li>
-                        <h4 style={{ color: "red", padding: 10 }} >{name}</h4>
+                        <h4 style={{ color: "red", padding: 10 }}>{name}</h4>
                       </li>
                       <li>
-                        <h4 style={{ color: "#EF8E19" }}>Balance: {balance} ETH</h4>
+                        <h4 style={{ color: "#EF8E19" }}>
+                          Balance: {balance} ETH
+                        </h4>
                       </li>
                       <li>
                         <a href="/trips">Trips</a>
@@ -174,7 +221,7 @@ function Navbar() {
                         <a href="/saved">Saved</a>
                       </li>
                       <li>
-                        <Button buttonSize="btn--wide" onClick={logout}>
+                        <Button buttonSize="btn--wide" onClick={handleClickLogout}>
                           Logout
                         </Button>
                       </li>
