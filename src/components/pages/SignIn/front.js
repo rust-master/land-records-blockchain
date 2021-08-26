@@ -10,6 +10,8 @@ import Cookies from "universal-cookie";
 
 import MuiAlert from "@material-ui/lab/Alert";
 
+const cookies = new Cookies();
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -53,7 +55,7 @@ class UserSignIn extends Component {
       .loginUser(this.state.account, this.state.password)
       .send({ from: this.state.account });
 
-    const checkIsUser = await userAuth.methods
+    const checkIsUser = await authContract.methods
       .checkIsUserLogged(this.state.address)
       .call({ from: this.state.address });
 
