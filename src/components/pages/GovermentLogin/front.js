@@ -118,9 +118,8 @@ class GovermentLogin extends Component {
                           {"Sign Up"}
                         </Button>
                       </Link>
-
+                      <span> {" "} </span>
                       <Button
-                        style={{ marginLeft: "10px" }}
                         buttonSize="btn--wide"
                         buttonColor="red"
                         onClick={this.login.bind(this)}
