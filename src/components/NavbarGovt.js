@@ -18,6 +18,9 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this)
+    this.showButton = this.showButton.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.closeMobileMenu = this.closeMobileMenu.bind(this)
     this.state = {
       isActive: false,
       name: false,
