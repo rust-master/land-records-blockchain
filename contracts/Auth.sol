@@ -75,7 +75,7 @@ contract Auth {
     address adminAddress;
 
     constructor() public {
-        adminAddress = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+        adminAddress = 0x529b337d72fC487b26DF9bcAF8A9ee0525644305;
     }
 
     modifier onlyAdmin() {
