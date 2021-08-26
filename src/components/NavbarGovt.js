@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import "./Navbar.css";
@@ -17,12 +17,12 @@ class Navbar extends React.Component {
 
   constructor(props) {
     super(props);
+    this.onClick = this.onClick.bind(this)
     this.state = {
-      showMenu: false,
       isActive: false,
       name: false,
       balance: "",
-      dropdownRef: useRef(null),
+      dropdownRef: null,
       click: false,
       button: true,
     }
@@ -32,11 +32,11 @@ class Navbar extends React.Component {
   // const [isActive, setIsActive] = useState(false);
   // const onClick = () => setIsActive(!isActive);
 
-  onClick() {
-    this.setState({isActive: !this.state.isActive});
-  }
+  
 
   componentWillMount() {
+
+    console.log("isActive", this.state.isActive);
 
     if(this.state.isActive) {
 
@@ -52,12 +52,18 @@ class Navbar extends React.Component {
 
     this.showButton();
 
-    window.addEventListener("resize", this.state.button);
+    window.addEventListener("resize", this.showButton());
 
     this.setState({name: cookies.get("checkIsAdmin")});
+    console.log("name", this.state.name);
 
     this.getBalance();
 
+  }
+
+
+  onClick() {
+    this.setState({isActive: !this.state.isActive});
   }
 
   pageClickEvent(e) {
