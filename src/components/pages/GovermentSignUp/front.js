@@ -116,6 +116,15 @@ class GovermentSignUp extends Component {
                       >
                         Government Sign Up
                       </Button>
+                      <span> {" | "} </span>
+                      
+                      <Link to="/goverment-login">
+                        <Button buttonSize="btn--wide" buttonColor="blue">
+                          {"Sign In"}
+                        </Button>
+                      </Link>
+                     
+
                     </div>
                   </div>
                 </div>
