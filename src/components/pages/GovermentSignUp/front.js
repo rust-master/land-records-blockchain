@@ -13,12 +13,14 @@ class GovermentSignUp extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
+      name: "",
       password: "",
       account: "",
+      ipfsHash: "empty",
     };
   }
 
- async login(e) {
+ async signUp(e) {
     e.preventDefault();
 
     const web3 = window.web3;
@@ -41,28 +43,21 @@ class GovermentSignUp extends Component {
     );
 
     await authContract.methods
-      .registerAdmin(this.state.account, this.state.password)
+      .registerAdmin(
+        this.state.account,
+        this.state.name,
+        this.state.password,
+        this.state.ipfsHash
+        )
       .send({ from: this.state.account });
 
-    const checkIsUser = await authContract.methods
-      .checkIsUserLogged(this.state.address)
+    const checkIsAdmin = await authContract.methods
+      .checkIsAdminLogged(this.state.address)
       .call({ from: this.state.address });
 
-    console.log("Login : " + checkIsUser);
+    console.log("checkIsAdmin : " + checkIsAdmin[0]);
+    console.log("checkIsAdmin : " + checkIsAdmin[1]);
 
-    if (true) {
-      console.log("Passed");
-
-      cookies.set("username", this.state.email, { path: "/" });
-      console.log(cookies.get("username"));
-
-      window.location = "/";
-    } else {
-      cookies.set("username", "null", { path: "/" });
-      console.log(cookies.get("username"));
-
-      console.log("Failed");
-    }
   }
 
   handleChange(e) {
@@ -95,11 +90,11 @@ class GovermentSignUp extends Component {
                     <form>
                       <input
                         className="footer-input"
-                        name="email"
-                        type="email"
-                        placeholder="Your Email"
+                        name="name"
+                        type="text"
+                        placeholder="Your Name"
                         onChange={this.handleChange}
-                        value={this.state.email}
+                        value={this.state.name}
                       />
                       <input
                         className="footer-input"
@@ -115,9 +110,9 @@ class GovermentSignUp extends Component {
                       <Button
                         buttonSize="btn--wide"
                         buttonColor="red"
-                        onClick={this.login.bind(this)}
+                        onClick={this.signUp.bind(this)}
                       >
-                        Government Sign In
+                        Government Sign Up
                       </Button>
                     </div>
                   </div>
