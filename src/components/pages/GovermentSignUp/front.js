@@ -8,9 +8,7 @@ import Web3 from "web3";
 import contract from "../../../build/contracts/Auth.json";
 
 
-const cookies = new Cookies();
-
-class GovermentLogin extends Component {
+class GovermentSignUp extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
