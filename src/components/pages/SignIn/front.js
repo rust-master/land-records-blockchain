@@ -62,12 +62,12 @@ class UserSignIn extends Component {
     console.log("Login : " + checkIsUser);
 
     if (checkIsUser) {
-      cookies.set("checkIsUserLogged", checkIsUser, { path: "/" });
+      cookies.set("checkIsUser", checkIsUser[0], { path: "/" });
       console.log(cookies.get("checkIsUserLogged"));
       window.location = "/";
     } else {
-      cookies.set("checkIsUserLogged", "null", { path: "/" });
-      console.log(cookies.get("checkIsUserLogged"));
+      cookies.set("checkIsUser", "null", { path: "/" });
+      console.log(cookies.get("checkIsUser"));
 
       this.setState({ errori: "Login Failed" });
       this.setState({ openi: true });

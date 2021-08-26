@@ -73,7 +73,7 @@ class App extends Component {
       index: 0,
       loading: true,
       cookieAdmin: cookiesAdmin.get("checkIsAdmin"),
-      cookieUser: cookiesUser.get("checkIsUserLogged"),
+      cookieUser: cookiesUser.get("checkIsUser"),
     };
 
   timer() {
