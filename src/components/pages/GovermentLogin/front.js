@@ -35,6 +35,7 @@ class GovermentLogin extends Component {
     const deployedNetwork = contract.networks[netId];
 
     console.log(deployedNetwork.address);
+    console.log("Password", this.state.password);
 
     const authContract = new web3.eth.Contract(
       contract.abi,
@@ -42,25 +43,26 @@ class GovermentLogin extends Component {
     );
 
     await authContract.methods
-      .registerAdmin(this.state.account, this.state.password)
+      .loginAdmin(this.state.account, this.state.password)
       .send({ from: this.state.account });
 
-    const checkIsUser = await authContract.methods
-      .checkIsUserLogged(this.state.address)
-      .call({ from: this.state.address });
+    const checkIsAdmin = await authContract.methods
+      .checkIsAdminLogged(this.state.account)
+      .call({ from: this.state.account });
 
-    console.log("Login : " + checkIsUser);
+    console.log("checkIsAdmin : " + checkIsAdmin[0]);
+    console.log("checkIsAdmin : " + checkIsAdmin[1]);
 
-    if (true) {
+    if (checkIsAdmin[0]) {
       console.log("Passed");
 
-      cookies.set("username", this.state.email, { path: "/" });
-      console.log(cookies.get("username"));
+      cookies.set("checkIsAdmin", checkIsAdmin[0], { path: "/" });
+      console.log(cookies.get("checkIsAdmin"));
 
       window.location = "/";
     } else {
-      cookies.set("username", "null", { path: "/" });
-      console.log(cookies.get("username"));
+      cookies.set("checkIsAdmin", "null", { path: "/" });
+      console.log(cookies.get("checkIsAdmin"));
 
       console.log("Failed");
     }
@@ -94,14 +96,6 @@ class GovermentLogin extends Component {
                   </h1>
                   <div className="input-areas">
                     <form>
-                      <input
-                        className="footer-input"
-                        name="email"
-                        type="email"
-                        placeholder="Your Email"
-                        onChange={this.handleChange}
-                        value={this.state.email}
-                      />
                       <input
                         className="footer-input"
                         name="password"
