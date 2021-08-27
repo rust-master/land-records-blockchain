@@ -121,8 +121,6 @@ class GovermentSignUp extends Component {
                           {"Sign In"}
                         </Button>
                       </Link>
-                     
-
                     </div>
                   </div>
                 </div>
