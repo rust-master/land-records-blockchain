@@ -127,11 +127,6 @@ class App extends Component {
 
             <Switch>
               <Route path="/" exact component={Home} />
-              {/* <Route path="/services" component={Services} />
-              <Route path="/products" component={Products} />
-              <Route path="/sign-in" component={SignIn} />
-              <Route path="/sign-up" component={SignUp} />
-              <Route path="/search-property" component={SearchProperty} /> */}
               {this.state.cookieUser ? (
                 <Route path="/properties" component={Properties} />
               ) : (
