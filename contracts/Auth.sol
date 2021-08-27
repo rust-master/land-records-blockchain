@@ -131,7 +131,11 @@ contract Auth {
         view
         returns (bool, string memory, string memory)
     {
-        return (admin[_address].isAdminLoggedIn, admin[_address].ipfsImageHash, admin[_address].name);
+        return (
+            admin[_address].isAdminLoggedIn, 
+            admin[_address].ipfsImageHash, 
+            admin[_address].name
+        );
     }
 
     // logout the admin
