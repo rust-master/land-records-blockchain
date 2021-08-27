@@ -48,9 +48,17 @@ contract Auth {
     function checkIsUserLogged(address _address)
         public
         view
-        returns (bool, string memory, string memory)
+        returns (
+            bool,
+            string memory,
+            string memory
+        )
     {
-        return (user[_address].isUserLoggedIn, user[_address].ipfsImageHash, user[_address].name);
+        return (
+            user[_address].isUserLoggedIn,
+            user[_address].ipfsImageHash,
+            user[_address].name
+        );
     }
 
     // logout the user
