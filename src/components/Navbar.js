@@ -108,12 +108,12 @@ function Navbar() {
     getBalance();
   }, []);
 
-  if (user != null) {
-    console.log("User: ", { user });
+  if (cookies.get("checkIsUser")) {
+    console.log("User: ",  cookies.get("checkIsUser") );
 
     return <Home />;
   } else {
-    console.log("User: ", { user });
+    console.log("User: ", cookies.get("checkIsUser"));
     return <LoginSignUp />;
   }
 
