@@ -99,11 +99,11 @@ class UserSignUp extends Component {
                       <div>
                         <input
                           className="footer-input"
-                          name="email"
-                          type="email"
-                          placeholder="Your Email"
+                          name="cnic"
+                          type="text"
+                          placeholder="Your CNIC"
                           onChange={this.handleChange}
-                          value={this.state.email}
+                          value={this.state.cnic}
                         />
                       </div>
                       <div>
