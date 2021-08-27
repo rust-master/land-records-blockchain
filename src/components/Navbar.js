@@ -109,7 +109,7 @@ function Navbar() {
   }, []);
 
   if (cookies.get("checkIsUser")) {
-    console.log("User: ",  cookies.get("checkIsUser") );
+    console.log("User: ", cookies.get("checkIsUser"));
 
     return <Home />;
   } else {
@@ -201,7 +201,7 @@ function Navbar() {
                         </h4>
                       </li>
                       <li>
-                      <Link
+                        <Link
                           to="/profile"
                           className="nav-links"
                           onClick={closeMobileMenu}
