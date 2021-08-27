@@ -31,9 +31,7 @@ const cookiesUser = new Cookies();
 console.log(cookiesAdmin.get("checkIsAdmin"));
 console.log(cookiesUser.get("checkIsUserLogged"));
 
-const TEXTS = [
-  "Land Records System",
-];
+const TEXTS = ["Land Records System"];
 
 class App extends Component {
   componentDidMount() {
