@@ -109,11 +109,11 @@ function Navbar() {
   }, []);
 
   if (cookies.get("checkIsUser")) {
-    console.log("User: ", cookies.get("checkIsUser"));
+    console.log("checkIsUser: ", cookies.get("checkIsUser"));
 
     return <Home />;
   } else {
-    console.log("User: ", cookies.get("checkIsUser"));
+    console.log("checkIsUser: ", cookies.get("checkIsUser"));
     return <LoginSignUp />;
   }
 
