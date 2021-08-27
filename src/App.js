@@ -33,11 +33,6 @@ console.log(cookiesUser.get("checkIsUserLogged"));
 
 const TEXTS = [
   "Land Records System",
-  // "| Secure",
-  // "| DApp",
-  // "| Smart Contracts",
-  // "| Ethereum",
-  // "| Solidity",
 ];
 
 class App extends Component {
