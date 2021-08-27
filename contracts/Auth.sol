@@ -112,7 +112,7 @@ contract Auth {
     function registerAdmin(
         address _address,
         string memory _name,
-        string memory _password,
+        string memory _password
     ) public onlyAdmin returns (bool) {
         require(admin[_address].adminAddress != msg.sender);
         admin[_address].adminAddress = _address;
