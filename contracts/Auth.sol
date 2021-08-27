@@ -70,6 +70,19 @@ contract Auth {
         return (user[_address].addr.balance);
     }
 
+    // set and get the user ipfs image hash
+    function setUserIpfsImageHash(address _address, string memory _ipfsImageHash)
+        public
+        returns (bool)
+    {
+        user[_address].ipfsImageHash = _ipfsImageHash;
+        return true;
+    }
+
+    function getUserIpfsImageHash(address _address) public view returns (string memory) {
+        return user[_address].ipfsImageHash;
+    }
+
     struct AdminDetail {
         address adminAddress;
         string name;
@@ -145,5 +158,18 @@ contract Auth {
 
     function getAdminBalance(address _address) public view returns (uint256) {
         return (admin[_address].adminAddress.balance);
+    }
+
+    // set and get the admin ipfs image hash
+    function setAdminIpfsImageHash(address _address, string memory _ipfsImageHash)
+        public
+        returns (bool)
+    {
+        admin[_address].ipfsImageHash = _ipfsImageHash;
+        return true;
+    }
+
+    function getAdminIpfsImageHash(address _address) public view returns (string memory) {
+        return admin[_address].ipfsImageHash;
     }
 }
