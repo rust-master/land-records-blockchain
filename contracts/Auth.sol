@@ -71,15 +71,19 @@ contract Auth {
     }
 
     // set and get the user ipfs image hash
-    function setUserIpfsImageHash(address _address, string memory _ipfsImageHash)
-        public
-        returns (bool)
-    {
+    function setUserIpfsImageHash(
+        address _address,
+        string memory _ipfsImageHash
+    ) public returns (bool) {
         user[_address].ipfsImageHash = _ipfsImageHash;
         return true;
     }
 
-    function getUserIpfsImageHash(address _address) public view returns (string memory) {
+    function getUserIpfsImageHash(address _address)
+        public
+        view
+        returns (string memory)
+    {
         return user[_address].ipfsImageHash;
     }
 
@@ -142,11 +146,15 @@ contract Auth {
     function checkIsAdminLogged(address _address)
         public
         view
-        returns (bool, string memory, string memory)
+        returns (
+            bool,
+            string memory,
+            string memory
+        )
     {
         return (
-            admin[_address].isAdminLoggedIn, 
-            admin[_address].ipfsImageHash, 
+            admin[_address].isAdminLoggedIn,
+            admin[_address].ipfsImageHash,
             admin[_address].name
         );
     }
@@ -161,15 +169,19 @@ contract Auth {
     }
 
     // set and get the admin ipfs image hash
-    function setAdminIpfsImageHash(address _address, string memory _ipfsImageHash)
-        public
-        returns (bool)
-    {
+    function setAdminIpfsImageHash(
+        address _address,
+        string memory _ipfsImageHash
+    ) public returns (bool) {
         admin[_address].ipfsImageHash = _ipfsImageHash;
         return true;
     }
 
-    function getAdminIpfsImageHash(address _address) public view returns (string memory) {
+    function getAdminIpfsImageHash(address _address)
+        public
+        view
+        returns (string memory)
+    {
         return admin[_address].ipfsImageHash;
     }
 }
