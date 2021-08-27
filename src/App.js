@@ -69,12 +69,12 @@ class App extends Component {
     }
   }
 
-    state = {
-      index: 0,
-      loading: true,
-      cookieAdmin: cookiesAdmin.get("checkIsAdmin"),
-      cookieUser: cookiesUser.get("checkIsUser"),
-    };
+  state = {
+    index: 0,
+    loading: true,
+    cookieAdmin: cookiesAdmin.get("checkIsAdmin"),
+    cookieUser: cookiesUser.get("checkIsUser"),
+  };
 
   timer() {
     this.setState({
@@ -157,7 +157,7 @@ class App extends Component {
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
-                {this.state.cookieUser ? (
+              {this.state.cookieUser ? (
                 <Route path="/profile" component={Profile} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
