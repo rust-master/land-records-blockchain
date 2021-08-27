@@ -100,13 +100,11 @@ contract Auth {
         address _address,
         string memory _name,
         string memory _password,
-        string memory _ipfsImageHash
     ) public onlyAdmin returns (bool) {
         require(admin[_address].adminAddress != msg.sender);
         admin[_address].adminAddress = _address;
         admin[_address].name = _name;
         admin[_address].password = _password;
-        admin[_address].ipfsImageHash = _ipfsImageHash;
         admin[_address].isAdminLoggedIn = false;
         return true;
     }
@@ -131,9 +129,9 @@ contract Auth {
     function checkIsAdminLogged(address _address)
         public
         view
-        returns (bool, string memory)
+        returns (bool, string memory, string memory)
     {
-        return (admin[_address].isAdminLoggedIn, admin[_address].ipfsImageHash);
+        return (admin[_address].isAdminLoggedIn, admin[_address].ipfsImageHash, admin[_address].name);
     }
 
     // logout the admin
