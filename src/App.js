@@ -29,7 +29,7 @@ const cookiesAdmin = new Cookies();
 const cookiesUser = new Cookies();
 
 console.log(cookiesAdmin.get("checkIsAdmin"));
-console.log(cookiesUser.get("checkIsUserLogged"));
+console.log(cookiesUser.get("checkIsUser"));
 
 const TEXTS = ["Land Records System"];
 
