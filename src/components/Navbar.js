@@ -19,7 +19,7 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.dropdownRef = React.createRef();
-    
+
     this.logout = this.logout.bind(this);
     this.onClick = this.onClick.bind(this);
     this.showButton = this.showButton.bind(this);
@@ -52,10 +52,14 @@ class Navbar extends React.Component {
 
     window.addEventListener("resize", this.showButton());
 
-    this.setState({ name: cookies.get("Username") });
-    console.log("name", this.state.name);
-
-    this.getBalance();
+    // cookies condtion if else
+    if (cookies.get("checkIsUser")) {
+      this.setState({ name: cookies.get("Username") });
+      console.log("name", this.state.name);
+      this.getBalance();
+    } else {
+      console.log("No user");
+    }
   }
 
   onClick() {
@@ -137,15 +141,6 @@ class Navbar extends React.Component {
     window.location = "/";
   }
 
-  // if (cookies.get("checkIsUser")) {
-  //   console.log("checkIsUser: ", cookies.get("checkIsUser"));
-
-  //   return <Home />;
-  // } else {
-  //   console.log("checkIsUser: ", cookies.get("checkIsUser"));
-  //   return <LoginSignUp />;
-  // }
-
   render() {
     return (
       <div>
@@ -222,10 +217,7 @@ class Navbar extends React.Component {
                     </li>
 
                     <div className="menu-container">
-                      <button
-                        onClick={this.onClick}
-                        className="menu-trigger"
-                      >
+                      <button onClick={this.onClick} className="menu-trigger">
                         <span>User</span>
                         <img
                           width="40"
@@ -235,7 +227,6 @@ class Navbar extends React.Component {
                         />
                       </button>
                       <nav
-                       
                         className={`menu ${
                           this.state.isActive ? "active" : "inactive"
                         }`}
