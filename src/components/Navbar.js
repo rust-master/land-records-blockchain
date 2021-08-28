@@ -57,6 +57,7 @@ class Navbar extends React.Component {
   }
 
   onClick() {
+    console.log("isActive", this.state.isActive);
     this.setState({ isActive: !this.state.isActive });
   }
 
@@ -219,14 +220,14 @@ class Navbar extends React.Component {
 
                     <div className="menu-container">
                       <button
-                        onClick={this.state.onClick}
+                        onClick={this.onClick}
                         className="menu-trigger"
                       >
                         <span>User</span>
                         <img
                           width="40"
                           height="40"
-                          src={this.state.profileLink}
+                          src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
                           alt="User avatar"
                         />
                       </button>
