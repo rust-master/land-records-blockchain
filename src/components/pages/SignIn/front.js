@@ -21,6 +21,7 @@ class UserSignIn extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.login = this.login.bind(this);
 
     this.state = {
       account: "",
@@ -56,8 +57,8 @@ class UserSignIn extends Component {
       .send({ from: this.state.account });
 
     const checkIsUser = await authContract.methods
-      .checkIsUserLogged(this.state.address)
-      .call({ from: this.state.address });
+      .checkIsUserLogged(this.state.account)
+      .call({ from: this.state.account });
 
     console.log("Login : " + checkIsUser[0]);
 
