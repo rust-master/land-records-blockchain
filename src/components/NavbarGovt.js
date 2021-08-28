@@ -37,10 +37,10 @@ class Navbar extends React.Component {
       this.pageClickEvent();
 
       if (this.state.isActive) {
-        window.addEventListener("click", this.state.pageClickEvent);
+        window.addEventListener("click", this.pageClickEvent());
       }
 
-      window.removeEventListener("click", this.state.pageClickEvent);
+      window.removeEventListener("click", this.pageClickEvent());
     }
 
     this.showButton();
