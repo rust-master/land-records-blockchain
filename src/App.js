@@ -83,23 +83,22 @@ class App extends Component {
   }
 
   render() {
-
     var admin = false;
     var user = false;
 
-    if(this.state.cookieAdmin == "true"){
-        admin = true;
+    if (this.state.cookieAdmin == "true") {
+      admin = true;
     } else {
-        admin = false;
+      admin = false;
     }
-    console.log("Admin : ", admin); 
+    console.log("Admin : ", admin);
 
-    if(this.state.cookieUser == "true"){
+    if (this.state.cookieUser == "true") {
       user = true;
     } else {
       user = false;
     }
-    console.log("AppUser : ", user); 
+    console.log("AppUser : ", user);
 
     return (
       <div>
@@ -134,7 +133,6 @@ class App extends Component {
           </div>
         ) : (
           <Router>
-            
             {admin ? <NavbarGovt /> : <Navbar />}
 
             <Switch>

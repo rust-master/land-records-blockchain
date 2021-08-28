@@ -54,7 +54,6 @@ class Navbar extends React.Component {
 
     // cookies condtion if else
     if (this.state.cookieUser == "true") {
-
       console.log("cookieUser", this.state.cookieUser);
 
       this.setState({ name: cookies.get("Username") });
@@ -145,17 +144,16 @@ class Navbar extends React.Component {
   }
 
   render() {
-
-    console.log("render", cookies.get("checkIsUser") );
+    console.log("render", cookies.get("checkIsUser"));
 
     var user = false;
 
-    if(this.state.cookieUser == "true"){
+    if (this.state.cookieUser == "true") {
       user = true;
     } else {
       user = false;
     }
-    console.log("User : ", user); 
+    console.log("User : ", user);
 
     return (
       <div>
