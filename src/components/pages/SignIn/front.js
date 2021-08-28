@@ -64,7 +64,7 @@ class UserSignIn extends Component {
 
     if (checkIsUser[0]) {
       cookies.set("checkIsUser", true, { path: "/" });
-      cookies.set("Username", true, { path: "/" });
+      cookies.set("Username", checkIsUser[2], { path: "/" });
       console.log(cookies.get("checkIsUser"));
       console.log(cookies.get("Username"));
       window.location = "/";

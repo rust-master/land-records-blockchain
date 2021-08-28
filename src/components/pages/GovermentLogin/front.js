@@ -65,7 +65,7 @@ class GovermentLogin extends Component {
     } else {
 
       cookies.remove("checkIsAdmin");
-      cookies.remove("AdminName");
+      cookies.remove("checkIsAdmin");
 
       console.log(cookies.get("checkIsAdmin"));
       console.log(cookies.get("AdminName"));

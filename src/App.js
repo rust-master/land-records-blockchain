@@ -83,6 +83,16 @@ class App extends Component {
   }
 
   render() {
+
+    var admin = false;
+
+    if(this.state.cookieAdmin == "true"){
+        admin = true;
+    } else {
+        admin = false;
+    }
+    console.log("Admin : ", admin); 
+
     return (
       <div>
         {this.state.loading ? (
@@ -116,7 +126,8 @@ class App extends Component {
           </div>
         ) : (
           <Router>
-            {this.state.cookieAdmin ? <NavbarGovt /> : <Navbar />}
+            
+            {admin ? <NavbarGovt /> : <Navbar />}
 
             <Switch>
               <Route path="/" exact component={Home} />
