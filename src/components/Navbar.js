@@ -154,7 +154,7 @@ class Navbar extends React.Component {
                   <Link
                     to="/"
                     className="navbar-logo"
-                    onClick={this.state.closeMobileMenu}
+                    onClick={this.closeMobileMenu}
                   >
                     {/* <MdFingerprint className="navbar-icon" /> */}
                     <img
@@ -170,7 +170,7 @@ class Navbar extends React.Component {
                       System
                     </p>
                   </Link>
-                  <div className="menu-icon" onClick={this.state.handleClick}>
+                  <div className="menu-icon" onClick={this.handleClick}>
                     {this.state.click ? <FaTimes /> : <FaBars />}
                   </div>
                   <ul
@@ -182,7 +182,7 @@ class Navbar extends React.Component {
                       <Link
                         to="/"
                         className="nav-links"
-                        onClick={this.state.closeMobileMenu}
+                        onClick={this.closeMobileMenu}
                       >
                         {" "}
                         Home
@@ -193,7 +193,7 @@ class Navbar extends React.Component {
                       <Link
                         to="/search-property"
                         className="nav-links"
-                        onClick={this.state.closeMobileMenu}
+                        onClick={this.closeMobileMenu}
                       >
                         Explore
                       </Link>
@@ -203,7 +203,7 @@ class Navbar extends React.Component {
                       <Link
                         to="/properties"
                         className="nav-links"
-                        onClick={this.state.closeMobileMenu}
+                        onClick={this.closeMobileMenu}
                       >
                         Properties
                       </Link>
@@ -212,7 +212,7 @@ class Navbar extends React.Component {
                       <Link
                         to="/requests"
                         className="nav-links"
-                        onClick={this.state.closeMobileMenu}
+                        onClick={this.closeMobileMenu}
                       >
                         Requests
                       </Link>
@@ -252,7 +252,7 @@ class Navbar extends React.Component {
                             <Link
                               to="/profile"
                               className="nav-links"
-                              onClick={this.state.closeMobileMenu}
+                              onClick={this.closeMobileMenu}
                             >
                               Profile
                             </Link>
@@ -261,7 +261,7 @@ class Navbar extends React.Component {
                             <Link
                               to="/requested-lands"
                               className="nav-links"
-                              onClick={this.state.closeMobileMenu}
+                              onClick={this.closeMobileMenu}
                             >
                               Requested Lands
                             </Link>
@@ -293,7 +293,7 @@ class Navbar extends React.Component {
                   <Link
                     to="/"
                     className="navbar-logo"
-                    onClick={this.state.closeMobileMenu}
+                    onClick={this.closeMobileMenu}
                   >
                     {/* <MdFingerprint className="navbar-icon" />
                     Blockchain Land Records System */}
@@ -311,7 +311,7 @@ class Navbar extends React.Component {
                       System
                     </p>
                   </Link>
-                  <div className="menu-icon" onClick={this.state.handleClick}>
+                  <div className="menu-icon" onClick={this.handleClick}>
                     {this.state.click ? <FaTimes /> : <FaBars />}
                   </div>
                   <ul
@@ -323,7 +323,7 @@ class Navbar extends React.Component {
                       <Link
                         to="/"
                         className="nav-links"
-                        onClick={this.state.closeMobileMenu}
+                        onClick={this.closeMobileMenu}
                       >
                         Home
                       </Link>
@@ -339,7 +339,7 @@ class Navbar extends React.Component {
                           <Button
                             buttonStyle="btn--outline"
                             buttonSize="btn--mobile"
-                            onClick={this.state.closeMobileMenu}
+                            onClick={this.closeMobileMenu}
                           >
                             SIGN IN
                           </Button>
@@ -356,7 +356,7 @@ class Navbar extends React.Component {
                           <Button
                             buttonStyle="btn--outline"
                             buttonSize="btn--mobile"
-                            onClick={this.state.closeMobileMenu}
+                            onClick={this.closeMobileMenu}
                           >
                             SIGN UP
                           </Button>
@@ -372,18 +372,6 @@ class Navbar extends React.Component {
       </div>
     );
   }
-
-  // function Home(props) {
-  //   return (
-
-  //   );
-  // }
-
-  // function LoginSignUp(props) {
-  //   return (
-
-  //   );
-  // }
 }
 
 export default Navbar;
