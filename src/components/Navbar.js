@@ -10,6 +10,7 @@ import logo from "../components/logo.png";
 import "./menu.css";
 import "../App.css";
 import Web3 from "web3";
+import contract from "../build/contracts/Auth.json";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
@@ -248,7 +249,7 @@ class Navbar extends React.Component {
                       </Link>
                     </li>
                     <li>
-                      {button ? (
+                      {this.state.button ? (
                         <Link to="/">
                           <Button
                             buttonSize="btn--wide"
