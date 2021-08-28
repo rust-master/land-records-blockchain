@@ -139,53 +139,61 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               {user ? (
                 <Route path="/properties" component={Properties} />
+              ) : admin ? (
+                <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
               {user ? (
                 <Route path="/search-property" component={SearchProperty} />
+              ) : admin ? (
+                <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
               {user ? (
                 <Route path="/requests" component={Requests} />
+              ) : admin ? (
+                <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
               {user ? (
                 <Route path="/properties" component={Properties} />
+              ) : admin ? (
+                <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
               {user ? (
                 <Route path="/requested-lands" component={RequestedLands} />
+              ) : admin ? (
+                <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
               {user ? (
                 <Route path="/profile" component={Profile} />
+              ) : admin ? (
+                <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
 
               {admin ? (
                 <Route path="/create-land" component={CreateLand} />
+              ) : user ? (
+                <Route path="/properties" component={Properties} />
               ) : (
-                user ? (
-                  <Route path="/properties" component={SignUp} />
-                ) : (
-                  <Route path="/goverment-login" component={GovermentLogin} />
-                )
+                <Route path="/goverment-login" component={GovermentLogin} />
               )}
 
               {admin ? (
                 <Route path="/show-all-lands" component={ShowAllLands} />
+              ) : user ? (
+                <Route path="/properties" component={Properties} />
               ) : (
-                user ? (
-                  <Route path="/properties" component={SignUp} />
-                ) : (
-                  <Route path="/goverment-login" component={GovermentLogin} />
-                )
+                <Route path="/goverment-login" component={GovermentLogin} />
               )}
 
               {admin ? (
@@ -193,12 +201,10 @@ class App extends Component {
                   path="/change-market-value"
                   component={ChangeMarketValue}
                 />
+              ) : user ? (
+                <Route path="/properties" component={Properties} />
               ) : (
-                user ? (
-                  <Route path="/properties" component={SignUp} />
-                ) : (
-                  <Route path="/goverment-signup" component={GovermentSignUp} />
-                )
+                <Route path="/goverment-signup" component={GovermentSignUp} />
               )}
             </Switch>
             <Footer />
