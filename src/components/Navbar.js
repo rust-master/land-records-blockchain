@@ -118,18 +118,18 @@ class Navbar extends React.Component {
     );
 
     await authContract.methods
-      .logoutAdmin(accounts[0])
+      .logoutUser(accounts[0])
       .send({ from: accounts[0] });
 
     const checkIsAdmin = await authContract.methods
-      .checkIsAdminLogged(accounts[0])
+      .checkIsUserLogged(accounts[0])
       .call({ from: accounts[0] });
 
-    console.log("checkIsAdmin : " + checkIsAdmin[0]);
-    console.log("checkIsAdmin : " + checkIsAdmin[1]);
+    console.log("checkIsUser : " + checkIsAdmin[0]);
+    console.log("checkIsUser : " + checkIsAdmin[1]);
 
-    cookies.remove("checkIsAdmin");
-    console.log(cookies.get("checkIsAdmin"));
+    cookies.remove("checkIsUser");
+    console.log(cookies.get("checkIsUser"));
     window.location = "/";
   }
 
@@ -145,132 +145,225 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <IconContext.Provider value={{ color: "#fff" }}>
-          <nav className="navbar">
-            <div className="navbar-container container">
-              <Link
-                to="/"
-                className="navbar-logo"
-                onClick={this.state.closeMobileMenu}
-              >
-                {/* <MdFingerprint className="navbar-icon" /> */}
-                <img
-                  src={logo}
-                  className="App-logo"
-                  alt="Logo"
-                  width="40"
-                  height="40"
-                />
-                &nbsp;&nbsp;{" "}
-                <p>
-                  <font color="#EF8E19">Blockchain</font> Land Records System
-                </p>
-              </Link>
-              <div className="menu-icon" onClick={this.state.handleClick}>
-                {this.state.click ? <FaTimes /> : <FaBars />}
-              </div>
-              <ul className={this.state.click ? "nav-menu active" : "nav-menu"}>
-                <li className="nav-item">
+        {this.state.cookieUser ? (
+          <div>
+            <IconContext.Provider value={{ color: "#fff" }}>
+              <nav className="navbar">
+                <div className="navbar-container container">
                   <Link
                     to="/"
-                    className="nav-links"
+                    className="navbar-logo"
                     onClick={this.state.closeMobileMenu}
                   >
-                    {" "}
-                    Home
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link
-                    to="/search-property"
-                    className="nav-links"
-                    onClick={this.state.closeMobileMenu}
-                  >
-                    Explore
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link
-                    to="/properties"
-                    className="nav-links"
-                    onClick={this.state.closeMobileMenu}
-                  >
-                    Properties
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    to="/requests"
-                    className="nav-links"
-                    onClick={this.state.closeMobileMenu}
-                  >
-                    Requests
-                  </Link>
-                </li>
-
-                <div className="menu-container">
-                  <button onClick={this.state.onClick} className="menu-trigger">
-                    <span>User</span>
+                    {/* <MdFingerprint className="navbar-icon" /> */}
                     <img
+                      src={logo}
+                      className="App-logo"
+                      alt="Logo"
                       width="40"
                       height="40"
-                      src={this.state.profileLink}
-                      alt="User avatar"
                     />
-                  </button>
-                  <nav
-                    ref={this.state.dropdownRef}
-                    className={`menu ${
-                      this.state.isActive ? "active" : "inactive"
-                    }`}
+                    &nbsp;&nbsp;{" "}
+                    <p>
+                      <font color="#EF8E19">Blockchain</font> Land Records
+                      System
+                    </p>
+                  </Link>
+                  <div className="menu-icon" onClick={this.state.handleClick}>
+                    {this.state.click ? <FaTimes /> : <FaBars />}
+                  </div>
+                  <ul
+                    className={
+                      this.state.click ? "nav-menu active" : "nav-menu"
+                    }
                   >
-                    <ul>
-                      <li>
-                        <h3 style={{ color: "#35A246" }}>{this.state.name}</h3>
-                      </li>
-                      <li>
-                        <h4 style={{ color: "#EF8E19" }}>
-                          Balance: {this.state.balance} ETH
-                        </h4>
-                      </li>
-                      <li>
-                        <Link
-                          to="/profile"
-                          className="nav-links"
-                          onClick={this.state.closeMobileMenu}
-                        >
-                          Profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/requested-lands"
-                          className="nav-links"
-                          onClick={this.state.closeMobileMenu}
-                        >
-                          Requested Lands
-                        </Link>
-                      </li>
-                      <li>
-                        {this.state.button ? (
-                          <Link to="/">
-                            <Button buttonSize="btn--wide">Sign Out</Button>
-                          </Link>
-                        ) : (
-                          <Link to="/">
-                            <Button buttonSize="btn--wide">Sign Out</Button>
-                          </Link>
-                        )}
-                      </li>
-                    </ul>
-                  </nav>
+                    <li className="nav-item">
+                      <Link
+                        to="/"
+                        className="nav-links"
+                        onClick={this.state.closeMobileMenu}
+                      >
+                        {" "}
+                        Home
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link
+                        to="/search-property"
+                        className="nav-links"
+                        onClick={this.state.closeMobileMenu}
+                      >
+                        Explore
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link
+                        to="/properties"
+                        className="nav-links"
+                        onClick={this.state.closeMobileMenu}
+                      >
+                        Properties
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link
+                        to="/requests"
+                        className="nav-links"
+                        onClick={this.state.closeMobileMenu}
+                      >
+                        Requests
+                      </Link>
+                    </li>
+
+                    <div className="menu-container">
+                      <button
+                        onClick={this.state.onClick}
+                        className="menu-trigger"
+                      >
+                        <span>User</span>
+                        <img
+                          width="40"
+                          height="40"
+                          src={this.state.profileLink}
+                          alt="User avatar"
+                        />
+                      </button>
+                      <nav
+                        ref={this.state.dropdownRef}
+                        className={`menu ${
+                          this.state.isActive ? "active" : "inactive"
+                        }`}
+                      >
+                        <ul>
+                          <li>
+                            <h3 style={{ color: "#35A246" }}>
+                              {this.state.name}
+                            </h3>
+                          </li>
+                          <li>
+                            <h4 style={{ color: "#EF8E19" }}>
+                              Balance: {this.state.balance} ETH
+                            </h4>
+                          </li>
+                          <li>
+                            <Link
+                              to="/profile"
+                              className="nav-links"
+                              onClick={this.state.closeMobileMenu}
+                            >
+                              Profile
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/requested-lands"
+                              className="nav-links"
+                              onClick={this.state.closeMobileMenu}
+                            >
+                              Requested Lands
+                            </Link>
+                          </li>
+                          <li>
+                            {this.state.button ? (
+                              <Link to="/">
+                                <Button buttonSize="btn--wide">Sign Out</Button>
+                              </Link>
+                            ) : (
+                              <Link to="/">
+                                <Button buttonSize="btn--wide">Sign Out</Button>
+                              </Link>
+                            )}
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </ul>
                 </div>
-              </ul>
-            </div>
-          </nav>
-        </IconContext.Provider>
+              </nav>
+            </IconContext.Provider>
+          </div>
+        ) : (
+          <div>
+            <IconContext.Provider value={{ color: "#fff" }}>
+              <nav className="navbar">
+                <div className="navbar-container container">
+                  <Link
+                    to="/"
+                    className="navbar-logo"
+                    onClick={this.state.closeMobileMenu}
+                  >
+                    {/* <MdFingerprint className="navbar-icon" />
+                    Blockchain Land Records System */}
+                    {/* <img src={logo} alt="Logo" width="40" height="40" />&nbsp;<p style={{ color: '#EF8E19' }}>Blockchain</p> &nbsp; <p>Land Records System</p> */}
+                    <img
+                      src={logo}
+                      className="App-logo"
+                      alt="Logo"
+                      width="40"
+                      height="40"
+                    />{" "}
+                    &nbsp;&nbsp;{" "}
+                    <p>
+                      <font color="#EF8E19">Blockchain</font> Land Records
+                      System
+                    </p>
+                  </Link>
+                  <div className="menu-icon" onClick={this.state.handleClick}>
+                    {this.state.click ? <FaTimes /> : <FaBars />}
+                  </div>
+                  <ul className={this.state.click ? "nav-menu active" : "nav-menu"}>
+                    <li className="nav-item">
+                      <Link
+                        to="/"
+                        className="nav-links"
+                        onClick={this.state.closeMobileMenu}
+                      >
+                        Home
+                      </Link>
+                    </li>
+
+                    <li className="nav-btn">
+                      {this.state.button ? (
+                        <Link to="/sign-in" className="btn-link">
+                          <Button buttonStyle="btn--outline">SIGN IN</Button>
+                        </Link>
+                      ) : (
+                        <Link to="/sign-in" className="btn-link">
+                          <Button
+                            buttonStyle="btn--outline"
+                            buttonSize="btn--mobile"
+                            onClick={this.state.closeMobileMenu}
+                          >
+                            SIGN IN
+                          </Button>
+                        </Link>
+                      )}
+                    </li>
+                    <li className="nav-btn">
+                      {this.state.button ? (
+                        <Link to="/sign-up" className="btn-link">
+                          <Button buttonStyle="btn--outline">SIGN UP</Button>
+                        </Link>
+                      ) : (
+                        <Link to="/sign-up" className="btn-link">
+                          <Button
+                            buttonStyle="btn--outline"
+                            buttonSize="btn--mobile"
+                            onClick={this.state.closeMobileMenu}
+                          >
+                            SIGN UP
+                          </Button>
+                        </Link>
+                      )}
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </IconContext.Provider>
+          </div>
+        )}
       </div>
     );
   }
@@ -283,75 +376,7 @@ class Navbar extends React.Component {
 
   // function LoginSignUp(props) {
   //   return (
-  //     <div>
-  //       <IconContext.Provider value={{ color: "#fff" }}>
-  //         <nav className="navbar">
-  //           <div className="navbar-container container">
-  //             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-  //               {/* <MdFingerprint className="navbar-icon" />
-  //               Blockchain Land Records System */}
-  //               {/* <img src={logo} alt="Logo" width="40" height="40" />&nbsp;<p style={{ color: '#EF8E19' }}>Blockchain</p> &nbsp; <p>Land Records System</p> */}
-  //               <img
-  //                 src={logo}
-  //                 className="App-logo"
-  //                 alt="Logo"
-  //                 width="40"
-  //                 height="40"
-  //               />{" "}
-  //               &nbsp;&nbsp;{" "}
-  //               <p>
-  //                 <font color="#EF8E19">Blockchain</font> Land Records System
-  //               </p>
-  //             </Link>
-  //             <div className="menu-icon" onClick={handleClick}>
-  //               {click ? <FaTimes /> : <FaBars />}
-  //             </div>
-  //             <ul className={click ? "nav-menu active" : "nav-menu"}>
-  //               <li className="nav-item">
-  //                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-  //                   Home
-  //                 </Link>
-  //               </li>
 
-  //               <li className="nav-btn">
-  //                 {button ? (
-  //                   <Link to="/sign-in" className="btn-link">
-  //                     <Button buttonStyle="btn--outline">SIGN IN</Button>
-  //                   </Link>
-  //                 ) : (
-  //                   <Link to="/sign-in" className="btn-link">
-  //                     <Button
-  //                       buttonStyle="btn--outline"
-  //                       buttonSize="btn--mobile"
-  //                       onClick={closeMobileMenu}
-  //                     >
-  //                       SIGN IN
-  //                     </Button>
-  //                   </Link>
-  //                 )}
-  //               </li>
-  //               <li className="nav-btn">
-  //                 {button ? (
-  //                   <Link to="/sign-up" className="btn-link">
-  //                     <Button buttonStyle="btn--outline">SIGN UP</Button>
-  //                   </Link>
-  //                 ) : (
-  //                   <Link to="/sign-up" className="btn-link">
-  //                     <Button
-  //                       buttonStyle="btn--outline"
-  //                       buttonSize="btn--mobile"
-  //                       onClick={closeMobileMenu}
-  //                     >
-  //                       SIGN UP
-  //                     </Button>
-  //                   </Link>
-  //                 )}
-  //               </li>
-  //             </ul>
-  //           </div>
-  //         </nav>
-  //       </IconContext.Provider>
-  //     </div>
   //   );
   // }
 }
