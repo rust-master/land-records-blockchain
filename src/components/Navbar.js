@@ -91,6 +91,43 @@ function Navbar() {
 
   }, []);
 
+  
+
+  async logout() {
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    console.log("Account: " + accounts[0]);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    const authContract = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    await authContract.methods
+      .logoutAdmin(accounts[0])
+      .send({ from: accounts[0] });
+
+    const checkIsAdmin = await authContract.methods
+      .checkIsAdminLogged(accounts[0])
+      .call({ from: accounts[0] });
+
+    console.log("checkIsAdmin : " + checkIsAdmin[0]);
+    console.log("checkIsAdmin : " + checkIsAdmin[1]);
+
+    cookies.remove("checkIsAdmin");
+    console.log(cookies.get("checkIsAdmin"));
+    window.location = "/";
+  }
+
+
+
   if (cookies.get("checkIsUser")) {
     console.log("checkIsUser: ", cookies.get("checkIsUser"));
 
