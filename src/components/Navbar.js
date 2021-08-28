@@ -16,7 +16,6 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
 class Navbar extends React.Component {
-
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
@@ -33,7 +32,6 @@ class Navbar extends React.Component {
       cookieUser: cookies.get("checkIsUser"),
     };
   }
-
 
   componentWillMount() {
     console.log("isActive", this.state.isActive);
@@ -57,7 +55,6 @@ class Navbar extends React.Component {
 
     this.getBalance();
   }
-
 
   onClick() {
     this.setState({ isActive: !this.state.isActive });
@@ -103,7 +100,6 @@ class Navbar extends React.Component {
     this.setState({ balance: blnce });
   }
 
-
   async logout() {
     const web3 = window.web3;
 
@@ -146,141 +142,142 @@ class Navbar extends React.Component {
   //   return <LoginSignUp />;
   // }
 
-
   render() {
     return (
       <div>
-      <IconContext.Provider value={{ color: "#fff" }}>
-        <nav className="navbar">
-          <div className="navbar-container container">
-            <Link to="/" className="navbar-logo" onClick={this.state.closeMobileMenu}>
-              {/* <MdFingerprint className="navbar-icon" /> */}
-              <img
-                src={logo}
-                className="App-logo"
-                alt="Logo"
-                width="40"
-                height="40"
-              />
-              &nbsp;&nbsp;{" "}
-              <p>
-                <font color="#EF8E19">Blockchain</font> Land Records System
-              </p>
-            </Link>
-            <div className="menu-icon" onClick={this.state.handleClick}>
-              {this.state.click ? <FaTimes /> : <FaBars />}
-            </div>
-            <ul className={this.state.click ? "nav-menu active" : "nav-menu"}>
-              <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={this.state.closeMobileMenu}>
-                  {" "}
-                  Home
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link
-                  to="/search-property"
-                  className="nav-links"
-                  onClick={this.state.closeMobileMenu}
-                >
-                  Explore
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link
-                  to="/properties"
-                  className="nav-links"
-                  onClick={this.state.closeMobileMenu}
-                >
-                  Properties
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/requests"
-                  className="nav-links"
-                  onClick={this.state.closeMobileMenu}
-                >
-                  Requests
-                </Link>
-              </li>
-
-              <div className="menu-container">
-                <button onClick={this.state.onClick} className="menu-trigger">
-                  <span>User</span>
-                  <img
-                    width="40"
-                    height="40"
-                    src={this.state.profileLink}
-                    alt="User avatar"
-                  />
-                </button>
-                <nav
-                  ref={this.state.dropdownRef}
-                  className={`menu ${this.state.isActive ? "active" : "inactive"}`}
-                >
-                  <ul>
-                    <li>
-                      <h3 style={{ color: "#35A246" }}>{this.state.name}</h3>
-                    </li>
-                    <li>
-                      <h4 style={{ color: "#EF8E19" }}>
-                        Balance: {this.state.balance} ETH
-                      </h4>
-                    </li>
-                    <li>
-                      <Link
-                        to="/profile"
-                        className="nav-links"
-                        onClick={this.state.closeMobileMenu}
-                      >
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/requested-lands"
-                        className="nav-links"
-                        onClick={this.state.closeMobileMenu}
-                      >
-                        Requested Lands
-                      </Link>
-                    </li>
-                    <li>
-                      {this.state.button ? (
-                        <Link to="/">
-                          <Button
-                            buttonSize="btn--wide"
-                          >
-                            Sign Out
-                          </Button>
-                        </Link>
-                      ) : (
-                        <Link to="/">
-                          <Button
-                            buttonSize="btn--wide"
-                          >
-                            Sign Out
-                          </Button>
-                        </Link>
-                      )}
-                    </li>
-                  </ul>
-                </nav>
+        <IconContext.Provider value={{ color: "#fff" }}>
+          <nav className="navbar">
+            <div className="navbar-container container">
+              <Link
+                to="/"
+                className="navbar-logo"
+                onClick={this.state.closeMobileMenu}
+              >
+                {/* <MdFingerprint className="navbar-icon" /> */}
+                <img
+                  src={logo}
+                  className="App-logo"
+                  alt="Logo"
+                  width="40"
+                  height="40"
+                />
+                &nbsp;&nbsp;{" "}
+                <p>
+                  <font color="#EF8E19">Blockchain</font> Land Records System
+                </p>
+              </Link>
+              <div className="menu-icon" onClick={this.state.handleClick}>
+                {this.state.click ? <FaTimes /> : <FaBars />}
               </div>
-            </ul>
-          </div>
-        </nav>
-      </IconContext.Provider>
-    </div>
-    )
+              <ul className={this.state.click ? "nav-menu active" : "nav-menu"}>
+                <li className="nav-item">
+                  <Link
+                    to="/"
+                    className="nav-links"
+                    onClick={this.state.closeMobileMenu}
+                  >
+                    {" "}
+                    Home
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link
+                    to="/search-property"
+                    className="nav-links"
+                    onClick={this.state.closeMobileMenu}
+                  >
+                    Explore
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link
+                    to="/properties"
+                    className="nav-links"
+                    onClick={this.state.closeMobileMenu}
+                  >
+                    Properties
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/requests"
+                    className="nav-links"
+                    onClick={this.state.closeMobileMenu}
+                  >
+                    Requests
+                  </Link>
+                </li>
+
+                <div className="menu-container">
+                  <button onClick={this.state.onClick} className="menu-trigger">
+                    <span>User</span>
+                    <img
+                      width="40"
+                      height="40"
+                      src={this.state.profileLink}
+                      alt="User avatar"
+                    />
+                  </button>
+                  <nav
+                    ref={this.state.dropdownRef}
+                    className={`menu ${
+                      this.state.isActive ? "active" : "inactive"
+                    }`}
+                  >
+                    <ul>
+                      <li>
+                        <h3 style={{ color: "#35A246" }}>{this.state.name}</h3>
+                      </li>
+                      <li>
+                        <h4 style={{ color: "#EF8E19" }}>
+                          Balance: {this.state.balance} ETH
+                        </h4>
+                      </li>
+                      <li>
+                        <Link
+                          to="/profile"
+                          className="nav-links"
+                          onClick={this.state.closeMobileMenu}
+                        >
+                          Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/requested-lands"
+                          className="nav-links"
+                          onClick={this.state.closeMobileMenu}
+                        >
+                          Requested Lands
+                        </Link>
+                      </li>
+                      <li>
+                        {this.state.button ? (
+                          <Link to="/">
+                            <Button buttonSize="btn--wide">Sign Out</Button>
+                          </Link>
+                        ) : (
+                          <Link to="/">
+                            <Button buttonSize="btn--wide">Sign Out</Button>
+                          </Link>
+                        )}
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </IconContext.Provider>
+      </div>
+    );
   }
 
   // function Home(props) {
   //   return (
-      
+
   //   );
   // }
 
