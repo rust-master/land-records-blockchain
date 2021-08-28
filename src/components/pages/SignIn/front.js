@@ -117,14 +117,6 @@ class UserSignIn extends Component {
                     <form>
                       <input
                         className="footer-input"
-                        name="email"
-                        type="email"
-                        placeholder="Your Email"
-                        onChange={this.handleChange}
-                        value={this.state.email}
-                      />
-                      <input
-                        className="footer-input"
                         name="password"
                         type="password"
                         placeholder="Your Password"
