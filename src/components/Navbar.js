@@ -206,7 +206,6 @@ function Navbar() {
                           <Link to="/">
                             <Button
                               buttonSize="btn--wide"
-                              onClick={() => fire.auth().signOut()}
                             >
                               Sign Out
                             </Button>
@@ -215,7 +214,6 @@ function Navbar() {
                           <Link to="/">
                             <Button
                               buttonSize="btn--wide"
-                              onClick={() => fire.auth().signOut()}
                             >
                               Sign Out
                             </Button>
