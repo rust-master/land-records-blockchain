@@ -47,7 +47,7 @@ class Navbar extends React.Component {
 
     window.addEventListener("resize", this.showButton());
 
-    this.setState({ name: cookies.get("checkIsAdmin") });
+    this.setState({ name: cookies.get("AdminName") });
     console.log("name", this.state.name);
 
     this.getBalance();

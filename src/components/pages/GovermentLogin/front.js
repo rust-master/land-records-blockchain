@@ -56,12 +56,17 @@ class GovermentLogin extends Component {
       console.log("Passed");
 
       cookies.set("checkIsAdmin", checkIsAdmin[0], { path: "/" });
+      cookies.set("AdminName", checkIsAdmin[2], { path: "/" });
       console.log(cookies.get("checkIsAdmin"));
+      console.log(cookies.get("AdminName"));
+    
 
       window.location = "/";
     } else {
       cookies.set("checkIsAdmin", "null", { path: "/" });
+      cookies.set("AdminName", "null", { path: "/" });
       console.log(cookies.get("checkIsAdmin"));
+      console.log(cookies.get("AdminName"));
 
       console.log("Failed");
     }
