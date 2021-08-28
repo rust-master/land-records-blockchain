@@ -59,7 +59,7 @@ class UserSignIn extends Component {
       .checkIsUserLogged(this.state.address)
       .call({ from: this.state.address });
 
-    console.log("Login : " + checkIsUser);
+    console.log("Login : " + checkIsUser[0]);
 
     if (checkIsUser[0]) {
       cookies.set("checkIsUser", checkIsUser[0], { path: "/" });
