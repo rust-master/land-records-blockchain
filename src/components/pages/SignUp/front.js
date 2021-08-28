@@ -40,19 +40,19 @@ class UserSignUp extends Component {
     console.log("Password:", this.state.password);
 
 
-    // const authContract = new web3.eth.Contract(
-    //   contract.abi,
-    //   deployedNetwork.address
-    // );
+    const authContract = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
 
-    // await authContract.methods
-    //   .registerUser(
-    //     this.state.account,
-    //     this.state.name,
-    //     this.state.password,
-    //     this.state.cnic
-    //   )
-    //   .send({ from: this.state.account });
+    await authContract.methods
+      .registerUser(
+        this.state.account,
+        this.state.name,
+        this.state.password,
+        this.state.cnic
+      )
+      .send({ from: this.state.account });
   }
 
   handleChange(e) {
