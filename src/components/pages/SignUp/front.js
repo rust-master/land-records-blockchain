@@ -10,6 +10,7 @@ class UserSignUp extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCNICChange = this.handleCNICChange.bind(this);
     this.state = {
       name: "",
       password: "",
@@ -34,25 +35,38 @@ class UserSignUp extends Component {
 
     console.log(deployedNetwork.address);
 
-    const authContract = new web3.eth.Contract(
-      contract.abi,
-      deployedNetwork.address
-    );
+    console.log("Name:", this.state.name);
+    console.log("CNIC:", this.state.cnic);
+    console.log("Password:", this.state.password);
 
-    await authContract.methods
-      .registerUser(
-        this.state.account,
-        this.state.name,
-        this.state.password,
-        this.state.cnic
-      )
-      .send({ from: this.state.account });
+
+    // const authContract = new web3.eth.Contract(
+    //   contract.abi,
+    //   deployedNetwork.address
+    // );
+
+    // await authContract.methods
+    //   .registerUser(
+    //     this.state.account,
+    //     this.state.name,
+    //     this.state.password,
+    //     this.state.cnic
+    //   )
+    //   .send({ from: this.state.account });
   }
 
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  }
+
+  handleCNICChange(e) {
+    if(e.target.value.length <= 13){
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+     }
   }
 
   render() {
@@ -100,9 +114,9 @@ class UserSignUp extends Component {
                         <input
                           className="footer-input"
                           name="cnic"
-                          type="text"
+                          type="number"
                           placeholder="Your CNIC"
-                          onChange={this.handleChange}
+                          onChange={this.handleCNICChange}
                           value={this.state.cnic}
                         />
                       </div>
