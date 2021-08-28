@@ -313,7 +313,11 @@ class Navbar extends React.Component {
                   <div className="menu-icon" onClick={this.state.handleClick}>
                     {this.state.click ? <FaTimes /> : <FaBars />}
                   </div>
-                  <ul className={this.state.click ? "nav-menu active" : "nav-menu"}>
+                  <ul
+                    className={
+                      this.state.click ? "nav-menu active" : "nav-menu"
+                    }
+                  >
                     <li className="nav-item">
                       <Link
                         to="/"
