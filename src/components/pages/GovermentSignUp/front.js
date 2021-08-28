@@ -36,7 +36,6 @@ class GovermentSignUp extends Component {
 
     console.log("name:", this.state.name);
     console.log("password:", this.state.password);
-    console.log("ipfsHash:", this.state.ipfsHash);
 
     const authContract = new web3.eth.Contract(
       contract.abi,
@@ -48,7 +47,6 @@ class GovermentSignUp extends Component {
         this.state.account,
         this.state.name,
         this.state.password,
-        this.state.ipfsHash
       )
       .send({ from: this.state.account });
 
