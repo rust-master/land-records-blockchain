@@ -53,7 +53,10 @@ class Navbar extends React.Component {
     window.addEventListener("resize", this.showButton());
 
     // cookies condtion if else
-    if (cookies.get("checkIsUser")) {
+    if (this.state.cookieUser == "true") {
+
+      console.log("cookieUser", this.state.cookieUser);
+
       this.setState({ name: cookies.get("Username") });
       console.log("name", this.state.name);
       this.getBalance();
@@ -142,9 +145,12 @@ class Navbar extends React.Component {
   }
 
   render() {
+
+    console.log("render", cookies.get("checkIsUser") );
+
     return (
       <div>
-        {this.state.cookieUser ? (
+        {cookies.get("checkIsUser") ? (
           <div ref={this.dropdownRef}>
             <IconContext.Provider value={{ color: "#fff" }}>
               <nav className="navbar">

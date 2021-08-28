@@ -63,14 +63,16 @@ class UserSignIn extends Component {
     console.log("Login : " + checkIsUser[0]);
 
     if (checkIsUser[0]) {
-      cookies.set("checkIsUser", checkIsUser[0], { path: "/" });
-      cookies.set("Username", checkIsUser[2], { path: "/" });
+      cookies.set("checkIsUser", true, { path: "/" });
+      cookies.set("Username", true, { path: "/" });
       console.log(cookies.get("checkIsUser"));
       console.log(cookies.get("Username"));
       window.location = "/";
     } else {
-      cookies.set("checkIsUser", "null", { path: "/" });
-      cookies.set("Username", "null", { path: "/" });
+
+      cookies.remove("checkIsUser");
+      cookies.remove("Username");
+
       console.log(cookies.get("checkIsUser"));
       console.log(cookies.get("Username"));
 
