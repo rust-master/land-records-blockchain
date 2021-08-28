@@ -171,13 +171,21 @@ class App extends Component {
               {admin ? (
                 <Route path="/create-land" component={CreateLand} />
               ) : (
-                <Route path="/goverment-login" component={GovermentLogin} />
+                user ? (
+                  <Route path="/properties" component={SignUp} />
+                ) : (
+                  <Route path="/goverment-login" component={GovermentLogin} />
+                )
               )}
 
               {admin ? (
                 <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
-                <Route path="/goverment-login" component={GovermentLogin} />
+                user ? (
+                  <Route path="/properties" component={SignUp} />
+                ) : (
+                  <Route path="/goverment-login" component={GovermentLogin} />
+                )
               )}
 
               {admin ? (
@@ -186,7 +194,11 @@ class App extends Component {
                   component={ChangeMarketValue}
                 />
               ) : (
-                <Route path="/goverment-signup" component={GovermentSignUp} />
+                user ? (
+                  <Route path="/properties" component={SignUp} />
+                ) : (
+                  <Route path="/goverment-signup" component={GovermentSignUp} />
+                )
               )}
             </Switch>
             <Footer />
