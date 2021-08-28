@@ -85,6 +85,7 @@ class App extends Component {
   render() {
 
     var admin = false;
+    var user = false;
 
     if(this.state.cookieAdmin == "true"){
         admin = true;
@@ -92,6 +93,13 @@ class App extends Component {
         admin = false;
     }
     console.log("Admin : ", admin); 
+
+    if(this.state.cookieUser == "true"){
+      user = true;
+    } else {
+      user = false;
+    }
+    console.log("AppUser : ", user); 
 
     return (
       <div>
@@ -131,50 +139,50 @@ class App extends Component {
 
             <Switch>
               <Route path="/" exact component={Home} />
-              {this.state.cookieUser ? (
+              {user ? (
                 <Route path="/properties" component={Properties} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
-              {this.state.cookieUser ? (
+              {user ? (
                 <Route path="/search-property" component={SearchProperty} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
-              {this.state.cookieUser ? (
+              {user ? (
                 <Route path="/requests" component={Requests} />
               ) : (
                 <Route path="/sign-in" component={SignIn} />
               )}
-              {this.state.cookieUser ? (
+              {user ? (
                 <Route path="/properties" component={Properties} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
-              {this.state.cookieUser ? (
+              {user ? (
                 <Route path="/requested-lands" component={RequestedLands} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
-              {this.state.cookieUser ? (
+              {user ? (
                 <Route path="/profile" component={Profile} />
               ) : (
                 <Route path="/sign-up" component={SignUp} />
               )}
 
-              {this.state.cookieAdmin ? (
+              {admin ? (
                 <Route path="/create-land" component={CreateLand} />
               ) : (
                 <Route path="/goverment-login" component={GovermentLogin} />
               )}
 
-              {this.state.cookieAdmin ? (
+              {admin ? (
                 <Route path="/show-all-lands" component={ShowAllLands} />
               ) : (
                 <Route path="/goverment-login" component={GovermentLogin} />
               )}
 
-              {this.state.cookieAdmin ? (
+              {admin ? (
                 <Route
                   path="/change-market-value"
                   component={ChangeMarketValue}

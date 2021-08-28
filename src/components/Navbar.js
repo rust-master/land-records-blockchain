@@ -148,6 +148,15 @@ class Navbar extends React.Component {
 
     console.log("render", cookies.get("checkIsUser") );
 
+    var user = false;
+
+    if(this.state.cookieUser == "true"){
+      user = true;
+    } else {
+      user = false;
+    }
+    console.log("User : ", user); 
+
     return (
       <div>
         {cookies.get("checkIsUser") ? (
