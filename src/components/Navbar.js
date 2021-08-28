@@ -6,7 +6,7 @@ import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import logo from "../components/logo.png";
-import fire from "../components/pages/fire";
+
 import "./menu.css";
 import "../App.css";
 import Web3 from "web3";
@@ -58,28 +58,8 @@ function Navbar() {
     }
   };
 
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    fire.auth().onAuthStateChanged((firebaseUser) => {
-      setUser(firebaseUser);
-    });
 
-    try {
-      const uid = fire.auth().currentUser.uid;
-      const database = fire.database();
-      const ref = database.ref("users").child(uid);
-      ref.on("value", (snapshot) => {
-        console.log("FireB ", snapshot);
-        if (snapshot && snapshot.exists()) {
-          setName(snapshot.val().name);
-          setprofileLink(snapshot.val().profileLink);
-        }
-      });
-    } catch (e) {
-      console.log("Exception: " + e);
-    }
-  }, []);
 
   useEffect(() => {
     showButton();
@@ -106,6 +86,9 @@ function Navbar() {
       setbalance(blnce);
     }
     getBalance();
+
+    setName(cookies.get("Username"));
+
   }, []);
 
   if (cookies.get("checkIsUser")) {
