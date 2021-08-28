@@ -18,6 +18,9 @@ const cookies = new Cookies();
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+    this.dropdownRef = React.createRef();
+    
+    this.logout = this.logout.bind(this);
     this.onClick = this.onClick.bind(this);
     this.showButton = this.showButton.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -26,24 +29,23 @@ class Navbar extends React.Component {
       isActive: false,
       name: false,
       balance: "",
-      dropdownRef: null,
       click: false,
       button: true,
       cookieUser: cookies.get("checkIsUser"),
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     console.log("isActive", this.state.isActive);
 
     if (this.state.isActive) {
       this.pageClickEvent();
 
       if (this.state.isActive) {
-        window.addEventListener("click", this.state.pageClickEvent);
+        window.addEventListener("click", this.pageClickEvent());
       }
 
-      window.removeEventListener("click", this.state.pageClickEvent);
+      window.removeEventListener("click", this.pageClickEvent());
     }
 
     this.showButton();
@@ -62,9 +64,10 @@ class Navbar extends React.Component {
   }
 
   pageClickEvent(e) {
+    console.log("pageClickEvent", this.dropdownRef.current);
     if (
-      this.state.dropdownRef.current !== null &&
-      !this.state.dropdownRef.current.contains(e.target)
+      this.dropdownRef.current !== null &&
+      !this.dropdownRef.current.contains(e.target)
     ) {
       this.setState({ isActive: !this.state.isActive });
     }
@@ -147,7 +150,7 @@ class Navbar extends React.Component {
     return (
       <div>
         {this.state.cookieUser ? (
-          <div>
+          <div ref={this.dropdownRef}>
             <IconContext.Provider value={{ color: "#fff" }}>
               <nav className="navbar">
                 <div className="navbar-container container">
@@ -232,7 +235,7 @@ class Navbar extends React.Component {
                         />
                       </button>
                       <nav
-                        ref={this.state.dropdownRef}
+                       
                         className={`menu ${
                           this.state.isActive ? "active" : "inactive"
                         }`}
@@ -268,11 +271,11 @@ class Navbar extends React.Component {
                           </li>
                           <li>
                             {this.state.button ? (
-                              <Link to="/">
+                              <Link to="/" onClick={this.logout}>
                                 <Button buttonSize="btn--wide">Sign Out</Button>
                               </Link>
                             ) : (
-                              <Link to="/">
+                              <Link to="/" onClick={this.logout}>
                                 <Button buttonSize="btn--wide">Sign Out</Button>
                               </Link>
                             )}
