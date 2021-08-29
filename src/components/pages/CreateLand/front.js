@@ -39,6 +39,7 @@ class CreateLand extends Component {
       measurement: "",
       landType: "",
       open: false,
+      success: "",
       openi: false,
       errori: "",
       buffer: null,
@@ -101,8 +102,10 @@ class CreateLand extends Component {
       //   .send({ from: this.state.account });
 
       this.setState({ openDialog: true });
-
       this.setState({ open: true });
+      this.setState({
+        success: "Land Created successfully. Owner " + this.state.CurrentOwner,
+      });
     } catch (e) {
       this.setState({ openi: true });
       this.setState({ errori: e.toString() });
@@ -136,6 +139,54 @@ class CreateLand extends Component {
     }
   };
 
+  async addPolylineData() {
+    if (
+      this.state.lat === "" ||
+      this.state.lng === "" ||
+      this.state.north === "" ||
+      this.state.south === "" ||
+      this.state.east === "" ||
+      this.state.west === ""
+    ) {
+      alert("Please enter all the values");
+    } else {
+      try {
+        const web3 = window.web3;
+
+        const webeProvider = new Web3(
+          Web3.givenProvider || "http://localhost:7545"
+        );
+        const accounts = await webeProvider.eth.getAccounts();
+        this.setState({ account: accounts[0] });
+        console.log("Account: " + this.state.account);
+
+        const netId = await web3.eth.net.getId();
+        const deployedNetwork = contract.networks[netId];
+
+        console.log(deployedNetwork.address);
+
+        const landCon = new web3.eth.Contract(
+          contract.abi,
+          deployedNetwork.address
+        );
+
+        console.log("Lat : ", this.state.lat);
+        console.log("Lng : ", this.state.lng);
+        console.log("North : ", this.state.north);
+        console.log("South : ", this.state.south);
+        console.log("East : ", this.state.east);
+        console.log("West : ", this.state.west);
+
+        this.setState({ open: true });
+        this.setState({ success: "Poliline Data Added Successfuly" });
+      } catch (e) {
+        this.setState({ openi: true });
+        this.setState({ errori: e.toString() });
+        console.log("Error : ", e.toString());
+      }
+    }
+  }
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -158,12 +209,6 @@ class CreateLand extends Component {
   handleCloseDialog = () => {
     this.setState({ openDialog: false });
     console.log("handleCloseDialog");
-    console.log("Lat : ", this.state.lat);
-    console.log("Lng : ", this.state.lng);
-    console.log("North : ", this.state.north);
-    console.log("South : ", this.state.south);
-    console.log("East : ", this.state.east);
-    console.log("West : ", this.state.west);
   };
 
   render() {
@@ -301,8 +346,7 @@ class CreateLand extends Component {
                       onClose={this.handleClose}
                     >
                       <Alert onClose={this.handleClose} severity="success">
-                        Land Created successfully. Owner:{" "}
-                        {this.state.CurrentOwner}
+                        {this.state.success}
                       </Alert>
                     </Snackbar>
 
@@ -419,7 +463,11 @@ class CreateLand extends Component {
               <ButtonCore onClick={this.handleCloseDialog} color="primary">
                 Cancel
               </ButtonCore>
-              <ButtonCore onClick={this.addPolylineData} variant="contained" color="secondary">
+              <ButtonCore
+                onClick={this.addPolylineData}
+                variant="contained"
+                color="secondary"
+              >
                 Add Polyline Data
               </ButtonCore>
             </DialogActions>
