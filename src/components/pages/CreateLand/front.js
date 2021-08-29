@@ -8,6 +8,14 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import ipfs from "../../../ipfs";
 
+import ButtonCore from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -17,6 +25,8 @@ class CreateLand extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleCloseDialog = this.handleCloseDialog.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
     this.state = {
       account: "",
       id: "",
@@ -33,6 +43,7 @@ class CreateLand extends Component {
       errori: "",
       buffer: null,
       fileImage: "images/svg-8.svg",
+      openDialog: false,
     };
   }
 
@@ -67,21 +78,23 @@ class CreateLand extends Component {
       console.log("measurement: " + this.state.measurement);
       console.log("landType: " + this.state.landType);
 
-      await landCon.methods
-        .Registration(
-          this.state.state,
-          this.state.district,
-          this.state.village,
-          this.state.surveyNumber,
-          this.state.CurrentOwner,
-          this.state.marketValue,
-          this.state.id,
-          this.state.measurement,
-          hash,
-          this.state.landType,
-          this.state.account
-        )
-        .send({ from: this.state.account });
+      // await landCon.methods
+      //   .Registration(
+      //     this.state.state,
+      //     this.state.district,
+      //     this.state.village,
+      //     this.state.surveyNumber,
+      //     this.state.CurrentOwner,
+      //     this.state.marketValue,
+      //     this.state.id,
+      //     this.state.measurement,
+      //     hash,
+      //     this.state.landType,
+      //     this.state.account
+      //   )
+      //   .send({ from: this.state.account });
+
+      this.setState({ openDialog: true });
 
       this.setState({ open: true });
     } catch (e) {
@@ -131,6 +144,14 @@ class CreateLand extends Component {
     this.setState({ open: false });
     this.setState({ openi: false });
   }
+
+  handleClickOpen = () => {
+    this.setState({ openDialog: true });
+  };
+
+  handleCloseDialog = () => {
+    this.setState({ openDialog: false });
+  };
 
   render() {
     return (
@@ -295,6 +316,43 @@ class CreateLand extends Component {
               </div>
             </div>
           </div>
+        </div>
+
+        <div>
+          <ButtonCore variant="outlined" color="primary" onClick={this.handleClickOpen}>
+            Open form dialog
+          </ButtonCore>
+          <Dialog
+            open={this.state.openDialog}
+            onClose={this.handleCloseDialog}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                To subscribe to this website, please enter your email address
+                here. We will send updates occasionally.
+              </DialogContentText>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="id"
+                label="Land ID"
+                type="number"
+                value={this.state.id}
+                disabled={true}
+                fullWidth
+              />
+            </DialogContent>
+            <DialogActions>
+              <ButtonCore onClick={this.handleCloseDialog} color="primary">
+                Cancel
+              </ButtonCore>
+              <ButtonCore onClick={this.handleCloseDialog} color="primary">
+                Subscribe
+              </ButtonCore>
+            </DialogActions>
+          </Dialog>
         </div>
       </div>
     );
