@@ -257,12 +257,33 @@ class CreateLand extends Component {
                   <div className="input-areas">
                     <form>
                       <input
+                        autoFocus
                         style={{ width: "530px" }}
                         className="footer-input"
                         name="CurrentOwner"
                         type="text"
                         placeholder="Owner Address"
                         value={this.state.CurrentOwner}
+                        onChange={this.handleChange}
+                      />
+
+                       <input
+                        style={{ width: "530px" }}
+                        className="footer-input"
+                        name="ownerName"
+                        type="text"
+                        placeholder="Name Owner"
+                        value={this.state.ownerName}
+                        onChange={this.handleChange}
+                      />
+
+                       <input
+                        style={{ width: "530px" }}
+                        className="footer-input"
+                        name="previousOwner"
+                        type="text"
+                        placeholder="Previous Owner Address"
+                        value={this.state.previousOwner}
                         onChange={this.handleChange}
                       />
 
@@ -295,13 +316,24 @@ class CreateLand extends Component {
 
                       <input
                         className="footer-input"
-                        name="surveyNumber"
+                        name="khataNumber"
                         type="number"
                         min="1"
-                        placeholder="Survey Number"
-                        value={this.state.surveyNumber}
+                        placeholder="Khata Number"
+                        value={this.state.khataNumber}
                         onChange={this.handleChange}
                       />
+
+                       <input
+                        className="footer-input"
+                        name="khatooniNumber"
+                        type="number"
+                        min="1"
+                        placeholder="khatooni Number"
+                        value={this.state.khatooniNumber}
+                        onChange={this.handleChange}
+                      />
+
 
                       <input
                         className="footer-input"
@@ -315,11 +347,21 @@ class CreateLand extends Component {
 
                       <input
                         className="footer-input"
-                        name="measurement"
+                        name="squareFoots"
                         type="number"
                         min="1"
-                        placeholder="Measurements"
-                        value={this.state.measurement}
+                        placeholder="Square Foots"
+                        value={this.state.squareFoots}
+                        onChange={this.handleChange}
+                      />
+
+                      <input
+                        className="footer-input"
+                        name="inches"
+                        type="number"
+                        min="1"
+                        placeholder="Inches"
+                        value={this.state.inches}
                         onChange={this.handleChange}
                       />
 
