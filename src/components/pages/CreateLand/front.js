@@ -347,6 +347,60 @@ class CreateLand extends Component {
                 disabled={true}
                 fullWidth
               />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="lat"
+                label="Latitude"
+                type="number"
+                value={this.state.lat}
+                fullWidth
+              />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="lng"
+                label="Longitude"
+                type="number"
+                value={this.state.lng}
+                fullWidth
+              />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="north"
+                label="North"
+                type="number"
+                value={this.state.north}
+                fullWidth
+              />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="south"
+                label="South"
+                type="number"
+                value={this.state.south}
+                fullWidth
+              />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="east"
+                label="East"
+                type="number"
+                value={this.state.east}
+                fullWidth
+              />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="west"
+                label="West"
+                type="number"
+                value={this.state.west}
+                fullWidth
+              />
             </DialogContent>
             <DialogActions>
               <ButtonCore onClick={this.handleCloseDialog} color="primary">
