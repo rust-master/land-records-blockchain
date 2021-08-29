@@ -34,6 +34,7 @@ contract Auth {
         notAdmin
         returns (bool)
     {
+        require(user[_address].addr == msg.sender);
         if (
             keccak256(abi.encodePacked(user[_address].password)) ==
             keccak256(abi.encodePacked(_password))
@@ -55,6 +56,7 @@ contract Auth {
             string memory
         )
     {
+        require(user[_address].addr == msg.sender);
         return (
             user[_address].isUserLoggedIn,
             user[_address].ipfsImageHash,
@@ -64,10 +66,12 @@ contract Auth {
 
     // logout the user
     function logoutUser(address _address) public notAdmin {
+        require(user[_address].addr == msg.sender);
         user[_address].isUserLoggedIn = false;
     }
 
     function getUserBalance(address _address) public notAdmin returns (uint256) {
+        require(user[_address].addr == msg.sender);
         return (user[_address].addr.balance);
     }
 
@@ -76,6 +80,7 @@ contract Auth {
         address _address,
         string memory _ipfsImageHash
     ) public notAdmin returns (bool) {
+        require(user[_address].addr == msg.sender);
         user[_address].ipfsImageHash = _ipfsImageHash;
         return true;
     }
@@ -85,6 +90,7 @@ contract Auth {
         notAdmin
         returns (string memory)
     {
+        require(user[_address].addr == msg.sender);
         return user[_address].ipfsImageHash;
     }
 
