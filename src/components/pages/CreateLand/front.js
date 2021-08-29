@@ -319,7 +319,11 @@ class CreateLand extends Component {
         </div>
 
         <div>
-          <ButtonCore variant="outlined" color="primary" onClick={this.handleClickOpen}>
+          <ButtonCore
+            variant="outlined"
+            color="primary"
+            onClick={this.handleClickOpen}
+          >
             Open form dialog
           </ButtonCore>
           <Dialog
@@ -327,11 +331,11 @@ class CreateLand extends Component {
             onClose={this.handleCloseDialog}
             aria-labelledby="form-dialog-title"
           >
-            <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+            <DialogTitle id="form-dialog-title">Add Polyline Data</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                To subscribe to this website, please enter your email address
-                here. We will send updates occasionally.
+                Add latitude and longitude points to the polyline and bounds of
+                land north, south, east, west
               </DialogContentText>
               <TextField
                 autoFocus
