@@ -44,6 +44,12 @@ class CreateLand extends Component {
       buffer: null,
       fileImage: "images/svg-8.svg",
       openDialog: false,
+      lat: "",
+      lng: "",
+      north: "",
+      south: "",
+      east: "",
+      west: "",
     };
   }
 
@@ -151,6 +157,14 @@ class CreateLand extends Component {
 
   handleCloseDialog = () => {
     this.setState({ openDialog: false });
+    console.log("handleCloseDialog");
+    console.log("Lat : ", this.state.lat);
+    console.log("Lng : ", this.state.lng);
+    console.log("North : ", this.state.north);
+    console.log("South : ", this.state.south);
+    console.log("East : ", this.state.east);
+    console.log("West : ", this.state.west);
+    
   };
 
   render() {
@@ -338,9 +352,8 @@ class CreateLand extends Component {
                 land north, south, east, west
               </DialogContentText>
               <TextField
-                autoFocus
                 margin="dense"
-                id="id"
+                name="id"
                 label="Land ID"
                 type="number"
                 value={this.state.id}
@@ -350,55 +363,57 @@ class CreateLand extends Component {
               <TextField
                 autoFocus
                 margin="dense"
-                id="lat"
+                name="lat"
                 label="Latitude"
                 type="number"
                 value={this.state.lat}
+                onChange={this.handleChange}
                 fullWidth
               />
               <TextField
-                autoFocus
                 margin="dense"
-                id="lng"
+                name="lng"
                 label="Longitude"
                 type="number"
                 value={this.state.lng}
+                onChange={this.handleChange}
                 fullWidth
               />
               <TextField
                 autoFocus
                 margin="dense"
-                id="north"
+                name="north"
                 label="North"
                 type="number"
                 value={this.state.north}
+                onChange={this.handleChange}
                 fullWidth
               />
               <TextField
-                autoFocus
                 margin="dense"
-                id="south"
+                name="south"
                 label="South"
                 type="number"
                 value={this.state.south}
+                onChange={this.handleChange}
                 fullWidth
               />
               <TextField
-                autoFocus
                 margin="dense"
-                id="east"
+                name="east"
                 label="East"
                 type="number"
                 value={this.state.east}
+                onChange={this.handleChange}
                 fullWidth
               />
               <TextField
-                autoFocus
                 margin="dense"
-                id="west"
+                name="west"
                 label="West"
                 type="number"
                 value={this.state.west}
+                onChange={this.handleChange}
                 fullWidth
               />
             </DialogContent>
@@ -407,7 +422,7 @@ class CreateLand extends Component {
                 Cancel
               </ButtonCore>
               <ButtonCore onClick={this.handleCloseDialog} color="primary">
-                Subscribe
+                Add Polyline Data
               </ButtonCore>
             </DialogActions>
           </Dialog>
