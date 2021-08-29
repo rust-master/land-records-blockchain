@@ -85,21 +85,21 @@ class CreateLand extends Component {
       console.log("measurement: " + this.state.measurement);
       console.log("landType: " + this.state.landType);
 
-      // await landCon.methods
-      //   .Registration(
-      //     this.state.state,
-      //     this.state.district,
-      //     this.state.village,
-      //     this.state.surveyNumber,
-      //     this.state.CurrentOwner,
-      //     this.state.marketValue,
-      //     this.state.id,
-      //     this.state.measurement,
-      //     hash,
-      //     this.state.landType,
-      //     this.state.account
-      //   )
-      //   .send({ from: this.state.account });
+      await landCon.methods
+        .Registration(
+          this.state.state,
+          this.state.district,
+          this.state.village,
+          this.state.surveyNumber,
+          this.state.CurrentOwner,
+          this.state.marketValue,
+          this.state.id,
+          this.state.measurement,
+          hash,
+          this.state.landType,
+          this.state.account
+        )
+        .send({ from: this.state.account });
 
       this.setState({ openDialog: true });
       this.setState({ open: true });
@@ -177,8 +177,20 @@ class CreateLand extends Component {
         console.log("East : ", this.state.east);
         console.log("West : ", this.state.west);
 
+        await landCon.methods
+        .registerLandPolyline(
+          this.state.lat,
+          this.state.lng,
+          this.state.north,
+          this.state.south,
+          this.state.east,
+          this.state.west,
+          this.state.id
+        )
+        .send({ from: this.state.account });
+
         this.setState({ open: true });
-        this.setState({ success: "Poliline Data Added Successfuly" });
+        this.setState({ success: "Polyline Data Added Successfuly" });
       } catch (e) {
         this.setState({ openi: true });
         this.setState({ errori: e.toString() });
