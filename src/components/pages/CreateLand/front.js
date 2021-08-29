@@ -27,6 +27,7 @@ class CreateLand extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleCloseDialog = this.handleCloseDialog.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.addPolylineData = this.addPolylineData.bind(this);
     this.state = {
       account: "",
       id: "",
