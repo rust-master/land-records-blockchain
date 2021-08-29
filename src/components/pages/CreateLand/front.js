@@ -59,68 +59,92 @@ class CreateLand extends Component {
   }
 
   async addData(hash) {
-    try {
-      const web3 = window.web3;
-
-      const webeProvider = new Web3(
-        Web3.givenProvider || "http://localhost:7545"
-      );
-      const accounts = await webeProvider.eth.getAccounts();
-      this.setState({ account: accounts[0] });
-      console.log("Account: " + this.state.account);
-
-      const netId = await web3.eth.net.getId();
-      const deployedNetwork = contract.networks[netId];
-
-      console.log(deployedNetwork.address);
-
-      const landCon = new web3.eth.Contract(
-        contract.abi,
-        deployedNetwork.address
-      );
-
-      console.log("CurrentOwner: " + this.state.CurrentOwner);
-      console.log("ownerName: " + this.state.ownerName);
-      console.log("state: " + this.state.state);
-      console.log("district: " + this.state.district);
-      console.log("village: " + this.state.village);
-      console.log("khataNumber: " + this.state.khataNumber);
-      console.log("khatooniNumber: " + this.state.khatooniNumber);
-      console.log("id: " + this.state.id);
-      console.log("marketValue: " + this.state.marketValue);
-      console.log("squareFoots: " + this.state.squareFoots);
-      console.log("inches: " + this.state.inches);
-      console.log("landType: " + this.state.landType);
-
-      await landCon.methods
-        .Registration(
-          this.state.state,
-          this.state.district,
-          this.state.village,
-          this.state.khataNumber,
-          this.state.khatooniNumber,
-          this.state.CurrentOwner,
-          this.state.ownerName,
-          this.state.previousOwner,
-          this.state.marketValue,
-          this.state.id,
-          this.state.squareFoots,
-          this.state.inches,
-          hash,
-          this.state.landType,
-          this.state.account
-        )
-        .send({ from: this.state.account });
-
-      this.setState({ openDialog: true });
-      this.setState({ open: true });
+    // check conditon for all the fields
+    if (
+      this.state.id === "" ||
+      this.state.state === "" ||
+      this.state.district === "" ||
+      this.state.village === "" ||
+      this.state.khataNumber === "" ||
+      this.state.khatooniNumber === "" ||
+      this.state.CurrentOwner === "" ||
+      this.state.ownerName === "" ||
+      this.state.previousOwner === "" ||
+      this.state.marketValue === "" ||
+      this.state.squareFoots === "" ||
+      this.state.inches === "" ||
+      this.state.landType === "" ||
+      hash === ""
+    ) {
       this.setState({
-        success: "Land Created successfully. Owner " + this.state.CurrentOwner,
+        openi: true,
+        errori: "Please fill all the fields",
       });
-    } catch (e) {
-      this.setState({ openi: true });
-      this.setState({ errori: e.toString() });
-      console.log("Error : ", e.toString());
+    } else {
+      try {
+        const web3 = window.web3;
+
+        const webeProvider = new Web3(
+          Web3.givenProvider || "http://localhost:7545"
+        );
+        const accounts = await webeProvider.eth.getAccounts();
+        this.setState({ account: accounts[0] });
+        console.log("Account: " + this.state.account);
+
+        const netId = await web3.eth.net.getId();
+        const deployedNetwork = contract.networks[netId];
+
+        console.log(deployedNetwork.address);
+
+        const landCon = new web3.eth.Contract(
+          contract.abi,
+          deployedNetwork.address
+        );
+
+        console.log("CurrentOwner: " + this.state.CurrentOwner);
+        console.log("ownerName: " + this.state.ownerName);
+        console.log("state: " + this.state.state);
+        console.log("district: " + this.state.district);
+        console.log("village: " + this.state.village);
+        console.log("khataNumber: " + this.state.khataNumber);
+        console.log("khatooniNumber: " + this.state.khatooniNumber);
+        console.log("id: " + this.state.id);
+        console.log("marketValue: " + this.state.marketValue);
+        console.log("squareFoots: " + this.state.squareFoots);
+        console.log("inches: " + this.state.inches);
+        console.log("landType: " + this.state.landType);
+
+        await landCon.methods
+          .Registration(
+            this.state.state,
+            this.state.district,
+            this.state.village,
+            this.state.khataNumber,
+            this.state.khatooniNumber,
+            this.state.CurrentOwner,
+            this.state.ownerName,
+            this.state.previousOwner,
+            this.state.marketValue,
+            this.state.id,
+            this.state.squareFoots,
+            this.state.inches,
+            hash,
+            this.state.landType,
+            this.state.account
+          )
+          .send({ from: this.state.account });
+
+        this.setState({ openDialog: true });
+        this.setState({ open: true });
+        this.setState({
+          success:
+            "Land Created successfully. Owner " + this.state.CurrentOwner,
+        });
+      } catch (e) {
+        this.setState({ openi: true });
+        this.setState({ errori: e.toString() });
+        console.log("Error : ", e.toString());
+      }
     }
   }
 
@@ -188,17 +212,17 @@ class CreateLand extends Component {
         console.log("East : ", this.state.east);
         console.log("West : ", this.state.west);
 
-        await landCon.methods
-        .registerLandPolyline(
-          this.state.lat,
-          this.state.lng,
-          this.state.north,
-          this.state.south,
-          this.state.east,
-          this.state.west,
-          this.state.id
-        )
-        .send({ from: this.state.account });
+        // await landCon.methods
+        // .registerLandPolyline(
+        //   this.state.lat,
+        //   this.state.lng,
+        //   this.state.north,
+        //   this.state.south,
+        //   this.state.east,
+        //   this.state.west,
+        //   this.state.id
+        // )
+        // .send({ from: this.state.account });
 
         this.setState({ open: true });
         this.setState({ success: "Polyline Data Added Successfuly" });
@@ -267,7 +291,7 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
-                       <input
+                      <input
                         style={{ width: "530px" }}
                         className="footer-input"
                         name="ownerName"
@@ -277,7 +301,7 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
-                       <input
+                      <input
                         style={{ width: "530px" }}
                         className="footer-input"
                         name="previousOwner"
@@ -324,7 +348,7 @@ class CreateLand extends Component {
                         onChange={this.handleChange}
                       />
 
-                       <input
+                      <input
                         className="footer-input"
                         name="khatooniNumber"
                         type="number"
@@ -333,7 +357,6 @@ class CreateLand extends Component {
                         value={this.state.khatooniNumber}
                         onChange={this.handleChange}
                       />
-
 
                       <input
                         className="footer-input"
