@@ -164,7 +164,6 @@ class CreateLand extends Component {
     console.log("South : ", this.state.south);
     console.log("East : ", this.state.east);
     console.log("West : ", this.state.west);
-    
   };
 
   render() {
@@ -380,7 +379,6 @@ class CreateLand extends Component {
                 fullWidth
               />
               <TextField
-                autoFocus
                 margin="dense"
                 name="north"
                 label="North"
