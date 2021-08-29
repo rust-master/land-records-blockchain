@@ -48,7 +48,7 @@ contract Auth {
     // check the user logged In or not
     function checkIsUserLogged(address _address)
         public
-        view
+        notAdmin
         returns (
             bool,
             string memory,
@@ -63,11 +63,11 @@ contract Auth {
     }
 
     // logout the user
-    function logoutUser(address _address) public {
+    function logoutUser(address _address) public notAdmin {
         user[_address].isUserLoggedIn = false;
     }
 
-    function getUserBalance(address _address) public view returns (uint256) {
+    function getUserBalance(address _address) public notAdmin returns (uint256) {
         return (user[_address].addr.balance);
     }
 
@@ -75,14 +75,14 @@ contract Auth {
     function setUserIpfsImageHash(
         address _address,
         string memory _ipfsImageHash
-    ) public returns (bool) {
+    ) public notAdmin returns (bool) {
         user[_address].ipfsImageHash = _ipfsImageHash;
         return true;
     }
 
     function getUserIpfsImageHash(address _address)
         public
-        view
+        notAdmin
         returns (string memory)
     {
         return user[_address].ipfsImageHash;
