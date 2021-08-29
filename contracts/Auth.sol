@@ -31,6 +31,7 @@ contract Auth {
     // user login function
     function loginUser(address _address, string memory _password)
         public
+        notAdmin
         returns (bool)
     {
         if (
@@ -129,6 +130,7 @@ contract Auth {
     // admin login function
     function loginAdmin(address _address, string memory _password)
         public
+        onlyAdmin
         returns (bool)
     {
         if (
@@ -145,7 +147,7 @@ contract Auth {
     // check the admin logged In or not
     function checkIsAdminLogged(address _address)
         public
-        view
+        onlyAdmin
         returns (
             bool,
             string memory,
@@ -160,11 +162,11 @@ contract Auth {
     }
 
     // logout the admin
-    function logoutAdmin(address _address) public {
+    function logoutAdmin(address _address) public onlyAdmin {
         admin[_address].isAdminLoggedIn = false;
     }
 
-    function getAdminBalance(address _address) public view returns (uint256) {
+    function getAdminBalance(address _address) public onlyAdmin returns (uint256) {
         return (admin[_address].adminAddress.balance);
     }
 
@@ -172,14 +174,14 @@ contract Auth {
     function setAdminIpfsImageHash(
         address _address,
         string memory _ipfsImageHash
-    ) public returns (bool) {
+    ) public onlyAdmin returns (bool) {
         admin[_address].ipfsImageHash = _ipfsImageHash;
         return true;
     }
 
     function getAdminIpfsImageHash(address _address)
         public
-        view
+        onlyAdmin
         returns (string memory)
     {
         return admin[_address].ipfsImageHash;
