@@ -33,10 +33,14 @@ class CreateLand extends Component {
       state: "",
       district: "",
       village: "",
-      surveyNumber: "",
+      khataNumber: "",
+      khatooniNumber: "",
       CurrentOwner: "",
+      ownerName: "",
+      previousOwner: "",
       marketValue: "",
-      measurement: "",
+      squareFoots: "",
+      inches: "",
       landType: "",
       open: false,
       success: "",
@@ -76,13 +80,16 @@ class CreateLand extends Component {
       );
 
       console.log("CurrentOwner: " + this.state.CurrentOwner);
+      console.log("ownerName: " + this.state.ownerName);
       console.log("state: " + this.state.state);
       console.log("district: " + this.state.district);
       console.log("village: " + this.state.village);
-      console.log("surveyNumber: " + this.state.surveyNumber);
+      console.log("khataNumber: " + this.state.khataNumber);
+      console.log("khatooniNumber: " + this.state.khatooniNumber);
       console.log("id: " + this.state.id);
       console.log("marketValue: " + this.state.marketValue);
-      console.log("measurement: " + this.state.measurement);
+      console.log("squareFoots: " + this.state.squareFoots);
+      console.log("inches: " + this.state.inches);
       console.log("landType: " + this.state.landType);
 
       await landCon.methods
@@ -90,11 +97,15 @@ class CreateLand extends Component {
           this.state.state,
           this.state.district,
           this.state.village,
-          this.state.surveyNumber,
+          this.state.khataNumber,
+          this.state.khatooniNumber,
           this.state.CurrentOwner,
+          this.state.ownerName,
+          this.state.previousOwner,
           this.state.marketValue,
           this.state.id,
-          this.state.measurement,
+          this.state.squareFoots,
+          this.state.inches,
           hash,
           this.state.landType,
           this.state.account
