@@ -419,7 +419,7 @@ class CreateLand extends Component {
               <ButtonCore onClick={this.handleCloseDialog} color="primary">
                 Cancel
               </ButtonCore>
-              <ButtonCore onClick={this.handleCloseDialog} color="primary">
+              <ButtonCore onClick={this.addPolylineData} variant="contained" color="secondary">
                 Add Polyline Data
               </ButtonCore>
             </DialogActions>
