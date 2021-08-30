@@ -70,7 +70,11 @@ contract Auth {
         user[_address].isUserLoggedIn = false;
     }
 
-    function getUserBalance(address _address) public notAdmin returns (uint256) {
+    function getUserBalance(address _address)
+        public
+        notAdmin
+        returns (uint256)
+    {
         require(user[_address].addr == msg.sender);
         return (user[_address].addr.balance);
     }
@@ -172,7 +176,11 @@ contract Auth {
         admin[_address].isAdminLoggedIn = false;
     }
 
-    function getAdminBalance(address _address) public onlyAdmin returns (uint256) {
+    function getAdminBalance(address _address)
+        public
+        onlyAdmin
+        returns (uint256)
+    {
         return (admin[_address].adminAddress.balance);
     }
 
