@@ -69,7 +69,6 @@ class UserSignIn extends Component {
       console.log(cookies.get("Username"));
       window.location = "/";
     } else {
-
       cookies.remove("checkIsUser");
       cookies.remove("Username");
 
