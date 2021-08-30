@@ -214,16 +214,16 @@ class CreateLand extends Component {
         console.log("West : ", this.state.west);
 
         await landCon.methods
-        .registerLandPolyline(
-          this.state.lat,
-          this.state.lng,
-          this.state.north,
-          this.state.south,
-          this.state.east,
-          this.state.west,
-          this.state.id
-        )
-        .send({ from: this.state.account });
+          .registerLandPolyline(
+            this.state.lat,
+            this.state.lng,
+            this.state.north,
+            this.state.south,
+            this.state.east,
+            this.state.west,
+            this.state.id
+          )
+          .send({ from: this.state.account });
 
         this.setState({ open: true });
         this.setState({ success: "Polyline Data Added Successfuly" });
