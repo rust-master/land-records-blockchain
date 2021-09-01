@@ -28659,12 +28659,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x4A1DB28632CeB81e77eFCcD862585B728613739c",
-      "transactionHash": "0x09f30a232e73a9b9f207582281a00dd3a1aea4fb5557726ffc5f54ac2d8f279e"
+      "address": "0x842f8f12C0480F64BFa57704bAe59f5AD9D68f2C",
+      "transactionHash": "0x2ef57c852bec855e3812c2a75801d32d067eda5707e997a9fad9a5072f47da43"
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-09-01T08:24:00.264Z",
+  "updatedAt": "2021-09-01T08:25:20.259Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
