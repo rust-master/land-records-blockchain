@@ -156,6 +156,8 @@ class ShowAllLands extends Component {
     });
   }
 
+  async viewDetails(index) {}
+
   render() {
     const { classes } = this.props;
 
@@ -279,7 +281,6 @@ class ShowAllLands extends Component {
                     View Detail
                   </Button>
                 </span>
-
               </CardContent>
               {/* </CardActionArea> */}
             </Card>
