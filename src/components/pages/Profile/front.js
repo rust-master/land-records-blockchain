@@ -6,7 +6,6 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
-import fire from "../fire";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -37,46 +36,46 @@ class Profile extends Component {
   }
 
   loadFirebaseData() {
-    try {
-      const uid = fire.auth().currentUser.uid;
-      const database = fire.database();
-      const ref = database.ref("users").child(uid);
-      ref.on("value", (snapshot) => {
-        console.log("FireB ", snapshot);
-        if (snapshot && snapshot.exists()) {
-          this.setState({ name: snapshot.val().name });
-          this.setState({ email: snapshot.val().email });
-          this.setState({ password: snapshot.val().password });
-          this.setState({ profileImage: snapshot.val().profileLink });
-        }
-      });
-    } catch (e) {
-      console.log("Exception: " + e);
-    }
+    // try {
+    //   const uid = fire.auth().currentUser.uid;
+    //   const database = fire.database();
+    //   const ref = database.ref("users").child(uid);
+    //   ref.on("value", (snapshot) => {
+    //     console.log("FireB ", snapshot);
+    //     if (snapshot && snapshot.exists()) {
+    //       this.setState({ name: snapshot.val().name });
+    //       this.setState({ email: snapshot.val().email });
+    //       this.setState({ password: snapshot.val().password });
+    //       this.setState({ profileImage: snapshot.val().profileLink });
+    //     }
+    //   });
+    // } catch (e) {
+    //   console.log("Exception: " + e);
+    // }
   }
 
   changeProfile(e) {
     e.preventDefault();
-    try {
-      this.handleUpload();
-      if (navigator.onLine) {
-        const uid = fire.auth().currentUser.uid;
-        const database = fire.database();
-        const ref = database.ref("users").child(uid);
-        ref.update({ name: this.state.name });
+    // try {
+    //   this.handleUpload();
+    //   if (navigator.onLine) {
+    //     const uid = fire.auth().currentUser.uid;
+    //     const database = fire.database();
+    //     const ref = database.ref("users").child(uid);
+    //     ref.update({ name: this.state.name });
 
-        this.setState({ open: true });
-      } else {
-        this.setState({ openi: true });
-        this.setState({
-          errori: "Network not connected. Please connect internet!",
-        });
-      }
-    } catch (e) {
-      this.setState({ openi: true });
-      this.setState({ errori: e.toString() });
-      console.log("Exception: " + e);
-    }
+    //     this.setState({ open: true });
+    //   } else {
+    //     this.setState({ openi: true });
+    //     this.setState({
+    //       errori: "Network not connected. Please connect internet!",
+    //     });
+    //   }
+    // } catch (e) {
+    //   this.setState({ openi: true });
+    //   this.setState({ errori: e.toString() });
+    //   console.log("Exception: " + e);
+    // }
   }
 
   handleChange(e) {
@@ -101,61 +100,61 @@ class Profile extends Component {
   }
 
   handleRender = () => {
-    try {
-      const uid = fire.auth().currentUser.uid;
-      const database = fire.database();
-      const ref = database.ref("users").child(uid);
+    // try {
+    //   const uid = fire.auth().currentUser.uid;
+    //   const database = fire.database();
+    //   const ref = database.ref("users").child(uid);
 
-      console.log("downloadURL " + this.state.imageUrl);
-      ref.update({ profileLink: this.state.imageUrl });
-    } catch (e) {
-      // this.setState({ openi: true });
-      // this.setState({ errori: e.toString() });
-      console.log("Exception: " + e);
-    }
+    //   console.log("downloadURL " + this.state.imageUrl);
+    //   ref.update({ profileLink: this.state.imageUrl });
+    // } catch (e) {
+    //   // this.setState({ openi: true });
+    //   // this.setState({ errori: e.toString() });
+    //   console.log("Exception: " + e);
+    // }
   };
 
   handleUpload = () => {
     console.log(this.state.image);
     let file = this.state.image;
-    var storage = fire.storage();
-    var storageRef = storage.ref();
-    var uploadTask = storageRef.child("profiles/" + file.name).put(file);
+    // var storage = fire.storage();
+    // var storageRef = storage.ref();
+    // var uploadTask = storageRef.child("profiles/" + file.name).put(file);
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // file upload progress report
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        this.setState({ progress: progress });
-        console.log("Progress" + this.state.progress);
-      },
-      (error) => {
-        // file upload failed
-        console.log(error);
-      },
-      () => {
-        // file upload completed
-        storage
-          .ref(`profiles`)
-          .child(file.name)
-          .getDownloadURL()
-          .then(
-            (url) => {
-              // got download URL
-              this.setState({ imageUrl: url });
-              console.log("url : " + url);
-              this.handleRender();
-            },
-            (error) => {
-              // failed to get download URL
-              console.log(error);
-            }
-          );
-      }
-    );
+    // uploadTask.on(
+    //   "state_changed",
+    //   (snapshot) => {
+    //     // file upload progress report
+    //     const progress = Math.round(
+    //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    //     );
+    //     this.setState({ progress: progress });
+    //     console.log("Progress" + this.state.progress);
+    //   },
+    //   (error) => {
+    //     // file upload failed
+    //     console.log(error);
+    //   },
+    //   () => {
+    //     // file upload completed
+    //     storage
+    //       .ref(`profiles`)
+    //       .child(file.name)
+    //       .getDownloadURL()
+    //       .then(
+    //         (url) => {
+    //           // got download URL
+    //           this.setState({ imageUrl: url });
+    //           console.log("url : " + url);
+    //           this.handleRender();
+    //         },
+    //         (error) => {
+    //           // failed to get download URL
+    //           console.log(error);
+    //         }
+    //       );
+    //   }
+    //);
   };
 
   render() {
