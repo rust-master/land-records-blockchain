@@ -207,13 +207,13 @@ class ShowAllLands extends Component {
       .remainingMoreDetail(index)
       .call({ from: this.state.account });
 
-    this.setState({lat: detailMap[0]});
-    this.setState({lng: detailMap[1]});
-    this.setState({north: detailMap[2]});
-    this.setState({south: detailMap[3]});
-    this.setState({east: detailMap[4]});
-    this.setState({west: detailMap[5]});
-    this.setState({ownerName: detailMap[6]});
+    this.setState({ lat: parseFloat(detailMap[0]) });
+    this.setState({ lng: parseFloat(detailMap[1]) });
+    this.setState({ north: parseFloat(detailMap[2]) });
+    this.setState({ south: parseFloat(detailMap[3]) });
+    this.setState({ east: parseFloat(detailMap[4]) });
+    this.setState({ west: parseFloat(detailMap[5]) });
+    this.setState({ ownerName: parseFloat(detailMap[6]) });
 
     console.log("Lat: " + detailMap[0]);
     console.log("Lng: " + detailMap[1]);
@@ -386,7 +386,10 @@ class ShowAllLands extends Component {
       withScriptjs,
       withGoogleMap
     )((props) => (
-      <GoogleMap defaultZoom={14} defaultCenter={{ lat: this.state.lat , lng: this.state.lng }}>
+      <GoogleMap
+        defaultZoom={14}
+        defaultCenter={{ lat: this.state.lat, lng: this.state.lng }}
+      >
         <Rectangle bounds={bounds} />
       </GoogleMap>
     ));
@@ -417,14 +420,8 @@ class ShowAllLands extends Component {
             {ListTemplate}
 
             <div>
-              <ButtonCore
-                variant="outlined"
-                color="primary"
-                onClick={this.handleClickOpen}
-              >
-                Open form dialog
-              </ButtonCore>
               <Dialog
+              style={{width: "75%"}}
                 open={this.state.openDialog}
                 onClose={this.handleCloseDialog}
                 aria-labelledby="form-dialog-title"
@@ -432,8 +429,13 @@ class ShowAllLands extends Component {
                 <DialogTitle id="form-dialog-title">Detail of Land</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
-                    Add latitude and longitude points to the polyline and bounds
-                    of land north, south, east, west
+                    <div>Name of Land Owner: {this.state.ownerName}</div>
+                    <span>Latitude: {this.state.lat}</span>
+                    <span style={{float: "right"}}>Longitude: {this.state.lng}</span>
+                    <div>North: {this.state.north}</div>
+                    <div>South: {this.state.south}</div>
+                    <div>East: {this.state.east}</div>
+                    <div>West: {this.state.west}</div>
                   </DialogContentText>
                   <div>
                     <MyMapComponent isMarkerShown={true} />
