@@ -447,8 +447,8 @@ class ShowAllLands extends Component {
                     <span style={{float: "right"}}>Longitude: {this.state.lng}</span>
                     <div>North: {this.state.north}</div>
                     <span style={{float: "right"}}>South: {this.state.south}</span>
-                    <div>East: {this.state.east}</span>
-                    <span style={{float: "right"}}>West: {this.state.west}</div>
+                    <div>East: {this.state.east}</div>
+                    <span style={{float: "right"}}>West: {this.state.west}</span>
                   </DialogContentText>
                   <div>
                     <MyMapComponent isMarkerShown={true} />
