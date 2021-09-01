@@ -366,7 +366,11 @@ class ShowAllLands extends Component {
                   <ButtonCore
                     variant="outlined"
                     color="primary"
-                    onClick={this.viewDetails.bind(this, dataAll[index], ownersAll[index])}
+                    onClick={this.viewDetails.bind(
+                      this,
+                      dataAll[index],
+                      ownersAll[index]
+                    )}
                   >
                     View Detail
                   </ButtonCore>
@@ -441,16 +445,22 @@ class ShowAllLands extends Component {
                 <DialogTitle id="form-dialog-title">Detail of Land</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
-                  <div>Owner Address: {this.state.tempOwnerAddress}</div>
+                    <div>Owner Address: {this.state.tempOwnerAddress}</div>
                     <div>Name of Land Owner: {this.state.ownerName}</div>
                     <span>Latitude: {this.state.lat}</span>
-                    <span style={{float: "right"}}>Longitude: {this.state.lng}</span>
+                    <span style={{ float: "right" }}>
+                      Longitude: {this.state.lng}
+                    </span>
                     <br />
                     <span>North: {this.state.north}</span>
-                    <span style={{float: "right"}}>South: {this.state.south}</span>
+                    <span style={{ float: "right" }}>
+                      South: {this.state.south}
+                    </span>
                     <br />
                     <span>East: {this.state.east}</span>
-                    <span style={{float: "right"}}>West: {this.state.west}</span>
+                    <span style={{ float: "right" }}>
+                      West: {this.state.west}
+                    </span>
                     <br />
                   </DialogContentText>
                   <div>
