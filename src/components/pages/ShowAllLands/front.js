@@ -443,12 +443,12 @@ class ShowAllLands extends Component {
                   <DialogContentText>
                   <div>Owner Address: {this.state.tempOwnerAddress}</div>
                     <div>Name of Land Owner: {this.state.ownerName}</div>
-                    <span>Latitude: {this.state.lat}</span>
+                    <div>Latitude: {this.state.lat}</div>
                     <span style={{float: "right"}}>Longitude: {this.state.lng}</span>
-                    <span>North: {this.state.north}</span>
+                    <div>North: {this.state.north}</div>
                     <span style={{float: "right"}}>South: {this.state.south}</span>
-                    <span>East: {this.state.east}</span>
-                    <span style={{float: "right"}}>West: {this.state.west}</span>
+                    <div>East: {this.state.east}</span>
+                    <span style={{float: "right"}}>West: {this.state.west}</div>
                   </DialogContentText>
                   <div>
                     <MyMapComponent isMarkerShown={true} />
