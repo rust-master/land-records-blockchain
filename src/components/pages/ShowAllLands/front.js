@@ -60,6 +60,7 @@ class ShowAllLands extends Component {
       owners: [],
       marketValue: [],
       squareFoots: [],
+      inches: [],
       ipfsHash: [],
       landType: [],
       createdBy: [],
@@ -74,10 +75,10 @@ class ShowAllLands extends Component {
     this.state.district = [];
     this.state.marketValue = [];
     this.state.squareFoots = [];
+    this.state.inches = [];
     this.state.ids = [];
     this.state.ipfsHash = [];
     this.state.landType = [];
-
     this.state.village = [];
 
     const web3 = window.web3;
@@ -112,11 +113,11 @@ class ShowAllLands extends Component {
         .call({ from: this.state.account });
 
       this.state.ipfsHash.push(remainignDetail[0]);
-      this.state.landType.push(remainignDetail[1]);
-      this.state.createdBy.push(remainignDetail[2]);
+      this.state.createdBy.push(remainignDetail[1]);
+      this.state.landType.push(remainignDetail[5]);
 
       console.log("ipfsHash: " + remainignDetail[0]);
-      console.log("lat: " + remainignDetail[1]);
+      console.log("Landtype: " + remainignDetail[1]);
       console.log("createdBy: " + remainignDetail[2]);
 
       console.log("---------------------------------");
@@ -133,16 +134,17 @@ class ShowAllLands extends Component {
       this.state.district.push(detail[2]);
       this.state.village.push(detail[3]);
       this.state.marketValue.push(detail[4]);
-      this.state.squareFoots.push(detail[6]);
+      this.state.squareFoots.push(detail[5]);
+      this.state.inches.push(detail[6]);
    
 
       console.log("Owner: " + detail[0]);
       console.log("State: " + detail[1]);
       console.log("District: " + detail[2]);
       console.log("village: " + detail[3]);
-      console.log("surveyNo: " + detail[4]);
-      console.log("marketValue: " + detail[5]);
-      console.log("squareFoots: " + detail[6]);
+      console.log("marketValue: " + detail[4]);
+      console.log("squareFoots: " + detail[5]);
+      console.log("Inches: " + detail[6]);
 
       console.log("---------------------------------");
     });
@@ -167,9 +169,10 @@ class ShowAllLands extends Component {
     const villageAll = this.state.village;
     const ownersAll = this.state.owners;
     const measureAll = this.state.squareFoots;
+    const inchesAll = this.state.inches;
     const marketValueAll = this.state.marketValue;
     const ipfsAll = this.state.ipfsHash;
-    const landTupeAll = this.state.landType;
+    const landTypeAll = this.state.landType;
     const createdByAll = this.state.createdBy;
 
     let ListTemplate;
@@ -221,7 +224,7 @@ class ShowAllLands extends Component {
                     Property ID: {dataAll[index]}
                   </span>{" "}
                   <span style={{ float: "right", color: "#EF8E19" }}>
-                    Survery No: {districtAll[index]}
+                  State: {statesAll[index]}
                   </span>
                 </Typography>
 
@@ -231,9 +234,9 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span>State: {statesAll[index]}</span>{" "}
+                  <span>District: {districtAll[index]}</span>{" "}
                   <span style={{ float: "right" }}>
-                    District: {districtAll[index]}
+                  Village/Town: {villageAll[index]}
                   </span>
                 </Typography>
 
@@ -243,9 +246,9 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span>Village/Town: {villageAll[index]}</span>{" "}
+                  <span>SquareFoots: {measureAll[index]}</span>{" "}
                   <span style={{ float: "right" }}>
-                    Measurements: {measureAll[index]}
+                   Inches: {inchesAll[index]}
                   </span>
                 </Typography>
 
@@ -255,9 +258,16 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span>Land Type: {landTupeAll[index]}</span> <span style={{ float: "right" }}>
-                  Created By: {createdByAll[index]}
-                  </span>
+                  <span>Land Type: {landTypeAll[index]}</span>
+                </Typography>
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>Created By: {createdByAll[index]}</span>
                 </Typography>
 
                 <Typography
