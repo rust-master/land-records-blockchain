@@ -158,7 +158,7 @@ contract Land {
             address,
             uint256,
             uint256,
-            string memory,
+            string memory
         )
     {
         return (
