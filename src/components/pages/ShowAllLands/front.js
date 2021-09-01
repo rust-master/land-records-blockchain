@@ -81,6 +81,13 @@ class ShowAllLands extends Component {
       createdBy: [],
       placeHolder: "Loading Records",
       openDialog: false,
+      lat: [],
+      lng: [],
+      north: [],
+      south: [],
+      east: [],
+      west: [],
+      ownerName: [],
     };
   }
 
@@ -176,6 +183,46 @@ class ShowAllLands extends Component {
 
   async viewDetails(index) {
     console.log("index: " + index);
+
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    console.log(deployedNetwork.address);
+
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    const detailMap = await landCon.methods
+      .remainingMoreDetail(index)
+      .call({ from: this.state.account });
+
+    this.setState({lat: detailMap[0]});
+    this.setState({lng: detailMap[1]});
+    this.setState({north: detailMap[2]});
+    this.setState({south: detailMap[3]});
+    this.setState({east: detailMap[4]});
+    this.setState({west: detailMap[5]});
+    this.setState({ownerName: detailMap[6]});
+
+    console.log("Lat: " + detailMap[0]);
+    console.log("Lng: " + detailMap[1]);
+    console.log("North: " + detailMap[2]);
+    console.log("South: " + detailMap[3]);
+    console.log("East: " + detailMap[4]);
+    console.log("West: " + detailMap[5]);
+    console.log("OwnerName: " + detailMap[6]);
+
     this.setState({ openDialog: true });
   }
 
@@ -322,10 +369,10 @@ class ShowAllLands extends Component {
     }
 
     const bounds = {
-      north: 30.718,
-      south: 30.708,
-      east: 73.21,
-      west: 73.19,
+      north: this.state.north,
+      south: this.state.south,
+      east: this.state.east,
+      west: this.state.west,
     };
 
     const MyMapComponent = compose(
@@ -339,7 +386,7 @@ class ShowAllLands extends Component {
       withScriptjs,
       withGoogleMap
     )((props) => (
-      <GoogleMap defaultZoom={14} defaultCenter={{ lat: 30.712, lng: 73.193 }}>
+      <GoogleMap defaultZoom={14} defaultCenter={{ lat: this.state.lat , lng: this.state.lng }}>
         <Rectangle bounds={bounds} />
       </GoogleMap>
     ));
