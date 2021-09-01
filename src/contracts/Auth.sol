@@ -111,7 +111,7 @@ contract Auth {
     address adminAddress;
 
     constructor() public {
-        adminAddress = 0xEB6ad90E42Ccd6044856c80b9D85dB0900e443E3;
+        adminAddress = msg.sender;
     }
 
     modifier onlyAdmin() {
