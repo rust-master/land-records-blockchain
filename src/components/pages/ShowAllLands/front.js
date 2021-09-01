@@ -30,33 +30,6 @@ import {
   Rectangle,
 } from "react-google-maps";
 
-
-const bounds ={
-  north: 30.718,
-  south: 30.708,
-  east:  73.210,
-  west:  73.190,
-};
-
-const MyMapComponent = compose(
-  withProps({
-    googleMapURL:
-      "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
-  }),
-  withScriptjs,
-  withGoogleMap
-)((props) => (
-  <GoogleMap defaultZoom={13} defaultCenter={{ lat: 30.712, lng: 73.193 }}>
-   
-   <Rectangle bounds={bounds} />
-     
-  </GoogleMap>
-));
-
-
 const styles = (theme) => ({
   main: {
     position: "relative",
@@ -94,7 +67,6 @@ class ShowAllLands extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseDialog = this.handleCloseDialog.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
-    this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.state = {
       allIDs: [],
       states: [],
@@ -109,7 +81,6 @@ class ShowAllLands extends Component {
       createdBy: [],
       placeHolder: "Loading Records",
       openDialog: false,
-      isMarkerShown: false,
     };
   }
 
@@ -216,12 +187,6 @@ class ShowAllLands extends Component {
   handleClickOpen = () => {
     this.setState({ openDialog: true });
   };
-
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
-  }
-
 
   render() {
     const { classes } = this.props;
@@ -356,6 +321,29 @@ class ShowAllLands extends Component {
       ListTemplate = <div> {this.state.placeHolder} </div>;
     }
 
+    const bounds = {
+      north: 30.718,
+      south: 30.708,
+      east: 73.21,
+      west: 73.19,
+    };
+
+    const MyMapComponent = compose(
+      withProps({
+        googleMapURL:
+          "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+        loadingElement: <div style={{ height: `100%` }} />,
+        containerElement: <div style={{ height: `400px` }} />,
+        mapElement: <div style={{ height: `100%` }} />,
+      }),
+      withScriptjs,
+      withGoogleMap
+    )((props) => (
+      <GoogleMap defaultZoom={14} defaultCenter={{ lat: 30.712, lng: 73.193 }}>
+        <Rectangle bounds={bounds} />
+      </GoogleMap>
+    ));
+
     return (
       <div>
         <div
@@ -401,9 +389,7 @@ class ShowAllLands extends Component {
                     of land north, south, east, west
                   </DialogContentText>
                   <div>
-                    <MyMapComponent
-                      isMarkerShown={true}
-                    />
+                    <MyMapComponent isMarkerShown={true} />
                   </div>
                 </DialogContent>
                 <DialogActions>
