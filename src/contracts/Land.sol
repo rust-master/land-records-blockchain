@@ -154,6 +154,29 @@ contract Land {
         view
         returns (
             string memory,
+            address,
+            address,
+            uint256,
+            uint256,
+            string memory,
+        )
+    {
+        return (
+            land[id].ipfsHash,
+            land[id].createByGovt,
+            land[id].CurrentOwner,
+            land[id].khataNumber,
+            land[id].khatooniNumber,
+            land[id].landType
+
+        );
+    }
+
+    function remainingMoreDetail(uint256 id)
+        public
+        view
+        returns (
+            string memory,
             string memory,
             string memory,
             string memory,
@@ -163,13 +186,13 @@ contract Land {
         )
     {
         return (
-            land[id].ipfsHash,
             land[id].lat,
             land[id].lng,
             land[id].north,
             land[id].south,
             land[id].east,
-            land[id].west
+            land[id].west,
+            land[id].ownerName
         );
     }
 
@@ -182,6 +205,7 @@ contract Land {
             string memory,
             string memory,
             uint256,
+            string memory,
             string memory
         )
     {
@@ -191,7 +215,8 @@ contract Land {
             land[id].district,
             land[id].villageTown,
             land[id].marketValue,
-            land[id].squareFoots
+            land[id].squareFoots,
+            land[id].inches
         );
     }
 

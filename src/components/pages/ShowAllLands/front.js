@@ -57,10 +57,9 @@ class ShowAllLands extends Component {
       states: [],
       district: [],
       village: [],
-      surveyNo: [],
       owners: [],
       marketValue: [],
-      measure: [],
+      squareFoots: [],
       ipfsHash: [],
       landType: [],
       createdBy: [],
@@ -74,13 +73,12 @@ class ShowAllLands extends Component {
     this.state.owners = [];
     this.state.district = [];
     this.state.marketValue = [];
-    this.state.measure = [];
+    this.state.squareFoots = [];
     this.state.ids = [];
     this.state.ipfsHash = [];
     this.state.landType = [];
 
     this.state.village = [];
-    this.state.surveyNo = [];
 
     const web3 = window.web3;
 
@@ -118,7 +116,7 @@ class ShowAllLands extends Component {
       this.state.createdBy.push(remainignDetail[2]);
 
       console.log("ipfsHash: " + remainignDetail[0]);
-      console.log("landType: " + remainignDetail[1]);
+      console.log("lat: " + remainignDetail[1]);
       console.log("createdBy: " + remainignDetail[2]);
 
       console.log("---------------------------------");
@@ -134,9 +132,8 @@ class ShowAllLands extends Component {
       this.state.states.push(detail[1]);
       this.state.district.push(detail[2]);
       this.state.village.push(detail[3]);
-      this.state.surveyNo.push(detail[4]);
-      this.state.marketValue.push(detail[5]);
-      this.state.measure.push(detail[6]);
+      this.state.marketValue.push(detail[4]);
+      this.state.squareFoots.push(detail[6]);
    
 
       console.log("Owner: " + detail[0]);
@@ -145,7 +142,7 @@ class ShowAllLands extends Component {
       console.log("village: " + detail[3]);
       console.log("surveyNo: " + detail[4]);
       console.log("marketValue: " + detail[5]);
-      console.log("Mesaurment: " + detail[6]);
+      console.log("squareFoots: " + detail[6]);
 
       console.log("---------------------------------");
     });
@@ -168,9 +165,8 @@ class ShowAllLands extends Component {
     const statesAll = this.state.states;
     const districtAll = this.state.district;
     const villageAll = this.state.village;
-    const surveyNoAll = this.state.surveyNo;
     const ownersAll = this.state.owners;
-    const measureAll = this.state.measure;
+    const measureAll = this.state.squareFoots;
     const marketValueAll = this.state.marketValue;
     const ipfsAll = this.state.ipfsHash;
     const landTupeAll = this.state.landType;
@@ -225,7 +221,7 @@ class ShowAllLands extends Component {
                     Property ID: {dataAll[index]}
                   </span>{" "}
                   <span style={{ float: "right", color: "#EF8E19" }}>
-                    Survery No: {surveyNoAll[index]}
+                    Survery No: {districtAll[index]}
                   </span>
                 </Typography>
 
