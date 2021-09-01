@@ -15,8 +15,6 @@ import logo from "../SearchProperty/home.png";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
 
-import xtype from "xtypejs";
-
 const styles = (theme) => ({
   main: {
     position: "relative",
@@ -244,7 +242,8 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span>Square Foots: {measureAll[index]}</span>{" "}
+                  <span>Square Foots: {measureAll[index]}</span>
+                  {" | "}
                   <span>Inches: {inchesAll[index]}</span>
                   <span style={{ float: "right" }}>
                     Land Type: {landTypeAll[index]}
@@ -270,6 +269,17 @@ class ShowAllLands extends Component {
                     Market Value: {marketValueAll[index]}
                   </h2>
                 </Typography>
+
+                <span style={{ float: "right", margin: "20px" }}>
+                  <Button
+                    buttonSize="btn--medium"
+                    buttonColor="blue"
+                    onClick={this.viewDetails.bind(this, dataAll[index])}
+                  >
+                    View Detail
+                  </Button>
+                </span>
+
               </CardContent>
               {/* </CardActionArea> */}
             </Card>
