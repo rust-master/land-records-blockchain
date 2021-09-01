@@ -22,6 +22,15 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import {
+  withGoogleMap,
+  withScriptjs,
+  GoogleMap,
+  Marker,
+  InfoWindow,
+  Polyline,
+} from "react-google-maps";
+import { compose, withProps } from "recompose";
 
 const styles = (theme) => ({
   main: {
@@ -181,6 +190,8 @@ class ShowAllLands extends Component {
     this.setState({ openDialog: true });
   };
 
+  
+
   render() {
     const { classes } = this.props;
 
@@ -195,6 +206,22 @@ class ShowAllLands extends Component {
     const ipfsAll = this.state.ipfsHash;
     const landTypeAll = this.state.landType;
     const createdByAll = this.state.createdBy;
+
+    const MyMapComponent = compose(
+      withProps({
+        googleMapURL:
+          "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&v=3.exp&libraries=geometry,drawing,places",
+        loadingElement: <div style={{ height: `100%` }} />,
+        containerElement: <div style={{ height: `400px` }} />,
+        mapElement: <div style={{ height: `100%` }} />
+      }),
+      withScriptjs,
+      withGoogleMap
+    )(props => (
+      <GoogleMap defaultZoom={7} defaultCenter={{ lat: -34.897, lng: 151.144 }}>
+        <Polyline path={[{ lat: -34.397, lng: 150.644 }, { lat: -35.397, lng: 151.644 }]}/>
+      </GoogleMap>
+    ));
 
     let ListTemplate;
 
@@ -301,7 +328,7 @@ class ShowAllLands extends Component {
                     color="primary"
                     onClick={this.viewDetails.bind(this, dataAll[index])}
                   >
-                   View Detail
+                    View Detail
                   </ButtonCore>
                 </span>
               </CardContent>
@@ -352,15 +379,15 @@ class ShowAllLands extends Component {
                 onClose={this.handleCloseDialog}
                 aria-labelledby="form-dialog-title"
               >
-                <DialogTitle id="form-dialog-title">
-                  Detail of Land
-                </DialogTitle>
+                <DialogTitle id="form-dialog-title">Detail of Land</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
                     Add latitude and longitude points to the polyline and bounds
                     of land north, south, east, west
                   </DialogContentText>
-
+                  <div>
+                <MyMapComponent />
+              </div>
 
                 </DialogContent>
                 <DialogActions>
