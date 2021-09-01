@@ -22,15 +22,34 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { compose, withProps } from "recompose";
 import {
-  withGoogleMap,
   withScriptjs,
+  withGoogleMap,
   GoogleMap,
   Marker,
-  InfoWindow,
-  Polyline,
 } from "react-google-maps";
-import { compose, withProps } from "recompose";
+
+const MyMapComponent = compose(
+  withProps({
+    googleMapURL:
+      "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+  }),
+  withScriptjs,
+  withGoogleMap
+)((props) => (
+  <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+    {props.isMarkerShown && (
+      <Marker
+        position={{ lat: -34.397, lng: 150.644 }}
+        onClick={props.onMarkerClick}
+      />
+    )}
+  </GoogleMap>
+));
 
 const styles = (theme) => ({
   main: {
@@ -69,6 +88,7 @@ class ShowAllLands extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseDialog = this.handleCloseDialog.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.state = {
       allIDs: [],
       states: [],
@@ -83,6 +103,7 @@ class ShowAllLands extends Component {
       createdBy: [],
       placeHolder: "Loading Records",
       openDialog: false,
+      isMarkerShown: false,
     };
   }
 
@@ -190,7 +211,11 @@ class ShowAllLands extends Component {
     this.setState({ openDialog: true });
   };
 
-  
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false })
+    this.delayedShowMarker()
+  }
+
 
   render() {
     const { classes } = this.props;
@@ -206,22 +231,6 @@ class ShowAllLands extends Component {
     const ipfsAll = this.state.ipfsHash;
     const landTypeAll = this.state.landType;
     const createdByAll = this.state.createdBy;
-
-    const MyMapComponent = compose(
-      withProps({
-        googleMapURL:
-          "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&v=3.exp&libraries=geometry,drawing,places",
-        loadingElement: <div style={{ height: `100%` }} />,
-        containerElement: <div style={{ height: `400px` }} />,
-        mapElement: <div style={{ height: `100%` }} />
-      }),
-      withScriptjs,
-      withGoogleMap
-    )(props => (
-      <GoogleMap defaultZoom={7} defaultCenter={{ lat: -34.897, lng: 151.144 }}>
-        <Polyline path={[{ lat: -34.397, lng: 150.644 }, { lat: -35.397, lng: 151.644 }]}/>
-      </GoogleMap>
-    ));
 
     let ListTemplate;
 
@@ -386,9 +395,11 @@ class ShowAllLands extends Component {
                     of land north, south, east, west
                   </DialogContentText>
                   <div>
-                <MyMapComponent />
-              </div>
-
+                    <MyMapComponent
+                      isMarkerShown={this.state.isMarkerShown}
+                      onMarkerClick={this.handleMarkerClick}
+                    />
+                  </div>
                 </DialogContent>
                 <DialogActions>
                   <ButtonCore onClick={this.handleCloseDialog} color="primary">
