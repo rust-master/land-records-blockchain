@@ -91,14 +91,14 @@ class ShowAllLands extends Component {
     console.log("Account: " + this.state.account);
 
     const netId = await web3.eth.net.getId();
-      const deployedNetwork = contract.networks[netId];
-      
-      console.log(deployedNetwork.address);
+    const deployedNetwork = contract.networks[netId];
 
-      const landCon = new web3.eth.Contract(
-        contract.abi,
-        deployedNetwork.address
-      );
+    console.log(deployedNetwork.address);
+
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
 
     const allLandsIDs = await landCon.methods
       .getAllLands()
@@ -128,7 +128,6 @@ class ShowAllLands extends Component {
         .showAllLands(this.state.allIDs[index])
         .call({ from: this.state.account });
 
-
       this.state.owners.push(detail[0]);
       this.state.states.push(detail[1]);
       this.state.district.push(detail[2]);
@@ -136,7 +135,6 @@ class ShowAllLands extends Component {
       this.state.marketValue.push(detail[4]);
       this.state.squareFoots.push(detail[5]);
       this.state.inches.push(detail[6]);
-   
 
       console.log("Owner: " + detail[0]);
       console.log("State: " + detail[1]);
@@ -223,8 +221,8 @@ class ShowAllLands extends Component {
                   <span style={{ color: "#EF8E19" }}>
                     Property ID: {dataAll[index]}
                   </span>{" "}
-                  <span style={{ float: "right", color: "#EF8E19" }}>
-                  State: {statesAll[index]}
+                  <span style={{ float: "right" }}>
+                    State: {statesAll[index]}
                   </span>
                 </Typography>
 
@@ -236,7 +234,7 @@ class ShowAllLands extends Component {
                 >
                   <span>District: {districtAll[index]}</span>{" "}
                   <span style={{ float: "right" }}>
-                  Village/Town: {villageAll[index]}
+                    Village/Town: {villageAll[index]}
                   </span>
                 </Typography>
 
@@ -246,19 +244,11 @@ class ShowAllLands extends Component {
                   component="h5"
                   className={classes.Typo1}
                 >
-                  <span>SquareFoots: {measureAll[index]}</span>{" "}
+                  <span>Square Foots: {measureAll[index]}</span>{" "}
+                  <span>Inches: {inchesAll[index]}</span>
                   <span style={{ float: "right" }}>
-                   Inches: {inchesAll[index]}
+                    Land Type: {landTypeAll[index]}
                   </span>
-                </Typography>
-
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="h5"
-                  className={classes.Typo1}
-                >
-                  <span>Land Type: {landTypeAll[index]}</span>
                 </Typography>
 
                 <Typography
