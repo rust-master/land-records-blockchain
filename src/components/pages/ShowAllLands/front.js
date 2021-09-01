@@ -81,13 +81,14 @@ class ShowAllLands extends Component {
       createdBy: [],
       placeHolder: "Loading Records",
       openDialog: false,
-      lat: [],
-      lng: [],
-      north: [],
-      south: [],
-      east: [],
-      west: [],
-      ownerName: [],
+      lat: "",
+      lng: "",
+      north: "",
+      south: "",
+      east: "",
+      west: "",
+      ownerName: "",
+      tempOwnerAddress: "",
     };
   }
 
@@ -181,8 +182,18 @@ class ShowAllLands extends Component {
     });
   }
 
-  async viewDetails(index) {
+  async viewDetails(index, tempAddress) {
     console.log("index: " + index);
+    console.log("tempAddress: " + tempAddress);
+
+    this.state.lat = "";
+    this.state.lng = "";
+    this.state.north = "";
+    this.state.south = "";
+    this.state.east = "";
+    this.state.west = "";
+    this.state.ownerName = "";
+    this.state.tempOwnerAddress = "";
 
     const web3 = window.web3;
 
@@ -213,7 +224,9 @@ class ShowAllLands extends Component {
     this.setState({ south: parseFloat(detailMap[3]) });
     this.setState({ east: parseFloat(detailMap[4]) });
     this.setState({ west: parseFloat(detailMap[5]) });
-    this.setState({ ownerName: parseFloat(detailMap[6]) });
+    this.setState({ ownerName: detailMap[6] });
+
+    this.setState({ tempOwnerAddress: tempAddress });
 
     console.log("Lat: " + detailMap[0]);
     console.log("Lng: " + detailMap[1]);
@@ -223,7 +236,7 @@ class ShowAllLands extends Component {
     console.log("West: " + detailMap[5]);
     console.log("OwnerName: " + detailMap[6]);
 
-    this.setState({ openDialog: true });
+    this.setState({ openDialog: tempAddress });
   }
 
   handleCloseDialog = () => {
@@ -353,7 +366,7 @@ class ShowAllLands extends Component {
                   <ButtonCore
                     variant="outlined"
                     color="primary"
-                    onClick={this.viewDetails.bind(this, dataAll[index])}
+                    onClick={this.viewDetails.bind(this, dataAll[index], ownersAll[index])}
                   >
                     View Detail
                   </ButtonCore>
@@ -421,7 +434,7 @@ class ShowAllLands extends Component {
 
             <div>
               <Dialog
-              style={{width: "75%"}}
+              style={{width: "800px"}}
                 open={this.state.openDialog}
                 onClose={this.handleCloseDialog}
                 aria-labelledby="form-dialog-title"
@@ -429,6 +442,7 @@ class ShowAllLands extends Component {
                 <DialogTitle id="form-dialog-title">Detail of Land</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
+                  <div>Owner Address: {this.state.tempOwnerAddress}</div>
                     <div>Name of Land Owner: {this.state.ownerName}</div>
                     <span>Latitude: {this.state.lat}</span>
                     <span style={{float: "right"}}>Longitude: {this.state.lng}</span>
