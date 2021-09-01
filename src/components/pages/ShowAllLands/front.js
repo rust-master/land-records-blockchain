@@ -434,7 +434,6 @@ class ShowAllLands extends Component {
 
             <div>
               <Dialog
-              style={{width: "800px"}}
                 open={this.state.openDialog}
                 onClose={this.handleCloseDialog}
                 aria-labelledby="form-dialog-title"
@@ -446,10 +445,10 @@ class ShowAllLands extends Component {
                     <div>Name of Land Owner: {this.state.ownerName}</div>
                     <span>Latitude: {this.state.lat}</span>
                     <span style={{float: "right"}}>Longitude: {this.state.lng}</span>
-                    <div>North: {this.state.north}</div>
-                    <div>South: {this.state.south}</div>
-                    <div>East: {this.state.east}</div>
-                    <div>West: {this.state.west}</div>
+                    <span>North: {this.state.north}</span>
+                    <span style={{float: "right"}}>South: {this.state.south}</span>
+                    <span>East: {this.state.east}</span>
+                    <span style={{float: "right"}}>West: {this.state.west}</span>
                   </DialogContentText>
                   <div>
                     <MyMapComponent isMarkerShown={true} />
