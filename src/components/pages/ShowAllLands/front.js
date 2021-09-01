@@ -296,13 +296,13 @@ class ShowAllLands extends Component {
                 </Typography>
 
                 <span style={{ float: "right", marginBottom: "20px" }}>
-                  <Button
-                    buttonSize="btn--medium"
-                    buttonColor="blue"
+                  <ButtonCore
+                    variant="outlined"
+                    color="primary"
                     onClick={this.viewDetails.bind(this, dataAll[index])}
                   >
-                    View Detail
-                  </Button>
+                   View Detail
+                  </ButtonCore>
                 </span>
               </CardContent>
               {/* </CardActionArea> */}
@@ -353,89 +353,27 @@ class ShowAllLands extends Component {
                 aria-labelledby="form-dialog-title"
               >
                 <DialogTitle id="form-dialog-title">
-                  Add Polyline Data
+                  Detail of Land
                 </DialogTitle>
                 <DialogContent>
                   <DialogContentText>
                     Add latitude and longitude points to the polyline and bounds
                     of land north, south, east, west
                   </DialogContentText>
-                  <TextField
-                    margin="dense"
-                    name="id"
-                    label="Land ID"
-                    type="number"
-                    value={this.state.id}
-                    disabled={true}
-                    fullWidth
-                  />
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    name="lat"
-                    label="Latitude"
-                    type="number"
-                    value={this.state.lat}
-                    onChange={this.handleChange}
-                    fullWidth
-                  />
-                  <TextField
-                    margin="dense"
-                    name="lng"
-                    label="Longitude"
-                    type="number"
-                    value={this.state.lng}
-                    onChange={this.handleChange}
-                    fullWidth
-                  />
-                  <TextField
-                    margin="dense"
-                    name="north"
-                    label="North"
-                    type="number"
-                    value={this.state.north}
-                    onChange={this.handleChange}
-                    fullWidth
-                  />
-                  <TextField
-                    margin="dense"
-                    name="south"
-                    label="South"
-                    type="number"
-                    value={this.state.south}
-                    onChange={this.handleChange}
-                    fullWidth
-                  />
-                  <TextField
-                    margin="dense"
-                    name="east"
-                    label="East"
-                    type="number"
-                    value={this.state.east}
-                    onChange={this.handleChange}
-                    fullWidth
-                  />
-                  <TextField
-                    margin="dense"
-                    name="west"
-                    label="West"
-                    type="number"
-                    value={this.state.west}
-                    onChange={this.handleChange}
-                    fullWidth
-                  />
+
+
                 </DialogContent>
                 <DialogActions>
                   <ButtonCore onClick={this.handleCloseDialog} color="primary">
                     Cancel
                   </ButtonCore>
-                  <ButtonCore
+                  <Button
+                    buttonSize="btn--medium"
                     onClick={this.addPolylineData}
-                    variant="contained"
-                    color="secondary"
+                    buttonColor="blue"
                   >
-                    Add Polyline Data
-                  </ButtonCore>
+                    Export PDF
+                  </Button>
                 </DialogActions>
               </Dialog>
             </div>
