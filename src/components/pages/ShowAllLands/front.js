@@ -27,8 +27,16 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker,
+  Rectangle,
 } from "react-google-maps";
+
+
+const bounds ={
+  north: 30.718,
+  south: 30.708,
+  east:  73.210,
+  west:  73.190,
+};
 
 const MyMapComponent = compose(
   withProps({
@@ -41,15 +49,13 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )((props) => (
-  <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
-    {props.isMarkerShown && (
-      <Marker
-        position={{ lat: -34.397, lng: 150.644 }}
-        onClick={props.onMarkerClick}
-      />
-    )}
+  <GoogleMap defaultZoom={13} defaultCenter={{ lat: 30.712, lng: 73.193 }}>
+   
+   <Rectangle bounds={bounds} />
+     
   </GoogleMap>
 ));
+
 
 const styles = (theme) => ({
   main: {
@@ -396,8 +402,7 @@ class ShowAllLands extends Component {
                   </DialogContentText>
                   <div>
                     <MyMapComponent
-                      isMarkerShown={this.state.isMarkerShown}
-                      onMarkerClick={this.handleMarkerClick}
+                      isMarkerShown={true}
                     />
                   </div>
                 </DialogContent>
