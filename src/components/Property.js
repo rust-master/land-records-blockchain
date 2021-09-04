@@ -214,10 +214,10 @@ class Property extends Component {
               />
               <CardContent>
                 <Typography variant="h5" component="h6">
-                  khaata Number: {khaataNumberAll[index]}
+                  Khaata Number: {khaataNumberAll[index]}
                   <span style={{ float: "right" }}>
                     {" "}
-                    khaatoni Number: {khaatoniNumberAll[index]}
+                    Khaatoni Number: {khaatoniNumberAll[index]}
                   </span>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -253,11 +253,7 @@ class Property extends Component {
                 <Button
                   buttonSize="btn--wide"
                   buttonColor="blue"
-                  onClick={this.myFunction.bind(
-                    this,
-                    idsAll[index],
-                    statusAll[index]
-                  )}
+                  onClick={this.viewDetail.bind(this, idsAll[index])}
                 >
                   View Detail
                 </Button>
