@@ -17,6 +17,22 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import contract from "../build/contracts/Land.json";
 
+import ButtonCore from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
+import { compose, withProps } from "recompose";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Rectangle,
+} from "react-google-maps";
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -59,6 +75,7 @@ class Property extends Component {
       east: "",
       west: "",
       currentOwnerName: "",
+      tempownerAddress: "",
     };
   }
 
@@ -206,8 +223,6 @@ class Property extends Component {
     this.setState({ west: parseFloat(detailMap[5]) });
     this.setState({ ownerName: detailMap[6] });
 
-    
-
     console.log("Lat: " + detailMap[0]);
     console.log("Lng: " + detailMap[1]);
     console.log("North: " + detailMap[2]);
@@ -302,6 +317,7 @@ class Property extends Component {
                 </Typography> */}
                 <Typography variant="body2" color="textSecondary" component="p">
                   Current Owner: {currentOwnerAll[index]}
+                  {this.setState({ tempownerAddress: currentOwnerAll[index] })}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   State: {statesAll[index]}
@@ -354,6 +370,32 @@ class Property extends Component {
       ListTemplate = <div>Records Not Found</div>;
     }
 
+    const bounds = {
+      north: this.state.north,
+      south: this.state.south,
+      east: this.state.east,
+      west: this.state.west,
+    };
+
+    const MyMapComponent = compose(
+      withProps({
+        googleMapURL:
+          "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+        loadingElement: <div style={{ height: `100%` }} />,
+        containerElement: <div style={{ height: `400px` }} />,
+        mapElement: <div style={{ height: `100%` }} />,
+      }),
+      withScriptjs,
+      withGoogleMap
+    )((props) => (
+      <GoogleMap
+        defaultZoom={14}
+        defaultCenter={{ lat: this.state.lat, lng: this.state.lng }}
+      >
+        <Rectangle bounds={bounds} />
+      </GoogleMap>
+    ));
+
     return (
       <div>
         <div
@@ -363,6 +405,52 @@ class Property extends Component {
             <h1 className="pricing__heading">Properties</h1>
 
             {ListTemplate}
+
+            <div>
+              <Dialog
+                open={this.state.openDialog}
+                onClose={this.handleCloseDialog}
+                aria-labelledby="form-dialog-title"
+              >
+                <DialogTitle id="form-dialog-title">Detail of Land</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    <div>Owner Address: {this.state.tempownerAddress}</div>
+                    <div>Name of Land Owner: {this.state.ownerName}</div>
+                    <span>Latitude: {this.state.lat}</span>
+                    <span style={{ float: "right" }}>
+                      Longitude: {this.state.lng}
+                    </span>
+                    <br />
+                    <span>North: {this.state.north}</span>
+                    <span style={{ float: "right" }}>
+                      South: {this.state.south}
+                    </span>
+                    <br />
+                    <span>East: {this.state.east}</span>
+                    <span style={{ float: "right" }}>
+                      West: {this.state.west}
+                    </span>
+                    <br />
+                  </DialogContentText>
+                  <div>
+                    <MyMapComponent isMarkerShown={true} />
+                  </div>
+                </DialogContent>
+                <DialogActions>
+                  <ButtonCore onClick={this.handleCloseDialog} color="primary">
+                    Cancel
+                  </ButtonCore>
+                  <Button
+                    buttonSize="btn--medium"
+                    onClick={this.addPolylineData}
+                    buttonColor="blue"
+                  >
+                    Export PDF
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </div>
 
             <Snackbar
               open={this.state.open}
