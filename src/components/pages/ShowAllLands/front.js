@@ -236,7 +236,7 @@ class ShowAllLands extends Component {
     console.log("West: " + detailMap[5]);
     console.log("OwnerName: " + detailMap[6]);
 
-    this.setState({ openDialog: tempAddress });
+    this.setState({ openDialog: true });
   }
 
   handleCloseDialog = () => {

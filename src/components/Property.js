@@ -49,6 +49,13 @@ class Property extends Component {
       account: "",
       open: false,
       openi: false,
+      lat: "",
+      lng: "",
+      north: "",
+      south: "",
+      east: "",
+      west: "",
+      currentOwnerName: "",
     };
   }
 
