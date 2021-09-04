@@ -37,7 +37,8 @@ class Property extends Component {
       village: [],
       survyNo: [],
       marketValue: [],
-      measurements: [],
+      squareFoots: [],
+      inches: [],
       ipfsHash: [],
       status: [],
       account: "",
@@ -117,21 +118,22 @@ class Property extends Component {
       this.state.states.push(detail[0]);
       this.state.district.push(detail[1]);
       this.state.village.push(detail[2]);
-      this.state.survyNo.push(detail[3]);
-      this.state.status.push(detail[4]);
-      this.state.marketValue.push(detail[5]);
-      this.state.measurements.push(detail[6]);
+      this.state.status.push(detail[3]);
+      this.state.marketValue.push(detail[4]);
+      this.state.squareFoots.push(detail[5]);
+      this.state.inches.push(detail[6]);
 
       this.state.ipfsHash.push(remainignDetail[0]);
 
       console.log("State: " + detail[0]);
       console.log("Destrict: " + detail[1]);
       console.log("Village: " + detail[2]);
-      console.log("Status: " + detail[4]);
-      console.log("marketValue: " + detail[5]);
-      console.log("measurements: " + detail[6]);
+      console.log("Status: " + detail[3]);
+      console.log("Market Value: " + detail[4]);
+      console.log("Square Feet: " + detail[5]);
+      console.log("Inches: " + detail[6]);  
 
-      console.log("ipfsHash: " + remainignDetail);
+      console.log("ipfsHash: " + remainignDetail[0]);
 
       console.log("---------------------------------");
     });
@@ -151,10 +153,10 @@ class Property extends Component {
     const statesAll = this.state.states;
     const districtAll = this.state.district;
     const villageAll = this.state.village;
-    const survyNoAll = this.state.survyNo;
     const statusAll = this.state.status;
     const marketValueAll = this.state.marketValue;
-    const measurementsAll = this.state.measurements;
+    const squareFootsAll = this.state.squareFoots;
+    const inchesAll = this.state.inches;
     const idsAll = this.state.ids;
 
     const ipfsAll = this.state.ipfsHash;
@@ -188,20 +190,20 @@ class Property extends Component {
                 width="1030"
                 height="550"
                 image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
-                title={survyNoAll[index]}
+                title={dataAll[index]}
               />
               <CardContent>
-                <Typography gutterBottom variant="h4" component="h3">
-                  Land ID: {survyNoAll[index]}
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Land ID: {dataAll[index]}
                 </Typography>
-                <Typography gutterBottom variant="h4" component="h3">
-                  Previous Owner: {survyNoAll[index]}
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Previous Owner: {dataAll[index]}
                 </Typography>
-                <Typography gutterBottom variant="h4" component="h3">
-                  Current Owner: {survyNoAll[index]}
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Current Owner: {dataAll[index]}
                 </Typography>
-                <Typography gutterBottom variant="h4" component="h3">
-                  Current Owner Name: {survyNoAll[index]}
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Current Owner Name: {dataAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   State: {statesAll[index]}
@@ -216,12 +218,25 @@ class Property extends Component {
                   Market Value: {marketValueAll[index]} Ether
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Square Foots: {measurementsAll[index]}
+                  Square Foots: {squareFootsAll[index]} " | " Inches: {inchesAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Inches: {measurementsAll[index]}
+                  
                 </Typography>
               </CardContent>
+              <CardActions style={{ float: "left" }}>
+                <Button
+                  buttonSize="btn--wide"
+                  buttonColor="blue"
+                  onClick={this.myFunction.bind(
+                    this,
+                    idsAll[index],
+                    statusAll[index]
+                  )}
+                >
+                  View Detail
+                </Button>
+              </CardActions>
               <CardActions style={{ float: "right" }}>
                 <Button
                   buttonSize="btn--wide"
