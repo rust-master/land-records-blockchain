@@ -40,6 +40,11 @@ class Property extends Component {
       squareFoots: [],
       inches: [],
       ipfsHash: [],
+      createdByGovt: [],
+      currentOwner: [],
+      khaataNumber: [],
+      khaatoniNumber: [],
+      landType: [],
       status: [],
       account: "",
       open: false,
@@ -124,6 +129,11 @@ class Property extends Component {
       this.state.inches.push(detail[6]);
 
       this.state.ipfsHash.push(remainignDetail[0]);
+      this.state.createdByGovt.push(remainignDetail[1]);
+      this.state.currentOwner.push(remainignDetail[2]);
+      this.state.khaataNumber.push(remainignDetail[3]);
+      this.state.khaatoniNumber.push(remainignDetail[4]);
+      this.state.landType.push(remainignDetail[5]);
 
       console.log("State: " + detail[0]);
       console.log("Destrict: " + detail[1]);
@@ -131,9 +141,14 @@ class Property extends Component {
       console.log("Status: " + detail[3]);
       console.log("Market Value: " + detail[4]);
       console.log("Square Feet: " + detail[5]);
-      console.log("Inches: " + detail[6]);  
+      console.log("Inches: " + detail[6]);
 
       console.log("ipfsHash: " + remainignDetail[0]);
+      console.log("createdByGovt: " + remainignDetail[1]);
+      console.log("currentOwner: " + remainignDetail[2]);
+      console.log("khaataNumber: " + remainignDetail[3]);
+      console.log("khaatoniNumber: " + remainignDetail[4]);
+      console.log("landType: " + remainignDetail[5]);
 
       console.log("---------------------------------");
     });
@@ -160,6 +175,11 @@ class Property extends Component {
     const idsAll = this.state.ids;
 
     const ipfsAll = this.state.ipfsHash;
+    const createdByGovtAll = this.state.createdByGovt;
+    const currentOwnerAll = this.state.currentOwner;
+    const khaataNumberAll = this.state.khaataNumber;
+    const khaatoniNumberAll = this.state.khaatoniNumber;
+    const landTypeAll = this.state.landType;
 
     let ListTemplate;
 
@@ -193,17 +213,21 @@ class Property extends Component {
                 title={dataAll[index]}
               />
               <CardContent>
+                <Typography variant="h5" component="h6">
+                  khaata Number: {khaataNumberAll[index]}
+                  <span style={{ float: "right" }}>
+                    {" "}
+                    khaatoni Number: {khaatoniNumberAll[index]}
+                  </span>
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Land ID: {dataAll[index]}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                {/* <Typography variant="body2" color="textSecondary" component="p">
                   Previous Owner: {dataAll[index]}
-                </Typography>
+                </Typography> */}
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Current Owner: {dataAll[index]}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Current Owner Name: {dataAll[index]}
+                  Current Owner: {currentOwnerAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   State: {statesAll[index]}
@@ -218,10 +242,11 @@ class Property extends Component {
                   Market Value: {marketValueAll[index]} Ether
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Square Foots: {squareFootsAll[index]} " | " Inches: {inchesAll[index]}
+                  Square Foots: {squareFootsAll[index]} | Inches:{" "}
+                  {inchesAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  
+                  Land Type: {landTypeAll[index]}
                 </Typography>
               </CardContent>
               <CardActions style={{ float: "left" }}>
