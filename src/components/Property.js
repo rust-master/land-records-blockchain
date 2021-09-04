@@ -75,7 +75,7 @@ class Property extends Component {
       east: "",
       west: "",
       currentOwnerName: "",
-      tempownerAddress: "",
+      tempOwnerAddress: "",
     };
   }
 
@@ -181,7 +181,7 @@ class Property extends Component {
     });
   }
 
-  async viewDetail(id) {
+  async viewDetail(id, tempAddress) {
     console.log("ID : " + id);
 
     this.state.lat = "";
@@ -222,6 +222,8 @@ class Property extends Component {
     this.setState({ east: parseFloat(detailMap[4]) });
     this.setState({ west: parseFloat(detailMap[5]) });
     this.setState({ ownerName: detailMap[6] });
+
+    this.setState({ tempOwnerAddress: tempAddress });
 
     console.log("Lat: " + detailMap[0]);
     console.log("Lng: " + detailMap[1]);
@@ -317,7 +319,6 @@ class Property extends Component {
                 </Typography> */}
                 <Typography variant="body2" color="textSecondary" component="p">
                   Current Owner: {currentOwnerAll[index]}
-                  {this.setState({ tempownerAddress: currentOwnerAll[index] })}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   State: {statesAll[index]}
@@ -343,7 +344,7 @@ class Property extends Component {
                 <Button
                   buttonSize="btn--wide"
                   buttonColor="blue"
-                  onClick={this.viewDetail.bind(this, idsAll[index])}
+                  onClick={this.viewDetail.bind(this, idsAll[index], currentOwnerAll[index])}
                 >
                   View Detail
                 </Button>
@@ -415,7 +416,7 @@ class Property extends Component {
                 <DialogTitle id="form-dialog-title">Detail of Land</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
-                    <div>Owner Address: {this.state.tempownerAddress}</div>
+                    <div>Owner Address: {this.state.tempOwnerAddress}</div>
                     <div>Name of Land Owner: {this.state.ownerName}</div>
                     <span>Latitude: {this.state.lat}</span>
                     <span style={{ float: "right" }}>
