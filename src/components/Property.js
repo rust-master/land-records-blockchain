@@ -344,7 +344,11 @@ class Property extends Component {
                 <Button
                   buttonSize="btn--wide"
                   buttonColor="blue"
-                  onClick={this.viewDetail.bind(this, idsAll[index], currentOwnerAll[index])}
+                  onClick={this.viewDetail.bind(
+                    this,
+                    idsAll[index],
+                    currentOwnerAll[index]
+                  )}
                 >
                   View Detail
                 </Button>
