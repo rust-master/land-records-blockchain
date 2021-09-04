@@ -29,6 +29,8 @@ class Property extends Component {
   constructor(props) {
     super(props);
     this.handleClose = this.handleClose.bind(this);
+    this.handleCloseDialog = this.handleCloseDialog.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
     this.state = {
       allAssets: [],
       ids: [],
@@ -49,6 +51,7 @@ class Property extends Component {
       account: "",
       open: false,
       openi: false,
+      openDialog: false,
       lat: "",
       lng: "",
       north: "",
@@ -161,8 +164,59 @@ class Property extends Component {
     });
   }
 
-  viewDetail(id) {
+  async viewDetail(id) {
     console.log("ID : " + id);
+
+    this.state.lat = "";
+    this.state.lng = "";
+    this.state.north = "";
+    this.state.south = "";
+    this.state.east = "";
+    this.state.west = "";
+    this.state.ownerName = "";
+
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    console.log(deployedNetwork.address);
+
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    const detailMap = await landCon.methods
+      .remainingMoreDetail(id)
+      .call({ from: this.state.account });
+
+    this.setState({ lat: parseFloat(detailMap[0]) });
+    this.setState({ lng: parseFloat(detailMap[1]) });
+    this.setState({ north: parseFloat(detailMap[2]) });
+    this.setState({ south: parseFloat(detailMap[3]) });
+    this.setState({ east: parseFloat(detailMap[4]) });
+    this.setState({ west: parseFloat(detailMap[5]) });
+    this.setState({ ownerName: detailMap[6] });
+
+    
+
+    console.log("Lat: " + detailMap[0]);
+    console.log("Lng: " + detailMap[1]);
+    console.log("North: " + detailMap[2]);
+    console.log("South: " + detailMap[3]);
+    console.log("East: " + detailMap[4]);
+    console.log("West: " + detailMap[5]);
+    console.log("OwnerName: " + detailMap[6]);
+
+    this.setState({ openDialog: true });
   }
 
   handleClose(e, r) {
@@ -173,6 +227,15 @@ class Property extends Component {
     this.setState({ open: false });
     this.setState({ openi: false });
   }
+
+  handleCloseDialog = () => {
+    this.setState({ openDialog: false });
+    console.log("handleCloseDialog");
+  };
+
+  handleClickOpen = () => {
+    this.setState({ openDialog: true });
+  };
 
   render() {
     const dataAll = this.state.allAssets;
