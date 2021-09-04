@@ -314,9 +314,9 @@ class Property extends Component {
                 <Typography variant="body2" color="textSecondary" component="p">
                   Land ID: {dataAll[index]}
                 </Typography>
-                {/* <Typography variant="body2" color="textSecondary" component="p">
-                  Previous Owner: {dataAll[index]}
-                </Typography> */}
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Registered By: {createdByGovtAll[index]}
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Current Owner: {currentOwnerAll[index]}
                 </Typography>
