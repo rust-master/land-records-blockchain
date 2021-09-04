@@ -191,11 +191,17 @@ class Property extends Component {
                 title={survyNoAll[index]}
               />
               <CardContent>
-                <Typography gutterBottom variant="h4" component="h3">
-                  Survey No: {survyNoAll[index]}
+              <Typography gutterBottom variant="h4" component="h3">
+                  Land ID: {survyNoAll[index]}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Market Value: {marketValueAll[index]} Ether
+              <Typography gutterBottom variant="h4" component="h3">
+                  Previous Owner: {survyNoAll[index]}
+                </Typography>
+                <Typography gutterBottom variant="h4" component="h3">
+                  Current Owner: {survyNoAll[index]}
+                </Typography>
+                <Typography gutterBottom variant="h4" component="h3">
+                  Current Owner Name: {survyNoAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   State: {statesAll[index]}
@@ -207,7 +213,13 @@ class Property extends Component {
                   Village: {villageAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Measurements: {measurementsAll[index]}
+                  Market Value: {marketValueAll[index]} Ether
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                Square Foots: {measurementsAll[index]}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                Inches: {measurementsAll[index]}
                 </Typography>
               </CardContent>
               <CardActions style={{ float: "right" }}>
