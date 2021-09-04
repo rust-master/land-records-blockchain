@@ -315,10 +315,7 @@ class Property extends Component {
                   Land ID: {dataAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Registered By: {createdByGovtAll[index]}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Current Owner: {currentOwnerAll[index]}
+                  <span>Current Owner: {currentOwnerAll[index]}</span><span style={{float: "right"}}>Registered By: {createdByGovtAll[index]}</span>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   State: {statesAll[index]}
