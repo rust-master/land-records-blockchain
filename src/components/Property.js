@@ -154,6 +154,10 @@ class Property extends Component {
     });
   }
 
+  viewDetail(id) {
+    console.log("ID : " + id);
+  }
+
   handleClose(e, r) {
     if (r === "clickaway") {
       return;
