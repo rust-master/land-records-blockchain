@@ -236,6 +236,8 @@ class Property extends Component {
     this.setState({ openDialog: true });
   }
 
+
+  
   handleClose(e, r) {
     if (r === "clickaway") {
       return;
