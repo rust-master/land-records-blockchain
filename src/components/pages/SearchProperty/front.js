@@ -55,7 +55,7 @@ class SearchProperty extends Component {
       states: [],
       district: [],
       village: [],
-      surveyNo: [],
+      khaataNo: [],
       status: [],
       owners: [],
       marketValue: [],
@@ -109,7 +109,7 @@ class SearchProperty extends Component {
     this.state.ipfsHash = [];
 
     this.state.village = [];
-    this.state.surveyNo = [];
+    this.state.khaataNo = [];
 
     const web3 = window.web3;
 
@@ -186,7 +186,7 @@ class SearchProperty extends Component {
         this.state.ids.push(detail[6]);
 
         this.state.village.push(detailRemaining[0]);
-        this.state.surveyNo.push(detailRemaining[1]);
+        this.state.khaataNo.push(detailRemaining[1]);
 
         console.log("State: " + detail[0]);
         console.log("Owner: " + detail[1]);
@@ -196,7 +196,7 @@ class SearchProperty extends Component {
         console.log("ID: " + detail[6]);
 
         console.log("village: " + detailRemaining[0]);
-        console.log("surveyNo: " + detailRemaining[1]);
+        console.log("khaataNo: " + detailRemaining[1]);
 
         console.log("---------------------------------");
       }
@@ -218,7 +218,7 @@ class SearchProperty extends Component {
     const statesAll = this.state.states;
     const districtAll = this.state.district;
     const villageAll = this.state.village;
-    const surveyNoAll = this.state.surveyNo;
+    const khaataNoAll = this.state.khaataNo;
     const ownersAll = this.state.owners;
     const measureAll = this.state.measure;
     const marketValueAll = this.state.marketValue;
@@ -274,7 +274,7 @@ class SearchProperty extends Component {
                     Property ID: {dataAll[index]}
                   </span>{" "}
                   <span style={{ float: "right", color: "#EF8E19" }}>
-                    Survery No: {surveyNoAll[index]}
+                  Khaata No: {khaataNoAll[index]}
                   </span>
                 </Typography>
 

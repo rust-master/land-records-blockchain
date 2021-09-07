@@ -168,7 +168,6 @@ contract Land {
             land[id].khataNumber,
             land[id].khatooniNumber,
             land[id].landType
-
         );
     }
 
@@ -331,10 +330,20 @@ contract Land {
     function viewMarkdedRemainingData(uint256 id)
         public
         view
-        returns (string memory, uint256)
+        returns (
+            string memory,
+            uint256,
+            uint256,
+            string memory
+        )
     {
         if (land[id].isAvailable) {
-            return (land[id].villageTown, land[id].khataNumber);
+            return (
+                land[id].villageTown,
+                land[id].khataNumber,
+                land[id].khatooniNumber,
+                land[id].inches
+            );
         }
     }
 
