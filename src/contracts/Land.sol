@@ -275,9 +275,14 @@ contract Land {
     }
 
     //availing land for sale.
-    function makeAvailable(uint256 property) public {
+    function markAvailable(uint256 property) public {
         require(land[property].CurrentOwner == msg.sender);
         land[property].isAvailable = true;
+    }
+
+    function unMarkLand(uint256 property) public {
+        require(land[property].CurrentOwner == msg.sender);
+        land[property].isAvailable = false;
     }
 
     function showMarketValue(uint256 id) public view returns (uint256) {

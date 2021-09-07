@@ -97,7 +97,7 @@ class Property extends Component {
       );
 
       await landCon.methods
-        .makeAvailable(id)
+        .markAvailable(id)
         .send({ from: this.state.account });
 
       this.setState({ open: true });
@@ -359,7 +359,6 @@ class Property extends Component {
                 <Button
                   buttonSize="btn--wide"
                   buttonColor={statusAll[index] ? "red" : "blue"}
-                  disabled={statusAll[index]}
                   onClick={this.myFunction.bind(
                     this,
                     idsAll[index],
