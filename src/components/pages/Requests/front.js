@@ -150,10 +150,10 @@ class RequestsFront extends Component {
                   Buyer: {requesterAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Value: {marketValueAll[index]} Ether
+                  Owner : {ownerAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Owner : {ownerAll[index]}
+                  Value: {marketValueAll[index]} Ether
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   khata Number : {"Dummy"}
@@ -177,7 +177,7 @@ class RequestsFront extends Component {
                 color="primary"
                 onClick={this.processRequest.bind(this, idsAll[index], 3)}
               >
-                Accept
+                Accept and Transfer Land
               </Button>
             </CardActions>
           </Card>
