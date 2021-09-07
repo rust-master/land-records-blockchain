@@ -298,7 +298,7 @@ class SearchProperty extends Component {
                 >
                   <span>Village/Town: {villageAll[index]}</span>{" "}
                   <span style={{ float: "right" }}>
-                    Measurements: {measureAll[index]}
+                    Square Foots: {measureAll[index]}
                   </span>
                 </Typography>
 
