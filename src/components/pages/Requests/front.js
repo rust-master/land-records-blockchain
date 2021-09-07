@@ -29,6 +29,8 @@ class RequestsFront extends Component {
       requester: [],
       requestStatus: [],
       account: "",
+      khataNo: [],
+      khatooniNo: [],
     };
   }
 
@@ -57,7 +59,11 @@ class RequestsFront extends Component {
 
     await landCon.methods
       .processRequest(idLand, reqStatus)
-      .send({ from: this.state.account });
+      .send({
+        from: this.state.account,
+        usdEthBasis: "0",
+        value: web3.utils.toWei("0", "ether"),
+      });
 
     console.log("Process Request Confirm");
   }
@@ -105,12 +111,16 @@ class RequestsFront extends Component {
         this.state.requestStatus.push(detail[4]);
 
         this.state.idsReq.push(this.state.ids[index]);
+        this.state.khataNo.push(detail[5]);
+        this.state.khatooniNo.push(detail[6]);
 
         console.log("owner: " + detail[0]);
         console.log("marketValue: " + detail[1]);
         console.log("status: " + detail[2]);
         console.log("requester: " + detail[3]);
         console.log("requestStatus: " + detail[4]);
+        console.log("khataNo: " + detail[5]);
+        console.log("khatooniNo: " + detail[6]);
         console.log("idsReq: " + this.state.ids[index]);
 
         console.log("---------------------------------");
@@ -126,6 +136,8 @@ class RequestsFront extends Component {
     const requesterAll = this.state.requester;
     const requestStatusAll = this.state.requestStatus;
     const idsAll = this.state.idsReq;
+    const khataNoAll = this.state.khataNo;
+    const khatooniNoAll = this.state.khatooniNo;
 
     console.log("Length:", ownerAll.length);
 
@@ -156,10 +168,10 @@ class RequestsFront extends Component {
                   Value: {marketValueAll[index]} Ether
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  khata Number : {"Dummy"}
+                  khata Number : {khataNoAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Khatooni Number : {"Dummy"}
+                  Khatooni Number : {khatooniNoAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Request Status:{" "}

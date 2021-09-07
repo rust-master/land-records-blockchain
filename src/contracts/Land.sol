@@ -360,7 +360,7 @@ contract Land {
             land[property].requester = address(0);
             land[property].requestStatus = reqStatus.Default;
         }
-        require(land[property].requestStatus == reqStatus.approved);
+
         require(land[property].requester.balance >= land[property].marketValue);
         land[property].CurrentOwner.transfer(land[property].marketValue);
         removeOwnership(land[property].CurrentOwner, property);
