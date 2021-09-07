@@ -80,7 +80,7 @@ class Property extends Component {
   }
 
   async myFunction(id, status) {
-    if (!status) {
+    if (status == false) {
       console.log("ID : " + id);
       console.log("Account: " + this.state.account);
 
