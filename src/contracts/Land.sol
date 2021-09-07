@@ -353,7 +353,7 @@ contract Land {
     }
 
     //processing request for the land by accepting or rejecting
-    function processRequest(uint256 property, reqStatus status) public {
+    function processRequest(uint256 property, reqStatus status) public payable {
         require(land[property].CurrentOwner == msg.sender);
         land[property].requestStatus = status;
         if (status == reqStatus.reject) {
@@ -362,7 +362,7 @@ contract Land {
         }
         require(land[property].requestStatus == reqStatus.approved);
         require(land[property].requester.balance >= land[property].marketValue);
-        land[property].CurrentOwner.transfer(msg.value);
+        land[property].CurrentOwner.transfer(land[property].marketValue);
         removeOwnership(land[property].CurrentOwner, property);
         land[property].CurrentOwner = msg.sender;
         land[property].isAvailable = false;
