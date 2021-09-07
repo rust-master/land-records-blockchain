@@ -228,7 +228,9 @@ contract Land {
             uint256,
             bool,
             address,
-            reqStatus
+            reqStatus,
+            uint256,
+            uint256
         )
     {
         return (
@@ -236,7 +238,9 @@ contract Land {
             land[id].marketValue,
             land[id].isAvailable,
             land[id].requester,
-            land[id].requestStatus
+            land[id].requestStatus,
+            land[id].khataNumber,
+            land[id].khatooniNumber
         );
     }
 

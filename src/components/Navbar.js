@@ -140,7 +140,7 @@ class Navbar extends React.Component {
 
     cookies.remove("checkIsUser");
     console.log(cookies.get("checkIsUser"));
-    window.location = "/";
+    cookies.remove("Username");
   }
 
   render() {

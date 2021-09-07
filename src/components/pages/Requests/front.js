@@ -142,7 +142,7 @@ class RequestsFront extends Component {
             <CardActionArea>
               <CardContent>
                 <Typography
-                  style={{ fontSize: 18 }}
+                  style={{ fontSize: 17 }}
                   gutterBottom
                   variant="h6"
                   component="h6"
@@ -154,6 +154,12 @@ class RequestsFront extends Component {
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Owner : {ownerAll[index]}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  khata Number : {"Dummy"}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Khatooni Number : {"Dummy"}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Request Status:{" "}
