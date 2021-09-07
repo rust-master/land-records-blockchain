@@ -258,7 +258,7 @@ contract Land {
     //push a request to the land owner
     function requstToLandOwner(uint256 id) public {
         require(land[id].isAvailable);
-        require(land[id].marketValue >= msg.sender.balance);
+        require(msg.sender.balance >= land[id].marketValue);
         land[id].requester = msg.sender;
         land[id].isAvailable = false;
         land[id].requestStatus = reqStatus.pending; //changes the status to pending.
