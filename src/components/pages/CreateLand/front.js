@@ -41,8 +41,9 @@ const styles = StyleSheet.create({
     color: "#000"
   },
   centertitle: {
+    marginTop: "20px",
     alignItems: "center",
-    flexGrow: 1
+    // flexGrow: 0.1
   },
   heading1: {
     fontSize: "22px",
@@ -56,7 +57,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontStyle: "bold",
     marginBottom: "10px",
-    marginTop: "10px",
   },
   text: {
     margin: "5px",
@@ -311,9 +311,9 @@ class CreateLand extends Component {
     const MyDocument = () => (
       <Document>
         <Page size="A4" style={styles.page}>
-          {/* <View style={styles.centertitle}>
+          <View style={styles.centertitle}>
             <Text style={styles.title}>Blockchain Land Records System Pakistan</Text>
-          </View> */}
+          </View>
           <View style={styles.section}>
             <Text style={styles.heading1}>Land Detail</Text>
             <Text style={styles.text}>State: {this.state.state}</Text>
@@ -321,7 +321,7 @@ class CreateLand extends Component {
             <Text style={styles.text}>Village: {this.state.village}</Text>
             <Text style={styles.text}>Khata No: {this.state.khataNumber}</Text>
             <Text style={styles.text}>Khatooni No: {this.state.khatooniNumber}</Text>
-            <Text style={styles.text}>Market Value: {this.state.marketValue}</Text>
+            <Text style={styles.text}>Market Value: {this.state.marketValue} Ether</Text>
             <Text style={styles.text}>Square Foots: {this.state.squareFoots}</Text>
             <Text style={styles.text}>Inches: {this.state.inches}</Text>
             <Text style={styles.text}>Land ID: {this.state.id}</Text>
