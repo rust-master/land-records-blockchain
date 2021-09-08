@@ -353,7 +353,7 @@ contract Land {
     }
 
     //processing request for the land by accepting or rejecting
-    function processRequest(uint256 property, reqStatus status) public payable {
+    function processRequest(uint256 property, reqStatus status) public {
         require(land[property].CurrentOwner == msg.sender);
         land[property].requestStatus = status;
         if (status == reqStatus.reject) {
