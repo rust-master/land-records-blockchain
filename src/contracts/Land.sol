@@ -360,15 +360,6 @@ contract Land {
             land[property].requester = address(0);
             land[property].requestStatus = reqStatus.Default;
         }
-
-        require(land[property].requester.balance >= land[property].marketValue);
-        land[property].CurrentOwner.transfer(land[property].marketValue);
-        removeOwnership(land[property].CurrentOwner, property);
-        land[property].CurrentOwner = land[property].requester;
-        land[property].isAvailable = false;
-        land[property].requester = address(0);
-        land[property].requestStatus = reqStatus.Default;
-        profile[land[property].requester].assetList.push(property);
     }
 
     //buying the approved property

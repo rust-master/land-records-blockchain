@@ -34,7 +34,7 @@ class RequestsFront extends Component {
     };
   }
 
-  async processRequest(idLand, reqStatus) {
+  async processRequest(idLand, reqStatus,buyer) {
     console.log("ID : ", idLand);
     console.log("reqStatus : ", reqStatus);
 
@@ -60,9 +60,10 @@ class RequestsFront extends Component {
     await landCon.methods
       .processRequest(idLand, reqStatus)
       .send({
-        from: this.state.account,
-        usdEthBasis: "0",
-        value: web3.utils.toWei("0", "ether"),
+        from: buyer,
+        to: this.state.account,
+        usdEthBasis: "10",
+        value: web3.utils.toWei("10", "ether"),
       });
 
     console.log("Process Request Confirm");
@@ -187,7 +188,7 @@ class RequestsFront extends Component {
                 size="small"
                 variant="contained"
                 color="primary"
-                onClick={this.processRequest.bind(this, idsAll[index], 3)}
+                onClick={this.processRequest.bind(this, idsAll[index], 3,requesterAll[index])}
               >
                 Accept and Transfer Land
               </Button>
