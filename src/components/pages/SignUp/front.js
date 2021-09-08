@@ -4,7 +4,8 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 
 import Web3 from "web3";
-import contract from "../../../build/contracts/Auth.json";
+// import contract from "../../../build/contracts/Auth.json";
+import contract from "../../../build/contracts/Land.json";
 
 class UserSignUp extends Component {
   constructor(props) {

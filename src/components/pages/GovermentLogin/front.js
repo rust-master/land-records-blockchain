@@ -4,7 +4,8 @@ import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 import Web3 from "web3";
-import contract from "../../../build/contracts/Auth.json";
+// import contract from "../../../build/contracts/Auth.json";
+import contract from "../../../build/contracts/Land.json";
 
 const cookies = new Cookies();
 

@@ -10,7 +10,8 @@ import logo from "../components/logo.png";
 import "./menu.css";
 import "../App.css";
 import Web3 from "web3";
-import contract from "../build/contracts/Auth.json";
+// import contract from "../build/contracts/Auth.json";
+import contract from "../build/contracts/Land.json";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
