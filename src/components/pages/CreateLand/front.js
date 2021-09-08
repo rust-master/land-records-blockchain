@@ -16,6 +16,54 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
+import {
+  ReactPDF,
+  PDFViewer,
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+} from "@react-pdf/renderer";
+
+const styles = StyleSheet.create({
+  page: {
+    flexDirection: "column",
+    backgroundColor: "#E4E4E4",
+  },
+  section: {
+    margin: 10,
+    padding: 10,
+    // flexGrow: 1,
+  },
+  title: {
+    fontSize: "22px",
+    color: "#000"
+  },
+  centertitle: {
+    alignItems: "center",
+    flexGrow: 1
+  },
+  heading1: {
+    fontSize: "22px",
+    fontWeight: "bold",
+    fontStyle: "bold",
+    marginBottom: "10px",
+    marginTop: "20px",
+  },
+  heading2: {
+    fontSize: "22px",
+    fontWeight: "bold",
+    fontStyle: "bold",
+    marginBottom: "10px",
+    marginTop: "10px",
+  },
+  text: {
+    margin: "5px",
+    fontSize: "16px",
+  }
+});
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -260,6 +308,35 @@ class CreateLand extends Component {
   };
 
   render() {
+    const MyDocument = () => (
+      <Document>
+        <Page size="A4" style={styles.page}>
+          {/* <View style={styles.centertitle}>
+            <Text style={styles.title}>Blockchain Land Records System Pakistan</Text>
+          </View> */}
+          <View style={styles.section}>
+            <Text style={styles.heading1}>Land Detail</Text>
+            <Text style={styles.text}>State: {this.state.state}</Text>
+            <Text style={styles.text}>District: {this.state.district}</Text>
+            <Text style={styles.text}>Village: {this.state.village}</Text>
+            <Text style={styles.text}>Khata No: {this.state.khataNumber}</Text>
+            <Text style={styles.text}>Khatooni No: {this.state.khatooniNumber}</Text>
+            <Text style={styles.text}>Market Value: {this.state.marketValue}</Text>
+            <Text style={styles.text}>Square Foots: {this.state.squareFoots}</Text>
+            <Text style={styles.text}>Inches: {this.state.inches}</Text>
+            <Text style={styles.text}>Land ID: {this.state.id}</Text>
+            <Text style={styles.text}>Land Type: {this.state.landType}</Text>
+          </View>
+          <View style={styles.section}>
+            <Text style={styles.heading2}>Owner Detail</Text>
+            <Text style={styles.text}>Owner Name: {this.state.ownerName}</Text>
+            <Text style={styles.text}>Owner Address: {this.state.CurrentOwner}</Text>
+            <Text style={styles.text}>Previous Owner: {this.state.previousOwner}</Text>
+          </View>
+        </Page>
+      </Document>
+    );
+
     return (
       <div>
         <div
@@ -452,19 +529,22 @@ class CreateLand extends Component {
                 </div>
               </div>
               <div className="col">
-                <div className="home__hero-img-wrapper">
-                  <img
-                    src={this.state.fileImage}
-                    alt={"Credit Card"}
-                    className="home__hero-img"
-                  />
-                </div>
+                <PDFViewer style={{ width: "700px", height: "800px" }}>
+                  <MyDocument />
+                </PDFViewer>
               </div>
             </div>
           </div>
         </div>
 
         <div>
+          <div className="home__hero-img-wrapper">
+            <img
+              src={this.state.fileImage}
+              alt={"Credit Card"}
+              className="home__hero-img"
+            />
+          </div>
           <ButtonCore
             variant="outlined"
             color="primary"
