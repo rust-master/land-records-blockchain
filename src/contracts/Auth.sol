@@ -82,10 +82,9 @@ contract Auth {
     // get username
     function getUserName(address _address)
         public
-        notAdmin
         returns (string memory)
     {
-        require(user[_address].addr == msg.sender);
+        //require(user[_address].addr == msg.sender);
         return user[_address].name;
     }
 
