@@ -29,7 +29,7 @@ import {
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
-    backgroundColor: "#E4E4E4",
+    backgroundColor: "#e5be84",
   },
   section: {
     margin: 10,
