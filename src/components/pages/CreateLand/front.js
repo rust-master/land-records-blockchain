@@ -17,7 +17,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 import {
-  ReactPDF,
+  Svg,
+  Line,
   PDFViewer,
   Page,
   Text,
@@ -314,10 +315,18 @@ class CreateLand extends Component {
       <Document>
         <Page size="A4" style={styles.page}>
           <View style={styles.centertitle}>
-            <Text style={styles.title}>
-              Blockchain Land Records System
-            </Text>
+            <Text style={styles.title}>Blockchain Land Records System</Text>
           </View>
+          <Svg height="210" width="500">
+            <Line
+              x1="0"
+              y1="0"
+              x2="550"
+              y2="0"
+              strokeWidth={2}
+              stroke="rgb(255,0,0)"
+            />
+          </Svg>
           <View style={styles.section}>
             <Text style={styles.heading1}>Land Detail</Text>
             <Text style={styles.text}>State: {this.state.state}</Text>
