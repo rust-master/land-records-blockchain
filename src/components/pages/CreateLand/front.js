@@ -317,14 +317,18 @@ class CreateLand extends Component {
           <View style={styles.centertitle}>
             <Text style={styles.title}>Blockchain Land Records System</Text>
           </View>
-          <Svg height="210" width="500">
+          <Svg
+            height="15"
+            width="550"
+            style={{ marginTop: "10px", alignSelf: "center" }}
+          >
             <Line
               x1="0"
               y1="0"
               x2="550"
               y2="0"
-              strokeWidth={2}
-              stroke="rgb(255,0,0)"
+              strokeWidth={4}
+              stroke="#1b57b7"
             />
           </Svg>
           <View style={styles.section}>
