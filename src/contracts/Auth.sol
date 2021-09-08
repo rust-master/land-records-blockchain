@@ -80,10 +80,7 @@ contract Auth {
     }
 
     // get username
-    function getUserName(address _address)
-        public
-        returns (string memory)
-    {
+    function getUserName(address _address) public returns (string memory) {
         //require(user[_address].addr == msg.sender);
         return user[_address].name;
     }
