@@ -29,6 +29,8 @@ class RequestedLandsFront extends Component {
       requester: [],
       requestStatus: [],
       account: "",
+      khataNo: [],
+      khatooniNo: [],
     };
   }
 
@@ -108,6 +110,8 @@ class RequestedLandsFront extends Component {
         this.state.requestStatus.push(detail[4]);
 
         this.state.idsReq.push(this.state.ids[index]);
+        this.state.khataNo.push(detail[5]);
+        this.state.khatooniNo.push(detail[6]);
 
         console.log("owner: " + detail[0]);
         console.log("marketValue: " + detail[1]);
@@ -115,6 +119,8 @@ class RequestedLandsFront extends Component {
         console.log("requester: " + detail[3]);
         console.log("requestStatus: " + detail[4]);
         console.log("idsReq: " + this.state.ids[index]);
+        console.log("khataNo: " + detail[5]);
+        console.log("khatooniNo: " + detail[6]);
 
         console.log("---------------------------------");
       }
@@ -129,6 +135,8 @@ class RequestedLandsFront extends Component {
     const requesterAll = this.state.requester;
     const requestStatusAll = this.state.requestStatus;
     const idsAll = this.state.idsReq;
+    const khataNoAll = this.state.khataNo;
+    const khatooniNoAll = this.state.khatooniNo;
 
     let ListTemplate;
 
@@ -155,6 +163,12 @@ class RequestedLandsFront extends Component {
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Owner : {ownerAll[index]}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  khata Number : {khataNoAll[index]}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Khatooni Number : {khatooniNoAll[index]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Request Status:{" "}
