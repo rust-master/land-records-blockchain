@@ -79,6 +79,16 @@ contract Auth {
         return (user[_address].addr.balance);
     }
 
+    // get username
+    function getUserName(address _address)
+        public
+        notAdmin
+        returns (string memory)
+    {
+        require(user[_address].addr == msg.sender);
+        return user[_address].name;
+    }
+
     // set and get the user ipfs image hash
     function setUserIpfsImageHash(
         address _address,
