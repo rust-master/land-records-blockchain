@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     marginBottom: "10px",
     width: "50px",
     height: "50px",
-  }
+  },
 });
 
 function Alert(props) {
@@ -332,7 +332,7 @@ class CreateLand extends Component {
       <Document>
         <Page size="A4" style={styles.page}>
           <View style={styles.centertitle}>
-          <Image
+            <Image
               src={{ uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png` }}
               style={styles.stampTitle}
             />
@@ -583,7 +583,7 @@ class CreateLand extends Component {
                 </div>
               </div>
               <div className="col">
-                <PDFViewer style={{ width: "700px", height: "1000px" }}>
+                <PDFViewer style={{ width: "700px", height: "1010px" }}>
                   <MyDocument />
                 </PDFViewer>
               </div>
