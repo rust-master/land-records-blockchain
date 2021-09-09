@@ -43,17 +43,19 @@ const styles = StyleSheet.create({
   },
   title: {
     marginLeft: 10,
-    fontSize: "24px",
+    fontSize: "26px",
     fontWeight: "bold",
-    fontStyle: "bold",
     color: "#000",
   },
   centertitle: {
     flexDirection: "row",
     marginTop: "20px",
-    marginLeft: "35%",
+    marginLeft: "15%",
     alignItems: "center",
-    // flexGrow: 0.1
+  },
+  stampTitle: {
+    width: "50px",
+    height: "50px",
   },
   heading1: {
     fontSize: "22px",
@@ -80,10 +82,6 @@ const styles = StyleSheet.create({
   stamp: {
     width: "100px",
     height: "100px",
-  },
-  stampTitle: {
-    width: "50px",
-    height: "50px",
   },
 });
 
