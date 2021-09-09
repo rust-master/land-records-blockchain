@@ -19,6 +19,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 import {
+  PDFDownloadLink,
   Image,
   Svg,
   Line,
@@ -586,6 +587,15 @@ class CreateLand extends Component {
                 <PDFViewer style={{ width: "700px", height: "1010px" }}>
                   <MyDocument />
                 </PDFViewer>
+
+                <PDFDownloadLink
+                  document={<MyDocument />}
+                  fileName="somename.pdf"
+                >
+                  {({ blob, url, loading, error }) =>
+                    loading ? "Loading document..." : "Download now!"
+                  }
+                </PDFDownloadLink>
               </div>
             </div>
           </div>
