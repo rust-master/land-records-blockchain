@@ -69,14 +69,19 @@ const styles = StyleSheet.create({
     fontSize: "16px",
   },
   rightStamp: {
-    marginTop: "20px",
+    marginBottom: "10px",
     alignItems: "center",
     marginLeft: "75%",
   },
   stamp: {
+    width: "100px",
+    height: "100px",
+  },
+  stampTitle: {
+    marginBottom: "10px",
     width: "50px",
     height: "50px",
-  },
+  }
 });
 
 function Alert(props) {
@@ -327,6 +332,10 @@ class CreateLand extends Component {
       <Document>
         <Page size="A4" style={styles.page}>
           <View style={styles.centertitle}>
+          <Image
+              src={{ uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png` }}
+              style={styles.stampTitle}
+            />
             <Text style={styles.title}>Blockchain Land Records System</Text>
           </View>
           <Svg
@@ -374,7 +383,7 @@ class CreateLand extends Component {
           </View>
           <View style={styles.rightStamp}>
             <Image
-              src={{ uri: `https://i.ibb.co/PxDxrFp/about.jpg` }}
+              src={{ uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png` }}
               style={styles.stamp}
             />
           </View>
@@ -574,7 +583,7 @@ class CreateLand extends Component {
                 </div>
               </div>
               <div className="col">
-                <PDFViewer style={{ width: "700px", height: "800px" }}>
+                <PDFViewer style={{ width: "700px", height: "1000px" }}>
                   <MyDocument />
                 </PDFViewer>
               </div>
