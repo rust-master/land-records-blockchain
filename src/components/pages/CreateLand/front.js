@@ -8,6 +8,8 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import ipfs from "../../../ipfs";
 
+import logo from "../CreateLand/growing.png";
+
 import ButtonCore from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -17,6 +19,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 import {
+  Image,
   Svg,
   Line,
   PDFViewer,
@@ -65,6 +68,14 @@ const styles = StyleSheet.create({
     margin: "5px",
     fontSize: "16px",
   },
+  rightStamp: {
+    marginTop: "20px",
+    alignItems: "right",
+  },
+  stamp: {
+    width:"50px",
+    height:"50px",
+  }
 });
 
 function Alert(props) {
@@ -360,6 +371,10 @@ class CreateLand extends Component {
               Previous Owner: {this.state.previousOwner}
             </Text>
           </View>
+          <View style={styles.rightStamp}>
+          <Image src={{uri: this.state.fileImage}} style={styles.stamp} />
+          </View>
+         
         </Page>
       </Document>
     );
