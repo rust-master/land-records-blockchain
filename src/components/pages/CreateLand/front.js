@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
   },
   rightStamp: {
     marginTop: "20px",
-    alignItems: "right",
+    alignItems: "center",
+    marginLeft: "75%",
   },
   stamp: {
     width:"50px",
@@ -372,7 +373,7 @@ class CreateLand extends Component {
             </Text>
           </View>
           <View style={styles.rightStamp}>
-          <Image src={{uri: this.state.fileImage}} style={styles.stamp} />
+          <Image src={{uri: `https://i.ibb.co/PxDxrFp/about.jpg`}} style={styles.stamp} />
           </View>
          
         </Page>
