@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
     marginLeft: "75%",
   },
   stamp: {
-    width:"50px",
-    height:"50px",
-  }
+    width: "50px",
+    height: "50px",
+  },
 });
 
 function Alert(props) {
@@ -373,9 +373,11 @@ class CreateLand extends Component {
             </Text>
           </View>
           <View style={styles.rightStamp}>
-          <Image src={{uri: `https://i.ibb.co/PxDxrFp/about.jpg`}} style={styles.stamp} />
+            <Image
+              src={{ uri: `https://i.ibb.co/PxDxrFp/about.jpg` }}
+              style={styles.stamp}
+            />
           </View>
-         
         </Page>
       </Document>
     );
