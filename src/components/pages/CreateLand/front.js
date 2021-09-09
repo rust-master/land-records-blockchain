@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   centertitle: {
     flexDirection: "row",
     marginTop: "20px",
-    marginLeft: "15%",
+    marginLeft: "13%",
     alignItems: "center",
   },
   stampTitle: {
