@@ -42,13 +42,16 @@ const styles = StyleSheet.create({
     // flexGrow: 1,
   },
   title: {
+    marginLeft: 10,
     fontSize: "24px",
     fontWeight: "bold",
     fontStyle: "bold",
     color: "#000",
   },
   centertitle: {
+    flexDirection: "row",
     marginTop: "20px",
+    marginLeft: "35%",
     alignItems: "center",
     // flexGrow: 0.1
   },
@@ -79,7 +82,6 @@ const styles = StyleSheet.create({
     height: "100px",
   },
   stampTitle: {
-    marginBottom: "10px",
     width: "50px",
     height: "50px",
   },
@@ -350,7 +352,7 @@ class CreateLand extends Component {
               x2="550"
               y2="0"
               strokeWidth={4}
-              stroke="#1b57b7"
+              stroke="#123d61"
             />
           </Svg>
           <View style={styles.section}>
