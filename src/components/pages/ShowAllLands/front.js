@@ -81,13 +81,24 @@ const stylesPDF = StyleSheet.create({
     fontSize: "16px",
   },
   rightStamp: {
-    marginBottom: "10px",
-    alignItems: "center",
-    marginLeft: "75%",
-  },
-  stamp: {
     width: "100px",
     height: "100px",
+    marginBottom: "10px",
+    marginLeft: "65%",
+  },
+  leftStamp: {
+    width: "100px",
+    height: "100px",
+    marginBottom: "10px",
+    marginLeft: "20px",
+
+  },
+  column: {
+    flex: "33.33%",
+    padding: "5px",
+  },
+  row: {
+    flexDirection: "row",
   },
 });
 
@@ -351,7 +362,6 @@ class ShowAllLands extends Component {
     const westAll = this.state.westi;
     const ownerNameAll = this.state.ownerNamei;
 
-
     let ListTemplate;
 
     console.log("Length", statesAll.length);
@@ -470,12 +480,19 @@ class ShowAllLands extends Component {
                           Created By: {createdByAll[index]}
                         </Text>
                       </View>
-                      <View style={stylesPDF.rightStamp}>
+                      <View style={stylesPDF.row}>
+                        <Image
+                          src={{
+                            uri: `https://i.ibb.co/rdMH7Mv/Only-Goverment.png`,
+                          }}
+                          style={stylesPDF.leftStamp}
+                        />
+
                         <Image
                           src={{
                             uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png`,
                           }}
-                          style={stylesPDF.stamp}
+                          style={stylesPDF.rightStamp}
                         />
                       </View>
                     </Page>
