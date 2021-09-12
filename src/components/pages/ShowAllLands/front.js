@@ -66,14 +66,15 @@ const stylesPDF = StyleSheet.create({
     fontSize: "22px",
     fontWeight: "bold",
     fontStyle: "bold",
-    marginBottom: "10px",
-    marginTop: "20px",
+    marginBottom: "5px",
+    marginTop: "5px",
   },
   heading2: {
     fontSize: "22px",
     fontWeight: "bold",
     fontStyle: "bold",
-    marginBottom: "10px",
+    marginBottom: "5px",
+    marginTop: "5px",
   },
   text: {
     margin: "5px",
@@ -96,7 +97,7 @@ const styles = (theme) => ({
   },
   root1: {
     backgroundColor: "#fff",
-    maxWidth: 930,
+    maxWidth: 840,
     marginTop: 10,
     position: "relative",
     marginLeft: 100,
@@ -373,7 +374,7 @@ class ShowAllLands extends Component {
                 <PDFViewer
                   style={{
                     width: "100%",
-                    height: "1010px",
+                    height: "1200px",
                   }}
                 >
                   <Document>
