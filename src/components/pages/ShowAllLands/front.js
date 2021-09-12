@@ -84,14 +84,13 @@ const stylesPDF = StyleSheet.create({
     width: "100px",
     height: "100px",
     marginBottom: "10px",
-    marginLeft: "65%",
+    marginLeft: "45%",
   },
   leftStamp: {
     width: "100px",
     height: "100px",
     marginBottom: "10px",
     marginLeft: "20px",
-
   },
   column: {
     flex: "33.33%",
