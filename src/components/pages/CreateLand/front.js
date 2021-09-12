@@ -208,7 +208,7 @@ class CreateLand extends Component {
         this.setState({ open: true });
         this.setState({
           success:
-            "Land Created successfully. Owner " + this.state.CurrentOwner,
+            "Land Created Successfully. Owner " + this.state.CurrentOwner,
         });
       } catch (e) {
         this.setState({ openi: true });
