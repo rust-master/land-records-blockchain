@@ -153,6 +153,7 @@ contract Land is Auth {
         returns (
             address,
             address,
+            address,
             uint256,
             uint256,
             string memory
@@ -161,6 +162,7 @@ contract Land is Auth {
         return (
             land[id].createByGovt,
             land[id].CurrentOwner,
+            land[id].previousOwner,
             land[id].khataNumber,
             land[id].khatooniNumber,
             land[id].landType
