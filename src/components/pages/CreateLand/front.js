@@ -6,9 +6,6 @@ import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import ipfs from "../../../ipfs";
-
-import logo from "../CreateLand/growing.png";
 
 import ButtonCore from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -19,7 +16,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 import {
-  PDFDownloadLink,
   Image,
   Svg,
   Line,
@@ -39,7 +35,6 @@ const styles = StyleSheet.create({
   section: {
     margin: 10,
     padding: 10,
-    // flexGrow: 1,
   },
   title: {
     marginLeft: 10,
@@ -97,6 +92,7 @@ class CreateLand extends Component {
     this.handleCloseDialog = this.handleCloseDialog.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.addPolylineData = this.addPolylineData.bind(this);
+    this.addData = this.addData.bind(this);
     this.state = {
       account: "",
       id: "",
@@ -116,8 +112,6 @@ class CreateLand extends Component {
       success: "",
       openi: false,
       errori: "",
-      buffer: null,
-      fileImage: "images/svg-8.svg",
       openDialog: false,
       lat: "",
       lng: "",
@@ -128,7 +122,7 @@ class CreateLand extends Component {
     };
   }
 
-  async addData(hash) {
+  async addData() {
     // check conditon for all the fields
     if (
       this.state.id === "" ||
@@ -143,8 +137,7 @@ class CreateLand extends Component {
       this.state.marketValue === "" ||
       this.state.squareFoots === "" ||
       this.state.inches === "" ||
-      this.state.landType === "" ||
-      hash === ""
+      this.state.landType === ""
     ) {
       this.setState({
         openi: true,
@@ -198,7 +191,6 @@ class CreateLand extends Component {
             this.state.id,
             this.state.squareFoots,
             this.state.inches,
-            hash,
             this.state.landType,
             this.state.account
           )
@@ -217,32 +209,6 @@ class CreateLand extends Component {
       }
     }
   }
-
-  captureFile = async (event) => {
-    event.preventDefault();
-    const file = event.target.files[0];
-    this.setState({ fileImage: URL.createObjectURL(event.target.files[0]) });
-    console.log("File: " + file);
-    const reader = new window.FileReader();
-    reader.readAsArrayBuffer(file);
-    reader.onloadend = () => {
-      this.setState({ buffer: Buffer(reader.result) });
-      console.log("buffer", this.state.buffer);
-    };
-  };
-
-  onSubmit = async (event) => {
-    event.preventDefault();
-    console.log("Submitting file");
-    if (this.state.buffer == null) {
-      alert("Please select a file");
-    } else {
-      const file = await ipfs.add(this.state.buffer);
-      const hash = file[0].hash;
-      console.log("Hash: " + hash);
-      this.addData(hash);
-    }
-  };
 
   async addPolylineData() {
     if (
@@ -544,18 +510,10 @@ class CreateLand extends Component {
                         <option value="Plot">Plot</option>
                       </select>
 
-                      <input
-                        style={{ width: "530px" }}
-                        className="footer-input"
-                        name="sdf"
-                        type="file"
-                        onChange={this.captureFile}
-                      />
-
                       <Button
                         buttonSize="btn--mobile"
                         buttonColor="blue"
-                        onClick={this.onSubmit}
+                        onClick={this.addData}
                       >
                         Create Land
                       </Button>
@@ -587,35 +545,12 @@ class CreateLand extends Component {
                 <PDFViewer style={{ width: "700px", height: "1010px" }}>
                   <MyDocument />
                 </PDFViewer>
-
-                <PDFDownloadLink
-                  document={<MyDocument />}
-                  fileName="somename.pdf"
-                >
-                  {({ blob, url, loading, error }) =>
-                    loading ? "Loading document..." : "Download now!"
-                  }
-                </PDFDownloadLink>
               </div>
             </div>
           </div>
         </div>
 
         <div>
-          <div className="home__hero-img-wrapper">
-            <img
-              src={this.state.fileImage}
-              alt={"Credit Card"}
-              className="home__hero-img"
-            />
-          </div>
-          <ButtonCore
-            variant="outlined"
-            color="primary"
-            onClick={this.handleClickOpen}
-          >
-            Open form dialog
-          </ButtonCore>
           <Dialog
             open={this.state.openDialog}
             onClose={this.handleCloseDialog}

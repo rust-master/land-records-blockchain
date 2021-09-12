@@ -13,7 +13,6 @@ contract Land is Auth {
         string ownerName;
         address previousOwner;
         uint256 marketValue;
-        string ipfsHash;
         string landType;
         string squareFoots;
         string inches;
@@ -82,7 +81,6 @@ contract Land is Auth {
         uint256 id,
         string memory _squareFoots,
         string memory _inches,
-        string memory _ipfsHash,
         string memory _landType,
         address _createByGovt
     ) public returns (bool) {
@@ -98,7 +96,6 @@ contract Land is Auth {
         land[id].marketValue = _marketValue;
         land[id].squareFoots = _squareFoots;
         land[id].inches = _inches;
-        land[id].ipfsHash = _ipfsHash;
         land[id].landType = _landType;
         land[id].createByGovt = _createByGovt;
         profile[_OwnerAddress].assetList.push(id);
@@ -154,7 +151,6 @@ contract Land is Auth {
         public
         view
         returns (
-            string memory,
             address,
             address,
             uint256,
@@ -163,7 +159,6 @@ contract Land is Auth {
         )
     {
         return (
-            land[id].ipfsHash,
             land[id].createByGovt,
             land[id].CurrentOwner,
             land[id].khataNumber,
