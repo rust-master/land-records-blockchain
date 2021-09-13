@@ -507,6 +507,7 @@ class CreateLand extends Component {
                         <option value="Residential">Residential</option>
                         <option value="Commercial">Commercial</option>
                         <option value="Agriculture">Agriculture</option>
+                        <option value="Industrial">Industrial</option>
                         <option value="Plot">Plot</option>
                       </select>
 
