@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
-
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 class ChangeMarketValue extends Component {
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -22,7 +20,7 @@ class ChangeMarketValue extends Component {
       changeValue: [],
       open: false,
       openi: false,
-    }
+    };
   }
 
   handleChange(e) {
@@ -32,7 +30,7 @@ class ChangeMarketValue extends Component {
   }
 
   handleClose(e, r) {
-    if (r === 'clickaway') {
+    if (r === "clickaway") {
       return;
     }
 
@@ -41,37 +39,39 @@ class ChangeMarketValue extends Component {
   }
 
   async changeMarketValueData(sendValue) {
-    console.log("Data " + sendValue)
-    this.state.allIDs = []
+    console.log("Data " + sendValue);
+    this.state.allIDs = [];
 
     const web3 = window.web3;
-    const webeProvider = new Web3(Web3.givenProvider || "http://localhost:7545");
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
     const accounts = await webeProvider.eth.getAccounts();
 
-    const landCon = new web3.eth.Contract(contract.abi, "0x9826512B2C6786843E45F514cc636DE2CCDf6455");
-    const allLandsIDs = await landCon.methods.getAllLands().call({ from: accounts[0] });
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
 
-    this.state.allIDs = allLandsIDs;
-    console.log("IDs", this.state.allIDs);
+    console.log(deployedNetwork.address);
 
-    if (sendValue > 0) {
-      this.state.allIDs.map(async (value, index) => {
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
 
-        await landCon.methods.changeMarketValue(this.state.allIDs[index], 
-          sendValue).send({ from: accounts[0] });
+    // if (sendValue > 0) {
 
-      });
+    await landCon.methods
+      .changeMarketValue(5, sendValue)
+      .send({ from: accounts[0] });
 
-      this.setState({ open: true });
+    this.setState({ open: true });
 
-    } else {
-      this.setState({ openi: true });
-    }
-
+    // } else {
+    //   this.setState({ openi: true });
+    // }
   }
 
   render() {
-
     return (
       <div>
         <div
@@ -87,12 +87,13 @@ class ChangeMarketValue extends Component {
             >
               <div className="col">
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"Market Value of Land Changes After Years"}</div>
+                  <div className="top-line">
+                    {"Market Value of Land Changes After Years"}
+                  </div>
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"Change Market Value"}
                   </h1>
                   <div className="input-areas">
-
                     <input
                       style={{ width: "520px" }}
                       className="footer-input"
@@ -105,26 +106,36 @@ class ChangeMarketValue extends Component {
                     />
 
                     <Button
-                      onClick={this.changeMarketValueData.bind(this, this.state.changeValue)}
-                      buttonSize="btn--wide" buttonColor="blue">
+                      onClick={this.changeMarketValueData.bind(
+                        this,
+                        this.state.changeValue
+                      )}
+                      buttonSize="btn--wide"
+                      buttonColor="blue"
+                    >
                       Change Market Value
                     </Button>
-
                   </div>
 
-
-                  <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
+                  <Snackbar
+                    open={this.state.open}
+                    autoHideDuration={6000}
+                    onClose={this.handleClose}
+                  >
                     <Alert onClose={this.handleClose} severity="success">
                       Market Value Change of All Lands Succefully
                     </Alert>
                   </Snackbar>
 
-                  <Snackbar open={this.state.openi} autoHideDuration={6000} onClose={this.handleClose}>
+                  <Snackbar
+                    open={this.state.openi}
+                    autoHideDuration={6000}
+                    onClose={this.handleClose}
+                  >
                     <Alert onClose={this.handleClose} severity="error">
                       Market Value is Wrong. Please Try Again
                     </Alert>
                   </Snackbar>
-
                 </div>
               </div>
               <div className="col">
