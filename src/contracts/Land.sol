@@ -295,7 +295,42 @@ contract Land is Auth {
     function changeMarketValue(uint256 property, uint256 _marketValue) public {
         // update all land values
         for (uint256 i = 0; i < propertiesIDs.length; i++) {
-            if (land[propertiesIDs[i]].marketValue > 0) {
+            if (
+                land[propertiesIDs[i]].marketValue > 0 &&
+                land[propertiesIDs[i]].landType == "Residential"
+            ) {
+                land[propertiesIDs[i]].marketValue =
+                    land[propertiesIDs[i]].marketValue +
+                    _marketValue;
+            }
+            if (
+                land[propertiesIDs[i]].marketValue > 0 &&
+                land[propertiesIDs[i]].landType == "Commercial"
+            ) {
+                land[propertiesIDs[i]].marketValue =
+                    land[propertiesIDs[i]].marketValue +
+                    _marketValue;
+            }
+            if (
+                land[propertiesIDs[i]].marketValue > 0 &&
+                land[propertiesIDs[i]].landType == "Agricultural"
+            ) {
+                land[propertiesIDs[i]].marketValue =
+                    land[propertiesIDs[i]].marketValue +
+                    _marketValue;
+            }
+            if (
+                land[propertiesIDs[i]].marketValue > 0 &&
+                land[propertiesIDs[i]].landType == "Industrial"
+            ) {
+                land[propertiesIDs[i]].marketValue =
+                    land[propertiesIDs[i]].marketValue +
+                    _marketValue;
+            }
+            if (
+                land[propertiesIDs[i]].marketValue > 0 &&
+                land[propertiesIDs[i]].landType == "Plot"
+            ) {
                 land[propertiesIDs[i]].marketValue =
                     land[propertiesIDs[i]].marketValue +
                     _marketValue;
