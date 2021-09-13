@@ -16,8 +16,8 @@ class ChangeMarketValue extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.state = {
-      allIDs: [],
-      changeValue: [],
+      changeValue: "",
+      landType: "",
       open: false,
       openi: false,
     };
@@ -40,7 +40,6 @@ class ChangeMarketValue extends Component {
 
   async changeMarketValueData(sendValue) {
     console.log("Data " + sendValue);
-    this.state.allIDs = [];
 
     const web3 = window.web3;
     const webeProvider = new Web3(
@@ -95,7 +94,6 @@ class ChangeMarketValue extends Component {
                   </h1>
                   <div className="input-areas">
                     <input
-                      style={{ width: "520px" }}
                       className="footer-input"
                       name="changeValue"
                       type="number"
@@ -104,6 +102,20 @@ class ChangeMarketValue extends Component {
                       value={this.state.changeValue}
                       onChange={this.handleChange}
                     />
+
+                    <select
+                      style={{ width: "260px" }}
+                      className="footer-input"
+                      name="landType"
+                      value={this.state.landType}
+                      onChange={this.handleChange}
+                    >
+                      <option value="Residential">Residential</option>
+                      <option value="Commercial">Commercial</option>
+                      <option value="Agriculture">Agriculture</option>
+                      <option value="Industrial">Industrial</option>
+                      <option value="Plot">Plot</option>
+                    </select>
 
                     <Button
                       onClick={this.changeMarketValueData.bind(
