@@ -293,8 +293,14 @@ contract Land is Auth {
 
     // change the market value after some years
     function changeMarketValue(uint256 property, uint256 _marketValue) public {
-        uint256 marketValueGet = showMarketValue(property);
-        land[property].marketValue = marketValueGet + _marketValue;
+        // update all land values
+        for (uint256 i = 0; i < propertiesIDs.length; i++) {
+            if (land[propertiesIDs[i]].marketValue > 0) {
+                land[propertiesIDs[i]].marketValue =
+                    land[propertiesIDs[i]].marketValue +
+                    _marketValue;
+            }
+        }
     }
 
     // Get all the lands ids.

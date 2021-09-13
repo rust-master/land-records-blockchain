@@ -204,9 +204,9 @@ class ShowAllLands extends Component {
       this.state.previousOwner.push(remainignDetail[2]);
       this.state.khataNumber.push(remainignDetail[3]);
       this.state.khatooniNumber.push(remainignDetail[4]);
-      this.state.landType.push(remainignDetail[4]);
+      this.state.landType.push(remainignDetail[5]);
 
-      console.log("landType", remainignDetail[4]);
+      console.log("landType", remainignDetail[5]);
 
       console.log("---------------------------------");
     });

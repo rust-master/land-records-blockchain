@@ -155,9 +155,9 @@ class Property extends Component {
       this.state.squareFoots.push(detail[5]);
       this.state.inches.push(detail[6]);
 
-      this.state.ipfsHash.push(remainignDetail[0]);
-      this.state.createdByGovt.push(remainignDetail[1]);
-      this.state.currentOwner.push(remainignDetail[2]);
+     
+      this.state.createdByGovt.push(remainignDetail[0]);
+      this.state.currentOwner.push(remainignDetail[1]);
       this.state.khaataNumber.push(remainignDetail[3]);
       this.state.khaatoniNumber.push(remainignDetail[4]);
       this.state.landType.push(remainignDetail[5]);
