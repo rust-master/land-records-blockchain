@@ -292,44 +292,14 @@ contract Land is Auth {
     }
 
     // change the market value after some years
-    function changeMarketValue(uint256 property, uint256 _marketValue) public {
+    function changeMarketValue(string memory _landType, uint256 _marketValue)
+        public
+    {
         // update all land values
         for (uint256 i = 0; i < propertiesIDs.length; i++) {
             if (
                 land[propertiesIDs[i]].marketValue > 0 &&
-                land[propertiesIDs[i]].landType == "Residential"
-            ) {
-                land[propertiesIDs[i]].marketValue =
-                    land[propertiesIDs[i]].marketValue +
-                    _marketValue;
-            }
-            if (
-                land[propertiesIDs[i]].marketValue > 0 &&
-                land[propertiesIDs[i]].landType == "Commercial"
-            ) {
-                land[propertiesIDs[i]].marketValue =
-                    land[propertiesIDs[i]].marketValue +
-                    _marketValue;
-            }
-            if (
-                land[propertiesIDs[i]].marketValue > 0 &&
-                land[propertiesIDs[i]].landType == "Agricultural"
-            ) {
-                land[propertiesIDs[i]].marketValue =
-                    land[propertiesIDs[i]].marketValue +
-                    _marketValue;
-            }
-            if (
-                land[propertiesIDs[i]].marketValue > 0 &&
-                land[propertiesIDs[i]].landType == "Industrial"
-            ) {
-                land[propertiesIDs[i]].marketValue =
-                    land[propertiesIDs[i]].marketValue +
-                    _marketValue;
-            }
-            if (
-                land[propertiesIDs[i]].marketValue > 0 &&
-                land[propertiesIDs[i]].landType == "Plot"
+                land[propertiesIDs[i]].landType == _landType
             ) {
                 land[propertiesIDs[i]].marketValue =
                     land[propertiesIDs[i]].marketValue +
