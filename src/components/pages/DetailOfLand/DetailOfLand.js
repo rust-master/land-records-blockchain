@@ -112,9 +112,9 @@ const styles = (theme) => ({
 });
 
 class DetailOfLand extends Component {
-  // componentWillMount() {
-  //   this.loadBlockchainData();
-  // }
+  componentWillMount() {
+    this.loadBlockchainData();
+  }
 
   constructor(props) {
     super(props);
@@ -122,17 +122,17 @@ class DetailOfLand extends Component {
     this.handleCloseDialog = this.handleCloseDialog.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.state = {
-      allIDs: [],
-      states: [],
-      district: [],
-      village: [],
-      owners: [],
-      marketValue: [],
-      squareFoots: [],
-      inches: [],
-      ipfsHash: [],
-      landType: [],
-      createdBy: [],
+      allIDs: "",
+      states: "",
+      district: "",
+      village: "",
+      owners: "",
+      marketValue: "",
+      squareFoots: "",
+      inches: "",
+      ipfsHash: "",
+      landType: "",
+      createdBy: "",
       placeHolder: "Loading Records",
       openDialog: false,
       lat: "",
@@ -143,35 +143,42 @@ class DetailOfLand extends Component {
       west: "",
       ownerName: "",
       tempOwnerAddress: "",
-      khataNumber: [],
-      khatooniNumber: [],
-      previousOwner: [],
-      lati: [],
-      lngi: [],
-      northi: [],
-      southi: [],
-      easti: [],
-      westi: [],
-      ownerNamei: [],
+      khataNumber: "",
+      khatooniNumber: "",
+      previousOwner: "",
+      lati: "",
+      lngi: "",
+      northi: "",
+      southi: "",
+      easti: "",
+      westi: "",
+      ownerNamei: "",
     };
   }
 
-  alertMessage(){
-    console.log("Passed ID: " + this.props.match.params.id);
- }
-
   async loadBlockchainData() {
-    this.state.allIDs = [];
-    this.state.states = [];
-    this.state.owners = [];
-    this.state.district = [];
-    this.state.marketValue = [];
-    this.state.squareFoots = [];
-    this.state.inches = [];
-    this.state.ids = [];
-    this.state.ipfsHash = [];
-    this.state.landType = [];
-    this.state.village = [];
+    this.state.Id = "";
+    this.state.states = "";
+    this.state.owners = "";
+    this.state.district = "";
+    this.state.marketValue = "";
+    this.state.squareFoots = "";
+    this.state.inches = "";
+    this.state.landType = "";
+    this.state.village = "";
+    this.state.createdBy = "";
+    this.state.khataNumber = "";
+    this.state.khatooniNumber = "";
+    this.state.previousOwner = "";
+    this.state.lati = "";
+    this.state.lngi = "";
+    this.state.northi = "";
+    this.state.southi = "";
+    this.state.easti = "";
+    this.state.westi = "";
+    this.state.ownerNamei = "";
+
+    console.log("Passed ID: " + this.props.match.params.id);
 
     const web3 = window.web3;
 
@@ -192,74 +199,69 @@ class DetailOfLand extends Component {
       deployedNetwork.address
     );
 
-    const allLandsIDs = await landCon.methods
-      .getAllLands()
+    const remainignDetail = await landCon.methods
+      .remainingDetail(this.props.match.params.id)
       .call({ from: this.state.account });
 
-    this.state.allIDs = allLandsIDs;
-    console.log("IDs", allLandsIDs);
+    this.setState({ createdBy: remainignDetail[0] });
+    this.setState({ previousOwner: remainignDetail[2] });
+    this.setState({ khataNumber: remainignDetail[3] });
+    this.setState({ khatooniNumber: remainignDetail[4] });
+    this.setState({ landType: remainignDetail[5] });
 
-    this.state.allIDs.map(async (value, index) => {
-      const remainignDetail = await landCon.methods
-        .remainingDetail(this.state.allIDs[index])
-        .call({ from: this.state.account });
+    console.log("Created By: " + this.state.createdBy);
+    console.log("Previous Owner: " + this.state.previousOwner);
+    console.log("Khata Number: " + this.state.khataNumber);
+    console.log("Khatooni Number: " + this.state.khatooniNumber);
+    console.log("landType", this.state.landType);
 
-      this.state.createdBy.push(remainignDetail[0]);
-      this.state.previousOwner.push(remainignDetail[2]);
-      this.state.khataNumber.push(remainignDetail[3]);
-      this.state.khatooniNumber.push(remainignDetail[4]);
-      this.state.landType.push(remainignDetail[5]);
+    console.log("---------------------------------");
 
-      console.log("landType", remainignDetail[5]);
+    const detailMap = await landCon.methods
+      .remainingMoreDetail(this.props.match.params.id)
+      .call({ from: this.state.account });
 
-      console.log("---------------------------------");
-    });
+    this.setState({ lati: detailMap[0] });
+    this.setState({ lngi: detailMap[1] });
+    this.setState({ northi: detailMap[2] });
+    this.setState({ southi: detailMap[3] });
+    this.setState({ easti: detailMap[4] });
+    this.setState({ westi: detailMap[5] });
+    this.setState({ ownerNamei: detailMap[6] });
 
-    this.state.allIDs.map(async (value, index) => {
-      const detailMap = await landCon.methods
-        .remainingMoreDetail(this.state.allIDs[index])
-        .call({ from: this.state.account });
+    this.setState({ Id: this.props.match.params.id });
 
-      this.state.lati.push(detailMap[0]);
-      this.state.lngi.push(detailMap[1]);
-      this.state.northi.push(detailMap[2]);
-      this.state.southi.push(detailMap[3]);
-      this.state.easti.push(detailMap[4]);
-      this.state.westi.push(detailMap[5]);
-      this.state.ownerNamei.push(detailMap[6]);
+    console.log("lati", detailMap[0]);
+    console.log("lngi", detailMap[1]);
+    console.log("northi", detailMap[2]);
+    console.log("southi", detailMap[3]);
+    console.log("easti", detailMap[4]);
+    console.log("westi", detailMap[5]);
+    console.log("ownerNamei", detailMap[6]);
 
-      console.log("lati", detailMap[0]);
-      console.log("lngi", detailMap[1]);
-      console.log("northi", detailMap[2]);
-      console.log("southi", detailMap[3]);
-      console.log("easti", detailMap[4]);
-      console.log("westi", detailMap[5]);
-      console.log("ownerNamei", detailMap[6]);
-    });
+    console.log("---------------------------------");
 
-    this.state.allIDs.map(async (value, index) => {
-      const detail = await landCon.methods
-        .showAllLands(this.state.allIDs[index])
-        .call({ from: this.state.account });
+    const detail = await landCon.methods
+      .showAllLands(this.props.match.params.id)
+      .call({ from: this.state.account });
 
-      this.state.owners.push(detail[0]);
-      this.state.states.push(detail[1]);
-      this.state.district.push(detail[2]);
-      this.state.village.push(detail[3]);
-      this.state.marketValue.push(detail[4]);
-      this.state.squareFoots.push(detail[5]);
-      this.state.inches.push(detail[6]);
+    this.setState({ owners: detail[0] });
+    this.setState({ states: detail[1] });
+    this.setState({ district: detail[2] });
+    this.setState({ village: detail[3] });
+    this.setState({ marketValue: detail[4] });
+    this.setState({ squareFoots: detail[5] });
+    this.setState({ inches: detail[6] });
 
-      console.log("Owner: " + detail[0]);
-      console.log("State: " + detail[1]);
-      console.log("District: " + detail[2]);
-      console.log("village: " + detail[3]);
-      console.log("marketValue: " + detail[4]);
-      console.log("squareFoots: " + detail[5]);
-      console.log("Inches: " + detail[6]);
+    console.log("Owner: " + detail[0]);
+    console.log("State: " + detail[1]);
+    console.log("District: " + detail[2]);
+    console.log("village: " + detail[3]);
+    console.log("marketValue: " + detail[4]);
+    console.log("squareFoots: " + detail[5]);
+    console.log("Inches: " + detail[6]);
 
-      console.log("---------------------------------");
-    });
+    console.log("---------------------------------");
 
     if (this.state.states.length <= 0) {
       this.setState({ placeHolder: "Record Not Found" });
@@ -341,33 +343,13 @@ class DetailOfLand extends Component {
   render() {
     const { classes } = this.props;
 
-    const dataAll = this.state.allIDs;
-    const statesAll = this.state.states;
-    const districtAll = this.state.district;
-    const villageAll = this.state.village;
-    const ownersAll = this.state.owners;
-    const measureAll = this.state.squareFoots;
-    const inchesAll = this.state.inches;
-    const marketValueAll = this.state.marketValue;
-    const landTypeAll = this.state.landType;
-    const createdByAll = this.state.createdBy;
-    const khataNumberAll = this.state.khataNumber;
-    const khatooniNumberAll = this.state.khatooniNumber;
-    const previousOwnerAll = this.state.previousOwner;
-    const latAll = this.state.lati;
-    const lngAll = this.state.lngi;
-    const northAll = this.state.northi;
-    const southAll = this.state.southi;
-    const eastAll = this.state.easti;
-    const westAll = this.state.westi;
-    const ownerNameAll = this.state.ownerNamei;
 
     let ListTemplate;
 
-    console.log("Length", statesAll.length);
+    console.log("Land ID", this.state.Id);
 
-    if (statesAll.length) {
-      ListTemplate = dataAll.map((value, index) => (
+    if (this.state.Id != "") {
+      ListTemplate = 
         <Slide
           direction="left"
           in={true}
@@ -417,67 +399,67 @@ class DetailOfLand extends Component {
                       <View style={stylesPDF.section}>
                         <Text style={stylesPDF.heading1}>Land Detail</Text>
                         <Text style={stylesPDF.text}>
-                          State: {statesAll[index]}
+                          State: {this.state.states}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          District: {districtAll[index]}
+                          District: {this.state.district}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Village: {villageAll[index]}
+                          Village: {this.state.village}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Khata No: {khataNumberAll[index]}
+                          Khata No: {this.state.khataNumber}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Khatooni No: {khatooniNumberAll[index]}
+                          Khatooni No: {this.state.khatooniNumber}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Market Value: {marketValueAll[index]} Ether
+                          Market Value: {this.state.marketValue} Ether
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Square Foots: {measureAll[index]}
+                          Square Foots: {this.state.squareFoots}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Inches: {inchesAll[index]}
+                          Inches: {this.state.inches}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Land ID: {dataAll[index]}
+                          Land ID: {this.state.Id}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Land Type: {landTypeAll[index]}
+                          Land Type: {this.state.landType}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Latitude: {latAll[index]}
+                          Latitude: {this.state.lati}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Longitude: {lngAll[index]}
+                          Longitude: {this.state.lngi}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          North: {northAll[index]}
+                          North: {this.state.northi}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          South: {southAll[index]}
+                          South: {this.state.southi}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          East: {eastAll[index]}
+                          East: {this.state.easti}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          West: {westAll[index]}
+                          West: {this.state.westi}
                         </Text>
                       </View>
                       <View style={stylesPDF.section}>
                         <Text style={stylesPDF.heading2}>Owner Detail</Text>
                         <Text style={stylesPDF.text}>
-                          Owner Name: {ownerNameAll[index]}
+                          Owner Name: {this.state.ownerNamei}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Owner Address: {ownersAll[index]}
+                          Owner Address: {this.state.owners}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Previous Owner: {previousOwnerAll[index]}
+                          Previous Owner: {this.state.previousOwner}
                         </Text>
                         <Text style={stylesPDF.text}>
-                          Created By: {createdByAll[index]}
+                          Created By: {this.state.createdBy}
                         </Text>
                       </View>
                       <View style={stylesPDF.row}>
@@ -505,8 +487,8 @@ class DetailOfLand extends Component {
                     color="primary"
                     onClick={this.viewDetails.bind(
                       this,
-                      dataAll[index],
-                      ownersAll[index]
+                      this.state.Id,
+                      this.state.owners
                     )}
                   >
                     View Detail
@@ -516,7 +498,6 @@ class DetailOfLand extends Component {
             </Card>
           </div>
         </Slide>
-      ));
     } else {
       ListTemplate = <div> {this.state.placeHolder} </div>;
     }
@@ -562,17 +543,23 @@ class DetailOfLand extends Component {
             >
               <div className="home__hero-text-wrapper">
                 <div className="top-line">
-                  {"Registered Lands by Goverment"}
+                  {"Registered Land by Goverment"}
                 </div>
                 <h1 className={true ? "heading" : "heading dark"}>
-                  {"All Registered Lands"}
+                  {"Registered Land Detail"}
                 </h1>
               </div>
             </div>
 
             {ListTemplate}
 
-            <button onClick={()=>{this.alertMessage()}}>click me to see log</button>
+            <button
+              onClick={() => {
+                this.alertMessage();
+              }}
+            >
+              click me to see log
+            </button>
 
             <div>
               <Dialog
@@ -625,6 +612,5 @@ class DetailOfLand extends Component {
     );
   }
 }
-
 
 export default withStyles(styles)(DetailOfLand);
