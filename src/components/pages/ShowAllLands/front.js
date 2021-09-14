@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Slide from "@material-ui/core/Slide";
+import Typography from "@material-ui/core/Typography";
 
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
@@ -25,79 +26,6 @@ import {
   Rectangle,
 } from "react-google-maps";
 
-import {
-  Image,
-  Svg,
-  Line,
-  PDFViewer,
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-} from "@react-pdf/renderer";
-
-const stylesPDF = StyleSheet.create({
-  page: {
-    flexDirection: "column",
-    backgroundColor: "#e5be84",
-  },
-  section: {
-    marginLeft: 10,
-    paddingLeft: 10,
-  },
-  title: {
-    marginLeft: 10,
-    fontSize: "26px",
-    fontWeight: "bold",
-    color: "#000",
-  },
-  centertitle: {
-    flexDirection: "row",
-    marginTop: "20px",
-    marginLeft: "12%",
-    alignItems: "center",
-  },
-  stampTitle: {
-    width: "50px",
-    height: "50px",
-  },
-  heading1: {
-    fontSize: "22px",
-    fontWeight: "bold",
-    fontStyle: "bold",
-    marginBottom: "5px",
-    marginTop: "5px",
-  },
-  heading2: {
-    fontSize: "22px",
-    fontWeight: "bold",
-    fontStyle: "bold",
-    marginBottom: "5px",
-    marginTop: "5px",
-  },
-  text: {
-    margin: "5px",
-    fontSize: "16px",
-  },
-  rightStamp: {
-    width: "100px",
-    height: "100px",
-    marginBottom: "10px",
-    marginLeft: "350px",
-  },
-  leftStamp: {
-    width: "100px",
-    height: "100px",
-    marginBottom: "10px",
-    marginLeft: "20px",
-  },
-  row: {
-    flexDirection: "row",
-    marginTop: "10px",
-  },
-});
-
 const styles = (theme) => ({
   main: {
     position: "relative",
@@ -108,6 +36,20 @@ const styles = (theme) => ({
     marginTop: 10,
     position: "relative",
     marginLeft: 100,
+  },
+  Typo1: {
+    color: "#266AFB",
+    fontWeight: "bold",
+    textAlign: "left",
+  },
+  TypoSt: {
+    color: "#F00946",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  TypoP: {
+    color: "#266AFB",
+    textAlign: "center",
   },
 });
 
@@ -377,136 +319,101 @@ class ShowAllLands extends Component {
           >
             <Card className={classes.root1}>
               <CardContent>
-                <PDFViewer
-                  style={{
-                    width: "100%",
-                    height: "1200px",
-                  }}
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
                 >
-                  <Document>
-                    <Page size="A4" style={stylesPDF.page}>
-                      <View style={stylesPDF.centertitle}>
-                        <Image
-                          src={{
-                            uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png`,
-                          }}
-                          style={stylesPDF.stampTitle}
-                        />
-                        <Text style={stylesPDF.title}>
-                          Blockchain Land Records System
-                        </Text>
-                      </View>
-                      <Svg
-                        height="15"
-                        width="550"
-                        style={{ marginTop: "10px", alignSelf: "center" }}
-                      >
-                        <Line
-                          x1="0"
-                          y1="0"
-                          x2="550"
-                          y2="0"
-                          strokeWidth={4}
-                          stroke="#123d61"
-                        />
-                      </Svg>
-                      <View style={stylesPDF.section}>
-                        <Text style={stylesPDF.heading1}>Land Detail</Text>
-                        <Text style={stylesPDF.text}>
-                          State: {statesAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          District: {districtAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Village: {villageAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Khata No: {khataNumberAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Khatooni No: {khatooniNumberAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Market Value: {marketValueAll[index]} Ether
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Square Foots: {measureAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Inches: {inchesAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Land ID: {dataAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Land Type: {landTypeAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Latitude: {latAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Longitude: {lngAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          North: {northAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          South: {southAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          East: {eastAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          West: {westAll[index]}
-                        </Text>
-                      </View>
-                      <View style={stylesPDF.section}>
-                        <Text style={stylesPDF.heading2}>Owner Detail</Text>
-                        <Text style={stylesPDF.text}>
-                          Owner Name: {ownerNameAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Owner Address: {ownersAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Previous Owner: {previousOwnerAll[index]}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Created By: {createdByAll[index]}
-                        </Text>
-                      </View>
-                      <View style={stylesPDF.row}>
-                        <Image
-                          src={{
-                            uri: `https://i.ibb.co/rdMH7Mv/Only-Goverment.png`,
-                          }}
-                          style={stylesPDF.leftStamp}
-                        />
+                  <h5 style={{ textAlign: "center" }}>
+                    Current Owner: {ownersAll[index]}
+                  </h5>
+                </Typography>
 
-                        <Image
-                          src={{
-                            uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png`,
-                          }}
-                          style={stylesPDF.rightStamp}
-                        />
-                      </View>
-                    </Page>
-                  </Document>
-                </PDFViewer>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span style={{ color: "#EF8E19" }}>
+                    Property ID: {dataAll[index]}
+                  </span>{" "}
+                  <span style={{ float: "right" }}>
+                    State: {statesAll[index]}
+                  </span>
+                </Typography>
 
-                <span style={{ float: "right", marginBottom: "20px" }}>
-                  <ButtonCore
-                    variant="outlined"
-                    color="primary"
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>District: {districtAll[index]}</span>{" "}
+                  <span style={{ float: "right" }}>
+                    Village/Town: {villageAll[index]}
+                  </span>
+                </Typography>
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>Square Foots: {measureAll[index]}</span>
+                  {" | "}
+                  <span>Inches: {inchesAll[index]}</span>
+                  <span style={{ float: "right" }}>
+                    Land Type: {landTypeAll[index]}
+                  </span>
+                </Typography>
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>Created By: {createdByAll[index]}</span>
+                </Typography>
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <h2 style={{ color: "#00AEE6", textAlign: "center" }}>
+                    Market Value: {marketValueAll[index]}
+                  </h2>
+                </Typography>
+                <span style={{ float: "right", marginBottom: "20px"}}>
+                  <Button
+                  
+                    buttonSize="btn--medium"
+                    buttonStyle="btn--outline"
+                    buttonColor="primary"
                     onClick={this.viewDetails.bind(
                       this,
                       dataAll[index],
                       ownersAll[index]
                     )}
                   >
-                    View Detail
-                  </ButtonCore>
+                    View Land at Map
+                  </Button>
+
+                  <Link 
+                  to={"/detail-of-land/" + dataAll[index]}
+                 
+                  style={{marginLeft: "10px"}}>
+                    <Button 
+                    buttonStyle="btn--primary"
+                    buttonSize="btn--medium" buttonColor="blue">
+                      Detail of Land
+                    </Button>
+                  </Link>
                 </span>
               </CardContent>
             </Card>

@@ -14,6 +14,7 @@ import Profile from "./components/pages/Profile/Profile";
 import CreateLand from "./components/pages/CreateLand/CreatLand";
 import ShowAllLands from "./components/pages/ShowAllLands/ShowAllLands";
 import ChangeMarketValue from "./components/pages/ChangeMarketValue/ChangeMarketValue";
+import DetailOfLand from "./components/pages/DetailOfLand/DetailOfLand";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -200,6 +201,17 @@ class App extends Component {
                 <Route
                   path="/change-market-value"
                   component={ChangeMarketValue}
+                />
+              ) : user ? (
+                <Route path="/properties" component={Properties} />
+              ) : (
+                <Route path="/goverment-signup" component={GovermentSignUp} />
+              )}
+
+              {admin ? (
+                <Route
+                  path="/detail-of-land/:id"
+                  component={DetailOfLand}
                 />
               ) : user ? (
                 <Route path="/properties" component={Properties} />
