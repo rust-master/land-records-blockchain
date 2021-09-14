@@ -343,13 +343,12 @@ class DetailOfLand extends Component {
   render() {
     const { classes } = this.props;
 
-
     let ListTemplate;
 
     console.log("Land ID", this.state.Id);
 
     if (this.state.Id != "") {
-      ListTemplate = 
+      ListTemplate = (
         <Slide
           direction="left"
           in={true}
@@ -498,6 +497,7 @@ class DetailOfLand extends Component {
             </Card>
           </div>
         </Slide>
+      );
     } else {
       ListTemplate = <div> {this.state.placeHolder} </div>;
     }
@@ -542,24 +542,23 @@ class DetailOfLand extends Component {
               }}
             >
               <div className="home__hero-text-wrapper">
-                <div className="top-line">
-                  {"Registered Land by Goverment"}
-                </div>
+                <div className="top-line">{"Registered Land by Goverment"}</div>
                 <h1 className={true ? "heading" : "heading dark"}>
                   {"Registered Land Detail"}
                 </h1>
+                <Link to={"/show-all-lands"}>
+                  <Button
+                    buttonStyle="btn--primary"
+                    buttonSize="btn--medium"
+                    buttonColor="blue"
+                  >
+                     	&#x2B05;{" Back"}
+                  </Button>
+                </Link>
               </div>
             </div>
 
             {ListTemplate}
-
-            <button
-              onClick={() => {
-                this.alertMessage();
-              }}
-            >
-              click me to see log
-            </button>
 
             <div>
               <Dialog
