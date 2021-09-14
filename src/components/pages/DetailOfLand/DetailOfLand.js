@@ -26,6 +26,7 @@ import {
 } from "react-google-maps";
 
 import {
+  PDFDownloadLink,
   Image,
   Svg,
   Line,
@@ -343,6 +344,93 @@ class DetailOfLand extends Component {
   render() {
     const { classes } = this.props;
 
+    const MyDocument = () => (
+      <Document>
+        <Page size="A4" style={stylesPDF.page}>
+          <View style={stylesPDF.centertitle}>
+            <Image
+              src={{
+                uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png`,
+              }}
+              style={stylesPDF.stampTitle}
+            />
+            <Text style={stylesPDF.title}>Blockchain Land Records System</Text>
+          </View>
+          <Svg
+            height="15"
+            width="550"
+            style={{ marginTop: "10px", alignSelf: "center" }}
+          >
+            <Line
+              x1="0"
+              y1="0"
+              x2="550"
+              y2="0"
+              strokeWidth={4}
+              stroke="#123d61"
+            />
+          </Svg>
+          <View style={stylesPDF.section}>
+            <Text style={stylesPDF.heading1}>Land Detail</Text>
+            <Text style={stylesPDF.text}>State: {this.state.states}</Text>
+            <Text style={stylesPDF.text}>District: {this.state.district}</Text>
+            <Text style={stylesPDF.text}>Village: {this.state.village}</Text>
+            <Text style={stylesPDF.text}>
+              Khata No: {this.state.khataNumber}
+            </Text>
+            <Text style={stylesPDF.text}>
+              Khatooni No: {this.state.khatooniNumber}
+            </Text>
+            <Text style={stylesPDF.text}>
+              Market Value: {this.state.marketValue} Ether
+            </Text>
+            <Text style={stylesPDF.text}>
+              Square Foots: {this.state.squareFoots}
+            </Text>
+            <Text style={stylesPDF.text}>Inches: {this.state.inches}</Text>
+            <Text style={stylesPDF.text}>Land ID: {this.state.Id}</Text>
+            <Text style={stylesPDF.text}>Land Type: {this.state.landType}</Text>
+            <Text style={stylesPDF.text}>Latitude: {this.state.lati}</Text>
+            <Text style={stylesPDF.text}>Longitude: {this.state.lngi}</Text>
+            <Text style={stylesPDF.text}>North: {this.state.northi}</Text>
+            <Text style={stylesPDF.text}>South: {this.state.southi}</Text>
+            <Text style={stylesPDF.text}>East: {this.state.easti}</Text>
+            <Text style={stylesPDF.text}>West: {this.state.westi}</Text>
+          </View>
+          <View style={stylesPDF.section}>
+            <Text style={stylesPDF.heading2}>Owner Detail</Text>
+            <Text style={stylesPDF.text}>
+              Owner Name: {this.state.ownerNamei}
+            </Text>
+            <Text style={stylesPDF.text}>
+              Owner Address: {this.state.owners}
+            </Text>
+            <Text style={stylesPDF.text}>
+              Previous Owner: {this.state.previousOwner}
+            </Text>
+            <Text style={stylesPDF.text}>
+              Created By: {this.state.createdBy}
+            </Text>
+          </View>
+          <View style={stylesPDF.row}>
+            <Image
+              src={{
+                uri: `https://i.ibb.co/rdMH7Mv/Only-Goverment.png`,
+              }}
+              style={stylesPDF.leftStamp}
+            />
+
+            <Image
+              src={{
+                uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png`,
+              }}
+              style={stylesPDF.rightStamp}
+            />
+          </View>
+        </Page>
+      </Document>
+    );
+
     let ListTemplate;
 
     console.log("Land ID", this.state.Id);
@@ -368,120 +456,25 @@ class DetailOfLand extends Component {
                     height: "1200px",
                   }}
                 >
-                  <Document>
-                    <Page size="A4" style={stylesPDF.page}>
-                      <View style={stylesPDF.centertitle}>
-                        <Image
-                          src={{
-                            uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png`,
-                          }}
-                          style={stylesPDF.stampTitle}
-                        />
-                        <Text style={stylesPDF.title}>
-                          Blockchain Land Records System
-                        </Text>
-                      </View>
-                      <Svg
-                        height="15"
-                        width="550"
-                        style={{ marginTop: "10px", alignSelf: "center" }}
-                      >
-                        <Line
-                          x1="0"
-                          y1="0"
-                          x2="550"
-                          y2="0"
-                          strokeWidth={4}
-                          stroke="#123d61"
-                        />
-                      </Svg>
-                      <View style={stylesPDF.section}>
-                        <Text style={stylesPDF.heading1}>Land Detail</Text>
-                        <Text style={stylesPDF.text}>
-                          State: {this.state.states}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          District: {this.state.district}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Village: {this.state.village}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Khata No: {this.state.khataNumber}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Khatooni No: {this.state.khatooniNumber}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Market Value: {this.state.marketValue} Ether
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Square Foots: {this.state.squareFoots}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Inches: {this.state.inches}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Land ID: {this.state.Id}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Land Type: {this.state.landType}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Latitude: {this.state.lati}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Longitude: {this.state.lngi}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          North: {this.state.northi}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          South: {this.state.southi}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          East: {this.state.easti}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          West: {this.state.westi}
-                        </Text>
-                      </View>
-                      <View style={stylesPDF.section}>
-                        <Text style={stylesPDF.heading2}>Owner Detail</Text>
-                        <Text style={stylesPDF.text}>
-                          Owner Name: {this.state.ownerNamei}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Owner Address: {this.state.owners}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Previous Owner: {this.state.previousOwner}
-                        </Text>
-                        <Text style={stylesPDF.text}>
-                          Created By: {this.state.createdBy}
-                        </Text>
-                      </View>
-                      <View style={stylesPDF.row}>
-                        <Image
-                          src={{
-                            uri: `https://i.ibb.co/rdMH7Mv/Only-Goverment.png`,
-                          }}
-                          style={stylesPDF.leftStamp}
-                        />
-
-                        <Image
-                          src={{
-                            uri: `https://i.ibb.co/Db0nCmX/BLRS-LOGO.png`,
-                          }}
-                          style={stylesPDF.rightStamp}
-                        />
-                      </View>
-                    </Page>
-                  </Document>
+                  <MyDocument />
                 </PDFViewer>
-
                 <span style={{ float: "right", marginBottom: "20px" }}>
                   <ButtonCore
+                    variant="contained"
+                    color="secondary"
+                  >
+                    <PDFDownloadLink
+                      document={<MyDocument />}
+                      fileName={`Land_${this.state.Id}_${this.state.ownerNamei}_${this.state.khataNumber}_${this.state.khatooniNumber}.pdf`}
+                    >
+                      {({ blob, url, loading, error }) =>
+                        loading ? "Loading document..." : "Download now!"
+                      }
+                    </PDFDownloadLink>
+                  </ButtonCore>
+
+                  <ButtonCore
+                    style={{marginLeft: "10px"}}
                     variant="outlined"
                     color="primary"
                     onClick={this.viewDetails.bind(
@@ -552,7 +545,7 @@ class DetailOfLand extends Component {
                     buttonSize="btn--medium"
                     buttonColor="blue"
                   >
-                     	&#x2B05;{" Back"}
+                    &#x2B05;{" Back"}
                   </Button>
                 </Link>
               </div>
