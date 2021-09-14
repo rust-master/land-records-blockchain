@@ -38,8 +38,11 @@ class ChangeMarketValue extends Component {
     this.setState({ openi: false });
   }
 
-  async changeMarketValueData(sendValue) {
-    console.log("Data " + sendValue);
+  async changeMarketValueData() {
+
+    console.log("MarketValueData : " + this.state.changeValue);
+    console.log("LandType : " + this.state.landType);
+
 
     const web3 = window.web3;
     const webeProvider = new Web3(
@@ -57,17 +60,13 @@ class ChangeMarketValue extends Component {
       deployedNetwork.address
     );
 
-    // if (sendValue > 0) {
 
     await landCon.methods
-      .changeMarketValue(5, sendValue)
+      .changeMarketValue(this.state.landType, this.state.changeValue)
       .send({ from: accounts[0] });
 
     this.setState({ open: true });
 
-    // } else {
-    //   this.setState({ openi: true });
-    // }
   }
 
   render() {
@@ -118,10 +117,7 @@ class ChangeMarketValue extends Component {
                     </select>
 
                     <Button
-                      onClick={this.changeMarketValueData.bind(
-                        this,
-                        this.state.changeValue
-                      )}
+                      onClick={this.changeMarketValueData.bind(this)}
                       buttonSize="btn--wide"
                       buttonColor="blue"
                     >

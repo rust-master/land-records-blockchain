@@ -299,7 +299,8 @@ contract Land is Auth {
         for (uint256 i = 0; i < propertiesIDs.length; i++) {
             if (
                 land[propertiesIDs[i]].marketValue > 0 &&
-                land[propertiesIDs[i]].landType == _landType
+                keccak256(abi.encodePacked(land[propertiesIDs[i]].landType)) ==
+                keccak256(abi.encodePacked(_landType))
             ) {
                 land[propertiesIDs[i]].marketValue =
                     land[propertiesIDs[i]].marketValue +
