@@ -459,10 +459,7 @@ class DetailOfLand extends Component {
                   <MyDocument />
                 </PDFViewer>
                 <span style={{ float: "right", marginBottom: "20px" }}>
-                  <ButtonCore
-                    variant="contained"
-                    color="secondary"
-                  >
+                  <ButtonCore variant="contained" color="secondary">
                     <PDFDownloadLink
                       document={<MyDocument />}
                       fileName={`Land_${this.state.Id}_${this.state.ownerNamei}_${this.state.khataNumber}_${this.state.khatooniNumber}.pdf`}
@@ -474,7 +471,7 @@ class DetailOfLand extends Component {
                   </ButtonCore>
 
                   <ButtonCore
-                    style={{marginLeft: "10px"}}
+                    style={{ marginLeft: "10px" }}
                     variant="outlined"
                     color="primary"
                     onClick={this.viewDetails.bind(

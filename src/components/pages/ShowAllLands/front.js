@@ -389,9 +389,8 @@ class ShowAllLands extends Component {
                     Market Value: {marketValueAll[index]}
                   </h2>
                 </Typography>
-                <span style={{ float: "right", marginBottom: "20px"}}>
+                <span style={{ float: "right", marginBottom: "20px" }}>
                   <Button
-                  
                     buttonSize="btn--medium"
                     buttonStyle="btn--outline"
                     buttonColor="primary"
@@ -404,13 +403,15 @@ class ShowAllLands extends Component {
                     View Land at Map
                   </Button>
 
-                  <Link 
-                  to={"/detail-of-land/" + dataAll[index]}
-                 
-                  style={{marginLeft: "10px"}}>
-                    <Button 
-                    buttonStyle="btn--primary"
-                    buttonSize="btn--medium" buttonColor="blue">
+                  <Link
+                    to={"/detail-of-land/" + dataAll[index]}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    <Button
+                      buttonStyle="btn--primary"
+                      buttonSize="btn--medium"
+                      buttonColor="blue"
+                    >
                       Detail of Land
                     </Button>
                   </Link>
