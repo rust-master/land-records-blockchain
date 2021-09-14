@@ -378,6 +378,7 @@ contract Land is Auth {
         require(msg.value >= land[property].marketValue);
         land[property].CurrentOwner.transfer(msg.value);
         removeOwnership(land[property].CurrentOwner, property);
+        land[property].previousOwner = land[property].CurrentOwner;
         land[property].CurrentOwner = msg.sender;
         land[property].ownerName = getUserName(msg.sender);
         land[property].isAvailable = false;
