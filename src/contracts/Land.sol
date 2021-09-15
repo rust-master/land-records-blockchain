@@ -25,7 +25,7 @@ contract Land is Auth {
         address payable requester;
         bool isAvailable;
         reqStatus requestStatus;
-        address createByGovt;
+        address payable createByGovt;
         string orderEndTime;
     }
 
@@ -82,7 +82,7 @@ contract Land is Auth {
         string memory _squareFoots,
         string memory _inches,
         string memory _landType,
-        address _createByGovt
+        address payable _createByGovt
     ) public returns (bool) {
         require(superAdmin[_villageTown] == msg.sender || owner == msg.sender);
         land[id].state = _state;
