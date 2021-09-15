@@ -289,16 +289,6 @@ class ShowAllLands extends Component {
     const marketValueAll = this.state.marketValue;
     const landTypeAll = this.state.landType;
     const createdByAll = this.state.createdBy;
-    const khataNumberAll = this.state.khataNumber;
-    const khatooniNumberAll = this.state.khatooniNumber;
-    const previousOwnerAll = this.state.previousOwner;
-    const latAll = this.state.lati;
-    const lngAll = this.state.lngi;
-    const northAll = this.state.northi;
-    const southAll = this.state.southi;
-    const eastAll = this.state.easti;
-    const westAll = this.state.westi;
-    const ownerNameAll = this.state.ownerNamei;
 
     let ListTemplate;
 

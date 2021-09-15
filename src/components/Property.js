@@ -5,10 +5,10 @@ import { IconContext } from "react-icons/lib";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
 import Web3 from "web3";
@@ -18,7 +18,6 @@ import MuiAlert from "@material-ui/lab/Alert";
 import contract from "../build/contracts/Land.json";
 
 import ButtonCore from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -36,6 +35,33 @@ import {
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
+
+const styles = (theme) => ({
+  main: {
+    position: "relative",
+  },
+  root1: {
+    backgroundColor: "#fff",
+    maxWidth: 840,
+    marginTop: 10,
+    position: "relative",
+    marginLeft: 100,
+  },
+  Typo1: {
+    color: "#266AFB",
+    fontWeight: "bold",
+    textAlign: "left",
+  },
+  TypoSt: {
+    color: "#F00946",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  TypoP: {
+    color: "#266AFB",
+    textAlign: "center",
+  },
+});
 
 class Property extends Component {
   componentWillMount() {
@@ -155,7 +181,6 @@ class Property extends Component {
       this.state.squareFoots.push(detail[5]);
       this.state.inches.push(detail[6]);
 
-     
       this.state.createdByGovt.push(remainignDetail[0]);
       this.state.currentOwner.push(remainignDetail[1]);
       this.state.khaataNumber.push(remainignDetail[3]);
@@ -236,8 +261,6 @@ class Property extends Component {
     this.setState({ openDialog: true });
   }
 
-
-  
   handleClose(e, r) {
     if (r === "clickaway") {
       return;
@@ -257,6 +280,8 @@ class Property extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     const dataAll = this.state.allAssets;
     const statesAll = this.state.states;
     const districtAll = this.state.district;
@@ -297,67 +322,107 @@ class Property extends Component {
                 maxWidth: 345,
               })}
             >
-              <CardMedia
-                component="img"
-                alt="Image not load"
-                width="1030"
-                height="550"
-                image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
-                title={dataAll[index]}
-              />
               <CardContent>
-                <Typography variant="h5" component="h6">
-                  Khaata Number: {khaataNumberAll[index]}
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <h5 style={{ textAlign: "center" }}>
+                    Current Owner: {currentOwnerAll[index]}
+                  </h5>
+                </Typography>
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span style={{ color: "#EF8E19" }}>
+                    Property ID: {dataAll[index]}
+                  </span>{" "}
                   <span style={{ float: "right" }}>
-                    {" "}
-                    Khaatoni Number: {khaatoniNumberAll[index]}
+                    State: {statesAll[index]}
                   </span>
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  <span>Current Owner: {currentOwnerAll[index]}</span>
-                  <p style={{ float: "right" }}>
-                    Registered By: {createdByGovtAll[index]}
-                  </p>
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>District: {districtAll[index]}</span>{" "}
+                  <span style={{ float: "right" }}>
+                    Village/Town: {villageAll[index]}
+                  </span>
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Land ID: {dataAll[index]}
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>Square Foots: {squareFootsAll[index]}</span>
+                  {" | "}
+                  <span>Inches: {inchesAll[index]}</span>
+                  <span style={{ float: "right" }}>
+                    Land Type: {landTypeAll[index]}
+                  </span>
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  State: {statesAll[index]}
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <span>Created By: {createdByGovtAll[index]}</span>
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  District: {districtAll[index]}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Village: {villageAll[index]}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Market Value: {marketValueAll[index]} Ether
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Square Foots: {squareFootsAll[index]} | Inches:{" "}
-                  {inchesAll[index]}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Land Type: {landTypeAll[index]}
+
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo1}
+                >
+                  <h2 style={{ color: "#00AEE6", textAlign: "center" }}>
+                    Market Value: {marketValueAll[index]}
+                  </h2>
                 </Typography>
               </CardContent>
               <CardActions style={{ float: "left" }}>
                 <Button
-                  buttonSize="btn--wide"
-                  buttonColor="blue"
+                  buttonSize="btn--medium"
+                  buttonColor="primary"
                   onClick={this.viewDetail.bind(
                     this,
                     idsAll[index],
                     currentOwnerAll[index]
                   )}
                 >
-                  View Detail
+                  View Land at Map
                 </Button>
+
+                <Link
+                  to={"/detail-of-landowner/" + dataAll[index]}
+                  style={{ marginLeft: "10px" }}
+                >
+                  <Button
+                    buttonStyle="btn--primary"
+                    buttonSize="btn--medium"
+                    buttonColor="green"
+                  >
+                    Detail of Land
+                  </Button>
+                </Link>
               </CardActions>
               <CardActions style={{ float: "right" }}>
                 <Button
-                  buttonSize="btn--wide"
+                  buttonSize="btn--medium"
                   buttonColor={statusAll[index] ? "red" : "blue"}
                   onClick={this.myFunction.bind(
                     this,
@@ -483,4 +548,4 @@ class Property extends Component {
     );
   }
 }
-export default Property;
+export default withStyles(styles)(Property);
