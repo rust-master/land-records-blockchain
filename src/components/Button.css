@@ -110,3 +110,9 @@
 .green:hover {
   background-color: #242424;
 }
+
+.golden {
+  background: #f38c2e;
+  color: #fff;
+  border: none;
+}

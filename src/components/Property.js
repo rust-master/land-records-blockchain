@@ -396,8 +396,8 @@ class Property extends Component {
               </CardContent>
               <CardActions style={{ float: "left" }}>
                 <Button
-                  buttonSize="btn--medium"
-                  buttonColor="primary"
+                  buttonSize="btn--wide"
+                  buttonColor="blue"
                   onClick={this.viewDetail.bind(
                     this,
                     idsAll[index],
@@ -413,8 +413,8 @@ class Property extends Component {
                 >
                   <Button
                     buttonStyle="btn--primary"
-                    buttonSize="btn--medium"
-                    buttonColor="green"
+                    buttonSize="btn--wide"
+                    buttonColor="golden"
                   >
                     Detail of Land
                   </Button>
@@ -422,7 +422,7 @@ class Property extends Component {
               </CardActions>
               <CardActions style={{ float: "right" }}>
                 <Button
-                  buttonSize="btn--medium"
+                  buttonSize="btn--wide"
                   buttonColor={statusAll[index] ? "red" : "blue"}
                   onClick={this.myFunction.bind(
                     this,
@@ -509,15 +509,12 @@ class Property extends Component {
                   </div>
                 </DialogContent>
                 <DialogActions>
-                  <ButtonCore onClick={this.handleCloseDialog} color="primary">
-                    Cancel
-                  </ButtonCore>
                   <Button
                     buttonSize="btn--medium"
-                    onClick={this.addPolylineData}
+                    onClick={this.handleCloseDialog}
                     buttonColor="blue"
                   >
-                    Export PDF
+                    Cancel
                   </Button>
                 </DialogActions>
               </Dialog>
