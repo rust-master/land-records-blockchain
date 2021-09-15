@@ -376,7 +376,20 @@ contract Land is Auth {
     function buyProperty(uint256 property) public payable {
         require(land[property].requestStatus == reqStatus.approved);
         require(msg.value >= land[property].marketValue);
-        land[property].CurrentOwner.transfer(msg.value);
+
+        uint256 totalValue = msg.value;
+        uint256 taxFee = 1000000000000000000;
+
+        if (msg.value <= 16000000000000000000) {
+            totalValue = totalValue - taxFee;
+        } else {
+            taxFee = (msg.value * 6) / uint256(100);
+            totalValue = totalValue - taxFee;
+        }
+
+        land[property].createByGovt.transfer(taxFee);
+        land[property].CurrentOwner.transfer(totalValue);
+
         removeOwnership(land[property].CurrentOwner, property);
         land[property].previousOwner = land[property].CurrentOwner;
         land[property].CurrentOwner = msg.sender;
