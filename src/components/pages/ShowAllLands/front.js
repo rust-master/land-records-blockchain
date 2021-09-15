@@ -508,15 +508,12 @@ class ShowAllLands extends Component {
                   </div>
                 </DialogContent>
                 <DialogActions>
-                  <ButtonCore onClick={this.handleCloseDialog} color="primary">
-                    Cancel
-                  </ButtonCore>
                   <Button
                     buttonSize="btn--medium"
-                    onClick={this.addPolylineData}
+                    onClick={this.handleCloseDialog}
                     buttonColor="blue"
                   >
-                    Export PDF
+                    Cancel
                   </Button>
                 </DialogActions>
               </Dialog>
