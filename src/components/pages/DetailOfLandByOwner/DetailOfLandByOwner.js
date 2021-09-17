@@ -547,6 +547,10 @@ class DetailOfLandByOwner extends Component {
               }}
             >
               <div className="home__hero-text-wrapper">
+                <div className="top-line">{"View Land by Owner"}</div>
+                <h1 className={true ? "heading" : "heading dark"}>
+                  {"Land No: "} {this.state.Id}
+                </h1>
                 <Link to={"/properties"}>
                   <Button
                     buttonStyle="btn--primary"
@@ -556,10 +560,6 @@ class DetailOfLandByOwner extends Component {
                     &#x2B05;{" Back"}
                   </Button>
                 </Link>
-                <div className="top-line">{"View Land by Owner"}</div>
-                <h1 className={true ? "heading" : "heading dark"}>
-                  {"Land No: "} {this.state.Id}
-                </h1>
               </div>
             </div>
 
