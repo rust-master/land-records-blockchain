@@ -547,7 +547,9 @@ class DetailOfLandByOwner extends Component {
               }}
             >
               <div className="home__hero-text-wrapper">
-                <div className="top-line">{"Registered Land by Goverment"}</div>
+                <div className="top-line">
+                  {"View Registered Land by Owner"}
+                </div>
                 <h1 className={true ? "heading" : "heading dark"}>
                   {"Registered Land Detail"}
                 </h1>
