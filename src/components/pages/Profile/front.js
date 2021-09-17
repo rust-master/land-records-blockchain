@@ -7,13 +7,16 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 
+import Web3 from "web3";
+import contract from "../../../build/contracts/Land.json";
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 class Profile extends Component {
   componentWillMount() {
-    this.loadFirebaseData();
+    this.loadProfileData();
   }
 
   constructor(props) {
@@ -28,6 +31,7 @@ class Profile extends Component {
       open: false,
       openi: false,
       errori: "",
+      ipfsHash: "",
       profileImage: "",
       image: null,
       imageUrl: null,
@@ -35,47 +39,35 @@ class Profile extends Component {
     };
   }
 
-  loadFirebaseData() {
-    // try {
-    //   const uid = fire.auth().currentUser.uid;
-    //   const database = fire.database();
-    //   const ref = database.ref("users").child(uid);
-    //   ref.on("value", (snapshot) => {
-    //     console.log("FireB ", snapshot);
-    //     if (snapshot && snapshot.exists()) {
-    //       this.setState({ name: snapshot.val().name });
-    //       this.setState({ email: snapshot.val().email });
-    //       this.setState({ password: snapshot.val().password });
-    //       this.setState({ profileImage: snapshot.val().profileLink });
-    //     }
-    //   });
-    // } catch (e) {
-    //   console.log("Exception: " + e);
-    // }
+  async loadProfileData() {
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    console.log(deployedNetwork.address);
+
+    const authContract = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    const name = await authContract.methods
+      .getUserName(this.state.account)
+      .call({ from: this.state.account });
+
+    this.setState({ name: name });
   }
 
   changeProfile(e) {
     e.preventDefault();
-    // try {
-    //   this.handleUpload();
-    //   if (navigator.onLine) {
-    //     const uid = fire.auth().currentUser.uid;
-    //     const database = fire.database();
-    //     const ref = database.ref("users").child(uid);
-    //     ref.update({ name: this.state.name });
-
-    //     this.setState({ open: true });
-    //   } else {
-    //     this.setState({ openi: true });
-    //     this.setState({
-    //       errori: "Network not connected. Please connect internet!",
-    //     });
-    //   }
-    // } catch (e) {
-    //   this.setState({ openi: true });
-    //   this.setState({ errori: e.toString() });
-    //   console.log("Exception: " + e);
-    // }
   }
 
   handleChange(e) {
@@ -99,62 +91,9 @@ class Profile extends Component {
     this.setState({ openi: false });
   }
 
-  handleRender = () => {
-    // try {
-    //   const uid = fire.auth().currentUser.uid;
-    //   const database = fire.database();
-    //   const ref = database.ref("users").child(uid);
-
-    //   console.log("downloadURL " + this.state.imageUrl);
-    //   ref.update({ profileLink: this.state.imageUrl });
-    // } catch (e) {
-    //   // this.setState({ openi: true });
-    //   // this.setState({ errori: e.toString() });
-    //   console.log("Exception: " + e);
-    // }
-  };
-
   handleUpload = () => {
     console.log(this.state.image);
     let file = this.state.image;
-    // var storage = fire.storage();
-    // var storageRef = storage.ref();
-    // var uploadTask = storageRef.child("profiles/" + file.name).put(file);
-
-    // uploadTask.on(
-    //   "state_changed",
-    //   (snapshot) => {
-    //     // file upload progress report
-    //     const progress = Math.round(
-    //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-    //     );
-    //     this.setState({ progress: progress });
-    //     console.log("Progress" + this.state.progress);
-    //   },
-    //   (error) => {
-    //     // file upload failed
-    //     console.log(error);
-    //   },
-    //   () => {
-    //     // file upload completed
-    //     storage
-    //       .ref(`profiles`)
-    //       .child(file.name)
-    //       .getDownloadURL()
-    //       .then(
-    //         (url) => {
-    //           // got download URL
-    //           this.setState({ imageUrl: url });
-    //           console.log("url : " + url);
-    //           this.handleRender();
-    //         },
-    //         (error) => {
-    //           // failed to get download URL
-    //           console.log(error);
-    //         }
-    //       );
-    //   }
-    //);
   };
 
   render() {
@@ -275,7 +214,7 @@ class Profile extends Component {
                         buttonColor="blue"
                         onClick={this.changeProfile}
                       >
-                        Save
+                        Update Profile Image
                       </Button>
                     </form>
 
