@@ -97,8 +97,17 @@ class Profile extends Component {
       .setUserIpfsImageHash(this.state.account, hash)
       .send({ from: this.state.account });
 
-    this.setState({ open: true });
     this.loadProfileData();
+
+    // for loop profress bar
+    for (let i = 0; i < 100; i++) {
+      this.setState({ progress: i });
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+
+    this.setState({ progress: 0 });
+
+    this.setState({ open: true });
   }
 
   captureFile = async (event) => {
