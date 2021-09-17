@@ -536,7 +536,7 @@ class DetailOfLandByOwner extends Component {
                 <h1 className={true ? "heading" : "heading dark"}>
                   {"Registered Land Detail"}
                 </h1>
-                <Link to={"/show-all-lands"}>
+                <Link to={"/properties"}>
                   <Button
                     buttonStyle="btn--primary"
                     buttonSize="btn--medium"

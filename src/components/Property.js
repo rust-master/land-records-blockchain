@@ -408,7 +408,7 @@ class Property extends Component {
                 </Button>
 
                 <Link
-                  to={"/detail-of-landowner/" + dataAll[index]}
+                  to={"/detail-of-land-by-owner/" + dataAll[index]}
                   style={{ marginLeft: "10px" }}
                 >
                   <Button

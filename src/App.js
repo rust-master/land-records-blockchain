@@ -10,6 +10,7 @@ import GovermentSignUp from "./components/pages/GovermentSignUp/GovtSignUp";
 import SearchProperty from "./components/pages/SearchProperty/SearchProperty";
 import RequestedLands from "./components/pages/RequestedLands/RequestedLands";
 import Profile from "./components/pages/Profile/Profile";
+import DetailOfLandByOwner from "./components/pages/DetailOfLandByOwner/DetailOfLandByOwner";
 
 import CreateLand from "./components/pages/CreateLand/CreatLand";
 import ShowAllLands from "./components/pages/ShowAllLands/ShowAllLands";
@@ -181,6 +182,17 @@ class App extends Component {
                 <Route path="/sign-up" component={SignUp} />
               )}
 
+              {user ? (
+                <Route
+                  path="/detail-of-land-by-owner/:id"
+                  component={DetailOfLandByOwner}
+                />
+              ) : admin ? (
+                <Route path="/show-all-lands" component={ShowAllLands} />
+              ) : (
+                <Route path="/sign-up" component={SignUp} />
+              )}
+
               {admin ? (
                 <Route path="/create-land" component={CreateLand} />
               ) : user ? (
@@ -209,10 +221,7 @@ class App extends Component {
               )}
 
               {admin ? (
-                <Route
-                  path="/detail-of-land/:id"
-                  component={DetailOfLand}
-                />
+                <Route path="/detail-of-land/:id" component={DetailOfLand} />
               ) : user ? (
                 <Route path="/properties" component={Properties} />
               ) : (
