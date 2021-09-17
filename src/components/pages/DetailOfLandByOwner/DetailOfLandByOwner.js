@@ -124,6 +124,8 @@ class DetailOfLandByOwner extends Component {
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.state = {
       allIDs: "",
+      ids: [],
+      allAssets: [],
       states: "",
       district: "",
       village: "",
@@ -200,74 +202,82 @@ class DetailOfLandByOwner extends Component {
       deployedNetwork.address
     );
 
-    const detail = await landCon.methods
-      .showAllLands(this.props.match.params.id)
+    const assets = await landCon.methods
+      .viewAssets()
       .call({ from: this.state.account });
 
-    if (detail[0] == this.state.account) {
-      this.setState({ owners: detail[0] });
-      this.setState({ states: detail[1] });
-      this.setState({ district: detail[2] });
-      this.setState({ village: detail[3] });
-      this.setState({ marketValue: detail[4] });
-      this.setState({ squareFoots: detail[5] });
-      this.setState({ inches: detail[6] });
-
-      console.log("Owner: " + detail[0]);
-      console.log("State: " + detail[1]);
-      console.log("District: " + detail[2]);
-      console.log("village: " + detail[3]);
-      console.log("marketValue: " + detail[4]);
-      console.log("squareFoots: " + detail[5]);
-      console.log("Inches: " + detail[6]);
-
-      console.log("---------------------------------");
-    }
-    if (detail[0] == this.state.account) {
-      const remainignDetail = await landCon.methods
-        .remainingDetail(this.props.match.params.id)
-        .call({ from: this.state.account });
-
-      this.setState({ createdBy: remainignDetail[0] });
-      this.setState({ previousOwner: remainignDetail[2] });
-      this.setState({ khataNumber: remainignDetail[3] });
-      this.setState({ khatooniNumber: remainignDetail[4] });
-      this.setState({ landType: remainignDetail[5] });
-
-      console.log("Created By: " + this.state.createdBy);
-      console.log("Previous Owner: " + this.state.previousOwner);
-      console.log("Khata Number: " + this.state.khataNumber);
-      console.log("Khatooni Number: " + this.state.khatooniNumber);
-      console.log("landType", this.state.landType);
-
-      console.log("---------------------------------");
+    this.state.allAssets = assets;
+    for (let i = 0; i <= assets.length; i++) {
+      this.state.ids.push(assets[i]);
     }
 
-    if (detail[0] == this.state.account) {
-      const detailMap = await landCon.methods
-        .remainingMoreDetail(this.props.match.params.id)
-        .call({ from: this.state.account });
+    this.state.allAssets.map(async (value, index) => {
+      if (this.props.match.params.id == this.state.ids[index]) {
+        const detail = await landCon.methods
+          .showAllLands(this.props.match.params.id)
+          .call({ from: this.state.account });
 
-      this.setState({ lati: detailMap[0] });
-      this.setState({ lngi: detailMap[1] });
-      this.setState({ northi: detailMap[2] });
-      this.setState({ southi: detailMap[3] });
-      this.setState({ easti: detailMap[4] });
-      this.setState({ westi: detailMap[5] });
-      this.setState({ ownerNamei: detailMap[6] });
+        this.setState({ owners: detail[0] });
+        this.setState({ states: detail[1] });
+        this.setState({ district: detail[2] });
+        this.setState({ village: detail[3] });
+        this.setState({ marketValue: detail[4] });
+        this.setState({ squareFoots: detail[5] });
+        this.setState({ inches: detail[6] });
 
-      this.setState({ Id: this.props.match.params.id });
+        console.log("Owner: " + detail[0]);
+        console.log("State: " + detail[1]);
+        console.log("District: " + detail[2]);
+        console.log("village: " + detail[3]);
+        console.log("marketValue: " + detail[4]);
+        console.log("squareFoots: " + detail[5]);
+        console.log("Inches: " + detail[6]);
 
-      console.log("lati", detailMap[0]);
-      console.log("lngi", detailMap[1]);
-      console.log("northi", detailMap[2]);
-      console.log("southi", detailMap[3]);
-      console.log("easti", detailMap[4]);
-      console.log("westi", detailMap[5]);
-      console.log("ownerNamei", detailMap[6]);
+        console.log("---------------------------------");
 
-      console.log("---------------------------------");
-    }
+        const remainignDetail = await landCon.methods
+          .remainingDetail(this.props.match.params.id)
+          .call({ from: this.state.account });
+
+        this.setState({ createdBy: remainignDetail[0] });
+        this.setState({ previousOwner: remainignDetail[2] });
+        this.setState({ khataNumber: remainignDetail[3] });
+        this.setState({ khatooniNumber: remainignDetail[4] });
+        this.setState({ landType: remainignDetail[5] });
+
+        console.log("Created By: " + this.state.createdBy);
+        console.log("Previous Owner: " + this.state.previousOwner);
+        console.log("Khata Number: " + this.state.khataNumber);
+        console.log("Khatooni Number: " + this.state.khatooniNumber);
+        console.log("landType", this.state.landType);
+
+        console.log("---------------------------------");
+
+        const detailMap = await landCon.methods
+          .remainingMoreDetail(this.props.match.params.id)
+          .call({ from: this.state.account });
+
+        this.setState({ lati: detailMap[0] });
+        this.setState({ lngi: detailMap[1] });
+        this.setState({ northi: detailMap[2] });
+        this.setState({ southi: detailMap[3] });
+        this.setState({ easti: detailMap[4] });
+        this.setState({ westi: detailMap[5] });
+        this.setState({ ownerNamei: detailMap[6] });
+
+        this.setState({ Id: this.props.match.params.id });
+
+        console.log("lati", detailMap[0]);
+        console.log("lngi", detailMap[1]);
+        console.log("northi", detailMap[2]);
+        console.log("southi", detailMap[3]);
+        console.log("easti", detailMap[4]);
+        console.log("westi", detailMap[5]);
+        console.log("ownerNamei", detailMap[6]);
+
+        console.log("---------------------------------");
+      }
+    });
 
     if (this.state.states.length <= 0) {
       this.setState({ placeHolder: "Record Not Found" });
@@ -420,7 +430,7 @@ class DetailOfLandByOwner extends Component {
           <View style={stylesPDF.row}>
             <Image
               src={{
-                uri: `https://i.ibb.co/rdMH7Mv/Only-Goverment.png`,
+                uri: `https://i.ibb.co/d2XKKGN/Registered.png`,
               }}
               style={stylesPDF.leftStamp}
             />
