@@ -7,8 +7,11 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 
+import logo from "../../../components/logo.png";
+
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
+import ipfs from "../../../ipfs";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -26,15 +29,14 @@ class Profile extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.state = {
       name: "",
-      email: "",
+      account: "",
       password: "",
       open: false,
       openi: false,
       errori: "",
       ipfsHash: "",
-      profileImage: "",
-      image: null,
-      imageUrl: null,
+      fileImage: "",
+      buffer: null,
       progress: 0,
     };
   }
@@ -63,23 +65,71 @@ class Profile extends Component {
       .getUserName(this.state.account)
       .call({ from: this.state.account });
 
-    this.setState({ name: name });
+    const hash = await authContract.methods
+      .getUserIpfsImageHash(this.state.account)
+      .call({ from: this.state.account });
+
+    this.setState({ name: name, ipfsHash: hash });
   }
 
-  changeProfile(e) {
-    e.preventDefault();
+  async changeProfile(hash) {
+    console.log("Hash: " + hash);
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    console.log(deployedNetwork.address);
+
+    const authContract = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    await authContract.methods
+      .setUserIpfsImageHash(this.state.account, hash)
+      .send({ from: this.state.account });
+
+    this.setState({ open: true });
+    this.loadProfileData();
   }
+
+  captureFile = async (event) => {
+    event.preventDefault();
+    const file = event.target.files[0];
+    this.setState({ fileImage: URL.createObjectURL(event.target.files[0]) });
+    console.log("File: " + file);
+    const reader = new window.FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onloadend = () => {
+      this.setState({ buffer: Buffer(reader.result) });
+      console.log("buffer", this.state.buffer);
+    };
+  };
+
+  onSubmit = async (event) => {
+    event.preventDefault();
+    console.log("Submitting file");
+    if (this.state.buffer == null) {
+      alert("Please select a file");
+    } else {
+      const file = await ipfs.add(this.state.buffer);
+      const hash = file[0].hash;
+      this.changeProfile(hash);
+    }
+  };
 
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
-
-    if (e.target.files[0]) {
-      this.setState({
-        image: e.target.files[0],
-      });
-    }
   }
 
   handleClose(e, r) {
@@ -90,11 +140,6 @@ class Profile extends Component {
     this.setState({ open: false });
     this.setState({ openi: false });
   }
-
-  handleUpload = () => {
-    console.log(this.state.image);
-    let file = this.state.image;
-  };
 
   render() {
     return (
@@ -156,7 +201,11 @@ class Profile extends Component {
 
                             horizentalAlign: "center",
                           }}
-                          src={this.state.profileImage}
+                          src={
+                            this.state.ipfsHash == ""
+                              ? logo
+                              : `https://ipfs.io/ipfs/${this.state.ipfsHash}`
+                          }
                           alt={"Profile Image"}
                           className="home__hero-img"
                         />
@@ -164,9 +213,10 @@ class Profile extends Component {
 
                       <div>
                         <input
-                          style={{ width: "100%" }}
+                          style={{ width: "100%", color: "#fff" }}
                           className="footer-input"
                           name="name"
+                          disabled="true"
                           type="text"
                           placeholder="Your Name"
                           onChange={this.handleChange}
@@ -175,26 +225,14 @@ class Profile extends Component {
                       </div>
                       <div>
                         <input
-                          style={{ width: "100%" }}
+                          style={{ width: "100%", color: "#fff" }}
                           className="footer-input"
-                          name="email"
-                          type="email"
+                          name="account"
+                          type="text"
                           disabled="true"
-                          placeholder="Your Email"
+                          placeholder="Your Address"
                           onChange={this.handleChange}
-                          value={this.state.email}
-                        />
-                      </div>
-                      <div>
-                        <input
-                          style={{ width: "100%" }}
-                          className="footer-input"
-                          name="password"
-                          type="password"
-                          disabled="true"
-                          placeholder="Your Password"
-                          value={this.state.password}
-                          onChange={this.handleChange}
+                          value={this.state.account}
                         />
                       </div>
 
@@ -204,7 +242,7 @@ class Profile extends Component {
                           className="footer-input"
                           name="image"
                           type="file"
-                          onChange={this.handleChange}
+                          onChange={this.captureFile}
                         />
                       </div>
 
@@ -212,7 +250,7 @@ class Profile extends Component {
                         style={{ marginLeft: "200px" }}
                         buttonSize="btn--wide"
                         buttonColor="blue"
-                        onClick={this.changeProfile}
+                        onClick={this.onSubmit}
                       >
                         Update Profile Image
                       </Button>
