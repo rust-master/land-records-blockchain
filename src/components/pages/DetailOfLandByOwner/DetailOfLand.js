@@ -112,7 +112,7 @@ const styles = (theme) => ({
   },
 });
 
-class DetailOfLand extends Component {
+class DetailOfLandByOwner extends Component {
   componentWillMount() {
     this.loadBlockchainData();
   }
@@ -599,4 +599,4 @@ class DetailOfLand extends Component {
   }
 }
 
-export default withStyles(styles)(DetailOfLand);
+export default withStyles(styles)(DetailOfLandByOwner);
