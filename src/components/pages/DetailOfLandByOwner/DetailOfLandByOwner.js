@@ -424,7 +424,7 @@ class DetailOfLandByOwner extends Component {
               Previous Owner: {this.state.previousOwner}
             </Text>
             <Text style={stylesPDF.text}>
-              Created By: {this.state.createdBy}
+              Registered By: {this.state.createdBy}
             </Text>
           </View>
           <View style={stylesPDF.row}>
