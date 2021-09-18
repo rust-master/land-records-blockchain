@@ -244,14 +244,6 @@ class SearchProperty extends Component {
               className={classes.root1}
               onClick={this.requestToBuy.bind(this, dataAll[index])}
             >
-              <CardMedia
-                component="img"
-                alt="Image not load"
-                width="1030"
-                height="550"
-                image={`https://ipfs.io/ipfs/${ipfsAll[index]}`}
-                title={"Image Search"}
-              />
               <CardContent>
                 <Typography
                   gutterBottom
@@ -274,7 +266,7 @@ class SearchProperty extends Component {
                     Property ID: {dataAll[index]}
                   </span>{" "}
                   <span style={{ float: "right", color: "#EF8E19" }}>
-                  Khaata No: {khaataNoAll[index]}
+                    Khaata No: {khaataNoAll[index]}
                   </span>
                 </Typography>
 
