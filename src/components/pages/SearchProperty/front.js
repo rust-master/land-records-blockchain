@@ -11,6 +11,8 @@ import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
 import logo from "../SearchProperty/home.png";
 
+import district from "../SearchProperty/district.json";
+
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
 
@@ -335,23 +337,34 @@ class SearchProperty extends Component {
                     {"Optimized Search"}
                   </h1>
                   <div className="input-areas">
-                    <input
+                    <select
                       className="footer-input"
                       name="searchKeyword"
-                      type="text"
-                      placeholder="Search by State"
                       value={this.state.searchKeyword}
                       onChange={this.handleChange}
-                    />
+                    >
+                      <option value="" disabled selected>
+                        Select The State
+                      </option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="KPK">KPK</option>
+                      <option value="Sindh">Sindh</option>
+                      <option value="Balochistan">Balochistan</option>
+                    </select>
 
-                    <input
+                    <select
                       className="footer-input"
                       name="searchKeyword1"
-                      type="text"
-                      placeholder="Search by Distirct"
                       value={this.state.searchKeyword1}
                       onChange={this.handleChange}
-                    />
+                    >
+                      <option value="" disabled selected>
+                        Select The District
+                      </option>
+                      {district.map((item) => (
+                        <option value={item}>{item}</option>
+                      ))}
+                    </select>
 
                     <Button
                       onClick={this.loadBlockchainData.bind(
