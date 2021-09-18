@@ -7,15 +7,12 @@ import { withStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
 import logo from "../SearchProperty/home.png";
 
 import Web3 from "web3";
 import contract from "../../../build/contracts/Land.json";
-
-import xtype from "xtypejs";
 
 const styles = (theme) => ({
   main: {
@@ -50,7 +47,6 @@ class SearchProperty extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       allIDs: [],
-      allImgID: [],
       ids: [],
       states: [],
       district: [],
@@ -60,7 +56,6 @@ class SearchProperty extends Component {
       owners: [],
       marketValue: [],
       measure: [],
-      ipfsHash: [],
       searchKeyword: "",
       searchKeyword: "",
       placeHolder: "Search Record",
@@ -98,7 +93,6 @@ class SearchProperty extends Component {
 
   async loadBlockchainData(searchKey, searchValue) {
     this.state.allIDs = [];
-    this.state.allImgID = [];
     this.state.states = [];
     this.state.owners = [];
     this.state.district = [];
@@ -106,7 +100,6 @@ class SearchProperty extends Component {
     this.state.marketValue = [];
     this.state.measure = [];
     this.state.ids = [];
-    this.state.ipfsHash = [];
 
     this.state.village = [];
     this.state.khaataNo = [];
@@ -135,32 +128,9 @@ class SearchProperty extends Component {
       .call({ from: this.state.account });
 
     this.state.allIDs = allLandsIDs;
-    this.state.allImgID = allLandsIDs;
     console.log("IDs", allLandsIDs);
 
     console.log("Search Key: " + searchKey);
-
-    this.state.allIDs.map(async (value, index) => {
-      const detail = await landCon.methods
-        .viewMarkded(this.state.allIDs[index])
-        .call({ from: this.state.account });
-      const remainignDetail = await landCon.methods
-        .remainingDetail(this.state.allIDs[index])
-        .call({ from: this.state.account });
-
-      if (
-        detail[3] &&
-        searchKey == detail[0] &&
-        searchValue == detail[2] &&
-        this.state.account != detail[1]
-      ) {
-        this.state.ipfsHash.push(remainignDetail[0]);
-
-        console.log("ipfsHash: " + remainignDetail[0]);
-
-        console.log("---------------------------------");
-      }
-    });
 
     this.state.allIDs.map(async (value, index) => {
       const detail = await landCon.methods
@@ -223,8 +193,6 @@ class SearchProperty extends Component {
     const measureAll = this.state.measure;
     const marketValueAll = this.state.marketValue;
     const statusAll = this.state.status;
-
-    const ipfsAll = this.state.ipfsHash;
 
     const { classes } = this.props;
 
