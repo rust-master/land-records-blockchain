@@ -131,6 +131,26 @@ class Property extends Component {
       this.loadBlockchainData();
     } else {
       console.log("Status : " + status);
+      console.log("ID : " + id);
+      console.log("Account: " + this.state.account);
+
+      const web3 = window.web3;
+
+      const netId = await web3.eth.net.getId();
+      const deployedNetwork = contract.networks[netId];
+
+      console.log(deployedNetwork.address);
+
+      const landCon = new web3.eth.Contract(
+        contract.abi,
+        deployedNetwork.address
+      );
+
+      await landCon.methods.unMarkLand(id).send({ from: this.state.account });
+
+      this.setState({ open: true });
+
+      this.loadBlockchainData();
       this.setState({ openi: true });
     }
   }
