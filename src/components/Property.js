@@ -102,6 +102,7 @@ class Property extends Component {
       west: "",
       currentOwnerName: "",
       tempOwnerAddress: "",
+      renderer: 0,
     };
   }
 
@@ -148,8 +149,6 @@ class Property extends Component {
 
       await landCon.methods.unMarkLand(id).send({ from: this.state.account });
 
-      this.setState({ open: true });
-
       this.loadBlockchainData();
       this.setState({ openi: true });
     }
@@ -183,6 +182,8 @@ class Property extends Component {
     for (let i = 0; i <= assets.length; i++) {
       this.state.ids.push(assets[i]);
     }
+
+    this.setState({ status: [] });
 
     this.state.allAssets.map(async (value, index) => {
       const detail = await landCon.methods
@@ -450,7 +451,7 @@ class Property extends Component {
                     statusAll[index]
                   )}
                 >
-                  {statusAll[index] ? "Marked" : "Mark Available"}
+                  {this.state.status[index] ? "Unmark" : "Mark Available"}
                 </Button>
               </CardActions>
             </Card>
@@ -556,7 +557,7 @@ class Property extends Component {
               onClose={this.handleClose}
             >
               <Alert onClose={this.handleClose} severity="error">
-                {"Already Marked"}
+                {"Land Unmarked successfully"}
               </Alert>
             </Snackbar>
           </div>
