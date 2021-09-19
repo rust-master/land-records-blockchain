@@ -65,6 +65,7 @@ class RequestedLandsFront extends Component {
     });
 
     console.log("Buy Land Confirm");
+    this.loadBlockchainData();
   }
 
   async refuseToBuyLand(idLand) {
@@ -94,9 +95,13 @@ class RequestedLandsFront extends Component {
     });
 
     console.log("Refuse to Buy Land Confirmed");
+
+    this.loadBlockchainData();
   }
 
   async loadBlockchainData() {
+    this.setState({ requestStatus: [] });
+
     const web3 = window.web3;
 
     const webeProvider = new Web3(
