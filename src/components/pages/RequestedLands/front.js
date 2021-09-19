@@ -100,7 +100,12 @@ class RequestedLandsFront extends Component {
   }
 
   async loadBlockchainData() {
-    this.setState({ requestStatus: [] });
+    this.setState({
+      requestStatus: [],
+      requester: [],
+      marketValue: [],
+      status: [],
+    });
 
     const web3 = window.web3;
 
