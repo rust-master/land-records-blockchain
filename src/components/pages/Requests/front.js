@@ -61,10 +61,17 @@ class RequestsFront extends Component {
       from: this.state.account,
     });
 
-    console.log("Process Request Confirm");
+    this.loadBlockchainData();
+  }
+
+  // reject request
+  rejectRequest(idLand) {
+    this.processRequest(idLand, 2);
   }
 
   async loadBlockchainData() {
+    this.setState({ requestStatus: [] });
+
     const web3 = window.web3;
 
     const webeProvider = new Web3(
@@ -176,18 +183,21 @@ class RequestsFront extends Component {
               </CardContent>
             </CardActionArea>
             <CardActions style={{ float: "right" }}>
-              <Button size="small" variant="contained" color="secondary">
+              <Button
+                disabled={requestStatusAll[index] == 3 ? true : false}
+                size="small"
+                variant="contained"
+                color="secondary"
+                onClick={this.rejectRequest.bind(this, idsAll[index])}
+              >
                 Reject
               </Button>
               <Button
+                disabled={requestStatusAll[index] == 1 ? false : true}
                 size="small"
                 variant="contained"
                 color="primary"
-                onClick={this.processRequest.bind(
-                  this,
-                  idsAll[index],
-                  3
-                )}
+                onClick={this.processRequest.bind(this, idsAll[index], 3)}
               >
                 Accept
               </Button>
