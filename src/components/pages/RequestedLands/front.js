@@ -67,6 +67,35 @@ class RequestedLandsFront extends Component {
     console.log("Buy Land Confirm");
   }
 
+  async refuseToBuyLand(idLand) {
+    console.log("ID : ", idLand);
+
+    const web3 = window.web3;
+
+    const webeProvider = new Web3(
+      Web3.givenProvider || "http://localhost:7545"
+    );
+    const accounts = await webeProvider.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    console.log("Account: " + this.state.account);
+
+    const netId = await web3.eth.net.getId();
+    const deployedNetwork = contract.networks[netId];
+
+    console.log(deployedNetwork.address);
+
+    const landCon = new web3.eth.Contract(
+      contract.abi,
+      deployedNetwork.address
+    );
+
+    await landCon.methods.refuseToBuy(idLand).send({
+      from: this.state.account,
+    });
+
+    console.log("Refuse to Buy Land Confirmed");
+  }
+
   async loadBlockchainData() {
     const web3 = window.web3;
 
@@ -177,10 +206,16 @@ class RequestedLandsFront extends Component {
               </CardContent>
             </CardActionArea>
             <CardActions style={{ float: "right" }}>
-              <Button size="small" variant="contained" color="primary">
+              <Button
+                disabled={requestStatusAll[index] == 3 ? true : false}
+                size="small"
+                variant="contained"
+                color="primary"
+              >
                 Refuse to Buy
               </Button>
               <Button
+                disabled={requestStatusAll[index] == 3 ? false : true}
                 size="small"
                 variant="contained"
                 color="secondary"
