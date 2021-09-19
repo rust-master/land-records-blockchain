@@ -262,12 +262,44 @@ class CreateLand extends Component {
 
         this.setState({ open: true });
         this.setState({ success: "Polyline Data Added Successfuly" });
+
+        this.setState({ openDialog: false });
+        this.clear();
       } catch (e) {
         this.setState({ openi: true });
         this.setState({ errori: e.toString() });
         console.log("Error : ", e.toString());
       }
     }
+  }
+
+  // clear function to clear the fields
+  clear() {
+    this.setState({
+      id: "",
+      state: "",
+      district: "",
+      village: "",
+      khataNumber: "",
+      khatooniNumber: "",
+      CurrentOwner: "",
+      ownerName: "",
+      previousOwner: "",
+      marketValue: "",
+      squareFoots: "",
+      inches: "",
+      landType: "",
+      lat: "",
+      lng: "",
+      north: "",
+      south: "",
+      east: "",
+      west: "",
+      open: false,
+      openi: false,
+      errori: "",
+      success: "",
+    });
   }
 
   handleChange(e) {
@@ -379,145 +411,145 @@ class CreateLand extends Component {
                   </h1>
                   <div className="input-areas">
                     {/* <form> */}
-                      <input
-                        autoFocus
-                        style={{ width: "530px" }}
-                        className="footer-input"
-                        name="CurrentOwner"
-                        type="text"
-                        placeholder="Owner Address"
-                        value={this.state.CurrentOwner}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      autoFocus
+                      style={{ width: "530px" }}
+                      className="footer-input"
+                      name="CurrentOwner"
+                      type="text"
+                      placeholder="Owner Address"
+                      value={this.state.CurrentOwner}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        style={{ width: "530px" }}
-                        className="footer-input"
-                        name="ownerName"
-                        type="text"
-                        placeholder="Name Owner"
-                        value={this.state.ownerName}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      style={{ width: "530px" }}
+                      className="footer-input"
+                      name="ownerName"
+                      type="text"
+                      placeholder="Name Owner"
+                      value={this.state.ownerName}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        style={{ width: "530px" }}
-                        className="footer-input"
-                        name="previousOwner"
-                        type="text"
-                        placeholder="Previous Owner Address"
-                        value={this.state.previousOwner}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      style={{ width: "530px" }}
+                      className="footer-input"
+                      name="previousOwner"
+                      type="text"
+                      placeholder="Previous Owner Address"
+                      value={this.state.previousOwner}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="state"
-                        type="text"
-                        placeholder="State"
-                        value={this.state.state}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="state"
+                      type="text"
+                      placeholder="State"
+                      value={this.state.state}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="district"
-                        type="text"
-                        placeholder="District"
-                        value={this.state.district}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="district"
+                      type="text"
+                      placeholder="District"
+                      value={this.state.district}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="village"
-                        type="text"
-                        placeholder="Village"
-                        value={this.state.village}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="village"
+                      type="text"
+                      placeholder="Village"
+                      value={this.state.village}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="khataNumber"
-                        type="number"
-                        min="1"
-                        placeholder="Khata Number"
-                        value={this.state.khataNumber}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="khataNumber"
+                      type="number"
+                      min="1"
+                      placeholder="Khata Number"
+                      value={this.state.khataNumber}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="khatooniNumber"
-                        type="number"
-                        min="1"
-                        placeholder="khatooni Number"
-                        value={this.state.khatooniNumber}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="khatooniNumber"
+                      type="number"
+                      min="1"
+                      placeholder="khatooni Number"
+                      value={this.state.khatooniNumber}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="marketValue"
-                        type="number"
-                        min="1"
-                        placeholder="Market Value"
-                        value={this.state.marketValue}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={this.state.marketValue}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="squareFoots"
-                        type="number"
-                        min="1"
-                        placeholder="Square Foots"
-                        value={this.state.squareFoots}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="squareFoots"
+                      type="number"
+                      min="1"
+                      placeholder="Square Foots"
+                      value={this.state.squareFoots}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="inches"
-                        type="number"
-                        min="1"
-                        placeholder="Inches"
-                        value={this.state.inches}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="inches"
+                      type="number"
+                      min="1"
+                      placeholder="Inches"
+                      value={this.state.inches}
+                      onChange={this.handleChange}
+                    />
 
-                      <input
-                        className="footer-input"
-                        name="id"
-                        type="number"
-                        min="1"
-                        placeholder="ID"
-                        value={this.state.id}
-                        onChange={this.handleChange}
-                      />
+                    <input
+                      className="footer-input"
+                      name="id"
+                      type="number"
+                      min="1"
+                      placeholder="ID"
+                      value={this.state.id}
+                      onChange={this.handleChange}
+                    />
 
-                      <select
-                        style={{ width: "260px" }}
-                        className="footer-input"
-                        name="landType"
-                        value={this.state.landType}
-                        onChange={this.handleChange}
-                      >
-                        <option value="Residential">Residential</option>
-                        <option value="Commercial">Commercial</option>
-                        <option value="Agriculture">Agriculture</option>
-                        <option value="Industrial">Industrial</option>
-                        <option value="Plot">Plot</option>
-                      </select>
+                    <select
+                      style={{ width: "260px" }}
+                      className="footer-input"
+                      name="landType"
+                      value={this.state.landType}
+                      onChange={this.handleChange}
+                    >
+                      <option value="Residential">Residential</option>
+                      <option value="Commercial">Commercial</option>
+                      <option value="Agriculture">Agriculture</option>
+                      <option value="Industrial">Industrial</option>
+                      <option value="Plot">Plot</option>
+                    </select>
 
-                      <Button
-                        buttonSize="btn--mobile"
-                        buttonColor="blue"
-                        onClick={this.addData}
-                      >
-                        Create Land
-                      </Button>
+                    <Button
+                      buttonSize="btn--mobile"
+                      buttonColor="blue"
+                      onClick={this.addData}
+                    >
+                      Create Land
+                    </Button>
                     {/* </form> */}
 
                     <Snackbar
