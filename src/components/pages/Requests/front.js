@@ -70,8 +70,6 @@ class RequestsFront extends Component {
   }
 
   async loadBlockchainData() {
-    this.setState({ requestStatus: [] });
-
     const web3 = window.web3;
 
     const webeProvider = new Web3(
