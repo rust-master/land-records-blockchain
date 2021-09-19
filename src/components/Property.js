@@ -179,7 +179,8 @@ class Property extends Component {
       .call({ from: this.state.account });
 
     this.state.allAssets = assets;
-    for (let i = 0; i <= assets.length; i++) {
+    for (let i = 0; i < assets.length; i++) {
+      console.log("Asset ID: ", assets[i]);
       this.state.ids.push(assets[i]);
     }
 
