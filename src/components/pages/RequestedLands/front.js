@@ -207,7 +207,7 @@ class RequestedLandsFront extends Component {
             </CardActionArea>
             <CardActions style={{ float: "right" }}>
               <Button
-                disabled={requestStatusAll[index] == 3 ? false : false}
+                disabled={requestStatusAll[index] == 3 ? true : false}
                 size="small"
                 variant="contained"
                 color="primary"
