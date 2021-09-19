@@ -284,6 +284,8 @@ contract Land is Auth {
 
     function unMarkLand(uint256 property) public {
         require(land[property].CurrentOwner == msg.sender);
+        land[property].requester = address(0);  
+        land[property].requestStatus = reqStatus.Default;
         land[property].isAvailable = false;
     }
 
@@ -398,6 +400,12 @@ contract Land is Auth {
         land[property].requester = address(0);
         land[property].requestStatus = reqStatus.Default;
         profile[msg.sender].assetList.push(property); //adds the property to the asset list of the new owner.
+    }
+
+    function refuseToBuy(uint256 property) public {
+        require(land[property].requester == msg.sender);
+        land[property].requester = address(0);  
+        land[property].requestStatus = reqStatus.Default;
     }
 
     //removing the ownership of seller for the land. and it is called by the buyProperty function
