@@ -3,7 +3,6 @@ import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
-// import contract from "../../../build/contracts/Auth.json";
 import contract from "../../../build/contracts/Land.json";
 
 class GovermentSignUp extends Component {
@@ -44,11 +43,7 @@ class GovermentSignUp extends Component {
     );
 
     await authContract.methods
-      .registerAdmin(
-        this.state.account,
-        this.state.name,
-        this.state.password,
-      )
+      .registerAdmin(this.state.account, this.state.name, this.state.password)
       .send({ from: this.state.account });
 
     const checkIsAdmin = await authContract.methods
