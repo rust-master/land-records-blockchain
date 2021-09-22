@@ -20,14 +20,31 @@ Install Truffle:
 Download and Install Ganache:
  - <a href="https://www.trufflesuite.com/ganache" > Download Ganache </a>
 
+Download and Install MetaMask extension:
+ - <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en" > Install MetaMask </a>
+
 ### Step 2:
 
-- Download Project and open in VS Code
-- Open Terminal in VsCode
+- Download Project and open in VSCode.
+- Open Terminal in VSCode.
   - Key Shorcut: `ctrl + ~`
-- Type `npm install` and enter it download node modules
+- Type `npm install` and enter then it start downloading the node modules.
 - After installing the in terminal type `cd src`
 - After changing the directory to src then type `truffle compile`
+- When compilation done, open Ganache and click on quick start
+- Now type `truffle deploy` in terminal
+- When Smart contract deployed
+- close the terminal
+- Opne terminal again and type `npm start` to run the project
+
+### Step 3:
+
+- Connect with MetaMask
+- Signup by Goverment with using first account of ganache
+- Login Goverment and create land, update land etc.
+
+- Signup By User with second account or any account expect first account
+- Login and view land, mark land, view land at map, view detail, search to buy etc.
 
 
 ## Available Scripts
