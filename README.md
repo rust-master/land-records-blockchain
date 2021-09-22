@@ -7,11 +7,12 @@
 ## Requirement to Use this Project
 
 ### Step 1:
-Download and Install Node.js
-<a href="https://nodejs.org/dist/v14.17.6/node-v14.17.6-x86.msi" > Download Node.js </a>
 
+Download and Install Node.js: 
+ - <a href="https://nodejs.org/dist/v14.17.6/node-v14.17.6-x86.msi" > Download Node.js </a>
 
-
+Download and Install Visual Studio Code:
+ - <a href="https://nodejs.org/dist/v14.17.6/node-v14.17.6-x86.msi" > Download Node.js </a>
 
 ## Available Scripts
 
