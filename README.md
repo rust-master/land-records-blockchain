@@ -4,15 +4,31 @@
 
 <img src="Main Splash.PNG" alt="Splash Screen" />
 
-## Requirement to Use this Project
+## Requirements to Use this Project
 
 ### Step 1:
 
 Download and Install Node.js: 
- - <a href="https://nodejs.org/dist/v14.17.6/node-v14.17.6-x86.msi" > Download Node.js </a>
+ - <a href="https://nodejs.org/en/download/" > Download Node.js </a>
 
 Download and Install Visual Studio Code:
- - <a href="https://nodejs.org/dist/v14.17.6/node-v14.17.6-x86.msi" > Download Node.js </a>
+ - <a href="https://code.visualstudio.com/download" > Download Visual Studio Code </a>
+
+Install Truffle:
+ - open cmd and install `npm install -g truffle`
+
+Download and Install Ganache:
+ - <a href="https://www.trufflesuite.com/ganache" > Download Ganache </a>
+
+### Step 2:
+
+- Download Project and open in VS Code
+- Open Terminal in VsCode
+  - Key Shorcut: `ctrl + ~`
+- Type `npm install` and enter it download node modules
+- After installing the in terminal type `cd src`
+- After changing the directory to src then type `truffle compile`
+
 
 ## Available Scripts
 
