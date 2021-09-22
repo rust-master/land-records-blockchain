@@ -4,6 +4,15 @@
 
 <img src="Main Splash.PNG" alt="Splash Screen" />
 
+## Requirement to Use this Project
+
+### Step 1:
+Download and Install Node.js
+<a href="https://nodejs.org/dist/v14.17.6/node-v14.17.6-x86.msi" > Download Node.js </a>
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
