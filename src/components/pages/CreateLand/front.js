@@ -445,7 +445,7 @@ class CreateLand extends Component {
                     />
 
                     <select
-                      style={{ width: "210px" }}
+                      style={{ width: "225px" }}
                       className="footer-input"
                       name="states"
                       value={this.state.states}
