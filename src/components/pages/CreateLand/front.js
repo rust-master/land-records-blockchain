@@ -15,6 +15,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
+import districts from "./district.json";
+
 import {
   Image,
   Svg,
@@ -96,7 +98,7 @@ class CreateLand extends Component {
     this.state = {
       account: "",
       id: "",
-      state: "",
+      states: "",
       district: "",
       village: "",
       khataNumber: "",
@@ -126,7 +128,7 @@ class CreateLand extends Component {
     // check conditon for all the fields
     if (
       this.state.id === "" ||
-      this.state.state === "" ||
+      this.state.states === "" ||
       this.state.district === "" ||
       this.state.village === "" ||
       this.state.khataNumber === "" ||
@@ -166,7 +168,7 @@ class CreateLand extends Component {
 
         console.log("CurrentOwner: " + this.state.CurrentOwner);
         console.log("ownerName: " + this.state.ownerName);
-        console.log("state: " + this.state.state);
+        console.log("state: " + this.state.states);
         console.log("district: " + this.state.district);
         console.log("village: " + this.state.village);
         console.log("khataNumber: " + this.state.khataNumber);
@@ -179,7 +181,7 @@ class CreateLand extends Component {
 
         await landCon.methods
           .Registration(
-            this.state.state,
+            this.state.states,
             this.state.district,
             this.state.village,
             this.state.khataNumber,
@@ -277,7 +279,7 @@ class CreateLand extends Component {
   clear() {
     this.setState({
       id: "",
-      state: "",
+      states: "",
       district: "",
       village: "",
       khataNumber: "",
@@ -353,7 +355,7 @@ class CreateLand extends Component {
           </Svg>
           <View style={styles.section}>
             <Text style={styles.heading1}>Land Detail</Text>
-            <Text style={styles.text}>State: {this.state.state}</Text>
+            <Text style={styles.text}>State: {this.state.states}</Text>
             <Text style={styles.text}>District: {this.state.district}</Text>
             <Text style={styles.text}>Village: {this.state.village}</Text>
             <Text style={styles.text}>Khata No: {this.state.khataNumber}</Text>
@@ -442,23 +444,44 @@ class CreateLand extends Component {
                       onChange={this.handleChange}
                     />
 
-                    <input
+                    <select
+                      style={{ width: "210px" }}
                       className="footer-input"
-                      name="state"
-                      type="text"
-                      placeholder="State"
-                      value={this.state.state}
+                      name="states"
+                      value={this.state.states}
                       onChange={this.handleChange}
-                    />
+                    >
+                      <option value="" disabled selected>
+                        Select The State
+                      </option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="KPK">KPK</option>
+                      <option value="Sindh">Sindh</option>
+                      <option value="Balochistan">Balochistan</option>
+                    </select>
 
-                    <input
+                    <select
+                      className="footer-input"
+                      name="district"
+                      value={this.state.district}
+                      onChange={this.handleChange}
+                    >
+                      <option value="" disabled selected>
+                        Select The District
+                      </option>
+                      {districts.map((item) => (
+                        <option value={item}>{item}</option>
+                      ))}
+                    </select>
+
+                    {/* <input
                       className="footer-input"
                       name="district"
                       type="text"
                       placeholder="District"
                       value={this.state.district}
                       onChange={this.handleChange}
-                    />
+                    /> */}
 
                     <input
                       className="footer-input"
