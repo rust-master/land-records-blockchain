@@ -97,7 +97,6 @@ class CreateLand extends Component {
     this.addData = this.addData.bind(this);
     this.state = {
       account: "",
-      id: "",
       states: "",
       district: "",
       village: "",
@@ -127,7 +126,6 @@ class CreateLand extends Component {
   async addData() {
     // check conditon for all the fields
     if (
-      this.state.id === "" ||
       this.state.states === "" ||
       this.state.district === "" ||
       this.state.village === "" ||
@@ -173,7 +171,6 @@ class CreateLand extends Component {
         console.log("village: " + this.state.village);
         console.log("khataNumber: " + this.state.khataNumber);
         console.log("khatooniNumber: " + this.state.khatooniNumber);
-        console.log("id: " + this.state.id);
         console.log("marketValue: " + this.state.marketValue);
         console.log("squareFoots: " + this.state.squareFoots);
         console.log("inches: " + this.state.inches);
@@ -190,7 +187,6 @@ class CreateLand extends Component {
             this.state.ownerName,
             this.state.previousOwner,
             this.state.marketValue,
-            this.state.id,
             this.state.squareFoots,
             this.state.inches,
             this.state.landType,
@@ -257,8 +253,7 @@ class CreateLand extends Component {
             this.state.north,
             this.state.south,
             this.state.east,
-            this.state.west,
-            this.state.id
+            this.state.west
           )
           .send({ from: this.state.account });
 
@@ -278,7 +273,6 @@ class CreateLand extends Component {
   // clear function to clear the fields
   clear() {
     this.setState({
-      id: "",
       states: "",
       district: "",
       village: "",
@@ -369,7 +363,6 @@ class CreateLand extends Component {
               Square Foots: {this.state.squareFoots}
             </Text>
             <Text style={styles.text}>Inches: {this.state.inches}</Text>
-            <Text style={styles.text}>Land ID: {this.state.id}</Text>
             <Text style={styles.text}>Land Type: {this.state.landType}</Text>
           </View>
           <View style={styles.section}>
@@ -474,15 +467,6 @@ class CreateLand extends Component {
                       ))}
                     </select>
 
-                    {/* <input
-                      className="footer-input"
-                      name="district"
-                      type="text"
-                      placeholder="District"
-                      value={this.state.district}
-                      onChange={this.handleChange}
-                    /> */}
-
                     <input
                       className="footer-input"
                       name="village"
@@ -539,16 +523,6 @@ class CreateLand extends Component {
                       min="1"
                       placeholder="Inches"
                       value={this.state.inches}
-                      onChange={this.handleChange}
-                    />
-
-                    <input
-                      className="footer-input"
-                      name="id"
-                      type="number"
-                      min="1"
-                      placeholder="ID"
-                      value={this.state.id}
                       onChange={this.handleChange}
                     />
 

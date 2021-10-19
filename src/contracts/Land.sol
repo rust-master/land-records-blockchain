@@ -123,8 +123,10 @@ contract Land is Auth {
         string memory _south,
         string memory _east,
         string memory _west,
-        uint256 id
     ) public returns (bool) {
+        uint256 newLandId = _landIds.current();
+        require(land[newLandId].landID != newLandId);
+
         land[id].lat = _lat;
         land[id].lng = _lng;
         land[id].north = _north;
