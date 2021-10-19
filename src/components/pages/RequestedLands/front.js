@@ -65,7 +65,7 @@ class RequestedLandsFront extends Component {
     });
 
     console.log("Buy Land Confirm");
-    this.loadBlockchainData();
+    // this.loadBlockchainData();
   }
 
   async refuseToBuyLand(idLand) {
@@ -96,7 +96,7 @@ class RequestedLandsFront extends Component {
 
     console.log("Refuse to Buy Land Confirmed");
 
-    this.loadBlockchainData();
+    // this.loadBlockchainData();
   }
 
   async loadBlockchainData() {

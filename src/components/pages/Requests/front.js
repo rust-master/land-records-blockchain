@@ -61,7 +61,7 @@ class RequestsFront extends Component {
       from: this.state.account,
     });
 
-    this.loadBlockchainData();
+    // this.loadBlockchainData();
   }
 
   // reject request
