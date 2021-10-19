@@ -581,7 +581,7 @@ class CreateLand extends Component {
         <div>
           <Dialog
             open={this.state.openDialog}
-            onClose={this.handleCloseDialog}
+            onClose={(event, reason) => reason !== "backdropClick"}
             aria-labelledby="form-dialog-title"
           >
             <DialogTitle id="form-dialog-title">Add Polyline Data</DialogTitle>
@@ -590,15 +590,6 @@ class CreateLand extends Component {
                 Add latitude and longitude points to the polyline and bounds of
                 land north, south, east, west
               </DialogContentText>
-              <TextField
-                margin="dense"
-                name="id"
-                label="Land ID"
-                type="number"
-                value={this.state.id}
-                disabled={true}
-                fullWidth
-              />
               <TextField
                 autoFocus
                 margin="dense"

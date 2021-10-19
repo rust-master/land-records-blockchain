@@ -125,7 +125,6 @@ contract Land is Auth {
         string memory _west
     ) public returns (bool) {
         uint256 newLandId = _landIds.current();
-        require(land[newLandId].landID != newLandId);
 
         land[newLandId].lat = _lat;
         land[newLandId].lng = _lng;
