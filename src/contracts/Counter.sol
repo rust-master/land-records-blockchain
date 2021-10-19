@@ -3,7 +3,6 @@ pragma solidity >=0.4.0 <0.6.0;
 
 library Counters {
     struct Counter {
-
         uint256 _value; // default: 0
     }
 

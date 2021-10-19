@@ -9,6 +9,7 @@ contract Land is Auth {
     Counters.Counter private _landIds;
 
     struct landDetails {
+        uint256 landID;
         string state;
         string district;
         string villageTown;
@@ -93,6 +94,9 @@ contract Land is Auth {
         _landIds.increment();
         uint256 newLandId = _landIds.current();
 
+        require(land[newLandId].landID != newLandId);
+
+        land[newLandId].landID = newLandId;
         land[newLandId].state = _state;
         land[newLandId].district = _district;
         land[newLandId].villageTown = _villageTown;
