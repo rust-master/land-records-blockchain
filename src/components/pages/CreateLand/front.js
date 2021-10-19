@@ -91,7 +91,6 @@ class CreateLand extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleCloseDialog = this.handleCloseDialog.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.addPolylineData = this.addPolylineData.bind(this);
     this.addData = this.addData.bind(this);
@@ -315,11 +314,6 @@ class CreateLand extends Component {
 
   handleClickOpen = () => {
     this.setState({ openDialog: true });
-  };
-
-  handleCloseDialog = () => {
-    this.setState({ openDialog: false });
-    console.log("handleCloseDialog");
   };
 
   render() {
@@ -647,9 +641,6 @@ class CreateLand extends Component {
               />
             </DialogContent>
             <DialogActions>
-              <ButtonCore onClick={this.handleCloseDialog} color="primary">
-                Cancel
-              </ButtonCore>
               <ButtonCore
                 onClick={this.addPolylineData}
                 variant="contained"
