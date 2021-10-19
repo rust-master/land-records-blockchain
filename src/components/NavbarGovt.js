@@ -229,10 +229,10 @@ class Navbar extends React.Component {
                         </h4>
                       </li>
                       <li>
-                        <a href="/trips">Trips</a>
+                        <a href="/search-lands">Search Lands</a>
                       </li>
                       <li>
-                        <a href="/saved">Saved</a>
+                        <a href="/saved">Conflicts Request</a>
                       </li>
                       <li>
                         <Button
