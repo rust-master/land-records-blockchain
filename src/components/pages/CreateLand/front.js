@@ -405,7 +405,6 @@ class CreateLand extends Component {
                     {"Create Land"}
                   </h1>
                   <div className="input-areas">
-                    {/* <form> */}
                     <input
                       autoFocus
                       style={{ width: "530px" }}
@@ -547,7 +546,6 @@ class CreateLand extends Component {
                     >
                       Create Land
                     </Button>
-                    {/* </form> */}
 
                     <Snackbar
                       open={this.state.open}
