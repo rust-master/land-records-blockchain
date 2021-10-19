@@ -1,8 +1,13 @@
 pragma solidity >=0.4.0 <0.6.0;
 
 import {Auth} from "../contracts/Auth.sol";
+import "../contracts/Counter.sol";
 
 contract Land is Auth {
+
+    using Counters for Counters.Counter;
+    Counters.Counter private _landIds;
+
     struct landDetails {
         string state;
         string district;
@@ -78,28 +83,31 @@ contract Land is Auth {
         string memory _ownerName,
         address _previousOwner,
         uint256 _marketValue,
-        uint256 id,
         string memory _squareFoots,
         string memory _inches,
         string memory _landType,
         address payable _createByGovt
     ) public returns (bool) {
         require(superAdmin[_villageTown] == msg.sender || owner == msg.sender);
-        land[id].state = _state;
-        land[id].district = _district;
-        land[id].villageTown = _villageTown;
-        land[id].khataNumber = _khataNumber;
-        land[id].khatooniNumber = _khatooniNumber;
-        land[id].CurrentOwner = _OwnerAddress;
-        land[id].ownerName = _ownerName;
-        land[id].previousOwner = _previousOwner;
-        land[id].marketValue = _marketValue;
-        land[id].squareFoots = _squareFoots;
-        land[id].inches = _inches;
-        land[id].landType = _landType;
-        land[id].createByGovt = _createByGovt;
-        profile[_OwnerAddress].assetList.push(id);
-        propertiesIDs.push(id);
+
+        _landIds.increment();
+        uint256 newLandId = _landIds.current();
+
+        land[newLandId].state = _state;
+        land[newLandId].district = _district;
+        land[newLandId].villageTown = _villageTown;
+        land[newLandId].khataNumber = _khataNumber;
+        land[newLandId].khatooniNumber = _khatooniNumber;
+        land[newLandId].CurrentOwner = _OwnerAddress;
+        land[newLandId].ownerName = _ownerName;
+        land[newLandId].previousOwner = _previousOwner;
+        land[newLandId].marketValue = _marketValue;
+        land[newLandId].squareFoots = _squareFoots;
+        land[newLandId].inches = _inches;
+        land[newLandId].landType = _landType;
+        land[newLandId].createByGovt = _createByGovt;
+        profile[_OwnerAddress].assetList.push(newLandId);
+        propertiesIDs.push(newLandId);
         return true;
     }
 
