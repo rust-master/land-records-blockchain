@@ -1,17 +1,15 @@
 import React from "react";
 import { Button } from "../../Button";
+import "./FrontSection.css";
 import { Link } from "react-router-dom";
 import Zoom from "@material-ui/core/Zoom";
 
 class InheritanceCalaculator extends React.Component {
   render() {
     const lightBg = false;
-    const lightText = true;
     const lightTextDesc = true;
-    const topLine = "Exclusive Access";
-    const headline = "Unlimited Transactions with gas fees";
-    const description =
-      "Get access to our exclusive diamond card that allows you to  send unlimited transactions without getting charged any fees";
+    const topLine = "Islamic Inheritance Calculator";
+    const description = "Calaculate Your Inheritance";
     const buttonLabel = "Get Started";
     const imgStart = "";
     const img = "images/svg-1.svg";
@@ -35,9 +33,6 @@ class InheritanceCalaculator extends React.Component {
               <div className="col">
                 <div className="home__hero-text-wrapper">
                   <div className="top-line">{topLine}</div>
-                  <h1 className={lightText ? "heading" : "heading dark"}>
-                    {headline}
-                  </h1>
                   <p
                     className={
                       lightTextDesc
@@ -47,11 +42,22 @@ class InheritanceCalaculator extends React.Component {
                   >
                     {description}
                   </p>
-                  <Link to="/sign-up">
+
+                  <div className="input-areas">
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={1}
+                      // onChange={}
+                    />
+
                     <Button buttonSize="btn--wide" buttonColor="blue">
                       {buttonLabel}
                     </Button>
-                  </Link>
+                  </div>
                 </div>
               </div>
               <div className="col">
