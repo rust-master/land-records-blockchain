@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "./Button";
+import { Button } from "../../Button";
 import { Link } from "react-router-dom";
 import Zoom from "@material-ui/core/Zoom";
 
@@ -8,14 +8,14 @@ class InheritanceCalaculator extends React.Component {
     const lightBg = false;
     const lightText = true;
     const lightTextDesc = true;
-    const topLine = 'Exclusive Access';
-    const headline = 'Unlimited Transactions with gas fees';
+    const topLine = "Exclusive Access";
+    const headline = "Unlimited Transactions with gas fees";
     const description =
-      'Get access to our exclusive diamond card that allows you to  send unlimited transactions without getting charged any fees',
-    const buttonLabel = 'Get Started';
-    const imgStart = '';
-    const img = 'images/svg-1.svg';
-    const alt = 'Credit Card';
+      "Get access to our exclusive diamond card that allows you to  send unlimited transactions without getting charged any fees";
+    const buttonLabel = "Get Started";
+    const imgStart = "";
+    const img = "images/svg-1.svg";
+    const alt = "Credit Card";
 
     return (
       <div>
@@ -73,4 +73,4 @@ class InheritanceCalaculator extends React.Component {
   }
 }
 
-export default ImgMediaCard;
+export default InheritanceCalaculator;
