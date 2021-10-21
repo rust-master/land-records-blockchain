@@ -53,6 +53,69 @@ class InheritanceCalaculator extends React.Component {
                       value={1}
                       // onChange={}
                     />
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={1}
+                      // onChange={}
+                    />
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={1}
+                      // onChange={}
+                    />
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={1}
+                      // onChange={}
+                    />
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={1}
+                      // onChange={}
+                    />
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={1}
+                      // onChange={}
+                    />
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={1}
+                      // onChange={}
+                    />
+                    <input
+                      className="footer-input"
+                      name="marketValue"
+                      type="number"
+                      min="1"
+                      placeholder="Market Value"
+                      value={1}
+                      // onChange={}
+                    />
 
                     <Button buttonSize="btn--wide" buttonColor="blue">
                       {buttonLabel}
