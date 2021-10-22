@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   root2: {
     maxWidth: 345,
     position: "absolute",
-    marginLeft: 480,
+    marginLeft: 510,
     backgroundColor: "#1C2237",
     marginBottom: 40,
   },
@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     backgroundColor: "#1C2237",
     maxWidth: 345,
     position: "relative",
-    marginLeft: 860,
+    marginLeft: 840,
     marginTop: 40,
     marginBottom: 40,
   },
@@ -50,106 +50,110 @@ function AboutUs() {
   const classes = useStyles();
 
   return (
-    <Slide
-      direction="right"
-      in={true}
-      timeout={3000}
-      mountOnEnter
-      unmountOnExit
-    >
-      <div className={classes.main}>
-        <Card className={classes.root1}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              width="140"
-              height="270"
-              image={zaryab}
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h6"
-                component="h5"
-                className={classes.Typo}
-              >
-                {"Muhammad Zaryab Rafique"}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                className={classes.TypoP}
-              >
-                Blockchain Developer
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-        <Card className={classes.root2}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              width="140"
-              height="270"
-              image={amir}
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h6"
-                component="h5"
-                className={classes.Typo}
-              >
-                Mr. Amir Ali Rizvi
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                className={classes.TypoP}
-              >
-                Expert Blockchain Consultant
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-        <Card className={classes.root3}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              width="140"
-              height="270"
-              image={amir}
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h6"
-                component="h5"
-                className={classes.Typo}
-              >
-                Muhammad Zohaib Arshad
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                className={classes.TypoP}
-              >
-                Blockchain Developer
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      </div>
-    </Slide>
+    <div>
+      <h1 style={{ textAlign: "center", color: "#ef8221" }}>Project Team</h1>
+
+      <Slide
+        direction="right"
+        in={true}
+        timeout={3000}
+        mountOnEnter
+        unmountOnExit
+      >
+        <div className={classes.main}>
+          <Card className={classes.root1}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                width="140"
+                height="270"
+                image={zaryab}
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo}
+                >
+                  {"Muhammad Zaryab Rafique"}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  className={classes.TypoP}
+                >
+                  Blockchain Developer
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+          <Card className={classes.root2}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                width="140"
+                height="270"
+                image={amir}
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo}
+                >
+                  Mr. Amir Ali Rizvi
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  className={classes.TypoP}
+                >
+                  Expert Blockchain Consultant
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+          <Card className={classes.root3}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                width="140"
+                height="270"
+                image={amir}
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h5"
+                  className={classes.Typo}
+                >
+                  Muhammad Zohaib Arshad
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  className={classes.TypoP}
+                >
+                  Blockchain Developer
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </div>
+      </Slide>
+    </div>
   );
 }
 
