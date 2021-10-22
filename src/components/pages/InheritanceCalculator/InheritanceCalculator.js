@@ -61,6 +61,17 @@ class InheritanceCalaculator extends React.Component {
               }}
             >
               <div className="col">
+                <div className="home__hero-img-wrapper">
+                  <Zoom
+                    in={true}
+                    timeout={3000}
+                    style={{ transitionDelay: true ? "1000ms" : "0ms" }}
+                  >
+                    <img src={img} alt={alt} className="home__hero-img" />
+                  </Zoom>
+                </div>
+              </div>
+              <div className="col">
                 <div className="home__hero-text-wrapper">
                   <div className="top-line">{topLine}</div>
                   <h1
@@ -233,17 +244,6 @@ class InheritanceCalaculator extends React.Component {
                       {buttonLabel}
                     </Button>
                   </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="home__hero-img-wrapper">
-                  <Zoom
-                    in={true}
-                    timeout={3000}
-                    style={{ transitionDelay: true ? "1000ms" : "0ms" }}
-                  >
-                    <img src={img} alt={alt} className="home__hero-img" />
-                  </Zoom>
                 </div>
               </div>
             </div>
