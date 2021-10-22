@@ -9,9 +9,9 @@ function Home() {
     <div>
       <CardView />
       <InheritanceCalaculator />
+      <HeroSection {...homeObjFour} />
       <HeroSection {...homeObjThree} />
       <HeroSection {...homeObjTwo} />
-      <HeroSection {...homeObjFour} />
     </div>
   );
 }

@@ -1,16 +1,44 @@
 import React from "react";
-import { Button } from "../../Button";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+
 import "./FrontSection.css";
 import { Link } from "react-router-dom";
 import Zoom from "@material-ui/core/Zoom";
 
 class InheritanceCalaculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      propertyAmount: "",
+      genderOfOwnInheritance: "Select Gender",
+      father: "",
+      mother: "",
+      wife: "",
+      noOfSons: "",
+      noOfDaughters: "",
+      noOfPaternalBrothers: "",
+      noOfPaternalSister: "",
+      noOfMaternalBrothers: "",
+      noOfMaternalSister: "",
+    };
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
   render() {
-    const lightBg = false;
-    const lightTextDesc = true;
+    const lightBg = true;
+    const lightTextDesc = false;
     const topLine = "Islamic Inheritance Calculator";
-    const description = "Calaculate Your Inheritance";
-    const buttonLabel = "Get Started";
+    const description = "Calaculate Inheritance";
+    const buttonLabel = "Calculate";
     const imgStart = "";
     const img = "images/svg-1.svg";
     const alt = "Credit Card";
@@ -33,7 +61,7 @@ class InheritanceCalaculator extends React.Component {
               <div className="col">
                 <div className="home__hero-text-wrapper">
                   <div className="top-line">{topLine}</div>
-                  <p
+                  <h2
                     className={
                       lightTextDesc
                         ? "home__hero-subtitle"
@@ -41,83 +69,113 @@ class InheritanceCalaculator extends React.Component {
                     }
                   >
                     {description}
-                  </p>
+                  </h2>
 
                   <div className="input-areas">
-                    <input
-                      className="footer-input"
-                      name="marketValue"
+                    <TextField
+                      color="secondary"
+                      margin="dense"
+                      name="propertyAmount"
+                      label="Property Amount"
                       type="number"
-                      min="1"
-                      placeholder="Market Value"
-                      value={1}
-                      // onChange={}
-                    />
-                    <input
-                      className="footer-input"
-                      name="marketValue"
-                      type="number"
-                      min="1"
-                      placeholder="Market Value"
-                      value={1}
-                      // onChange={}
-                    />
-                    <input
-                      className="footer-input"
-                      name="marketValue"
-                      type="number"
-                      min="1"
-                      placeholder="Market Value"
-                      value={1}
-                      // onChange={}
-                    />
-                    <input
-                      className="footer-input"
-                      name="marketValue"
-                      type="number"
-                      min="1"
-                      placeholder="Market Value"
-                      value={1}
-                      // onChange={}
-                    />
-                    <input
-                      className="footer-input"
-                      name="marketValue"
-                      type="number"
-                      min="1"
-                      placeholder="Market Value"
-                      value={1}
-                      // onChange={}
-                    />
-                    <input
-                      className="footer-input"
-                      name="marketValue"
-                      type="number"
-                      min="1"
-                      placeholder="Market Value"
-                      value={1}
-                      // onChange={}
-                    />
-                    <input
-                      className="footer-input"
-                      name="marketValue"
-                      type="number"
-                      min="1"
-                      placeholder="Market Value"
-                      value={1}
-                      // onChange={}
-                    />
-                    <input
-                      className="footer-input"
-                      name="marketValue"
-                      type="number"
-                      min="1"
-                      placeholder="Market Value"
-                      value={1}
-                      // onChange={}
+                      value={this.state.propertyAmount}
+                      onChange={this.handleChange}
+                      fullWidth
                     />
 
-                    <Button buttonSize="btn--wide" buttonColor="blue">
+                    <Select
+                      fullWidth
+                      name="genderOfOwnInheritance"
+                      value={this.state.genderOfOwnInheritance}
+                      label="Gender of the person who owns the inheritance"
+                      onChange={this.handleChange}
+                    >
+                      <MenuItem value={"Male"}>Male</MenuItem>
+                      <MenuItem value={"Female"}>Female</MenuItem>
+                    </Select>
+
+                    <TextField
+                      color="secondary"
+                      margin="dense"
+                      name="propertyAmount"
+                      label="Father"
+                      type="number"
+                      value={this.state.propertyAmount}
+                      onChange={this.handleChange}
+                      fullWidth
+                    />
+
+                    <TextField
+                      color="secondary"
+                      margin="dense"
+                      name="noOfSons"
+                      label="Number of Sons"
+                      type="number"
+                      value={this.state.noOfSons}
+                      onChange={this.handleChange}
+                      fullWidth
+                    />
+
+                    <TextField
+                      color="secondary"
+                      margin="dense"
+                      name="noOfDaughters"
+                      label="Number of Daughters"
+                      type="number"
+                      value={this.state.noOfDaughters}
+                      onChange={this.handleChange}
+                      fullWidth
+                    />
+
+                    <TextField
+                      color="secondary"
+                      margin="dense"
+                      name="noOfPaternalBrothers"
+                      label="Number of Paternal Brothers"
+                      type="number"
+                      value={this.state.noOfPaternalBrothers}
+                      onChange={this.handleChange}
+                      fullWidth
+                    />
+
+                    <TextField
+                      color="secondary"
+                      margin="dense"
+                      name="noOfPaternalSister"
+                      label="Number of Paternal Sisters"
+                      type="number"
+                      value={this.state.noOfPaternalSister}
+                      onChange={this.handleChange}
+                      fullWidth
+                    />
+
+                    <TextField
+                      color="secondary"
+                      margin="dense"
+                      name="noOfMaternalBrothers"
+                      label="Number of Maternal Brothers"
+                      type="number"
+                      value={this.state.noOfMaternalBrothers}
+                      onChange={this.handleChange}
+                      fullWidth
+                    />
+
+                    <TextField
+                      color="secondary"
+                      margin="dense"
+                      name="noOfMaternalSister"
+                      label="Number of Maternal Sisters"
+                      type="number"
+                      value={this.state.noOfMaternalSister}
+                      onChange={this.handleChange}
+                      fullWidth
+                    />
+
+                    <Button
+                      style={{ marginTop: "20px" }}
+                      variant="contained"
+                      color="primary"
+                    >
                       {buttonLabel}
                     </Button>
                   </div>
