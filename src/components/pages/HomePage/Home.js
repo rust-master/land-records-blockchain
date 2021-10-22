@@ -5,15 +5,17 @@ import CardView from "../Comps/CardsView";
 import InheritanceCalaculator from "../InheritanceCalculator/InheritanceCalculator";
 import AboutUs from "../AboutUs/AboutUs";
 
-function Home() {
-  return (
-    <div>
-      <CardView />
-      <InheritanceCalaculator />
-      <HeroSection {...homeObjFour} />
-      <AboutUs />
-    </div>
-  );
+class Home extends React.Component {
+  render() {
+    return (
+      <div>
+        <CardView />
+        <InheritanceCalaculator />
+        <HeroSection {...homeObjFour} />
+        <AboutUs />
+      </div>
+    );
+  }
 }
 
 export default Home;

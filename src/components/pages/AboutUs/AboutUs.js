@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   main: {
+    marginTop: "50px",
     marginLeft: 80,
     position: "relative",
   },
@@ -34,7 +35,6 @@ const useStyles = makeStyles({
     margin: "0px auto",
     maxWidth: 345,
     marginTop: 40,
-    marginBottom: 40,
   },
   Typo: {
     color: "#fff",
@@ -51,8 +51,8 @@ function AboutUs() {
   const classes = useStyles();
 
   return (
-    <div style={{ backgroundColor: "#000" }}>
-      <h1 style={{ textAlign: "center", color: "#ef8221", marginTop: "30px" }}>
+    <div style={{ backgroundColor: "#1c2337" }}>
+      <h1 style={{ textAlign: "center", color: "#ef8221", paddingTop: "30px" }}>
         Project Development Team
       </h1>
 
