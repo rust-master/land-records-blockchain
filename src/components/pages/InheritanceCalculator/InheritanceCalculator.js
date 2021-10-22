@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
 
 import "./FrontSection.css";
 import { Link } from "react-router-dom";
@@ -13,17 +14,18 @@ class InheritanceCalaculator extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      propertyAmount: "",
+      propertyAmount: "0",
       genderOfOwnInheritance: "Select Gender",
       father: "",
       mother: "",
+      husband: "",
       wife: "",
-      noOfSons: "",
-      noOfDaughters: "",
-      noOfPaternalBrothers: "",
-      noOfPaternalSister: "",
-      noOfMaternalBrothers: "",
-      noOfMaternalSister: "",
+      noOfSons: "0",
+      noOfDaughters: "0",
+      noOfPaternalBrothers: "0",
+      noOfPaternalSister: "0",
+      noOfMaternalBrothers: "0",
+      noOfMaternalSister: "0",
     };
   }
 
@@ -83,27 +85,79 @@ class InheritanceCalaculator extends React.Component {
                       fullWidth
                     />
 
+                    <InputLabel
+                      style={{ marginTop: "20px" }}
+                      id="demo-simple-select-label"
+                    >
+                      Gender of the person who owns the inheritance
+                    </InputLabel>
                     <Select
+                      labelId="demo-simple-select-label"
                       fullWidth
                       name="genderOfOwnInheritance"
                       value={this.state.genderOfOwnInheritance}
-                      label="Gender of the person who owns the inheritance"
+                      label="Gender"
                       onChange={this.handleChange}
                     >
                       <MenuItem value={"Male"}>Male</MenuItem>
                       <MenuItem value={"Female"}>Female</MenuItem>
                     </Select>
 
-                    <TextField
-                      color="secondary"
-                      margin="dense"
-                      name="propertyAmount"
-                      label="Father"
-                      type="number"
-                      value={this.state.propertyAmount}
-                      onChange={this.handleChange}
+                    <InputLabel style={{ marginTop: "20px" }} id="idF">
+                      Father
+                    </InputLabel>
+                    <Select
+                      labelId="idF"
                       fullWidth
-                    />
+                      name="father"
+                      value={this.state.father}
+                      onChange={this.handleChange}
+                    >
+                      <MenuItem value={"No"}>No</MenuItem>
+                      <MenuItem value={"Yes"}>Yes</MenuItem>
+                    </Select>
+
+                    <InputLabel style={{ marginTop: "20px" }} id="idM">
+                      Mother
+                    </InputLabel>
+                    <Select
+                      labelId="idM"
+                      fullWidth
+                      name="mother"
+                      value={this.state.mother}
+                      onChange={this.handleChange}
+                    >
+                      <MenuItem value={"No"}>No</MenuItem>
+                      <MenuItem value={"Yes"}>Yes</MenuItem>
+                    </Select>
+
+                    <InputLabel style={{ marginTop: "20px" }} id="idHusb">
+                      Husband
+                    </InputLabel>
+                    <Select
+                      labelId="idHusb"
+                      fullWidth
+                      name="husband"
+                      value={this.state.husband}
+                      onChange={this.handleChange}
+                    >
+                      <MenuItem value={"No"}>No</MenuItem>
+                      <MenuItem value={"Yes"}>Yes</MenuItem>
+                    </Select>
+
+                    <InputLabel style={{ marginTop: "20px" }} id="idW">
+                      Wife
+                    </InputLabel>
+                    <Select
+                      labelId="idW"
+                      fullWidth
+                      name="wife"
+                      value={this.state.wife}
+                      onChange={this.handleChange}
+                    >
+                      <MenuItem value={"No"}>No</MenuItem>
+                      <MenuItem value={"Yes"}>Yes</MenuItem>
+                    </Select>
 
                     <TextField
                       color="secondary"
@@ -172,7 +226,7 @@ class InheritanceCalaculator extends React.Component {
                     />
 
                     <Button
-                      style={{ marginTop: "20px" }}
+                      style={{ marginTop: "20px", float: "right" }}
                       variant="contained"
                       color="primary"
                     >
