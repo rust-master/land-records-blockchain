@@ -63,7 +63,7 @@ class InheritanceCalaculator extends React.Component {
               <div className="col">
                 <div className="home__hero-text-wrapper">
                   <div className="top-line">{topLine}</div>
-                  <h2
+                  <h1
                     className={
                       lightTextDesc
                         ? "home__hero-subtitle"
@@ -71,7 +71,7 @@ class InheritanceCalaculator extends React.Component {
                     }
                   >
                     {description}
-                  </h2>
+                  </h1>
 
                   <div className="input-areas">
                     <TextField
