@@ -51,7 +51,9 @@ function AboutUs() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center", color: "#ef8221" }}>Project Team</h1>
+      <h1 style={{ textAlign: "center", color: "#ef8221", marginTop: "30px" }}>
+        Project Development Team
+      </h1>
 
       <Slide
         direction="right"
