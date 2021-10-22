@@ -4,8 +4,8 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import logo from "../Comps/growing.png";
-import logo1 from "../Comps/decreasing.png";
+import zaryab from "../AboutUs/zaryab.png";
+import amir from "../AboutUs/amir.jpeg";
 import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
 
@@ -65,7 +65,7 @@ function AboutUs() {
               alt="Contemplative Reptile"
               width="140"
               height="270"
-              image={logo}
+              image={zaryab}
               title="Contemplative Reptile"
             />
             <CardContent>
@@ -95,7 +95,7 @@ function AboutUs() {
               alt="Contemplative Reptile"
               width="140"
               height="270"
-              image={logo1}
+              image={amir}
               title="Contemplative Reptile"
             />
             <CardContent>
@@ -125,7 +125,7 @@ function AboutUs() {
               alt="Contemplative Reptile"
               width="140"
               height="270"
-              image={logo}
+              image={amir}
               title="Contemplative Reptile"
             />
             <CardContent>
