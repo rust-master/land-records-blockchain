@@ -68,11 +68,11 @@ function AboutUs() {
             <CardActionArea>
               <CardMedia
                 component="img"
-                alt="Contemplative Reptile"
+                alt="Muhammad Zaryab Rafique"
                 width="140"
                 height="270"
                 image={zaryab}
-                title="Contemplative Reptile"
+                title="Blockchain Developer"
               />
               <CardContent>
                 <Typography
@@ -99,11 +99,11 @@ function AboutUs() {
             <CardActionArea>
               <CardMedia
                 component="img"
-                alt="Contemplative Reptile"
+                alt="Mr. Amir Ali Rizvi"
                 width="140"
                 height="270"
                 image={amir}
-                title="Contemplative Reptile"
+                title="Expert Blockchain Consultant"
               />
               <CardContent>
                 <Typography
@@ -112,7 +112,7 @@ function AboutUs() {
                   component="h5"
                   className={classes.Typo}
                 >
-                  Expert Blockchain Consultant
+                  Mr. Amir Ali Rizvi
                 </Typography>
                 <Typography
                   variant="body2"
@@ -130,11 +130,11 @@ function AboutUs() {
             <CardActionArea>
               <CardMedia
                 component="img"
-                alt="Contemplative Reptile"
+                alt="Muhammad Zohaib Arshad"
                 width="140"
                 height="270"
                 image={zohaib}
-                title="Contemplative Reptile"
+                title="Blockchain Developer"
               />
               <CardContent>
                 <Typography
