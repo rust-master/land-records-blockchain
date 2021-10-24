@@ -99,6 +99,7 @@ class ForgetPasswordUser extends Component {
                     <form>
                       <div>
                         <input
+                          style={{ width: "530px" }}
                           className="footer-input"
                           name="password"
                           type="password"
@@ -109,6 +110,7 @@ class ForgetPasswordUser extends Component {
                       </div>
                       <div>
                         <input
+                          style={{ width: "530px" }}
                           className="footer-input"
                           name="confirmPassword"
                           type="password"
