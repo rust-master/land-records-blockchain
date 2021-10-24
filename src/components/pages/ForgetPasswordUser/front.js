@@ -12,46 +12,44 @@ class ForgetPasswordUser extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCNICChange = this.handleCNICChange.bind(this);
     this.state = {
-      name: "",
       password: "",
-      cnic: "",
+      confirmPassword: "",
       account: "",
     };
   }
 
-  async signup(e) {
+  async forgetPassword(e) {
     e.preventDefault();
-    const web3 = window.web3;
 
-    const webeProvider = new Web3(
-      Web3.givenProvider || "http://localhost:7545"
-    );
-    const accounts = await webeProvider.eth.getAccounts();
-    this.setState({ account: accounts[0] });
-    console.log("Account: " + this.state.account);
+    if (this.state.password == this.state.confirmPassword) {
+      const web3 = window.web3;
 
-    const netId = await web3.eth.net.getId();
-    const deployedNetwork = contract.networks[netId];
+      const webeProvider = new Web3(
+        Web3.givenProvider || "http://localhost:7545"
+      );
+      const accounts = await webeProvider.eth.getAccounts();
+      this.setState({ account: accounts[0] });
+      console.log("Account: " + this.state.account);
 
-    console.log(deployedNetwork.address);
+      const netId = await web3.eth.net.getId();
+      const deployedNetwork = contract.networks[netId];
 
-    console.log("Name:", this.state.name);
-    console.log("CNIC:", this.state.cnic);
-    console.log("Password:", this.state.password);
+      console.log(deployedNetwork.address);
 
-    const authContract = new web3.eth.Contract(
-      contract.abi,
-      deployedNetwork.address
-    );
+      console.log("Password:", this.state.password);
+      console.log("Confirm Password:", this.state.confirmPassword);
 
-    await authContract.methods
-      .registerUser(
-        this.state.account,
-        this.state.name,
-        this.state.password,
-        this.state.cnic
-      )
-      .send({ from: this.state.account });
+      const authContract = new web3.eth.Contract(
+        contract.abi,
+        deployedNetwork.address
+      );
+
+      await authContract.methods
+        .forgetPasswordUser(this.state.account, this.state.password)
+        .send({ from: this.state.account });
+    } else {
+      alert("Password does not match");
+    }
   }
 
   handleChange(e) {
@@ -102,40 +100,30 @@ class ForgetPasswordUser extends Component {
                       <div>
                         <input
                           className="footer-input"
-                          name="name"
-                          type="text"
-                          placeholder="Your Name"
-                          onChange={this.handleChange}
-                          value={this.state.name}
-                        />
-                      </div>
-                      <div>
-                        <input
-                          className="footer-input"
-                          name="cnic"
-                          type="number"
-                          placeholder="Your CNIC"
-                          onChange={this.handleCNICChange}
-                          value={this.state.cnic}
-                        />
-                      </div>
-                      <div>
-                        <input
-                          className="footer-input"
                           name="password"
                           type="password"
-                          placeholder="Your Password"
+                          placeholder="New Password"
                           value={this.state.password}
                           onChange={this.handleChange}
+                        />
+                      </div>
+                      <div>
+                        <input
+                          className="footer-input"
+                          name="confirmPassword"
+                          type="password"
+                          placeholder="Confirm Password"
+                          onChange={this.handleChange}
+                          value={this.state.confirmPassword}
                         />
                       </div>
 
                       <Button
                         buttonSize="btn--wide"
                         buttonColor="blue"
-                        onClick={this.signup.bind(this)}
+                        onClick={this.forgetPassword.bind(this)}
                       >
-                        Sign Up
+                        Confirm
                       </Button>
                     </form>
                   </div>

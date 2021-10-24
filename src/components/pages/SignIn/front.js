@@ -137,7 +137,7 @@ class UserSignIn extends Component {
                     </form>
 
                     <Link to="/forget-password-user" className="btn-link">
-                      <h5 style={{ color: "#fff" }}>Forget Password</h5>
+                      <h4 style={{ color: "#fff" }}>Forget Password</h4>
                     </Link>
 
                     <Snackbar
