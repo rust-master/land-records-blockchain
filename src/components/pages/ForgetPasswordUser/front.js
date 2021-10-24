@@ -2,37 +2,24 @@ import React, { Component } from "react";
 import "./FrontSection.css";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
+
 import Web3 from "web3";
-
-// import contract from "../../../build/contracts/Auth.json";
 import contract from "../../../build/contracts/Land.json";
-import Snackbar from "@material-ui/core/Snackbar";
-import Cookies from "universal-cookie";
 
-import MuiAlert from "@material-ui/lab/Alert";
-
-const cookies = new Cookies();
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
-class UserSignIn extends Component {
+class ForgetPasswordUser extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.login = this.login.bind(this);
-
+    this.handleCNICChange = this.handleCNICChange.bind(this);
     this.state = {
-      account: "",
+      name: "",
       password: "",
-      openi: false,
-      errori: "",
+      cnic: "",
+      account: "",
     };
   }
 
-  async login(e) {
+  async signup(e) {
     e.preventDefault();
     const web3 = window.web3;
 
@@ -48,37 +35,23 @@ class UserSignIn extends Component {
 
     console.log(deployedNetwork.address);
 
+    console.log("Name:", this.state.name);
+    console.log("CNIC:", this.state.cnic);
+    console.log("Password:", this.state.password);
+
     const authContract = new web3.eth.Contract(
       contract.abi,
       deployedNetwork.address
     );
 
     await authContract.methods
-      .loginUser(this.state.account, this.state.password)
+      .registerUser(
+        this.state.account,
+        this.state.name,
+        this.state.password,
+        this.state.cnic
+      )
       .send({ from: this.state.account });
-
-    const checkIsUser = await authContract.methods
-      .checkIsUserLogged(this.state.account)
-      .call({ from: this.state.account });
-
-    console.log("Login : " + checkIsUser[0]);
-
-    if (checkIsUser[0]) {
-      cookies.set("checkIsUser", true, { path: "/" });
-      cookies.set("Username", checkIsUser[2], { path: "/" });
-      console.log(cookies.get("checkIsUser"));
-      console.log(cookies.get("Username"));
-      window.location = "/";
-    } else {
-      cookies.remove("checkIsUser");
-      cookies.remove("Username");
-
-      console.log(cookies.get("checkIsUser"));
-      console.log(cookies.get("Username"));
-
-      this.setState({ errori: "Login Failed" });
-      this.setState({ openi: true });
-    }
   }
 
   handleChange(e) {
@@ -87,13 +60,12 @@ class UserSignIn extends Component {
     });
   }
 
-  handleClose(e, r) {
-    if (r === "clickaway") {
-      return;
+  handleCNICChange(e) {
+    if (e.target.value.length <= 13) {
+      this.setState({
+        [e.target.name]: e.target.value,
+      });
     }
-
-    this.setState({ open: false });
-    this.setState({ openi: false });
   }
 
   render() {
@@ -111,62 +83,62 @@ class UserSignIn extends Component {
               }}
             >
               <div className="col">
-                <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"SIGN IN TODAY"}</div>
-                  <h1 className={true ? "heading" : "heading dark"}>
-                    {"BLRS Secure Your Records"}
-                  </h1>
-                  <div className="input-areas">
-                    <form>
-                      <input
-                        className="footer-input"
-                        name="password"
-                        type="password"
-                        placeholder="Your Password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                      />
-
-                      <Button
-                        buttonSize="btn--wide"
-                        buttonColor="blue"
-                        onClick={this.login}
-                      >
-                        Sign In
-                      </Button>
-                    </form>
-
-                    <Link to="/forget-password-user" className="btn-link">
-                      <h5 style={{ color: "#fff" }}>Forget Password</h5>
-                    </Link>
-
-                    <Snackbar
-                      open={this.state.openi}
-                      autoHideDuration={6000}
-                      onClose={this.handleClose}
-                    >
-                      <Alert onClose={this.handleClose} severity="error">
-                        Error: {this.state.errori}
-                      </Alert>
-                    </Snackbar>
-
-                    <Link to="/goverment-login" className="btn-link">
-                      <div class="btnGoverment">
-                        <Button buttonSize="btn--wide" buttonColor="red">
-                          Government Sign In
-                        </Button>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
                 <div className="home__hero-img-wrapper">
                   <img
                     src={"images/svg-6.svg"}
                     alt={"Credit Card"}
                     className="home__hero-img"
                   />
+                </div>
+              </div>
+              <div className="col">
+                <div className="home__hero-text-wrapper">
+                  <div className="top-line">{"Recover Your Password"}</div>
+                  <h1 className={true ? "heading" : "heading dark"}>
+                    {"Forget Password"}
+                  </h1>
+                  <div className="input-areas">
+                    <form>
+                      <div>
+                        <input
+                          className="footer-input"
+                          name="name"
+                          type="text"
+                          placeholder="Your Name"
+                          onChange={this.handleChange}
+                          value={this.state.name}
+                        />
+                      </div>
+                      <div>
+                        <input
+                          className="footer-input"
+                          name="cnic"
+                          type="number"
+                          placeholder="Your CNIC"
+                          onChange={this.handleCNICChange}
+                          value={this.state.cnic}
+                        />
+                      </div>
+                      <div>
+                        <input
+                          className="footer-input"
+                          name="password"
+                          type="password"
+                          placeholder="Your Password"
+                          value={this.state.password}
+                          onChange={this.handleChange}
+                        />
+                      </div>
+
+                      <Button
+                        buttonSize="btn--wide"
+                        buttonColor="blue"
+                        onClick={this.signup.bind(this)}
+                      >
+                        Sign Up
+                      </Button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -189,7 +161,7 @@ function FrontSection({
   imgStart,
 }) {
   if (form) {
-    return <UserSignIn />;
+    return <ForgetPasswordUser />;
   }
 
   return (

@@ -17,6 +17,8 @@ import ShowAllLands from "./components/pages/ShowAllLands/ShowAllLands";
 import ChangeMarketValue from "./components/pages/ChangeMarketValue/ChangeMarketValue";
 import DetailOfLand from "./components/pages/DetailOfLand/DetailOfLand";
 
+import ForgetPasswordUser from "./components/pages/ForgetPasswordUser/ForgetPasswordUser";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import NavbarGovt from "./components/NavbarGovt";
@@ -226,6 +228,17 @@ class App extends Component {
                 <Route path="/properties" component={Properties} />
               ) : (
                 <Route path="/goverment-signup" component={GovermentSignUp} />
+              )}
+
+              {admin ? (
+                <Route path="/detail-of-land/:id" component={DetailOfLand} />
+              ) : user ? (
+                <Route path="/properties" component={Properties} />
+              ) : (
+                <Route
+                  path="/forget-password-user"
+                  component={ForgetPasswordUser}
+                />
               )}
             </Switch>
             <Footer />
