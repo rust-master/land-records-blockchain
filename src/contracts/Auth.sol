@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.4.0 <0.6.0;
 
 contract Auth {
@@ -53,7 +54,7 @@ contract Auth {
         returns (bool)
     {
         require(user[_address].addr == msg.sender);
-        
+
         if (user[_address].addr == msg.sender) {
             user[_address].password = _password;
             return true;
