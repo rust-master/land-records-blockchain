@@ -45,6 +45,22 @@ contract Auth {
             return false;
         }
     }
+    
+    // user forgot password function
+    function forgetPasswordUser(address _address, string memory _password)
+        public
+        notAdmin
+        returns (bool)
+    {
+        require(user[_address].addr == msg.sender);
+        
+        if (user[_address].addr == msg.sender) {
+            user[_address].password = _password;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     // check the user logged In or not
     function checkIsUserLogged(address _address)
