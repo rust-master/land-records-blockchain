@@ -91,7 +91,7 @@ class ForgetPasswordUser extends Component {
               </div>
               <div className="col">
                 <div className="home__hero-text-wrapper">
-                  <div className="top-line">{"Recover Your Password"}</div>
+                  <div className="top-line">{"Generate New Password"}</div>
                   <h1 className={true ? "heading" : "heading dark"}>
                     {"Forget Password"}
                   </h1>
