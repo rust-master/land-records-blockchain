@@ -182,7 +182,6 @@ class RequestsFront extends Component {
             </CardActionArea>
             <CardActions style={{ float: "right" }}>
               <Button
-                disabled={requestStatusAll[index] == 3 ? true : false}
                 size="small"
                 variant="contained"
                 color="secondary"
