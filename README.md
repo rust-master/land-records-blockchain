@@ -58,7 +58,7 @@ Compile the contracts
 
 ### `truffle migrate`
 
-Run migrations 
+Deploy Contract 
 
 ### `truffle deploy`
 
